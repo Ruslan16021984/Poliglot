@@ -3,8 +3,8 @@ package com.carbit3333333.oiiglot_bulgary.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.data.LessonProgressStore
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionRepository
-import com.carbit3333333.oiiglot_bulgary.data.ProgressRepository
 import com.carbit3333333.oiiglot_bulgary.model.ExerciseResult
 import com.carbit3333333.oiiglot_bulgary.model.LessonResult
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionUiState
@@ -14,12 +14,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class LessonSessionViewModel(application: Application) : AndroidViewModel(application) {
+class LessonSessionViewModel(
+    application: Application
+) : AndroidViewModel(application) {
 
     private var currentLessonId: Int = 0
     private val repository = LessonSessionRepository()
-    private val progressRepository = ProgressRepository(application)
-    private val totalLessons = 3
+    private val progressStore = LessonProgressStore(application)
     private var resultSaved = false
 
     private val praises = listOf(
@@ -129,7 +130,13 @@ class LessonSessionViewModel(application: Application) : AndroidViewModel(applic
                 isPassed = isPassed
             )
 
-            saveLessonProgressOnce(correctCount)
+            saveProgressOnce(
+                lessonId = currentLessonId,
+                correctCount = correctCount,
+                wrongCount = wrongCount,
+                score = score,
+                isPassed = isPassed
+            )
 
             _uiState.value = state.copy(
                 selectedWords = emptyList(),
@@ -148,16 +155,28 @@ class LessonSessionViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
-    private fun saveLessonProgressOnce(correctCount: Int) {
+    private fun saveProgressOnce(
+        lessonId: Int,
+        correctCount: Int,
+        wrongCount: Int,
+        score: Float,
+        isPassed: Boolean
+    ) {
         if (resultSaved) return
         resultSaved = true
 
         viewModelScope.launch {
-            progressRepository.completeLesson(
-                lessonId = currentLessonId,
-                score = correctCount,
-                totalLessons = totalLessons
+            progressStore.saveLessonResult(
+                lessonId = lessonId,
+                correctCount = correctCount,
+                wrongCount = wrongCount,
+                score = score,
+                isPassed = isPassed
             )
+
+            if (isPassed) {
+                progressStore.unlockNextLesson(lessonId + 1)
+            }
         }
     }
 }
