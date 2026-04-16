@@ -150,8 +150,17 @@ private fun LessonItem(
                         color = Color(0xFF9E9E9E)
                     )
                 } else {
-                    lesson.bestScore?.let { score ->
+                    if (lesson.isCompleted) {
                         Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = "Пройден",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = Color(0xFF2E7D32)
+                        )
+                    }
+
+                    lesson.bestScore?.let { score ->
+                        Spacer(modifier = Modifier.height(4.dp))
                         Text(
                             text = "Балл: ${String.format(java.util.Locale.US, "%.1f", score)}",
                             style = MaterialTheme.typography.bodySmall,

@@ -13,8 +13,15 @@ class AppTextToSpeech(context: Context) {
         textToSpeech = TextToSpeech(context.applicationContext) { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val result = textToSpeech?.setLanguage(Locale("bg", "BG"))
+
                 isReady = result != TextToSpeech.LANG_MISSING_DATA &&
                         result != TextToSpeech.LANG_NOT_SUPPORTED
+
+                if (isReady) {
+                    textToSpeech?.setSpeechRate(0.9f)
+                }
+            } else {
+                isReady = false
             }
         }
     }

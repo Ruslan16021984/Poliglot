@@ -96,7 +96,10 @@ fun LessonSessionScreen(
         onWordClick = viewModel::selectWord,
         onSelectedWordClick = viewModel::removeSelectedWord,
         onCheckClick = viewModel::checkAnswer,
-        onWrongAnswerScreenTap = viewModel::onWrongAnswerScreenTap
+        onWrongAnswerScreenTap = viewModel::onWrongAnswerScreenTap,
+        onSpeakClick = { text ->
+            textToSpeech.speak(text)
+        }
     )
 }
 
@@ -107,7 +110,8 @@ fun LessonSessionScreenContent(
     onWordClick: (String) -> Unit,
     onSelectedWordClick: (String) -> Unit,
     onCheckClick: () -> Unit,
-    onWrongAnswerScreenTap: () -> Unit
+    onWrongAnswerScreenTap: () -> Unit,
+    onSpeakClick: (String) -> Unit
 ) {
     val currentExercise = uiState.currentExercise
 
@@ -158,14 +162,16 @@ fun LessonSessionScreenContent(
                     ExerciseResult.CORRECT -> {
                         CorrectAnswerBlock(
                             answerText = currentExercise.correctAnswerWords.joinToString(" "),
-                            praiseText = uiState.praiseText
+                            praiseText = uiState.praiseText,
+                            onSpeakClick = onSpeakClick
                         )
                     }
 
                     ExerciseResult.WRONG -> {
                         WrongAnswerBlock(
                             selectedText = uiState.selectedWords.joinToString(" "),
-                            correctText = currentExercise.correctAnswerWords.joinToString(" ")
+                            correctText = currentExercise.correctAnswerWords.joinToString(" "),
+                            onSpeakClick = onSpeakClick
                         )
                     }
                 }
@@ -354,7 +360,8 @@ private fun InstructionBlock(
 @Composable
 private fun WrongAnswerBlock(
     selectedText: String,
-    correctText: String
+    correctText: String,
+    onSpeakClick: (String) -> Unit
 ) {
     Column {
         Box(
@@ -370,16 +377,28 @@ private fun WrongAnswerBlock(
             )
         }
 
-        Box(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color(0xFFD9EBD7))
-                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = correctText,
                 color = Color(0xFF2E7D32),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.weight(1f)
+            )
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            Text(
+                text = "🔊",
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.clickable {
+                    onSpeakClick(correctText)
+                }
             )
         }
     }
@@ -388,19 +407,32 @@ private fun WrongAnswerBlock(
 @Composable
 private fun CorrectAnswerBlock(
     answerText: String,
-    praiseText: String?
+    praiseText: String?,
+    onSpeakClick: (String) -> Unit
 ) {
     Column {
-        Box(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color(0xFFD9EBD7))
-                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = answerText,
                 color = Color(0xFF2E7D32),
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.weight(1f)
+            )
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            Text(
+                text = "🔊",
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.clickable {
+                    onSpeakClick(answerText)
+                }
             )
         }
 
@@ -581,7 +613,8 @@ private fun LessonSessionScreenPreview() {
                 onWordClick = {},
                 onSelectedWordClick = {},
                 onCheckClick = {},
-                onWrongAnswerScreenTap = {}
+                onWrongAnswerScreenTap = {},
+                onSpeakClick = {}
             )
         }
     }
@@ -620,7 +653,8 @@ private fun LessonSessionWrongPreview() {
                 onWordClick = {},
                 onSelectedWordClick = {},
                 onCheckClick = {},
-                onWrongAnswerScreenTap = {}
+                onWrongAnswerScreenTap = {},
+                onSpeakClick = {}
             )
         }
     }
@@ -668,7 +702,8 @@ private fun LessonSessionCorrectPreview() {
                 onWordClick = {},
                 onSelectedWordClick = {},
                 onCheckClick = {},
-                onWrongAnswerScreenTap = {}
+                onWrongAnswerScreenTap = {},
+                onSpeakClick = {}
             )
         }
     }
