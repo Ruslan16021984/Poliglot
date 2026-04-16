@@ -62,21 +62,29 @@ class LessonSessionRepository {
     )
 
     private val complementsBg = listOf(
-        "тук",
-        "там",
-        "добър",
-        "лекар",
+        "студент",
         "учител",
-        "вкъщи"
+        "лекар",
+        "приятел",
+        "дете",
+        "вкъщи",
+        "тук",
+        "на работа",
+        "в училище",
+        "в града"
     )
 
     private val complementsRu = mapOf(
-        "тук" to "здесь",
-        "там" to "там",
-        "добър" to "хороший",
-        "лекар" to "врач",
+        "студент" to "студент",
         "учител" to "учитель",
-        "вкъщи" to "дома"
+        "лекар" to "врач",
+        "приятел" to "друг",
+        "дете" to "ребёнок",
+        "вкъщи" to "дома",
+        "тук" to "здесь",
+        "на работа" to "на работе",
+        "в училище" to "в школе",
+        "в града" to "в городе"
     )
 
     private val verbs = listOf(
@@ -571,7 +579,7 @@ class LessonSessionRepository {
                 listOf(subject, verb, complementBg)
 
             Lesson2SentenceType.QUESTION ->
-                listOf(subject, verb, complementBg, "ли")
+                listOf(subject, verb, "ли", complementBg)
 
             Lesson2SentenceType.NEGATIVE ->
                 listOf(subject, "не", verb, complementBg)
@@ -588,15 +596,12 @@ class LessonSessionRepository {
                 "$ruSubject не $complementRu"
         }
 
-        val distractors = (
-                subjects +
-                        listOf("ли", "не") +
-                        sumForms.values +
-                        complementsBg
-                ).distinct()
-            .filterNot { it in correctWords }
-            .shuffled()
-            .take(5)
+        val distractors = buildLesson2Distractors(
+            subject = subject,
+            correctVerb = verb,
+            correctComplement = complementBg,
+            type = type
+        )
 
         val availableWords = (correctWords + distractors).distinct().shuffled()
 
@@ -607,6 +612,40 @@ class LessonSessionRepository {
             correctAnswerWords = correctWords,
             availableWords = availableWords
         )
+    }
+
+    private fun buildLesson2Distractors(
+        subject: String,
+        correctVerb: String,
+        correctComplement: String,
+        type: Lesson2SentenceType
+    ): List<String> {
+        val subjectDistractors = subjects
+            .filterNot { it == subject }
+            .shuffled()
+            .take(1)
+
+        val verbDistractors = sumForms.values
+            .filterNot { it == correctVerb }
+            .distinct()
+            .shuffled()
+            .take(3)
+
+        val complementDistractors = complementsBg
+            .filterNot { it == correctComplement }
+            .shuffled()
+            .take(3)
+
+        val grammarDistractors = when (type) {
+            Lesson2SentenceType.PRESENT -> listOf("не", "ли")
+            Lesson2SentenceType.QUESTION -> listOf("не")
+            Lesson2SentenceType.NEGATIVE -> listOf("ли")
+        }
+
+        return (subjectDistractors + verbDistractors + complementDistractors + grammarDistractors)
+            .distinct()
+            .shuffled()
+            .take(5)
     }
 
     private fun generateLesson3Exercises(): List<LessonExercise> {
