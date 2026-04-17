@@ -149,7 +149,15 @@ fun LessonSessionScreenContent(
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
+                currentExercise.hint?.let {
+                    Spacer(modifier = Modifier.height(8.dp))
 
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.Gray
+                    )
+                }
                 Spacer(modifier = Modifier.height(12.dp))
 
                 when (uiState.currentResult) {

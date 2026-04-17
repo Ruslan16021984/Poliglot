@@ -6,5 +6,6 @@ data class LessonExercise(
     val sourceText: String,
     val instruction: String,
     val correctAnswerWords: List<String>,
-    val availableWords: List<String>
+    val availableWords: List<String>,
+    val hint: String? = null
 )

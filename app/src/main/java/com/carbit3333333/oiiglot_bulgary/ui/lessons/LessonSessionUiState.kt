@@ -10,10 +10,10 @@ data class LessonSessionUiState(
     val currentExerciseIndex: Int = 0,
     val selectedWords: List<String> = emptyList(),
     val results: List<ExerciseResult> = emptyList(),
-    val currentResult: ExerciseResult = ExerciseResult.NONE,
-    val praiseText: String? = null,
     val correctCount: Int = 0,
     val wrongCount: Int = 0,
+    val currentResult: ExerciseResult = ExerciseResult.NONE,
+    val praiseText: String? = null,
     val isLessonFinished: Boolean = false,
     val lessonResult: LessonResult? = null
 ) {

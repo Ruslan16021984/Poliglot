@@ -521,22 +521,26 @@ class LessonSessionRepository {
         }
 
         val distractors = buildLesson1Distractors(correctWords)
-        val allWords = (correctWords + distractors).distinct()
 
-        Log.d("LessonRepo", "Exercise #$id: correct=$correctWords, distractors size=${distractors.size}, all=${allWords.size}")
+        val availableWords = buildAvailableWords(
+            correctWords = correctWords,
+            distractorPool = distractors,
+            totalWords = 8
+        )
 
-        require(correctWords.all { it in allWords }) {
-            "All correct words must be in available words. Correct: $correctWords, Available: $allWords"
-        }
-
-        val availableWords = allWords.shuffled()
+        Log.d(
+            "LessonRepo",
+            "Exercise #$id: correct=$correctWords, available=$availableWords"
+        )
+        val hint = buildHint(correctWords)
 
         return LessonExercise(
             id = id,
             sourceText = sourceText,
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
-            availableWords = availableWords
+            availableWords = availableWords,
+            hint = hint
         )
     }
 
@@ -560,10 +564,9 @@ class LessonSessionRepository {
 
         val distractors = pool
             .filterNot { it in correctWords }
+            .distinct()
             .shuffled()
-            .take(12)
 
-        // Ensure we have enough distractors
         require(distractors.size >= 6) {
             "Not enough distractors! Got ${distractors.size}, need at least 6"
         }
@@ -619,20 +622,24 @@ class LessonSessionRepository {
             type = type
         )
 
-        val allWords = (correctWords + distractors).distinct()
+        val availableWords = buildAvailableWords(
+            correctWords = correctWords,
+            distractorPool = distractors,
+            totalWords = 8
+        )
 
-        require(correctWords.all { it in allWords }) {
-            "All correct words must be in available words"
-        }
-
-        val availableWords = allWords.shuffled()
-
+        Log.d(
+            "LessonRepo",
+            "Lesson2 Exercise #$id: correct=$correctWords, available=$availableWords"
+        )
+        val hint = buildHint(correctWords)
         return LessonExercise(
             id = id,
             sourceText = sourceText,
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
-            availableWords = availableWords
+            availableWords = availableWords,
+            hint = hint
         )
     }
 
@@ -645,27 +652,23 @@ class LessonSessionRepository {
         val correctWords = when (type) {
             Lesson2SentenceType.PRESENT ->
                 listOf(subject, correctVerb, correctComplement)
+
             Lesson2SentenceType.QUESTION ->
                 listOf(subject, correctVerb, "ли", correctComplement)
+
             Lesson2SentenceType.NEGATIVE ->
                 listOf(subject, "не", correctVerb, correctComplement)
         }
 
         val subjectDistractors = subjects
             .filterNot { it == subject }
-            .shuffled()
-            .take(1)
 
         val verbDistractors = sumForms.values
             .filterNot { it == correctVerb }
             .distinct()
-            .shuffled()
-            .take(3)
 
         val complementDistractors = complementsBg
             .filterNot { it == correctComplement }
-            .shuffled()
-            .take(3)
 
         val grammarDistractors = when (type) {
             Lesson2SentenceType.PRESENT -> listOf("не", "ли")
@@ -673,11 +676,15 @@ class LessonSessionRepository {
             Lesson2SentenceType.NEGATIVE -> listOf("ли")
         }
 
-        return (subjectDistractors + verbDistractors + complementDistractors + grammarDistractors)
+        return (
+                subjectDistractors +
+                        verbDistractors +
+                        complementDistractors +
+                        grammarDistractors
+                )
             .distinct()
             .filterNot { it in correctWords }
             .shuffled()
-            .take(8)
     }
 
     private fun generateLesson3Exercises(): List<LessonExercise> {
@@ -716,30 +723,65 @@ class LessonSessionRepository {
                 "$ruSubject не $ruVerb"
         }
 
-        val distractors = (
+        val distractorPool = (
                 subjects +
                         listOf("не") +
                         verbs.flatMap { it.past.values }
                 ).distinct()
-            .filterNot { it in correctWords }
-            .shuffled()
-            .take(12)
 
-        val allWords = (correctWords + distractors).distinct()
+        val availableWords = buildAvailableWords(
+            correctWords = correctWords,
+            distractorPool = distractorPool,
+            totalWords = 8
+        )
 
-        require(correctWords.all { it in allWords }) {
-            "All correct words must be in available words"
-        }
-
-        val availableWords = allWords.shuffled()
-
+        Log.d(
+            "LessonRepo",
+            "Lesson3 Exercise #$id: correct=$correctWords, available=$availableWords"
+        )
+        val hint = buildHint(correctWords)
         return LessonExercise(
             id = id,
             sourceText = sourceText,
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
-            availableWords = availableWords
+            availableWords = availableWords,
+            hint = hint
         )
+    }
+
+    private fun buildAvailableWords(
+        correctWords: List<String>,
+        distractorPool: List<String>,
+        totalWords: Int = 8
+    ): List<String> {
+        val uniqueCorrectWords = correctWords.distinct()
+
+        require(uniqueCorrectWords.isNotEmpty()) {
+            "Correct words must not be empty"
+        }
+
+        require(uniqueCorrectWords.size <= totalWords) {
+            "Correct words count (${uniqueCorrectWords.size}) can't be greater than totalWords ($totalWords)"
+        }
+
+        val distractors = distractorPool
+            .filterNot { it in uniqueCorrectWords }
+            .distinct()
+            .shuffled()
+            .take(totalWords - uniqueCorrectWords.size)
+
+        val result = (uniqueCorrectWords + distractors).shuffled()
+
+        require(result.size == totalWords) {
+            "Available words size must be $totalWords, but was ${result.size}. Correct=$uniqueCorrectWords, distractors=$distractors"
+        }
+
+        require(uniqueCorrectWords.all { it in result }) {
+            "Not all correct words were added. Correct=$uniqueCorrectWords, result=$result"
+        }
+
+        return result
     }
 
     private fun toRussianInfinitive(bgInfinitive: String): String {
@@ -755,6 +797,23 @@ class LessonSessionRepository {
             "виждам" -> "видеть"
             "искам" -> "хотеть"
             else -> "делать"
+        }
+    }
+    private fun buildHint(correctWords: List<String>): String? {
+        return when {
+            "няма" in correctWords && "да" in correctWords ->
+                "💡 няма + да + глагол"
+
+            "ще" in correctWords ->
+                "💡 ще + глагол"
+
+            "ли" in correctWords ->
+                "💡 добавь \"ли\" в конце вопроса"
+
+            "не" in correctWords ->
+                "💡 \"не\" ставится перед глаголом"
+
+            else -> null
         }
     }
 }
