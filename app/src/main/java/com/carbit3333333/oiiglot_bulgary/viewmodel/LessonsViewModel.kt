@@ -51,4 +51,20 @@ class LessonsViewModel(
             }
         }
     }
+
+    fun unlockAllLessons() {
+        viewModelScope.launch {
+            progressStore.unlockAllLessons(
+                maxLessonId = repository.getLessons().maxOfOrNull { it.id } ?: 1
+            )
+        }
+    }
+
+    fun resetLessons() {
+        viewModelScope.launch {
+            progressStore.resetLessonUnlocks(
+                maxLessonId = repository.getLessons().maxOfOrNull { it.id } ?: 1
+            )
+        }
+    }
 }

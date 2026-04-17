@@ -1,6 +1,5 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -44,7 +43,9 @@ fun LessonsScreen(
     LessonsScreenContent(
         uiState = uiState,
         onBackClick = onBackClick,
-        onLessonClick = onLessonClick
+        onLessonClick = onLessonClick,
+        onUnlockAllClick = { viewModel.unlockAllLessons() },
+        onResetLessonsClick = { viewModel.resetLessons() }
     )
 }
 
@@ -52,7 +53,9 @@ fun LessonsScreen(
 fun LessonsScreenContent(
     uiState: LessonsUiState,
     onBackClick: () -> Unit,
-    onLessonClick: (Int) -> Unit
+    onLessonClick: (Int) -> Unit,
+    onUnlockAllClick: () -> Unit = {},
+    onResetLessonsClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -60,6 +63,7 @@ fun LessonsScreenContent(
             .padding(24.dp)
     ) {
         Spacer(modifier = Modifier.height(24.dp))
+
         Button(onClick = onBackClick) {
             Text(text = "Назад")
         }
@@ -70,6 +74,24 @@ fun LessonsScreenContent(
             text = "Список уроков",
             style = MaterialTheme.typography.headlineSmall
         )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = onUnlockAllClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Открыть все уроки")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(
+            onClick = onResetLessonsClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Сбросить прогресс уроков")
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -212,7 +234,9 @@ private fun LessonsScreenContentPreview() {
                 )
             ),
             onBackClick = {},
-            onLessonClick = {}
+            onLessonClick = {},
+            onUnlockAllClick = {},
+            onResetLessonsClick = {}
         )
     }
 }

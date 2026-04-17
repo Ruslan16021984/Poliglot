@@ -33,6 +33,30 @@ class LessonProgressStore(
         }
     }
 
+    suspend fun unlockAllLessons(maxLessonId: Int = 20) {
+        context.lessonProgressDataStore.edit { preferences ->
+            preferences[OPENED_LESSON_ID] = maxLessonId
+        }
+    }
+
+    suspend fun resetLessonUnlocks(maxLessonId: Int = 20) {
+        context.lessonProgressDataStore.edit { preferences ->
+            preferences[OPENED_LESSON_ID] = 1
+
+            for (lessonId in 1..maxLessonId) {
+                val bestCorrectKey = intPreferencesKey("lesson_${lessonId}_best_correct")
+                val bestWrongKey = intPreferencesKey("lesson_${lessonId}_best_wrong")
+                val bestScoreKey = floatPreferencesKey("lesson_${lessonId}_best_score")
+                val isPassedKey = booleanPreferencesKey("lesson_${lessonId}_is_passed")
+
+                preferences.remove(bestCorrectKey)
+                preferences.remove(bestWrongKey)
+                preferences.remove(bestScoreKey)
+                preferences.remove(isPassedKey)
+            }
+        }
+    }
+
     suspend fun saveLessonResult(
         lessonId: Int,
         correctCount: Int,
@@ -83,6 +107,7 @@ class LessonProgressStore(
             )
         }
     }
+
     fun getLessonResultsFlow(lessonIds: List<Int>): Flow<Map<Int, SavedLessonResult>> {
         return context.lessonProgressDataStore.data.map { preferences ->
             lessonIds.mapNotNull { lessonId ->
