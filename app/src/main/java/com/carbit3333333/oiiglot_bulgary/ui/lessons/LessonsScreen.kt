@@ -59,6 +59,7 @@ fun LessonsScreenContent(
             .fillMaxSize()
             .padding(24.dp)
     ) {
+        Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = onBackClick) {
             Text(text = "Назад")
         }

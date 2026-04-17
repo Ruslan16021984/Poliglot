@@ -2,10 +2,11 @@ package com.carbit3333333.oiiglot_bulgary.data
 
 import android.util.Log
 import com.carbit3333333.oiiglot_bulgary.model.Lesson4Item
-import com.carbit3333333.oiiglot_bulgary.model.Lesson5Item
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 import com.carbit3333333.oiiglot_bulgary.model.VerbForms
+
+private const val mustForm = "трябва"
 
 private enum class Lesson1SentenceType {
     PRESENT,
@@ -25,6 +26,18 @@ private enum class Lesson2SentenceType {
 private enum class Lesson3SentenceType {
     PAST,
     PAST_NEGATIVE
+}
+
+private enum class Lesson5SentenceType {
+    POSITIVE,
+    NEGATIVE,
+    QUESTION
+}
+
+private enum class Lesson5ModalType {
+    CAN,
+    WANT,
+    MUST
 }
 
 class LessonSessionRepository {
@@ -443,24 +456,7 @@ class LessonSessionRepository {
         )
     )
 
-    private val modalVerbs = listOf(
-        "мога" to "могу",
-        "искам" to "хочу",
-        "трябва" to "должен"
-    )
-
-    private val actions = listOf(
-        "ям" to "есть",
-        "пия" to "пить",
-        "работя" to "работать",
-        "уча" to "учиться",
-        "говоря" to "говорить",
-        "гледам" to "смотреть"
-    )
-
     private val lesson4Items = listOf(
-
-        // существительные
         Lesson4Item(Lesson4Item.Type.NOUN, "книга", listOf("книга")),
         Lesson4Item(Lesson4Item.Type.NOUN, "эта книга", listOf("книгата")),
 
@@ -470,33 +466,88 @@ class LessonSessionRepository {
         Lesson4Item(Lesson4Item.Type.NOUN, "ребёнок", listOf("дете")),
         Lesson4Item(Lesson4Item.Type.NOUN, "этот ребёнок", listOf("детето")),
 
-        // действия
         Lesson4Item(Lesson4Item.Type.VERB, "есть", listOf("да", "ям")),
         Lesson4Item(Lesson4Item.Type.VERB, "пить", listOf("да", "пия")),
 
-        // конструкции
         Lesson4Item(Lesson4Item.Type.VERB, "я хочу есть", listOf("Аз", "искам", "да", "ям")),
         Lesson4Item(Lesson4Item.Type.VERB, "я хочу пить", listOf("Аз", "искам", "да", "пия")),
 
-        // смешанные
         Lesson4Item(Lesson4Item.Type.NOUN, "я хочу книгу", listOf("Аз", "искам", "книга")),
         Lesson4Item(Lesson4Item.Type.NOUN, "я хочу эту книгу", listOf("Аз", "искам", "книгата"))
     )
-    private val lesson5Items = listOf(
 
-        Lesson5Item("я могу есть", listOf("Аз", "мога", "да", "ям")),
-        Lesson5Item("я могу пить", listOf("Аз", "мога", "да", "пия")),
+    private val lesson5Subjects = listOf(
+        "Аз", "Ти", "Той", "Ние", "Вие", "Те"
+    )
 
-        Lesson5Item("я хочу есть", listOf("Аз", "искам", "да", "ям")),
-        Lesson5Item("я хочу пить", listOf("Аз", "искам", "да", "пия")),
+    private val lesson5SubjectRu = mapOf(
+        "Аз" to "я",
+        "Ти" to "ты",
+        "Той" to "он",
+        "Ние" to "мы",
+        "Вие" to "вы",
+        "Те" to "они"
+    )
 
-        Lesson5Item("я должен работать", listOf("Аз", "трябва", "да", "работя")),
-        Lesson5Item("ты должен учиться", listOf("Ти", "трябва", "да", "учиш")),
+    private val canForms = mapOf(
+        "Аз" to "мога",
+        "Ти" to "можеш",
+        "Той" to "може",
+        "Ние" to "можем",
+        "Вие" to "можете",
+        "Те" to "могат"
+    )
 
-        Lesson5Item("я не могу есть", listOf("Аз", "не", "мога", "да", "ям")),
-        Lesson5Item("я не хочу пить", listOf("Аз", "не", "искам", "да", "пия")),
+    private val canRuForms = mapOf(
+        "Аз" to "могу",
+        "Ти" to "можешь",
+        "Той" to "может",
+        "Ние" to "можем",
+        "Вие" to "можете",
+        "Те" to "могут"
+    )
 
-        Lesson5Item("я не должен работать", listOf("Аз", "не", "трябва", "да", "работя"))
+    private val wantForms = mapOf(
+        "Аз" to "искам",
+        "Ти" to "искаш",
+        "Той" to "иска",
+        "Ние" to "искаме",
+        "Вие" to "искате",
+        "Те" to "искат"
+    )
+
+    private val wantRuForms = mapOf(
+        "Аз" to "хочу",
+        "Ти" to "хочешь",
+        "Той" to "хочет",
+        "Ние" to "хотим",
+        "Вие" to "хотите",
+        "Те" to "хотят"
+    )
+
+    private val mustRuForms = mapOf(
+        "Аз" to "мне нужно",
+        "Ти" to "тебе нужно",
+        "Той" to "ему нужно",
+        "Ние" to "нам нужно",
+        "Вие" to "вам нужно",
+        "Те" to "им нужно"
+    )
+
+    private val lesson5ObjectsByInfinitive = mapOf(
+        "ям" to listOf(
+            "хляб" to "хлеб"
+        ),
+        "пия" to listOf(
+            "вода" to "воду",
+            "кафе" to "кофе"
+        ),
+        "гледам" to listOf(
+            "телевизия" to "телевизор"
+        ),
+        "уча" to listOf(
+            "български" to "болгарский"
+        )
     )
 
     fun getLessonSession(lessonId: Int): LessonSession {
@@ -506,26 +557,31 @@ class LessonSessionRepository {
                 lessonTitle = "Урок 1",
                 exercises = generateLesson1Exercises()
             )
+
             2 -> LessonSession(
                 lessonId = 2,
                 lessonTitle = "Глагол \"съм\"",
                 exercises = generateLesson2Exercises()
             )
+
             3 -> LessonSession(
                 lessonId = 3,
                 lessonTitle = "Прошедшее время",
                 exercises = generateLesson3Exercises()
             )
+
             4 -> LessonSession(
                 lessonId = 4,
                 lessonTitle = "Предмет или действие",
                 exercises = generateLesson4Exercises()
             )
+
             5 -> LessonSession(
                 lessonId = 5,
                 lessonTitle = "Могу, хочу, должен",
                 exercises = generateLesson5Exercises()
             )
+
             else -> LessonSession(
                 lessonId = lessonId,
                 lessonTitle = "Урок $lessonId",
@@ -600,7 +656,6 @@ class LessonSessionRepository {
             "LessonRepo",
             "Exercise #$id: correct=$correctWords, available=$availableWords"
         )
-        val hint = buildHint(correctWords)
 
         return LessonExercise(
             id = id,
@@ -608,7 +663,7 @@ class LessonSessionRepository {
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
             availableWords = availableWords,
-            hint = hint
+            hint = buildHint(correctWords)
         )
     }
 
@@ -700,14 +755,14 @@ class LessonSessionRepository {
             "LessonRepo",
             "Lesson2 Exercise #$id: correct=$correctWords, available=$availableWords"
         )
-        val hint = buildHint(correctWords)
+
         return LessonExercise(
             id = id,
             sourceText = sourceText,
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
             availableWords = availableWords,
-            hint = hint
+            hint = buildHint(correctWords)
         )
     }
 
@@ -728,8 +783,7 @@ class LessonSessionRepository {
                 listOf(subject, "не", correctVerb, correctComplement)
         }
 
-        val subjectDistractors = subjects
-            .filterNot { it == subject }
+        val subjectDistractors = subjects.filterNot { it == subject }
 
         val verbDistractors = sumForms.values
             .filterNot { it == correctVerb }
@@ -807,14 +861,14 @@ class LessonSessionRepository {
             "LessonRepo",
             "Lesson3 Exercise #$id: correct=$correctWords, available=$availableWords"
         )
-        val hint = buildHint(correctWords)
+
         return LessonExercise(
             id = id,
             sourceText = sourceText,
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
             availableWords = availableWords,
-            hint = hint
+            hint = buildHint(correctWords)
         )
     }
 
@@ -825,13 +879,11 @@ class LessonSessionRepository {
     }
 
     private fun generateLesson4Exercise(id: Int): LessonExercise {
-
         val item = lesson4Items.random()
-
         val correctWords = item.correctWords
 
         val distractorPool = listOf(
-            "Аз", "ти", "той",
+            "Аз", "Ти", "Той",
             "да", "не",
             "искам", "обичам",
             "книга", "книгата",
@@ -847,7 +899,7 @@ class LessonSessionRepository {
         )
 
         val hint = when {
-            item.type == Lesson4Item.Type.NOUN && "та" in correctWords.joinToString("") ->
+            item.type == Lesson4Item.Type.NOUN && correctWords.any { it.endsWith("та") || it.endsWith("то") } ->
                 "💡 это конкретный предмет → добавь окончание"
 
             "да" in correctWords ->
@@ -867,49 +919,95 @@ class LessonSessionRepository {
     }
 
     private fun generateLesson5Exercises(): List<LessonExercise> {
-        return (1..50).map { id ->
+        return (1..60).map { id ->
             generateLesson5Exercise(id)
         }
     }
 
     private fun generateLesson5Exercise(id: Int): LessonExercise {
+        val sentenceType = randomLesson5SentenceType()
+        val modalType = randomLesson5ModalType()
 
-        val subject = subjects.random()
-        val subjectRuText = subjectRu.getValue(subject)
+        val subject = lesson5Subjects.random()
+        val subjectRu = lesson5SubjectRu.getValue(subject)
 
-        val (modalBg, modalRu) = modalVerbs.random()
-        val (actionBg, actionRu) = actions.random()
+        val verb = verbs.random()
+        val actionBg = verb.present.getValue(subject)
+        val actionRu = toRussianInfinitive(verb.infinitive)
 
-        val type = (1..100).random()
+        val possibleObjects = lesson5ObjectsByInfinitive[verb.infinitive].orEmpty()
+        val objectPair = if (possibleObjects.isNotEmpty() && (1..100).random() <= 55) {
+            possibleObjects.random()
+        } else {
+            null
+        }
+        val objectBg = objectPair?.first
+        val objectRu = objectPair?.second
 
-        val isNegative = type in 41..70
-        val isQuestion = type > 70
+        val modalBg = when (modalType) {
+            Lesson5ModalType.CAN -> canForms.getValue(subject)
+            Lesson5ModalType.WANT -> wantForms.getValue(subject)
+            Lesson5ModalType.MUST -> mustForm
+        }
+
+        val modalRu = when (modalType) {
+            Lesson5ModalType.CAN -> canRuForms.getValue(subject)
+            Lesson5ModalType.WANT -> wantRuForms.getValue(subject)
+            Lesson5ModalType.MUST -> mustRuForms.getValue(subject)
+        }
 
         val correctWords = buildList {
             add(subject)
 
-            if (isNegative) add("не")
+            if (sentenceType == Lesson5SentenceType.NEGATIVE) {
+                add("не")
+            }
 
             add(modalBg)
 
-            if (isQuestion) add("ли")
+            if (sentenceType == Lesson5SentenceType.QUESTION) {
+                add("ли")
+            }
 
             add("да")
             add(actionBg)
+
+            if (objectBg != null) {
+                add(objectBg)
+            }
         }
 
-        val sourceText = when {
-            isQuestion -> "$subjectRuText $modalRu $actionRu?"
-            isNegative -> "$subjectRuText не $modalRu $actionRu"
-            else -> "$subjectRuText $modalRu $actionRu"
+        val sourceText = buildString {
+            append(subjectRu)
+            append(" ")
+
+            if (sentenceType == Lesson5SentenceType.NEGATIVE) {
+                append("не ")
+            }
+
+            append(modalRu)
+            append(" ")
+            append(actionRu)
+
+            if (objectRu != null) {
+                append(" ")
+                append(objectRu)
+            }
+
+            if (sentenceType == Lesson5SentenceType.QUESTION) {
+                append("?")
+            }
         }
 
         val distractorPool = (
-                subjects +
+                lesson5Subjects +
                         listOf("не", "да", "ли") +
-                        modalVerbs.map { it.first } +
-                        actions.map { it.first }
-                )
+                        canForms.values +
+                        wantForms.values +
+                        listOf(mustForm) +
+                        verbs.flatMap { it.present.values } +
+                        lesson5ObjectsByInfinitive.values.flatten().map { it.first }
+                ).distinct()
 
         val availableWords = buildAvailableWords(
             correctWords = correctWords,
@@ -919,19 +1017,19 @@ class LessonSessionRepository {
 
         val hint = when {
             "ли" in correctWords ->
-                "💡 вопрос → добавь \"ли\" после глагола"
+                "💡 вопрос → \"ли\" ставится после глагола"
 
-            "мога" in correctWords ->
-                "💡 могу → мога + да"
+            modalType == Lesson5ModalType.CAN ->
+                "💡 могу → форма на \"мога\" + да"
 
-            "искам" in correctWords ->
-                "💡 хочу → искам + да"
+            modalType == Lesson5ModalType.WANT ->
+                "💡 хочу → форма на \"искам\" + да"
 
-            "трябва" in correctWords ->
-                "💡 должен → трябва + да"
+            modalType == Lesson5ModalType.MUST ->
+                "💡 нужно → трябва + да"
 
             "не" in correctWords ->
-                "💡 отрицание → \"не\" перед глаголом"
+                "💡 \"не\" ставится перед глаголом"
 
             else -> null
         }
@@ -944,6 +1042,22 @@ class LessonSessionRepository {
             availableWords = availableWords,
             hint = hint
         )
+    }
+
+    private fun randomLesson5SentenceType(): Lesson5SentenceType {
+        return when ((1..100).random()) {
+            in 1..40 -> Lesson5SentenceType.POSITIVE
+            in 41..70 -> Lesson5SentenceType.NEGATIVE
+            else -> Lesson5SentenceType.QUESTION
+        }
+    }
+
+    private fun randomLesson5ModalType(): Lesson5ModalType {
+        return when ((1..100).random()) {
+            in 1..40 -> Lesson5ModalType.CAN
+            in 41..75 -> Lesson5ModalType.WANT
+            else -> Lesson5ModalType.MUST
+        }
     }
 
     private fun buildAvailableWords(
@@ -995,6 +1109,7 @@ class LessonSessionRepository {
             else -> "делать"
         }
     }
+
     private fun buildHint(correctWords: List<String>): String? {
         return when {
             "няма" in correctWords && "да" in correctWords ->
@@ -1004,7 +1119,7 @@ class LessonSessionRepository {
                 "💡 ще + глагол"
 
             "ли" in correctWords ->
-                "💡 добавь \"ли\" в конце вопроса"
+                "💡 \"ли\" ставится после глагола"
 
             "не" in correctWords ->
                 "💡 \"не\" ставится перед глаголом"
