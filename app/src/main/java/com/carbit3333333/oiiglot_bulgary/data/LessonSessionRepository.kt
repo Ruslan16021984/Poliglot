@@ -620,6 +620,15 @@ class LessonSessionRepository {
         correctComplement: String,
         type: Lesson2SentenceType
     ): List<String> {
+        val correctWords = when (type) {
+            Lesson2SentenceType.PRESENT ->
+                listOf(subject, correctVerb, correctComplement)
+            Lesson2SentenceType.QUESTION ->
+                listOf(subject, correctVerb, "ли", correctComplement)
+            Lesson2SentenceType.NEGATIVE ->
+                listOf(subject, "не", correctVerb, correctComplement)
+        }
+
         val subjectDistractors = subjects
             .filterNot { it == subject }
             .shuffled()
@@ -644,6 +653,7 @@ class LessonSessionRepository {
 
         return (subjectDistractors + verbDistractors + complementDistractors + grammarDistractors)
             .distinct()
+            .filterNot { it in correctWords }
             .shuffled()
             .take(5)
     }
