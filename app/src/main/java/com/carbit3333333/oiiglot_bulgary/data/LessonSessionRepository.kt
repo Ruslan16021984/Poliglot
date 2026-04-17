@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.data
 
+import android.util.Log
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 import com.carbit3333333.oiiglot_bulgary.model.VerbForms
@@ -520,7 +521,15 @@ class LessonSessionRepository {
         }
 
         val distractors = buildLesson1Distractors(correctWords)
-        val availableWords = (correctWords + distractors).distinct().shuffled()
+        val allWords = (correctWords + distractors).distinct()
+
+        Log.d("LessonRepo", "Exercise #$id: correct=$correctWords, distractors size=${distractors.size}, all=${allWords.size}")
+
+        require(correctWords.all { it in allWords }) {
+            "All correct words must be in available words. Correct: $correctWords, Available: $allWords"
+        }
+
+        val availableWords = allWords.shuffled()
 
         return LessonExercise(
             id = id,
@@ -549,10 +558,17 @@ class LessonSessionRepository {
                         verbs.flatMap { it.present.values }
                 ).distinct()
 
-        return pool
+        val distractors = pool
             .filterNot { it in correctWords }
             .shuffled()
-            .take(5)
+            .take(12)
+
+        // Ensure we have enough distractors
+        require(distractors.size >= 6) {
+            "Not enough distractors! Got ${distractors.size}, need at least 6"
+        }
+
+        return distractors
     }
 
     private fun generateLesson2Exercises(): List<LessonExercise> {
@@ -603,7 +619,13 @@ class LessonSessionRepository {
             type = type
         )
 
-        val availableWords = (correctWords + distractors).distinct().shuffled()
+        val allWords = (correctWords + distractors).distinct()
+
+        require(correctWords.all { it in allWords }) {
+            "All correct words must be in available words"
+        }
+
+        val availableWords = allWords.shuffled()
 
         return LessonExercise(
             id = id,
@@ -655,7 +677,7 @@ class LessonSessionRepository {
             .distinct()
             .filterNot { it in correctWords }
             .shuffled()
-            .take(5)
+            .take(8)
     }
 
     private fun generateLesson3Exercises(): List<LessonExercise> {
@@ -701,9 +723,15 @@ class LessonSessionRepository {
                 ).distinct()
             .filterNot { it in correctWords }
             .shuffled()
-            .take(5)
+            .take(12)
 
-        val availableWords = (correctWords + distractors).distinct().shuffled()
+        val allWords = (correctWords + distractors).distinct()
+
+        require(correctWords.all { it in allWords }) {
+            "All correct words must be in available words"
+        }
+
+        val availableWords = allWords.shuffled()
 
         return LessonExercise(
             id = id,
