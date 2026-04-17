@@ -459,19 +459,14 @@ class LessonSessionRepository {
     private val lesson4Items = listOf(
         Lesson4Item(Lesson4Item.Type.NOUN, "книга", listOf("книга")),
         Lesson4Item(Lesson4Item.Type.NOUN, "эта книга", listOf("книгата")),
-
         Lesson4Item(Lesson4Item.Type.NOUN, "женщина", listOf("жена")),
         Lesson4Item(Lesson4Item.Type.NOUN, "эта женщина", listOf("жената")),
-
         Lesson4Item(Lesson4Item.Type.NOUN, "ребёнок", listOf("дете")),
         Lesson4Item(Lesson4Item.Type.NOUN, "этот ребёнок", listOf("детето")),
-
         Lesson4Item(Lesson4Item.Type.VERB, "есть", listOf("да", "ям")),
         Lesson4Item(Lesson4Item.Type.VERB, "пить", listOf("да", "пия")),
-
         Lesson4Item(Lesson4Item.Type.VERB, "я хочу есть", listOf("Аз", "искам", "да", "ям")),
         Lesson4Item(Lesson4Item.Type.VERB, "я хочу пить", listOf("Аз", "искам", "да", "пия")),
-
         Lesson4Item(Lesson4Item.Type.NOUN, "я хочу книгу", listOf("Аз", "искам", "книга")),
         Lesson4Item(Lesson4Item.Type.NOUN, "я хочу эту книгу", listOf("Аз", "искам", "книгата"))
     )
@@ -535,19 +530,13 @@ class LessonSessionRepository {
     )
 
     private val lesson5ObjectsByInfinitive = mapOf(
-        "ям" to listOf(
-            "хляб" to "хлеб"
-        ),
+        "ям" to listOf("хляб" to "хлеб"),
         "пия" to listOf(
             "вода" to "воду",
             "кафе" to "кофе"
         ),
-        "гледам" to listOf(
-            "телевизия" to "телевизор"
-        ),
-        "уча" to listOf(
-            "български" to "болгарский"
-        )
+        "гледам" to listOf("телевизия" to "телевизор"),
+        "уча" to listOf("български" to "болгарский")
     )
 
     fun getLessonSession(lessonId: Int): LessonSession {
@@ -721,7 +710,7 @@ class LessonSessionRepository {
                 listOf(subject, verb, complementBg)
 
             Lesson2SentenceType.QUESTION ->
-                listOf(subject, verb, "ли", complementBg)
+                listOf(subject, complementBg, "ли", verb)
 
             Lesson2SentenceType.NEGATIVE ->
                 listOf(subject, "не", verb, complementBg)
@@ -762,7 +751,11 @@ class LessonSessionRepository {
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
             availableWords = availableWords,
-            hint = buildHint(correctWords)
+            hint = if (type == Lesson2SentenceType.QUESTION) {
+                "💡 с \"съм\" вопрос часто строится так: слово + ли + съм"
+            } else {
+                buildHint(correctWords)
+            }
         )
     }
 
@@ -777,7 +770,7 @@ class LessonSessionRepository {
                 listOf(subject, correctVerb, correctComplement)
 
             Lesson2SentenceType.QUESTION ->
-                listOf(subject, correctVerb, "ли", correctComplement)
+                listOf(subject, correctComplement, "ли", correctVerb)
 
             Lesson2SentenceType.NEGATIVE ->
                 listOf(subject, "не", correctVerb, correctComplement)
