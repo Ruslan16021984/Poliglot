@@ -31,6 +31,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.viewmodel.LessonsViewModel
+import java.util.Locale
 
 @Composable
 fun LessonsScreen(
@@ -60,7 +61,7 @@ fun LessonsScreenContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp)
+            .padding(start = 24.dp, end = 24.dp, bottom = 56.dp, top = 24.dp)
     ) {
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -138,7 +139,7 @@ private fun LessonItem(
             .clickable(
                 enabled = !lesson.isLocked,
                 onClick = onClick
-            ).padding(bottom = 16.dp),
+            ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = containerColor)
     ) {
@@ -165,31 +166,52 @@ private fun LessonItem(
                     color = textColor
                 )
 
-                if (lesson.isLocked) {
-                    Spacer(modifier = Modifier.height(6.dp))
-                    Text(
-                        text = "Откроется после прохождения предыдущего урока",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = Color(0xFF9E9E9E)
-                    )
-                } else {
-                    if (lesson.isCompleted) {
-                        Spacer(modifier = Modifier.height(6.dp))
-                        Text(
-                            text = "Пройден",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF2E7D32)
-                        )
+                Spacer(modifier = Modifier.height(8.dp))
+
+                val progressText = when {
+                    lesson.isLocked -> "Прогресс: недоступно"
+                    lesson.totalProgress > 0 -> {
+                        "Прогресс: ${lesson.currentProgress}/${lesson.totalProgress} (${lesson.progressPercent}%)"
                     }
+                    else -> "Прогресс: 0%"
                 }
-                lesson.bestScore?.let { score ->
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Балл: ${String.format(java.util.Locale.US, "%.1f", score)}",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = if (lesson.isCompleted) Color(0xFF2E7D32) else Color(0xFF666666)
-                    )
+
+                val progressColor = when {
+                    lesson.isLocked -> Color(0xFF9E9E9E)
+                    lesson.progressPercent in 1..99 -> Color(0xFF1565C0)
+                    lesson.progressPercent >= 100 -> Color(0xFF2E7D32)
+                    else -> Color(0xFF666666)
                 }
+
+                Text(
+                    text = progressText,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = progressColor
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                val resultText = when {
+                    lesson.isLocked -> "Откроется после прохождения предыдущего урока"
+                    lesson.isCompleted -> "Результат: пройден"
+                    lesson.bestScore != null -> "Результат: ${String.format(Locale.US, "%.1f", lesson.bestScore)}"
+                    lesson.currentProgress > 0 -> "Результат: ещё не завершён"
+                    else -> "Результат: ещё не проходили"
+                }
+
+                val resultColor = when {
+                    lesson.isLocked -> Color(0xFF9E9E9E)
+                    lesson.isCompleted -> Color(0xFF2E7D32)
+                    lesson.bestScore != null -> Color(0xFF666666)
+                    lesson.currentProgress > 0 -> Color(0xFF1565C0)
+                    else -> Color(0xFF666666)
+                }
+
+                Text(
+                    text = resultText,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = resultColor
+                )
             }
 
             if (lesson.isLocked) {
@@ -217,14 +239,29 @@ private fun LessonsScreenContentPreview() {
                         theory = emptyList(),
                         phrases = emptyList(),
                         questions = emptyList(),
-                        isCompleted = true,
+                        isCompleted = false,
                         isLocked = false,
-                        bestScore = 6.7f
+                        bestScore = null,
+                        currentProgress = 3,
+                        totalProgress = 100
                     ),
                     Lesson(
                         id = 2,
                         title = "Урок 2",
                         subtitle = "Знакомство",
+                        theory = emptyList(),
+                        phrases = emptyList(),
+                        questions = emptyList(),
+                        isCompleted = true,
+                        isLocked = false,
+                        bestScore = 8.4f,
+                        currentProgress = 100,
+                        totalProgress = 100
+                    ),
+                    Lesson(
+                        id = 3,
+                        title = "Урок 3",
+                        subtitle = "Прошедшее время",
                         theory = emptyList(),
                         phrases = emptyList(),
                         questions = emptyList(),

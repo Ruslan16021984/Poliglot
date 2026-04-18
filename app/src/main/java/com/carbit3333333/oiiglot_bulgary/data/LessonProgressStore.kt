@@ -48,12 +48,30 @@ class LessonProgressStore(
                 val bestWrongKey = intPreferencesKey("lesson_${lessonId}_best_wrong")
                 val bestScoreKey = floatPreferencesKey("lesson_${lessonId}_best_score")
                 val isPassedKey = booleanPreferencesKey("lesson_${lessonId}_is_passed")
+                val currentStepKey = intPreferencesKey("lesson_${lessonId}_current_step")
+                val totalStepsKey = intPreferencesKey("lesson_${lessonId}_total_steps")
 
                 preferences.remove(bestCorrectKey)
                 preferences.remove(bestWrongKey)
                 preferences.remove(bestScoreKey)
                 preferences.remove(isPassedKey)
+                preferences.remove(currentStepKey)
+                preferences.remove(totalStepsKey)
             }
+        }
+    }
+
+    suspend fun saveLessonProgress(
+        lessonId: Int,
+        currentStep: Int,
+        totalSteps: Int
+    ) {
+        val currentStepKey = intPreferencesKey("lesson_${lessonId}_current_step")
+        val totalStepsKey = intPreferencesKey("lesson_${lessonId}_total_steps")
+
+        context.lessonProgressDataStore.edit { preferences ->
+            preferences[currentStepKey] = currentStep
+            preferences[totalStepsKey] = totalSteps
         }
     }
 
@@ -94,16 +112,30 @@ class LessonProgressStore(
         val bestWrongKey = intPreferencesKey("lesson_${lessonId}_best_wrong")
         val bestScoreKey = floatPreferencesKey("lesson_${lessonId}_best_score")
         val isPassedKey = booleanPreferencesKey("lesson_${lessonId}_is_passed")
+        val currentStepKey = intPreferencesKey("lesson_${lessonId}_current_step")
+        val totalStepsKey = intPreferencesKey("lesson_${lessonId}_total_steps")
 
         return context.lessonProgressDataStore.data.map { preferences ->
-            val bestScore = preferences[bestScoreKey] ?: return@map null
+            val bestScore = preferences[bestScoreKey]
+            val currentStep = preferences[currentStepKey] ?: 0
+            val totalSteps = preferences[totalStepsKey] ?: 0
+            val isPassed = preferences[isPassedKey] ?: false
+
+            val hasAnyData =
+                bestScore != null || currentStep > 0 || totalSteps > 0 || isPassed
+
+            if (!hasAnyData) {
+                return@map null
+            }
 
             SavedLessonResult(
                 lessonId = lessonId,
                 bestCorrectCount = preferences[bestCorrectKey] ?: 0,
                 bestWrongCount = preferences[bestWrongKey] ?: 0,
-                bestScore = bestScore,
-                isPassed = preferences[isPassedKey] ?: false
+                bestScore = bestScore ?: 0f,
+                isPassed = isPassed,
+                currentStep = currentStep,
+                totalSteps = totalSteps
             )
         }
     }
@@ -115,15 +147,29 @@ class LessonProgressStore(
                 val bestWrongKey = intPreferencesKey("lesson_${lessonId}_best_wrong")
                 val bestScoreKey = floatPreferencesKey("lesson_${lessonId}_best_score")
                 val isPassedKey = booleanPreferencesKey("lesson_${lessonId}_is_passed")
+                val currentStepKey = intPreferencesKey("lesson_${lessonId}_current_step")
+                val totalStepsKey = intPreferencesKey("lesson_${lessonId}_total_steps")
 
-                val bestScore = preferences[bestScoreKey] ?: return@mapNotNull null
+                val bestScore = preferences[bestScoreKey]
+                val currentStep = preferences[currentStepKey] ?: 0
+                val totalSteps = preferences[totalStepsKey] ?: 0
+                val isPassed = preferences[isPassedKey] ?: false
+
+                val hasAnyData =
+                    bestScore != null || currentStep > 0 || totalSteps > 0 || isPassed
+
+                if (!hasAnyData) {
+                    return@mapNotNull null
+                }
 
                 lessonId to SavedLessonResult(
                     lessonId = lessonId,
                     bestCorrectCount = preferences[bestCorrectKey] ?: 0,
                     bestWrongCount = preferences[bestWrongKey] ?: 0,
-                    bestScore = bestScore,
-                    isPassed = preferences[isPassedKey] ?: false
+                    bestScore = bestScore ?: 0f,
+                    isPassed = isPassed,
+                    currentStep = currentStep,
+                    totalSteps = totalSteps
                 )
             }.toMap()
         }

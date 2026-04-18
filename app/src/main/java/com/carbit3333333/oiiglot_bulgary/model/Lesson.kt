@@ -10,7 +10,16 @@ data class Lesson(
     val isCompleted: Boolean = false,
     val isLocked: Boolean = false,
     val bestScore: Float? = null,
-)
+    val currentProgress: Int = 0,
+    val totalProgress: Int = 0
+) {
+    val progressPercent: Int
+        get() = if (totalProgress > 0) {
+            (currentProgress * 100) / totalProgress
+        } else {
+            0
+        }
+}
 
 data class Phrase(
     val bulgarian: String,

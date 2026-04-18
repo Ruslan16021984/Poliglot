@@ -40,7 +40,9 @@ class LessonsViewModel(
                     lesson.copy(
                         isLocked = lesson.id > openedLessonId,
                         isCompleted = savedResult?.isPassed == true,
-                        bestScore = savedResult?.bestScore
+                        bestScore = savedResult?.bestScore,
+                        currentProgress = savedResult?.currentStep ?: 0,
+                        totalProgress = savedResult?.totalSteps ?: 0
                     )
                 }
             }.collect { lessons ->
