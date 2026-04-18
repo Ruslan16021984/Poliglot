@@ -43,11 +43,6 @@ private enum class Lesson5ModalType {
     MUST
 }
 
-private data class Lesson7Template(
-    val ru: String,
-    val correctWords: List<String>
-)
-
 private data class Lesson8Template(
     val ru: String,
     val correctWords: List<String>
@@ -599,27 +594,6 @@ class LessonSessionRepository {
         )
     )
 
-    private val lesson7Templates = listOf(
-        Lesson7Template("Это моя книга", listOf("Това", "е", "моя", "книга")),
-        Lesson7Template("Это моя книга", listOf("Това", "е", "моята", "книга")),
-        Lesson7Template("Это мой друг", listOf("Това", "е", "мой", "приятел")),
-        Lesson7Template("Это мой друг", listOf("Това", "е", "моят", "приятел")),
-        Lesson7Template("Это наш ребёнок", listOf("Това", "е", "нашето", "дете")),
-        Lesson7Template("Это наши книги", listOf("Това", "са", "нашите", "книги")),
-        Lesson7Template("У меня есть моя книга", listOf("Аз", "имам", "моята", "книга")),
-        Lesson7Template("Я беру свою книгу", listOf("Аз", "взимам", "моята", "книга")),
-        Lesson7Template("Я вижу свою книгу", listOf("Аз", "виждам", "моята", "книга")),
-        Lesson7Template("Мы любим нашего ребёнка", listOf("Ние", "обичаме", "нашето", "дете")),
-        Lesson7Template("Я даю тебе свою книгу", listOf("Давам", "ти", "моята", "книга")),
-        Lesson7Template("Я даю тебе книгу", listOf("Давам", "ти", "книгата")),
-        Lesson7Template("Ты берёшь свою книгу", listOf("Ти", "взимаш", "твоята", "книга")),
-        Lesson7Template("Ты видишь своего друга", listOf("Ти", "виждаш", "твоя", "приятел")),
-        Lesson7Template("Это твоя книга", listOf("Това", "е", "твоята", "книга")),
-        Lesson7Template("Это наши книги", listOf("Това", "са", "наши", "книги")),
-        Lesson7Template("Это наш ребёнок", listOf("Това", "е", "наше", "дете")),
-        Lesson7Template("Я люблю свою книгу", listOf("Аз", "обичам", "моята", "книга"))
-    )
-
     private val lesson8Templates = listOf(
         Lesson8Template(
             ru = "Он старше меня",
@@ -667,7 +641,7 @@ class LessonSessionRepository {
         ),
         Lesson8Template(
             ru = "Это самый красивый дом",
-            correctWords = listOf("Това", "е", "най-красивата", "къща")
+            correctWords = listOf("Това", "е", "най-красивият", "дом")
         ),
         Lesson8Template(
             ru = "Это самый интересный фильм",
@@ -688,8 +662,8 @@ class LessonSessionRepository {
         "е", "съм", "от", "в",
         "мен", "него", "ми",
         "по-стар", "по-млад", "по-интересна", "по-бърза", "по-голяма", "по-висок", "по-скъп", "по-добра",
-        "най-добрата", "най-добрият", "най-скъпата", "най-красивата", "най-интересният", "най-хубавият",
-        "книга", "книгата", "кола", "къща", "брат", "ученик", "часовника", "филма", "филм", "ден", "живота",
+        "най-добрата", "най-добрият", "най-скъпата", "най-красивият", "най-интересният", "най-хубавият",
+        "книга", "книгата", "кола", "къща", "дом", "брат", "ученик", "часовника", "филма", "филм", "ден", "живота",
         "Моята", "твоята", "Нашата", "вашата", "Телефонът", "Моят", "онази"
     )
 
@@ -731,16 +705,11 @@ class LessonSessionRepository {
                 exercises = generateLesson6Exercises()
             )
 
-            7 -> LessonSession(
-                lessonId = 7,
-                lessonTitle = "Моя книга: местоимения и артикль",
-                exercises = generateLesson7Exercises()
-            )
             8 -> LessonSession(
-                    lessonId = 8,
-                    lessonTitle = "Сравнение",
-                    exercises = generateLesson8Exercises()
-                )
+                lessonId = 8,
+                lessonTitle = "Сравнение",
+                exercises = generateLesson8Exercises()
+            )
 
             else -> LessonSession(
                 lessonId = lessonId,
@@ -749,17 +718,6 @@ class LessonSessionRepository {
             )
         }
     }
-    private val lesson7WordPool = listOf(
-        "Това", "е", "са",
-        "Аз", "Ти", "Ние",
-        "имам", "взимам", "взимаш", "виждам", "виждаш", "обичам", "обичаме", "Давам",
-        "ти",
-        "моя", "моята", "мой", "моят",
-        "твоя", "твоята",
-        "наше", "нашето", "наши", "нашите",
-        "книга", "книгата",
-        "приятел", "дете", "книги"
-    )
 
     private fun generateLesson1Exercises(): List<LessonExercise> {
         return (1..100).map { id ->
@@ -1138,7 +1096,7 @@ class LessonSessionRepository {
         val modalType = randomLesson5ModalType()
 
         val subject = lesson5Subjects.random()
-        val subjectRu = lesson5SubjectRu.getValue(subject)
+        val subjectRuText = lesson5SubjectRu.getValue(subject)
 
         val verb = verbs.random()
         val actionBg = verb.present.getValue(subject)
@@ -1187,7 +1145,7 @@ class LessonSessionRepository {
         }
 
         val sourceText = buildString {
-            append(subjectRu)
+            append(subjectRuText)
             append(" ")
 
             if (sentenceType == Lesson5SentenceType.NEGATIVE) {
@@ -1259,51 +1217,6 @@ class LessonSessionRepository {
         }
     }
 
-    private fun generateLesson7Exercises(): List<LessonExercise> {
-        return (1..60).map { id ->
-            generateLesson7Exercise(id)
-        }
-    }
-
-    private fun generateLesson7Exercise(id: Int): LessonExercise {
-        val template = lesson7Templates.random()
-
-        val availableWords = buildAvailableWords(
-            correctWords = template.correctWords,
-            distractorPool = lesson7WordPool,
-            totalWords = 8
-        )
-
-        val hint = when {
-            "моята" in template.correctWords ||
-                    "моят" in template.correctWords ||
-                    "нашето" in template.correctWords ||
-                    "нашите" in template.correctWords ||
-                    "твоята" in template.correctWords ->
-                "💡 здесь используется притяжательная форма с артиклем"
-
-            "ти" in template.correctWords && "Давам" in template.correctWords ->
-                "💡 в болгарском \"тебе\" часто ставится перед объектом: Давам ти книгата"
-
-            "моя" in template.correctWords ||
-                    "мой" in template.correctWords ||
-                    "наше" in template.correctWords ||
-                    "наши" in template.correctWords ->
-                "💡 местоимение согласуется с существительным"
-
-            else -> null
-        }
-
-        return LessonExercise(
-            id = id,
-            sourceText = template.ru,
-            instruction = "Переведите предложение",
-            correctAnswerWords = template.correctWords,
-            availableWords = availableWords,
-            hint = hint
-        )
-    }
-
     private fun generateLesson6Exercise(id: Int): LessonExercise {
         val subject = subjects.random()
         val subjectRuText = subjectRu.getValue(subject)
@@ -1339,22 +1252,6 @@ class LessonSessionRepository {
             availableWords = availableWords,
             hint = "💡 используй предлог + существительное"
         )
-    }
-
-    private fun randomLesson5SentenceType(): Lesson5SentenceType {
-        return when ((1..100).random()) {
-            in 1..40 -> Lesson5SentenceType.POSITIVE
-            in 41..70 -> Lesson5SentenceType.NEGATIVE
-            else -> Lesson5SentenceType.QUESTION
-        }
-    }
-
-    private fun randomLesson5ModalType(): Lesson5ModalType {
-        return when ((1..100).random()) {
-            in 1..40 -> Lesson5ModalType.CAN
-            in 41..75 -> Lesson5ModalType.WANT
-            else -> Lesson5ModalType.MUST
-        }
     }
 
     private fun generateLesson8Exercises(): List<LessonExercise> {
@@ -1395,6 +1292,21 @@ class LessonSessionRepository {
         )
     }
 
+    private fun randomLesson5SentenceType(): Lesson5SentenceType {
+        return when ((1..100).random()) {
+            in 1..40 -> Lesson5SentenceType.POSITIVE
+            in 41..70 -> Lesson5SentenceType.NEGATIVE
+            else -> Lesson5SentenceType.QUESTION
+        }
+    }
+
+    private fun randomLesson5ModalType(): Lesson5ModalType {
+        return when ((1..100).random()) {
+            in 1..40 -> Lesson5ModalType.CAN
+            in 41..75 -> Lesson5ModalType.WANT
+            else -> Lesson5ModalType.MUST
+        }
+    }
 
     private fun buildAvailableWords(
         correctWords: List<String>,
