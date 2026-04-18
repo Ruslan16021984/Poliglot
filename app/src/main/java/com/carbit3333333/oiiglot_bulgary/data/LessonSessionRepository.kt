@@ -20,7 +20,10 @@ private enum class Lesson1SentenceType {
 private enum class Lesson2SentenceType {
     PRESENT,
     QUESTION,
-    NEGATIVE
+    NEGATIVE,
+    THIS_IS,
+    THIS_IS_QUESTION,
+    THIS_IS_NEGATIVE
 }
 
 private enum class Lesson3SentenceType {
@@ -101,6 +104,28 @@ class LessonSessionRepository {
         "на работа" to "на работе",
         "в училище" to "в школе",
         "в града" to "в городе"
+    )
+
+    private val objectNounsBg = listOf(
+        "книга",
+        "кафе",
+        "вода",
+        "хляб",
+        "училище",
+        "телефон",
+        "чай",
+        "сок"
+    )
+
+    private val objectNounsRu = mapOf(
+        "книга" to "книга",
+        "кафе" to "кофе",
+        "вода" to "вода",
+        "хляб" to "хлеб",
+        "училище" to "школа",
+        "телефон" to "телефон",
+        "чай" to "чай",
+        "сок" to "сок"
     )
 
     private val verbs = listOf(
@@ -529,6 +554,19 @@ class LessonSessionRepository {
         "Те" to "им нужно"
     )
 
+    private val lesson6Prepositions = listOf(
+        "в", "на", "с", "при"
+    )
+
+    private val lesson6Places = listOf(
+        "града" to "городе",
+        "училище" to "школе",
+        "работа" to "работе",
+        "къщата" to "доме",
+        "лекаря" to "врача",
+        "приятеля" to "другом"
+    )
+
     private val lesson5ObjectsByInfinitive = mapOf(
         "ям" to listOf("хляб" to "хлеб"),
         "пия" to listOf(
@@ -569,6 +607,12 @@ class LessonSessionRepository {
                 lessonId = 5,
                 lessonTitle = "Могу, хочу, должен",
                 exercises = generateLesson5Exercises()
+            )
+
+            6 -> LessonSession(
+                lessonId = 6,
+                lessonTitle = "Предлоги и существительные",
+                exercises = generateLesson6Exercises()
             )
 
             else -> LessonSession(
@@ -694,16 +738,23 @@ class LessonSessionRepository {
 
     private fun generateLesson2Exercise(id: Int): LessonExercise {
         val type = when ((1..100).random()) {
-            in 1..40 -> Lesson2SentenceType.PRESENT
-            in 41..70 -> Lesson2SentenceType.QUESTION
-            else -> Lesson2SentenceType.NEGATIVE
+            in 1..25 -> Lesson2SentenceType.PRESENT
+            in 26..45 -> Lesson2SentenceType.QUESTION
+            in 46..60 -> Lesson2SentenceType.NEGATIVE
+            in 61..78 -> Lesson2SentenceType.THIS_IS
+            in 79..90 -> Lesson2SentenceType.THIS_IS_QUESTION
+            else -> Lesson2SentenceType.THIS_IS_NEGATIVE
         }
 
         val subject = subjects.random()
         val verb = sumForms.getValue(subject)
         val ruSubject = subjectRu.getValue(subject)
+
         val complementBg = complementsBg.random()
         val complementRu = complementsRu.getValue(complementBg)
+
+        val nounBg = objectNounsBg.random()
+        val nounRu = objectNounsRu.getValue(nounBg)
 
         val correctWords = when (type) {
             Lesson2SentenceType.PRESENT ->
@@ -714,6 +765,15 @@ class LessonSessionRepository {
 
             Lesson2SentenceType.NEGATIVE ->
                 listOf(subject, "не", verb, complementBg)
+
+            Lesson2SentenceType.THIS_IS ->
+                listOf("Това", "е", nounBg)
+
+            Lesson2SentenceType.THIS_IS_QUESTION ->
+                listOf("Това", nounBg, "ли", "е")
+
+            Lesson2SentenceType.THIS_IS_NEGATIVE ->
+                listOf("Това", "не", "е", nounBg)
         }
 
         val sourceText = when (type) {
@@ -725,13 +785,23 @@ class LessonSessionRepository {
 
             Lesson2SentenceType.NEGATIVE ->
                 "$ruSubject не $complementRu"
+
+            Lesson2SentenceType.THIS_IS ->
+                "Это $nounRu"
+
+            Lesson2SentenceType.THIS_IS_QUESTION ->
+                "Это $nounRu?"
+
+            Lesson2SentenceType.THIS_IS_NEGATIVE ->
+                "Это не $nounRu"
         }
 
         val distractors = buildLesson2Distractors(
             subject = subject,
             correctVerb = verb,
             correctComplement = complementBg,
-            type = type
+            type = type,
+            correctNoun = nounBg
         )
 
         val availableWords = buildAvailableWords(
@@ -751,10 +821,20 @@ class LessonSessionRepository {
             instruction = "Переведите предложение",
             correctAnswerWords = correctWords,
             availableWords = availableWords,
-            hint = if (type == Lesson2SentenceType.QUESTION) {
-                "💡 с \"съм\" вопрос часто строится так: слово + ли + съм"
-            } else {
-                buildHint(correctWords)
+            hint = when (type) {
+                Lesson2SentenceType.QUESTION ->
+                    "💡 с \"съм\" вопрос часто строится так: слово + ли + съм"
+
+                Lesson2SentenceType.THIS_IS ->
+                    "💡 это → Това е ..."
+
+                Lesson2SentenceType.THIS_IS_QUESTION ->
+                    "💡 вопрос: Това + слово + ли + е"
+
+                Lesson2SentenceType.THIS_IS_NEGATIVE ->
+                    "💡 это не → Това не е ..."
+
+                else -> buildHint(correctWords)
             }
         )
     }
@@ -763,7 +843,8 @@ class LessonSessionRepository {
         subject: String,
         correctVerb: String,
         correctComplement: String,
-        type: Lesson2SentenceType
+        type: Lesson2SentenceType,
+        correctNoun: String
     ): List<String> {
         val correctWords = when (type) {
             Lesson2SentenceType.PRESENT ->
@@ -774,6 +855,15 @@ class LessonSessionRepository {
 
             Lesson2SentenceType.NEGATIVE ->
                 listOf(subject, "не", correctVerb, correctComplement)
+
+            Lesson2SentenceType.THIS_IS ->
+                listOf("Това", "е", correctNoun)
+
+            Lesson2SentenceType.THIS_IS_QUESTION ->
+                listOf("Това", correctNoun, "ли", "е")
+
+            Lesson2SentenceType.THIS_IS_NEGATIVE ->
+                listOf("Това", "не", "е", correctNoun)
         }
 
         val subjectDistractors = subjects.filterNot { it == subject }
@@ -782,19 +872,16 @@ class LessonSessionRepository {
             .filterNot { it == correctVerb }
             .distinct()
 
-        val complementDistractors = complementsBg
-            .filterNot { it == correctComplement }
+        val complementDistractors = complementsBg.filterNot { it == correctComplement }
+        val nounDistractors = objectNounsBg.filterNot { it == correctNoun }
 
-        val grammarDistractors = when (type) {
-            Lesson2SentenceType.PRESENT -> listOf("не", "ли")
-            Lesson2SentenceType.QUESTION -> listOf("не")
-            Lesson2SentenceType.NEGATIVE -> listOf("ли")
-        }
+        val grammarDistractors = listOf("не", "ли", "Това")
 
         return (
                 subjectDistractors +
                         verbDistractors +
                         complementDistractors +
+                        nounDistractors +
                         grammarDistractors
                 )
             .distinct()
@@ -1051,6 +1138,49 @@ class LessonSessionRepository {
             in 41..75 -> Lesson5ModalType.WANT
             else -> Lesson5ModalType.MUST
         }
+    }
+
+    private fun generateLesson6Exercises(): List<LessonExercise> {
+        return (1..60).map { id ->
+            generateLesson6Exercise(id)
+        }
+    }
+
+    private fun generateLesson6Exercise(id: Int): LessonExercise {
+
+        val subject = subjects.random()
+        val subjectRu = subjectRu.getValue(subject)
+        val verb = sumForms.getValue(subject)
+
+        val (placeBg, placeRu) = lesson6Places.random()
+        val preposition = lesson6Prepositions.random()
+
+        val correctWords = listOf(subject, verb, preposition, placeBg)
+
+        val sourceText = "$subjectRu $placeRu"
+
+        val distractorPool = (
+                subjects +
+                        sumForms.values +
+                        lesson6Prepositions +
+                        lesson6Places.map { it.first } +
+                        listOf("не", "ли")
+                ).distinct()
+
+        val availableWords = buildAvailableWords(
+            correctWords = correctWords,
+            distractorPool = distractorPool,
+            totalWords = 8
+        )
+
+        return LessonExercise(
+            id = id,
+            sourceText = sourceText,
+            instruction = "Переведите предложение",
+            correctAnswerWords = correctWords,
+            availableWords = availableWords,
+            hint = "💡 используй предлог + существительное"
+        )
     }
 
     private fun buildAvailableWords(
