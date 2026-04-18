@@ -63,6 +63,7 @@ fun LessonScreenContent(
             .padding(24.dp)
             .navigationBarsPadding()
     ) {
+        Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = onBackClick) {
             Text(text = "Назад")
         }

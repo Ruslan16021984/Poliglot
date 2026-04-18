@@ -62,7 +62,7 @@ fun LessonsScreenContent(
             .fillMaxSize()
             .padding(24.dp)
     ) {
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = onBackClick) {
             Text(text = "Назад")
@@ -138,7 +138,7 @@ private fun LessonItem(
             .clickable(
                 enabled = !lesson.isLocked,
                 onClick = onClick
-            ),
+            ).padding(bottom = 16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = containerColor)
     ) {
@@ -181,15 +181,14 @@ private fun LessonItem(
                             color = Color(0xFF2E7D32)
                         )
                     }
-
-                    lesson.bestScore?.let { score ->
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = "Балл: ${String.format(java.util.Locale.US, "%.1f", score)}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = if (lesson.isCompleted) Color(0xFF2E7D32) else Color(0xFF666666)
-                        )
-                    }
+                }
+                lesson.bestScore?.let { score ->
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "Балл: ${String.format(java.util.Locale.US, "%.1f", score)}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = if (lesson.isCompleted) Color(0xFF2E7D32) else Color(0xFF666666)
+                    )
                 }
             }
 
