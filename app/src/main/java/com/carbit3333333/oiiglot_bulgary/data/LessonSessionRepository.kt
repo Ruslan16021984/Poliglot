@@ -554,19 +554,6 @@ class LessonSessionRepository {
         "Те" to "им нужно"
     )
 
-    private val lesson6Prepositions = listOf(
-        "в", "на", "с", "при"
-    )
-
-    private val lesson6Places = listOf(
-        "града" to "городе",
-        "училище" to "школе",
-        "работа" to "работе",
-        "къщата" to "доме",
-        "лекаря" to "врача",
-        "приятеля" to "другом"
-    )
-
     private val lesson5ObjectsByInfinitive = mapOf(
         "ям" to listOf("хляб" to "хлеб"),
         "пия" to listOf(
@@ -575,6 +562,31 @@ class LessonSessionRepository {
         ),
         "гледам" to listOf("телевизия" to "телевизор"),
         "уча" to listOf("български" to "болгарский")
+    )
+
+    private val lesson6Prepositions = listOf(
+        "в",
+        "на",
+        "с",
+        "при"
+    )
+
+    private val lesson6PlacesByPreposition = mapOf(
+        "в" to listOf(
+            "града" to "в городе",
+            "училище" to "в школе",
+            "къщата" to "в доме"
+        ),
+        "на" to listOf(
+            "работа" to "на работе"
+        ),
+        "с" to listOf(
+            "приятеля" to "с другом",
+            "учителя" to "с учителем"
+        ),
+        "при" to listOf(
+            "лекаря" to "у врача"
+        )
     )
 
     fun getLessonSession(lessonId: Int): LessonSession {
@@ -685,10 +697,7 @@ class LessonSessionRepository {
             totalWords = 8
         )
 
-        Log.d(
-            "LessonRepo",
-            "Exercise #$id: correct=$correctWords, available=$availableWords"
-        )
+        Log.d("LessonRepo", "Exercise #$id: correct=$correctWords, available=$availableWords")
 
         return LessonExercise(
             id = id,
@@ -810,10 +819,7 @@ class LessonSessionRepository {
             totalWords = 8
         )
 
-        Log.d(
-            "LessonRepo",
-            "Lesson2 Exercise #$id: correct=$correctWords, available=$availableWords"
-        )
+        Log.d("LessonRepo", "Lesson2 Exercise #$id: correct=$correctWords, available=$availableWords")
 
         return LessonExercise(
             id = id,
@@ -937,10 +943,7 @@ class LessonSessionRepository {
             totalWords = 8
         )
 
-        Log.d(
-            "LessonRepo",
-            "Lesson3 Exercise #$id: correct=$correctWords, available=$availableWords"
-        )
+        Log.d("LessonRepo", "Lesson3 Exercise #$id: correct=$correctWords, available=$availableWords")
 
         return LessonExercise(
             id = id,
@@ -1124,22 +1127,6 @@ class LessonSessionRepository {
         )
     }
 
-    private fun randomLesson5SentenceType(): Lesson5SentenceType {
-        return when ((1..100).random()) {
-            in 1..40 -> Lesson5SentenceType.POSITIVE
-            in 41..70 -> Lesson5SentenceType.NEGATIVE
-            else -> Lesson5SentenceType.QUESTION
-        }
-    }
-
-    private fun randomLesson5ModalType(): Lesson5ModalType {
-        return when ((1..100).random()) {
-            in 1..40 -> Lesson5ModalType.CAN
-            in 41..75 -> Lesson5ModalType.WANT
-            else -> Lesson5ModalType.MUST
-        }
-    }
-
     private fun generateLesson6Exercises(): List<LessonExercise> {
         return (1..60).map { id ->
             generateLesson6Exercise(id)
@@ -1147,23 +1134,23 @@ class LessonSessionRepository {
     }
 
     private fun generateLesson6Exercise(id: Int): LessonExercise {
-
         val subject = subjects.random()
-        val subjectRu = subjectRu.getValue(subject)
+        val subjectRuText = subjectRu.getValue(subject)
         val verb = sumForms.getValue(subject)
 
-        val (placeBg, placeRu) = lesson6Places.random()
         val preposition = lesson6Prepositions.random()
+        val placePair = lesson6PlacesByPreposition.getValue(preposition).random()
+        val placeBg = placePair.first
+        val placeRu = placePair.second
 
         val correctWords = listOf(subject, verb, preposition, placeBg)
-
-        val sourceText = "$subjectRu $placeRu"
+        val sourceText = "$subjectRuText $placeRu"
 
         val distractorPool = (
                 subjects +
                         sumForms.values +
                         lesson6Prepositions +
-                        lesson6Places.map { it.first } +
+                        lesson6PlacesByPreposition.values.flatten().map { it.first } +
                         listOf("не", "ли")
                 ).distinct()
 
@@ -1181,6 +1168,22 @@ class LessonSessionRepository {
             availableWords = availableWords,
             hint = "💡 используй предлог + существительное"
         )
+    }
+
+    private fun randomLesson5SentenceType(): Lesson5SentenceType {
+        return when ((1..100).random()) {
+            in 1..40 -> Lesson5SentenceType.POSITIVE
+            in 41..70 -> Lesson5SentenceType.NEGATIVE
+            else -> Lesson5SentenceType.QUESTION
+        }
+    }
+
+    private fun randomLesson5ModalType(): Lesson5ModalType {
+        return when ((1..100).random()) {
+            in 1..40 -> Lesson5ModalType.CAN
+            in 41..75 -> Lesson5ModalType.WANT
+            else -> Lesson5ModalType.MUST
+        }
     }
 
     private fun buildAvailableWords(
