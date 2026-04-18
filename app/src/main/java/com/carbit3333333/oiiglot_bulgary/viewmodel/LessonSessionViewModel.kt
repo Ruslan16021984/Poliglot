@@ -45,6 +45,11 @@ class LessonSessionViewModel(
             val savedState = sessionStore.loadSession(lessonId)
             if (savedState != null) {
                 _uiState.value = savedState
+
+                saveLessonProgress(
+                    currentStep = savedState.currentExerciseIndex,
+                    totalSteps = savedState.exercises.size
+                )
                 return@launch
             }
 
@@ -58,6 +63,10 @@ class LessonSessionViewModel(
 
             _uiState.value = newState
             saveCurrentSession()
+            saveLessonProgress(
+                currentStep = 0,
+                totalSteps = session.exercises.size
+            )
         }
     }
 
@@ -164,6 +173,11 @@ class LessonSessionViewModel(
                 lessonResult = lessonResult
             )
 
+            saveLessonProgress(
+                currentStep = totalExercises,
+                totalSteps = totalExercises
+            )
+
             viewModelScope.launch {
                 sessionStore.clearSession()
             }
@@ -175,6 +189,10 @@ class LessonSessionViewModel(
                 praiseText = null
             )
             saveCurrentSession()
+            saveLessonProgress(
+                currentStep = nextIndex,
+                totalSteps = state.exercises.size
+            )
         }
     }
 
@@ -200,6 +218,21 @@ class LessonSessionViewModel(
             if (isPassed) {
                 progressStore.unlockNextLesson(lessonId + 1)
             }
+        }
+    }
+
+    private fun saveLessonProgress(
+        currentStep: Int,
+        totalSteps: Int
+    ) {
+        if (currentLessonId == 0) return
+
+        viewModelScope.launch {
+            progressStore.saveLessonProgress(
+                lessonId = currentLessonId,
+                currentStep = currentStep,
+                totalSteps = totalSteps
+            )
         }
     }
 

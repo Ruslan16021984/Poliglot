@@ -107,39 +107,6 @@ class LessonProgressStore(
         }
     }
 
-    fun getLessonResultFlow(lessonId: Int): Flow<SavedLessonResult?> {
-        val bestCorrectKey = intPreferencesKey("lesson_${lessonId}_best_correct")
-        val bestWrongKey = intPreferencesKey("lesson_${lessonId}_best_wrong")
-        val bestScoreKey = floatPreferencesKey("lesson_${lessonId}_best_score")
-        val isPassedKey = booleanPreferencesKey("lesson_${lessonId}_is_passed")
-        val currentStepKey = intPreferencesKey("lesson_${lessonId}_current_step")
-        val totalStepsKey = intPreferencesKey("lesson_${lessonId}_total_steps")
-
-        return context.lessonProgressDataStore.data.map { preferences ->
-            val bestScore = preferences[bestScoreKey]
-            val currentStep = preferences[currentStepKey] ?: 0
-            val totalSteps = preferences[totalStepsKey] ?: 0
-            val isPassed = preferences[isPassedKey] ?: false
-
-            val hasAnyData =
-                bestScore != null || currentStep > 0 || totalSteps > 0 || isPassed
-
-            if (!hasAnyData) {
-                return@map null
-            }
-
-            SavedLessonResult(
-                lessonId = lessonId,
-                bestCorrectCount = preferences[bestCorrectKey] ?: 0,
-                bestWrongCount = preferences[bestWrongKey] ?: 0,
-                bestScore = bestScore ?: 0f,
-                isPassed = isPassed,
-                currentStep = currentStep,
-                totalSteps = totalSteps
-            )
-        }
-    }
-
     fun getLessonResultsFlow(lessonIds: List<Int>): Flow<Map<Int, SavedLessonResult>> {
         return context.lessonProgressDataStore.data.map { preferences ->
             lessonIds.mapNotNull { lessonId ->
