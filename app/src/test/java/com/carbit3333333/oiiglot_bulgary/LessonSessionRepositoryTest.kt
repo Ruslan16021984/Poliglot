@@ -36,6 +36,45 @@ class LessonSessionRepositoryTest {
     }
 
     @Test
+    fun `lesson 4 session uses expanded noun and action contrasts`() {
+        val session = repository.getLessonSession(4)
+        val sourceTexts = session.exercises.map { it.sourceText }
+        val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
+
+        assertEquals(40, session.exercises.size)
+        assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(sourceTexts.any { it.contains("эта работа") })
+        assertTrue(sourceTexts.any { it.contains("я люблю читать") })
+        assertTrue(sourceTexts.any { it.contains("мы хотим работать") })
+        assertTrue(sourceTexts.any { it.contains("эта вода") })
+        assertTrue(sourceTexts.any { it.contains("он хочет эту работу") })
+        assertTrue(sourceTexts.any { it.contains("мы любим пить кофе") })
+        assertTrue(sourceTexts.any { it.contains("вы хотите читать") })
+        assertTrue(bgWords.contains("работата"))
+        assertTrue(bgWords.contains("чета"))
+        assertTrue(bgWords.contains("обичам"))
+        assertTrue(bgWords.contains("пием"))
+    }
+
+    @Test
+    fun `lesson 4 session progresses from simple forms to combined constructions`() {
+        val session = repository.getLessonSession(4)
+        val firstBlock = session.exercises.take(8).map { it.sourceText }
+        val secondBlock = session.exercises.drop(8).take(8).map { it.sourceText }
+        val thirdBlock = session.exercises.drop(16).take(8).map { it.sourceText }
+        val lastBlock = session.exercises.drop(24).map { it.sourceText }
+        val basicNouns = setOf("книга", "женщина", "ребёнок", "вода", "работа", "кофе")
+        val definiteNouns = setOf("эта книга", "эта женщина", "этот ребёнок", "эта вода", "эта работа", "это кофе")
+        val bareVerbs = setOf("есть", "пить", "работать", "читать", "учиться", "говорить")
+
+        assertTrue(firstBlock.all { it in basicNouns })
+        assertTrue(secondBlock.any { it in definiteNouns })
+        assertTrue(secondBlock.none { it.contains("хочу") || it.contains("люблю") })
+        assertTrue(thirdBlock.all { it in bareVerbs })
+        assertTrue(lastBlock.any { it.contains("хочу") || it.contains("люблю") })
+    }
+
+    @Test
     fun `lesson 7 and 8 sessions use migrated template content`() {
         val lesson7 = repository.getLessonSession(7)
         val lesson8 = repository.getLessonSession(8)
