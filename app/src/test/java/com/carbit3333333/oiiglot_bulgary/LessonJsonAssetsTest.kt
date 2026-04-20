@@ -56,7 +56,7 @@ class LessonJsonAssetsTest {
         assertTrue(assets.lesson8Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
 
         assertNotNull(assets.lesson7Templates.find { it.ru == "Ты видишь своего друга" })
-        assertNotNull(assets.lesson8Templates.find { it.ru == "Это лучший день в моей жизни" })
+        assertNotNull(assets.lesson8Templates.find { it.ru == "Это самый прекрасный день в моей жизни" })
     }
 
     private fun readAssetText(fileName: String): String {
