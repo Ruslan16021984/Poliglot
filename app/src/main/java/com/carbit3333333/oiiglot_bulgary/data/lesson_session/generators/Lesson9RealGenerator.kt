@@ -35,10 +35,10 @@ internal fun applyNumber(
         noun.countForm
     }
 
-    val objectRu = if (number.value == 1) {
-        noun.ruSingular
-    } else {
-        noun.ruPlural
+    val objectRu = when {
+        number.value == 1 -> noun.ruSingular
+        number.value in 2..4 -> noun.ruPlural
+        else -> noun.ruMany
     }
 
     return NumberedNounPhrase(
