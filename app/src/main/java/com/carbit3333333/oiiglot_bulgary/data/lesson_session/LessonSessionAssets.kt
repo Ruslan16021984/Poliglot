@@ -347,9 +347,9 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
             Lesson9NumberAsset(20, "двадесет", "двадесет", "двадесет", "двадцать", "двадцать", "двадцать")
         ),
         lesson9Objects = listOf(
-            Lesson9ObjectAsset("feminine", "книга", "книги", "книги", "книгу", "книги"),
-            Lesson9ObjectAsset("masculine", "телефон", "телефони", "телефона", "телефон", "телефона"),
-            Lesson9ObjectAsset("neuter", "писмо", "писма", "писма", "письмо", "письма")
+            Lesson9ObjectAsset("feminine", "книга", "книги", "книги", "книгу", "книги", "книг"),
+            Lesson9ObjectAsset("masculine", "телефон", "телефони", "телефона", "телефон", "телефона", "телефонов"),
+            Lesson9ObjectAsset("neuter", "писмо", "писма", "писма", "письмо", "письма", "писем")
         ),
         lesson9Templates = listOf(
             Lesson9TemplateAsset(
