@@ -24,8 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
-import com.carbit3333333.oiiglot_bulgary.model.Phrase
-import com.carbit3333333.oiiglot_bulgary.model.Question
 import com.carbit3333333.oiiglot_bulgary.model.TheoryBlock
 import com.carbit3333333.oiiglot_bulgary.ui.common.HighlightedEndingText
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
@@ -208,19 +206,6 @@ private fun LessonScreenContentPreview() {
                         TheoryBlock(
                             title = "Отрицание",
                             text = "Отрицание образуется с помощью частицы \"не\".\n\nАз не правя\nТи не гледаш"
-                        )
-                    ),
-                    phrases = listOf(
-                        Phrase("Добро утро", "Доброе утро"),
-                        Phrase("Добър ден", "Добрый день"),
-                        Phrase("Благодаря", "Спасибо")
-                    ),
-                    questions = listOf(
-                        Question(
-                            id = 1,
-                            text = "Как переводится «Добро утро»?",
-                            options = listOf("Доброе утро", "Спасибо"),
-                            correctAnswer = "Доброе утро"
                         )
                     )
                 )

@@ -6,6 +6,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -451,6 +452,7 @@ private fun CorrectAnswerBlock(
 }
 
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 private fun AnswerArea(
     selectedWords: List<String>,
     onWordClick: (String) -> Unit,
@@ -507,6 +509,7 @@ private fun SelectedWordChip(
 }
 
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 private fun WordGrid(
     words: List<String>,
     selectedWords: List<String>,

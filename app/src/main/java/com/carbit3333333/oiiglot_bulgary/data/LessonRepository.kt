@@ -1,8 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.data
 
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
-import com.carbit3333333.oiiglot_bulgary.model.Phrase
-import com.carbit3333333.oiiglot_bulgary.model.Question
 import com.carbit3333333.oiiglot_bulgary.model.TheoryBlock
 
 class LessonRepository {
@@ -427,300 +425,54 @@ class LessonRepository {
         )
     )
 
-    private val lesson8Phrases = listOf(
-        Phrase("Той е по-стар от мен", "Он старше меня"),
-        Phrase("Аз съм по-млад от него", "Я младше его"),
-        Phrase("Тази книга е по-интересна от онази", "Эта книга интереснее той"),
-        Phrase("Моята кола е по-бърза от твоята", "Моя машина быстрее твоей"),
-        Phrase("Това е най-добрата книга", "Это лучшая книга"),
-        Phrase("Той е най-добрият ученик", "Он лучший ученик"),
-        Phrase("Това е най-скъпата кола", "Это самая дорогая машина"),
-        Phrase("Нашата къща е по-голяма от вашата", "Наш дом больше вашего"),
-        Phrase("Моят брат е по-висок от мен", "Мой брат выше меня"),
-        Phrase("Това е най-хубавият ден в живота ми", "Это лучший день в моей жизни")
-    )
-
-    private val lesson8Questions = listOf(
-        Question(
-            id = 1,
-            text = "Как переводится «Той е по-стар от мен»?",
-            options = listOf(
-                "Он старше меня",
-                "Он самый старый",
-                "Он старый"
-            ),
-            correctAnswer = "Он старше меня"
-        ),
-        Question(
-            id = 2,
-            text = "Как переводится «Това е най-добрата книга»?",
-            options = listOf(
-                "Это хорошая книга",
-                "Это лучшая книга",
-                "Это большая книга"
-            ),
-            correctAnswer = "Это лучшая книга"
-        ),
-        Question(
-            id = 3,
-            text = "Что означает «по-»?",
-            options = listOf(
-                "самый",
-                "более",
-                "не"
-            ),
-            correctAnswer = "более"
-        ),
-        Question(
-            id = 4,
-            text = "Что означает «най-»?",
-            options = listOf(
-                "более",
-                "самый",
-                "очень"
-            ),
-            correctAnswer = "самый"
-        )
-    )
-
     private val lessons = listOf(
         Lesson(
             id = 1,
             title = "Урок 1",
             subtitle = "Основные формы глагола",
-            theory = lesson1Theory,
-            phrases = listOf(
-                Phrase("Аз правя", "Я делаю"),
-                Phrase("Ти гледаш ли?", "Ты смотришь?"),
-                Phrase("Аз не работя", "Я не работаю"),
-                Phrase("Той ще учи", "Он будет учиться"),
-                Phrase("Ние няма да говорим", "Мы не будем говорить")
-            ),
-            questions = listOf(
-                Question(
-                    id = 1,
-                    text = "Как переводится «Аз правя»?",
-                    options = listOf("Я делаю", "Я сделал", "Я буду делать"),
-                    correctAnswer = "Я делаю"
-                ),
-                Question(
-                    id = 2,
-                    text = "Как переводится «Ти гледаш ли?»?",
-                    options = listOf("Ты смотришь?", "Ты не смотришь", "Ты будешь смотреть"),
-                    correctAnswer = "Ты смотришь?"
-                )
-            )
+            theory = lesson1Theory
         ),
         Lesson(
             id = 2,
             title = "Урок 2",
             subtitle = "Глагол „съм“",
-            theory = lesson2Theory,
-            phrases = listOf(
-                Phrase("Аз съм тук", "Я здесь"),
-                Phrase("Ти си лекар", "Ты врач"),
-                Phrase("Ние сме вкъщи", "Мы дома"),
-                Phrase("Те не са в града", "Они не в городе"),
-                Phrase("Вие в училище ли сте?", "Вы в школе?"),
-                Phrase("Това е книга", "Это книга"),
-                Phrase("Това е кафе", "Это кофе"),
-                Phrase("Това не е вода", "Это не вода"),
-                Phrase("Това книга ли е?", "Это книга?"),
-                Phrase("Това кафе ли е?", "Это кофе?")
-            ),
-            questions = listOf(
-                Question(
-                    id = 1,
-                    text = "Как переводится «Аз съм тук»?",
-                    options = listOf("Я здесь", "Я там", "Я дома"),
-                    correctAnswer = "Я здесь"
-                ),
-                Question(
-                    id = 2,
-                    text = "Как переводится «Те не са в града»?",
-                    options = listOf("Они не в городе", "Они в городе", "Они не дома"),
-                    correctAnswer = "Они не в городе"
-                ),
-                Question(
-                    id = 3,
-                    text = "Как переводится «Това е книга»?",
-                    options = listOf("Это книга", "Это вода", "Это школа"),
-                    correctAnswer = "Это книга"
-                ),
-                Question(
-                    id = 4,
-                    text = "Как переводится «Това книга ли е?»?",
-                    options = listOf("Это книга?", "Это не книга", "Это книга"),
-                    correctAnswer = "Это книга?"
-                )
-            )
+            theory = lesson2Theory
         ),
         Lesson(
             id = 3,
             title = "Урок 3",
             subtitle = "Прошедшее время",
-            theory = lesson3Theory,
-            phrases = listOf(
-                Phrase("Аз правих", "Я делал"),
-                Phrase("Ти гледа", "Ты смотрел"),
-                Phrase("Ние работихме", "Мы работали"),
-                Phrase("Те не учиха", "Они не учились"),
-                Phrase("Аз видях", "Я видел")
-            ),
-            questions = listOf(
-                Question(
-                    id = 1,
-                    text = "Как переводится «Аз правих»?",
-                    options = listOf("Я делал", "Я делаю", "Я буду делать"),
-                    correctAnswer = "Я делал"
-                ),
-                Question(
-                    id = 2,
-                    text = "Как переводится «Те не учиха»?",
-                    options = listOf("Они не учились", "Они учатся", "Они не будут учиться"),
-                    correctAnswer = "Они не учились"
-                )
-            )
+            theory = lesson3Theory
         ),
         Lesson(
             id = 4,
             title = "Урок 4",
             subtitle = "Предмет или действие",
-            theory = lesson4Theory,
-            phrases = listOf(
-                Phrase("книга", "книга"),
-                Phrase("книгата", "эта книга"),
-                Phrase("да ям", "есть"),
-                Phrase("Аз искам да пия", "Я хочу пить"),
-                Phrase("Аз искам книгата", "Я хочу эту книгу")
-            ),
-            questions = listOf(
-                Question(
-                    id = 1,
-                    text = "Как переводится «книгата»?",
-                    options = listOf("книга", "эта книга", "читать"),
-                    correctAnswer = "эта книга"
-                ),
-                Question(
-                    id = 2,
-                    text = "Что значит «да ям»?",
-                    options = listOf("я ем", "есть", "еда"),
-                    correctAnswer = "есть"
-                )
-            )
+            theory = lesson4Theory
         ),
         Lesson(
             id = 5,
             title = "Урок 5",
             subtitle = "Могу, хочу, должен",
-            theory = lesson5Theory,
-            phrases = listOf(
-                Phrase("Аз мога да ям", "Я могу есть"),
-                Phrase("Ти искаш да пиеш", "Ты хочешь пить"),
-                Phrase("Той трябва да работи", "Ему нужно работать"),
-                Phrase("Аз не мога да пия", "Я не могу пить"),
-                Phrase("Вие искате ли да учите?", "Вы хотите учиться?")
-            ),
-            questions = listOf(
-                Question(
-                    id = 1,
-                    text = "Как переводится «Аз мога да ям»?",
-                    options = listOf("Я хочу есть", "Я могу есть", "Я должен есть"),
-                    correctAnswer = "Я могу есть"
-                ),
-                Question(
-                    id = 2,
-                    text = "Как переводится «Той трябва да работи»?",
-                    options = listOf("Он хочет работать", "Он может работать", "Ему нужно работать"),
-                    correctAnswer = "Ему нужно работать"
-                )
-            )
+            theory = lesson5Theory
         ),
         Lesson(
             id = 6,
             title = "Урок 6",
             subtitle = "Предлоги и существительные",
-            theory = lesson6Theory,
-            phrases = listOf(
-                Phrase("Аз съм в града", "Я в городе"),
-                Phrase("Ти си на работа", "Ты на работе"),
-                Phrase("Той е при лекаря", "Он у врача"),
-                Phrase("Ние сме в училище", "Мы в школе"),
-                Phrase("Вие сте с приятеля", "Вы с другом"),
-                Phrase("Те са в къщата", "Они в доме")
-            ),
-            questions = listOf(
-                Question(
-                    id = 1,
-                    text = "Как переводится «Аз съм в града»?",
-                    options = listOf("Я в городе", "Я дома", "Я в школе"),
-                    correctAnswer = "Я в городе"
-                ),
-                Question(
-                    id = 2,
-                    text = "Как переводится «Той е при лекаря»?",
-                    options = listOf("Он врач", "Он у врача", "Он работает"),
-                    correctAnswer = "Он у врача"
-                ),
-                Question(
-                    id = 3,
-                    text = "Что значит «на работа»?",
-                    options = listOf("на работе", "в городе", "с другом"),
-                    correctAnswer = "на работе"
-                )
-            )
+            theory = lesson6Theory
         ),
         Lesson(
             id = 7,
             title = "Урок 7",
             subtitle = "Моя книга: местоимения и артикль",
-            theory = lesson7Theory,
-            phrases = listOf(
-                Phrase("Това е моя книга", "Это моя книга"),
-                Phrase("Това е моята книга", "Это моя книга"),
-                Phrase("Това е моят приятел", "Это мой друг"),
-                Phrase("Това е нашето дете", "Это наш ребёнок"),
-                Phrase("Това са нашите книги", "Это наши книги"),
-                Phrase("Аз имам моята книга", "У меня есть моя книга"),
-                Phrase("Аз взимам моята книга", "Я беру свою книгу"),
-                Phrase("Аз виждам моята книга", "Я вижу свою книгу"),
-                Phrase("Ние обичаме нашето дете", "Мы любим нашего ребёнка"),
-                Phrase("Давам ти моята книга", "Я даю тебе свою книгу")
-            ),
-            questions = listOf(
-                Question(
-                    id = 1,
-                    text = "Как переводится «Това е моята книга»?",
-                    options = listOf("Это моя книга", "Это моя вода", "Это твоя книга"),
-                    correctAnswer = "Это моя книга"
-                ),
-                Question(
-                    id = 2,
-                    text = "Как переводится «Това е нашето дете»?",
-                    options = listOf("Это наш ребёнок", "Это мой друг", "Это наши книги"),
-                    correctAnswer = "Это наш ребёнок"
-                ),
-                Question(
-                    id = 3,
-                    text = "Как переводится «Аз взимам моята книга»?",
-                    options = listOf("Я беру свою книгу", "Я даю свою книгу", "Я люблю свою книгу"),
-                    correctAnswer = "Я беру свою книгу"
-                ),
-                Question(
-                    id = 4,
-                    text = "Как переводится «Давам ти моята книга»?",
-                    options = listOf("Я даю тебе свою книгу", "Ты даёшь мне свою книгу", "Я беру твою книгу"),
-                    correctAnswer = "Я даю тебе свою книгу"
-                )
-            )
+            theory = lesson7Theory
         ),
         Lesson(
             id = 8,
             title = "Урок 8",
             subtitle = "Сравнение",
-            theory = lesson8Theory,
-            phrases = lesson8Phrases,
-            questions = lesson8Questions
+            theory = lesson8Theory
         )
     )
 

@@ -237,8 +237,6 @@ private fun LessonsScreenContentPreview() {
                         title = "Урок 1",
                         subtitle = "Приветствие и базовые фразы",
                         theory = emptyList(),
-                        phrases = emptyList(),
-                        questions = emptyList(),
                         isCompleted = false,
                         isLocked = false,
                         bestScore = null,
@@ -250,8 +248,6 @@ private fun LessonsScreenContentPreview() {
                         title = "Урок 2",
                         subtitle = "Знакомство",
                         theory = emptyList(),
-                        phrases = emptyList(),
-                        questions = emptyList(),
                         isCompleted = true,
                         isLocked = false,
                         bestScore = 8.4f,
@@ -263,8 +259,6 @@ private fun LessonsScreenContentPreview() {
                         title = "Урок 3",
                         subtitle = "Прошедшее время",
                         theory = emptyList(),
-                        phrases = emptyList(),
-                        questions = emptyList(),
                         isLocked = true
                     )
                 )
