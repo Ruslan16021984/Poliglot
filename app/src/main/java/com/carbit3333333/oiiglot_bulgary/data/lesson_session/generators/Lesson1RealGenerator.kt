@@ -34,8 +34,8 @@ object Lesson1RealGenerator {
             bgPattern = listOf(
                 LessonRealSentenceGenerator.Token.SubjectBg,
                 LessonRealSentenceGenerator.Token.VerbBg,
-                LessonRealSentenceGenerator.Token.ObjectBg,
-                LessonRealSentenceGenerator.Token.Fixed("ли")
+                LessonRealSentenceGenerator.Token.Fixed("ли"),
+                LessonRealSentenceGenerator.Token.ObjectBg
             )
         ),
         LessonRealSentenceGenerator.SentenceTemplate(
@@ -63,8 +63,8 @@ object Lesson1RealGenerator {
                 LessonRealSentenceGenerator.Token.SubjectBg,
                 LessonRealSentenceGenerator.Token.Fixed("ще"),
                 LessonRealSentenceGenerator.Token.VerbBg,
-                LessonRealSentenceGenerator.Token.ObjectBg,
-                LessonRealSentenceGenerator.Token.Fixed("ли")
+                LessonRealSentenceGenerator.Token.Fixed("ли"),
+                LessonRealSentenceGenerator.Token.ObjectBg
             )
         )
     )

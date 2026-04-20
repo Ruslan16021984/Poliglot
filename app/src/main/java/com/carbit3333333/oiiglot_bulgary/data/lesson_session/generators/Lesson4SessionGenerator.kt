@@ -3,14 +3,20 @@ package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 import com.carbit3333333.oiiglot_bulgary.model.Lesson4Item
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
-internal fun generateLesson4Exercises(): List<LessonExercise> {
+internal fun generateLesson4Exercises(items: List<Lesson4Item>): List<LessonExercise> {
     return (1..40).map { id ->
-        generateLesson4Exercise(id)
+        generateLesson4Exercise(
+            id = id,
+            items = items
+        )
     }
 }
 
-internal fun generateLesson4Exercise(id: Int): LessonExercise {
-    val item = lesson4Items.random()
+internal fun generateLesson4Exercise(
+    id: Int,
+    items: List<Lesson4Item>
+): LessonExercise {
+    val item = items.random()
     val correctWords = item.correctWords
 
     val distractorPool = listOf(

@@ -1,5 +1,8 @@
 package com.carbit3333333.oiiglot_bulgary.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Lesson(
     val id: Int,
     val title: String,

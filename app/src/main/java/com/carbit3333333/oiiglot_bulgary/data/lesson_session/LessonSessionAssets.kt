@@ -1,0 +1,296 @@
+package com.carbit3333333.oiiglot_bulgary.data.lesson_session
+
+import android.content.Context
+import com.carbit3333333.oiiglot_bulgary.model.Lesson4Item
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+
+@Serializable
+internal data class LessonTemplateAsset(
+    val ru: String,
+    val bgWords: List<String>,
+    val hint: String? = null
+)
+
+@Serializable
+internal data class Lesson3VerbAsset(
+    val past: Map<String, String>,
+    val ruPast: Map<String, String>
+)
+
+@Serializable
+internal data class LessonSessionAssets(
+    val lesson4Items: List<Lesson4Item> = emptyList(),
+    val lesson3SubjectRu: Map<String, String> = emptyMap(),
+    val lesson3Verbs: List<Lesson3VerbAsset> = emptyList(),
+    val lesson7Templates: List<LessonTemplateAsset> = emptyList(),
+    val lesson8Templates: List<LessonTemplateAsset> = emptyList()
+)
+
+internal class LessonSessionAssetsRepository(
+    context: Context
+) {
+
+    private val appContext = context.applicationContext
+
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
+
+    fun load(): LessonSessionAssets {
+        return runCatching {
+            appContext.assets
+                .open(LESSON_SESSION_ASSET_FILE)
+                .bufferedReader(Charsets.UTF_8)
+                .use { reader ->
+                    json.decodeFromString<LessonSessionAssets>(reader.readText())
+                }
+        }.getOrElse {
+            defaultLessonSessionAssets()
+        }
+    }
+
+    private companion object {
+        const val LESSON_SESSION_ASSET_FILE = "lesson_session_content.json"
+    }
+}
+
+internal fun defaultLessonSessionAssets(): LessonSessionAssets {
+    return LessonSessionAssets(
+        lesson4Items = listOf(
+            Lesson4Item(Lesson4Item.Type.NOUN, "книга", listOf("книга")),
+            Lesson4Item(Lesson4Item.Type.NOUN, "эта книга", listOf("книгата")),
+            Lesson4Item(Lesson4Item.Type.NOUN, "женщина", listOf("жена")),
+            Lesson4Item(Lesson4Item.Type.NOUN, "эта женщина", listOf("жената")),
+            Lesson4Item(Lesson4Item.Type.NOUN, "ребёнок", listOf("дете")),
+            Lesson4Item(Lesson4Item.Type.NOUN, "этот ребёнок", listOf("детето")),
+            Lesson4Item(Lesson4Item.Type.VERB, "есть", listOf("да", "ям")),
+            Lesson4Item(Lesson4Item.Type.VERB, "пить", listOf("да", "пия")),
+            Lesson4Item(Lesson4Item.Type.VERB, "я хочу есть", listOf("Аз", "искам", "да", "ям")),
+            Lesson4Item(Lesson4Item.Type.VERB, "я хочу пить", listOf("Аз", "искам", "да", "пия")),
+            Lesson4Item(Lesson4Item.Type.NOUN, "я хочу книгу", listOf("Аз", "искам", "книга")),
+            Lesson4Item(Lesson4Item.Type.NOUN, "я хочу эту книгу", listOf("Аз", "искам", "книгата"))
+        ),
+        lesson3SubjectRu = mapOf(
+            "Аз" to "Я",
+            "Ти" to "Ты",
+            "Той" to "Он",
+            "Ние" to "Мы",
+            "Вие" to "Вы",
+            "Те" to "Они"
+        ),
+        lesson3Verbs = listOf(
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "правих",
+                    "Ти" to "прави",
+                    "Той" to "прави",
+                    "Ние" to "правихме",
+                    "Вие" to "правихте",
+                    "Те" to "правиха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "делал",
+                    "Ти" to "делал",
+                    "Той" to "делал",
+                    "Ние" to "делали",
+                    "Вие" to "делали",
+                    "Те" to "делали"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "гледах",
+                    "Ти" to "гледа",
+                    "Той" to "гледа",
+                    "Ние" to "гледахме",
+                    "Вие" to "гледахте",
+                    "Те" to "гледаха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "смотрел",
+                    "Ти" to "смотрел",
+                    "Той" to "смотрел",
+                    "Ние" to "смотрели",
+                    "Вие" to "смотрели",
+                    "Те" to "смотрели"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "отивах",
+                    "Ти" to "отива",
+                    "Той" to "отива",
+                    "Ние" to "отивахме",
+                    "Вие" to "отивахте",
+                    "Те" to "отиваха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "шёл",
+                    "Ти" to "шёл",
+                    "Той" to "шёл",
+                    "Ние" to "шли",
+                    "Вие" to "шли",
+                    "Те" to "шли"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "ядох",
+                    "Ти" to "яде",
+                    "Той" to "яде",
+                    "Ние" to "ядохме",
+                    "Вие" to "ядохте",
+                    "Те" to "ядоха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "ел",
+                    "Ти" to "ел",
+                    "Той" to "ел",
+                    "Ние" to "ели",
+                    "Вие" to "ели",
+                    "Те" to "ели"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "пих",
+                    "Ти" to "пи",
+                    "Той" to "пи",
+                    "Ние" to "пихме",
+                    "Вие" to "пихте",
+                    "Те" to "пиха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "пил",
+                    "Ти" to "пил",
+                    "Той" to "пил",
+                    "Ние" to "пили",
+                    "Вие" to "пили",
+                    "Те" to "пили"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "работих",
+                    "Ти" to "работи",
+                    "Той" to "работи",
+                    "Ние" to "работихме",
+                    "Вие" to "работихте",
+                    "Те" to "работиха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "работал",
+                    "Ти" to "работал",
+                    "Той" to "работал",
+                    "Ние" to "работали",
+                    "Вие" to "работали",
+                    "Те" to "работали"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "учих",
+                    "Ти" to "учи",
+                    "Той" to "учи",
+                    "Ние" to "учихме",
+                    "Вие" to "учихте",
+                    "Те" to "учиха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "учился",
+                    "Ти" to "учился",
+                    "Той" to "учился",
+                    "Ние" to "учились",
+                    "Вие" to "учились",
+                    "Те" to "учились"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "говорих",
+                    "Ти" to "говори",
+                    "Той" to "говори",
+                    "Ние" to "говорихме",
+                    "Вие" to "говорихте",
+                    "Те" to "говориха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "говорил",
+                    "Ти" to "говорил",
+                    "Той" to "говорил",
+                    "Ние" to "говорили",
+                    "Вие" to "говорили",
+                    "Те" to "говорили"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "видях",
+                    "Ти" to "видя",
+                    "Той" to "видя",
+                    "Ние" to "видяхме",
+                    "Вие" to "видяхте",
+                    "Те" to "видяха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "видел",
+                    "Ти" to "видел",
+                    "Той" to "видел",
+                    "Ние" to "видели",
+                    "Вие" to "видели",
+                    "Те" to "видели"
+                )
+            ),
+            Lesson3VerbAsset(
+                past = mapOf(
+                    "Аз" to "исках",
+                    "Ти" to "иска",
+                    "Той" to "иска",
+                    "Ние" to "искахме",
+                    "Вие" to "искахте",
+                    "Те" to "искаха"
+                ),
+                ruPast = mapOf(
+                    "Аз" to "хотел",
+                    "Ти" to "хотел",
+                    "Той" to "хотел",
+                    "Ние" to "хотели",
+                    "Вие" to "хотели",
+                    "Те" to "хотели"
+                )
+            )
+        ),
+        lesson7Templates = listOf(
+            LessonTemplateAsset("Это моя книга", listOf("Това", "е", "моята", "книга"), "💡 притяжательная форма с артиклем"),
+            LessonTemplateAsset("Это мой друг", listOf("Това", "е", "моят", "приятел"), "💡 форма зависит от рода существительного"),
+            LessonTemplateAsset("Это твоя книга", listOf("Това", "е", "твоята", "книга"), "💡 притяжательная форма с артиклем"),
+            LessonTemplateAsset("Это наш ребёнок", listOf("Това", "е", "нашето", "дете"), "💡 форма зависит от рода существительного"),
+            LessonTemplateAsset("Это наши книги", listOf("Това", "са", "нашите", "книги"), "💡 множественное число"),
+            LessonTemplateAsset("У меня есть моя книга", listOf("Аз", "имам", "моята", "книга"), "💡 полная живая фраза"),
+            LessonTemplateAsset("Я вижу свою книгу", listOf("Аз", "виждам", "моята", "книга"), "💡 полная живая фраза"),
+            LessonTemplateAsset("Я беру свою книгу", listOf("Аз", "взимам", "моята", "книга"), "💡 взимам = беру"),
+            LessonTemplateAsset("Мы любим нашего ребёнка", listOf("Ние", "обичаме", "нашето", "дете"), "💡 обичам = люблю"),
+            LessonTemplateAsset("Я даю тебе свою книгу", listOf("Давам", "ти", "моята", "книга"), "💡 в болгарском \"тебе\" часто ставится перед объектом"),
+            LessonTemplateAsset("Я даю тебе книгу", listOf("Давам", "ти", "книгата"), "💡 давать кому-то"),
+            LessonTemplateAsset("Ты видишь своего друга", listOf("Ти", "виждаш", "своя", "приятел"), "💡 для собственного объекта естественнее своя / свой")
+        ),
+        lesson8Templates = listOf(
+            LessonTemplateAsset("Он старше меня", listOf("Той", "е", "по-стар", "от", "мен"), "💡 сравнение: по- + прилагательное + от"),
+            LessonTemplateAsset("Я младше его", listOf("Аз", "съм", "по-млад", "от", "него"), "💡 сравнение: по- + прилагательное + от"),
+            LessonTemplateAsset("Эта книга интереснее той", listOf("Тази", "книга", "е", "по-интересна", "от", "онази"), "💡 \"от\" означает «чем»"),
+            LessonTemplateAsset("Моя машина быстрее твоей", listOf("Моята", "кола", "е", "по-бърза", "от", "твоята"), "💡 полное сравнение в живой фразе"),
+            LessonTemplateAsset("Наш дом больше вашего", listOf("Нашата", "къща", "е", "по-голяма", "от", "вашата"), "💡 полное сравнение в живой фразе"),
+            LessonTemplateAsset("Мой брат выше меня", listOf("Моят", "брат", "е", "по-висок", "от", "мен"), "💡 сравнение: по- + прилагательное + от"),
+            LessonTemplateAsset("Телефон дороже часов", listOf("Телефонът", "е", "по-скъп", "от", "часовника"), "💡 сравнение предметов"),
+            LessonTemplateAsset("Книга лучше фильма", listOf("Книгата", "е", "по-добра", "от", "филма"), "💡 добър → по-добър"),
+            LessonTemplateAsset("Это лучшая книга", listOf("Това", "е", "най-добрата", "книга"), "💡 превосходная степень: най- + прилагательное"),
+            LessonTemplateAsset("Он лучший ученик", listOf("Той", "е", "най-добрият", "ученик"), "💡 превосходная степень: най- + прилагательное"),
+            LessonTemplateAsset("Это самая дорогая машина", listOf("Това", "е", "най-скъпата", "кола"), "💡 с превосходной степенью обычно нужен артикль"),
+            LessonTemplateAsset("Это самый красивый дом", listOf("Това", "е", "най-красивият", "дом"), "💡 с превосходной степенью обычно нужен артикль"),
+            LessonTemplateAsset("Это самый интересный фильм", listOf("Това", "е", "най-интересният", "филм"), "💡 с превосходной степенью обычно нужен артикль"),
+            LessonTemplateAsset("Это лучший день", listOf("Това", "е", "най-добрият", "ден"), "💡 най- = самый"),
+            LessonTemplateAsset("Это лучший день в моей жизни", listOf("Това", "е", "най-хубавият", "ден", "в", "живота", "ми"), "💡 длинное полное предложение")
+        )
+    )
+}

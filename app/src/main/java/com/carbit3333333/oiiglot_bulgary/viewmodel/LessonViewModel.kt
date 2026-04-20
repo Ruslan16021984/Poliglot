@@ -1,15 +1,18 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import com.carbit3333333.oiiglot_bulgary.data.LessonRepository
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class LessonViewModel : ViewModel() {
+class LessonViewModel(
+    application: Application
+) : AndroidViewModel(application) {
 
-    private val repository = LessonRepository()
+    private val repository = LessonRepository(application)
 
     private val _uiState = MutableStateFlow(LessonUiState())
     val uiState: StateFlow<LessonUiState> = _uiState.asStateFlow()

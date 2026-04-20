@@ -1,80 +1,52 @@
 package com.carbit3333333.oiiglot_bulgary
 
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionRepository
+import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class LessonSessionRepositoryTest {
 
+    private val repository = LessonSessionRepository()
+
     @Test
-    fun `generate and print 10 lesson 1 exercises`() {
-        val repository = LessonSessionRepository()
+    fun `lesson 1 session builds complete exercises`() {
         val session = repository.getLessonSession(1)
 
-        println("\n=== LESSON 1: First 10 exercises ===\n")
-
-        session.exercises.take(10).forEachIndexed { index, exercise ->
-            println("📝 Exercise ${index + 1}")
-            println("   Russian: ${exercise.sourceText}")
-            println("   Instruction: ${exercise.instruction}")
-            println("   ✅ Correct answer: ${exercise.correctAnswerWords.joinToString(" ")}")
-            println("   📦 Available words (${exercise.availableWords.size}): ${exercise.availableWords.joinToString(", ")}")
-
-            // Check if all correct words are in available words
-            val missingWords = exercise.correctAnswerWords.filterNot { it in exercise.availableWords }
-            if (missingWords.isNotEmpty()) {
-                println("   ❌ ERROR: Missing words in available: $missingWords")
-            } else {
-                println("   ✓ All correct words are available")
-            }
-            println()
-        }
+        assertEquals(100, session.exercises.size)
+        assertTrue(session.exercises.all(::isValidExercise))
     }
 
     @Test
-    fun `generate and print 10 lesson 2 exercises`() {
-        val repository = LessonSessionRepository()
-        val session = repository.getLessonSession(2)
-
-        println("\n=== LESSON 2: First 10 exercises ===\n")
-
-        session.exercises.take(10).forEachIndexed { index, exercise ->
-            println("📝 Exercise ${index + 1}")
-            println("   Russian: ${exercise.sourceText}")
-            println("   Instruction: ${exercise.instruction}")
-            println("   ✅ Correct answer: ${exercise.correctAnswerWords.joinToString(" ")}")
-            println("   📦 Available words (${exercise.availableWords.size}): ${exercise.availableWords.joinToString(", ")}")
-
-            val missingWords = exercise.correctAnswerWords.filterNot { it in exercise.availableWords }
-            if (missingWords.isNotEmpty()) {
-                println("   ❌ ERROR: Missing words in available: $missingWords")
-            } else {
-                println("   ✓ All correct words are available")
-            }
-            println()
-        }
-    }
-
-    @Test
-    fun `generate and print 10 lesson 3 exercises`() {
-        val repository = LessonSessionRepository()
+    fun `lesson 3 session uses migrated json data`() {
         val session = repository.getLessonSession(3)
 
-        println("\n=== LESSON 3: First 10 exercises ===\n")
+        assertEquals(100, session.exercises.size)
+        assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(session.exercises.any { "не" in it.correctAnswerWords })
+    }
 
-        session.exercises.take(10).forEachIndexed { index, exercise ->
-            println("📝 Exercise ${index + 1}")
-            println("   Russian: ${exercise.sourceText}")
-            println("   Instruction: ${exercise.instruction}")
-            println("   ✅ Correct answer: ${exercise.correctAnswerWords.joinToString(" ")}")
-            println("   📦 Available words (${exercise.availableWords.size}): ${exercise.availableWords.joinToString(", ")}")
+    @Test
+    fun `lesson 7 and 8 sessions use migrated template content`() {
+        val lesson7 = repository.getLessonSession(7)
+        val lesson8 = repository.getLessonSession(8)
 
-            val missingWords = exercise.correctAnswerWords.filterNot { it in exercise.availableWords }
-            if (missingWords.isNotEmpty()) {
-                println("   ❌ ERROR: Missing words in available: $missingWords")
-            } else {
-                println("   ✓ All correct words are available")
-            }
-            println()
-        }
+        assertEquals(60, lesson7.exercises.size)
+        assertEquals(60, lesson8.exercises.size)
+        assertTrue(lesson7.exercises.all(::isValidExercise))
+        assertTrue(lesson8.exercises.all(::isValidExercise))
+        assertTrue(lesson7.exercises.any { it.sourceText.contains("своего друга") })
+        assertTrue(lesson8.exercises.any { it.sourceText.contains("лучший день") })
+    }
+
+    private fun isValidExercise(exercise: LessonExercise): Boolean {
+        assertTrue(exercise.sourceText.isNotBlank())
+        assertEquals("Переведите предложение", exercise.instruction)
+        assertFalse(exercise.correctAnswerWords.isEmpty())
+        assertEquals(8, exercise.availableWords.size)
+        assertTrue(exercise.correctAnswerWords.distinct().all { it in exercise.availableWords })
+        return true
     }
 }

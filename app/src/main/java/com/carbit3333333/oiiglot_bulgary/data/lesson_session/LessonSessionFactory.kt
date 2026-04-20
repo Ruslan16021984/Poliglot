@@ -9,7 +9,10 @@ import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson8R
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 
 internal object LessonSessionFactory {
-    fun create(lessonId: Int): LessonSession {
+    fun create(
+        lessonId: Int,
+        assets: LessonSessionAssets
+    ): LessonSession {
         return when (lessonId) {
             1 -> LessonSession(
                 lessonId = 1,
@@ -26,13 +29,16 @@ internal object LessonSessionFactory {
             3 -> LessonSession(
                 lessonId = 3,
                 lessonTitle = "Прошедшее время",
-                exercises = generateLesson3Exercises()
+                exercises = generateLesson3Exercises(
+                    subjectRuMap = assets.lesson3SubjectRu,
+                    verbs = assets.lesson3Verbs
+                )
             )
 
             4 -> LessonSession(
                 lessonId = 4,
                 lessonTitle = "Предмет или действие",
-                exercises = generateLesson4Exercises()
+                exercises = generateLesson4Exercises(assets.lesson4Items)
             )
 
             5 -> LessonSession(
@@ -50,13 +56,13 @@ internal object LessonSessionFactory {
             7 -> LessonSession(
                 lessonId = 7,
                 lessonTitle = "Моя книга: местоимения и артикль",
-                exercises = Lesson7RealGenerator.generateExercises()
+                exercises = Lesson7RealGenerator.generateExercises(assets.lesson7Templates)
             )
 
             8 -> LessonSession(
                 lessonId = 8,
                 lessonTitle = "Сравнение",
-                exercises = Lesson8RealGenerator.generateExercises()
+                exercises = Lesson8RealGenerator.generateExercises(assets.lesson8Templates)
             )
 
             else -> LessonSession(

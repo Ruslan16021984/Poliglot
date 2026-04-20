@@ -20,7 +20,7 @@ class LessonSessionViewModel(
 ) : AndroidViewModel(application) {
 
     private var currentLessonId: Int = 0
-    private val repository = LessonSessionRepository()
+    private val repository = LessonSessionRepository(application)
     private val progressStore = LessonProgressStore(application)
     private val sessionStore = LessonSessionStore(application)
 

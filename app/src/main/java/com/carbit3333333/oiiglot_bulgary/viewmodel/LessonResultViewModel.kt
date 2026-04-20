@@ -17,8 +17,8 @@ class LessonResultViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
-    private val sessionRepository = LessonSessionRepository()
-    private val lessonRepository = LessonRepository()
+    private val sessionRepository = LessonSessionRepository(application)
+    private val lessonRepository = LessonRepository(application)
     private val progressStore = LessonProgressStore(application)
 
     private val _uiState = MutableStateFlow(LessonResultUiState())

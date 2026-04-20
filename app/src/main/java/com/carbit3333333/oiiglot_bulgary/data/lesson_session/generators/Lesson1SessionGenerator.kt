@@ -10,22 +10,22 @@ internal fun generateLesson1Exercises(): List<LessonExercise> {
 
 internal fun generateLesson1Exercise(id: Int): LessonExercise {
     val sentenceType = randomLesson1SentenceType()
-    val verb = verbs.random()
+    val verb = lesson1LegacyVerbs.random()
 
     val subject = when (sentenceType) {
         Lesson1SentenceType.PRESENT,
         Lesson1SentenceType.PRESENT_NEGATIVE,
         Lesson1SentenceType.FUTURE,
-        Lesson1SentenceType.FUTURE_NEGATIVE -> subjects.random()
+        Lesson1SentenceType.FUTURE_NEGATIVE -> lesson1Subjects.random()
 
         Lesson1SentenceType.PRESENT_QUESTION,
-        Lesson1SentenceType.FUTURE_QUESTION -> questionSubjects.random()
+        Lesson1SentenceType.FUTURE_QUESTION -> lesson1QuestionSubjects.random()
     }
 
     val bgVerb = verb.present.getValue(subject)
-    val ruSubject = subjectRu.getValue(subject)
+    val ruSubject = lesson1SubjectRu.getValue(subject)
     val ruVerb = verb.ruPresent.getValue(subject)
-    val ruFutureVerb = ruFuture.getValue(subject)
+    val ruFutureVerb = lesson1RuFuture.getValue(subject)
 
     val correctWords = when (sentenceType) {
         Lesson1SentenceType.PRESENT -> listOf(subject, bgVerb)
@@ -80,9 +80,9 @@ internal fun randomLesson1SentenceType(): Lesson1SentenceType {
 
 internal fun buildLesson1Distractors(correctWords: List<String>): List<String> {
     val pool = (
-            subjects +
+            lesson1Subjects +
                     listOf("ли", "не", "ще", "няма", "да") +
-                    verbs.flatMap { it.present.values }
+                    lesson1LegacyVerbs.flatMap { it.present.values }
             ).distinct()
 
     val distractors = pool

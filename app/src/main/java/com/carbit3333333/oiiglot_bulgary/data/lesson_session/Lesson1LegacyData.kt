@@ -1,65 +1,25 @@
 package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 
-import com.carbit3333333.oiiglot_bulgary.model.Lesson4Item
 import com.carbit3333333.oiiglot_bulgary.model.VerbForms
 
-internal const val mustForm = "трябва"
-
 internal enum class Lesson1SentenceType {
-PRESENT,
-PRESENT_QUESTION,
-PRESENT_NEGATIVE,
-FUTURE,
-FUTURE_QUESTION,
-FUTURE_NEGATIVE
+    PRESENT,
+    PRESENT_QUESTION,
+    PRESENT_NEGATIVE,
+    FUTURE,
+    FUTURE_QUESTION,
+    FUTURE_NEGATIVE
 }
 
-internal enum class Lesson2SentenceType {
-PRESENT,
-QUESTION,
-NEGATIVE,
-THIS_IS,
-THIS_IS_QUESTION,
-THIS_IS_NEGATIVE
-}
-
-internal enum class Lesson3SentenceType {
-PAST,
-PAST_NEGATIVE
-}
-
-internal enum class Lesson5SentenceType {
-POSITIVE,
-NEGATIVE,
-QUESTION
-}
-
-internal enum class Lesson5ModalType {
-CAN,
-WANT,
-MUST
-}
-
-internal data class Lesson8Template(
-val ru: String,
-val correctWords: List<String>
-)
-
-internal data class Lesson7Template(
-val ru: String,
-val correctWords: List<String>
-)
-
-
-internal val subjects = listOf(
+internal val lesson1Subjects = listOf(
     "Аз", "Ти", "Той", "Ние", "Вие", "Те"
 )
 
-internal val questionSubjects = listOf(
+internal val lesson1QuestionSubjects = listOf(
     "Ти", "Той", "Вие", "Те"
 )
 
-internal val subjectRu = mapOf(
+internal val lesson1SubjectRu = mapOf(
     "Аз" to "Я",
     "Ти" to "Ты",
     "Той" to "Он",
@@ -68,7 +28,7 @@ internal val subjectRu = mapOf(
     "Те" to "Они"
 )
 
-internal val ruFuture = mapOf(
+internal val lesson1RuFuture = mapOf(
     "Аз" to "буду",
     "Ти" to "будешь",
     "Той" to "будет",
@@ -77,64 +37,7 @@ internal val ruFuture = mapOf(
     "Те" to "будут"
 )
 
-internal val sumForms = mapOf(
-    "Аз" to "съм",
-    "Ти" to "си",
-    "Той" to "е",
-    "Ние" to "сме",
-    "Вие" to "сте",
-    "Те" to "са"
-)
-
-internal val complementsBg = listOf(
-    "студент",
-    "учител",
-    "лекар",
-    "приятел",
-    "дете",
-    "вкъщи",
-    "тук",
-    "на работа",
-    "в училище",
-    "в града"
-)
-
-internal val complementsRu = mapOf(
-    "студент" to "студент",
-    "учител" to "учитель",
-    "лекар" to "врач",
-    "приятел" to "друг",
-    "дете" to "ребёнок",
-    "вкъщи" to "дома",
-    "тук" to "здесь",
-    "на работа" to "на работе",
-    "в училище" to "в школе",
-    "в града" to "в городе"
-)
-
-internal val objectNounsBg = listOf(
-    "книга",
-    "кафе",
-    "вода",
-    "хляб",
-    "училище",
-    "телефон",
-    "чай",
-    "сок"
-)
-
-internal val objectNounsRu = mapOf(
-    "книга" to "книга",
-    "кафе" to "кофе",
-    "вода" to "вода",
-    "хляб" to "хлеб",
-    "училище" to "школа",
-    "телефон" to "телефон",
-    "чай" to "чай",
-    "сок" to "сок"
-)
-
-internal val verbs = listOf(
+internal val lesson1LegacyVerbs = listOf(
     VerbForms(
         infinitive = "правя",
         present = mapOf(
@@ -485,244 +388,4 @@ internal val verbs = listOf(
             "Те" to "хотели"
         )
     )
-)
-
-internal val lesson4Items = listOf(
-    Lesson4Item(Lesson4Item.Type.NOUN, "книга", listOf("книга")),
-    Lesson4Item(Lesson4Item.Type.NOUN, "эта книга", listOf("книгата")),
-    Lesson4Item(Lesson4Item.Type.NOUN, "женщина", listOf("жена")),
-    Lesson4Item(Lesson4Item.Type.NOUN, "эта женщина", listOf("жената")),
-    Lesson4Item(Lesson4Item.Type.NOUN, "ребёнок", listOf("дете")),
-    Lesson4Item(Lesson4Item.Type.NOUN, "этот ребёнок", listOf("детето")),
-    Lesson4Item(Lesson4Item.Type.VERB, "есть", listOf("да", "ям")),
-    Lesson4Item(Lesson4Item.Type.VERB, "пить", listOf("да", "пия")),
-    Lesson4Item(Lesson4Item.Type.VERB, "я хочу есть", listOf("Аз", "искам", "да", "ям")),
-    Lesson4Item(Lesson4Item.Type.VERB, "я хочу пить", listOf("Аз", "искам", "да", "пия")),
-    Lesson4Item(Lesson4Item.Type.NOUN, "я хочу книгу", listOf("Аз", "искам", "книга")),
-    Lesson4Item(Lesson4Item.Type.NOUN, "я хочу эту книгу", listOf("Аз", "искам", "книгата"))
-)
-
-internal val lesson5Subjects = listOf(
-    "Аз", "Ти", "Той", "Ние", "Вие", "Те"
-)
-
-internal val lesson5SubjectRu = mapOf(
-    "Аз" to "я",
-    "Ти" to "ты",
-    "Той" to "он",
-    "Ние" to "мы",
-    "Вие" to "вы",
-    "Те" to "они"
-)
-
-internal val canForms = mapOf(
-    "Аз" to "мога",
-    "Ти" to "можеш",
-    "Той" to "може",
-    "Ние" to "можем",
-    "Вие" to "можете",
-    "Те" to "могат"
-)
-
-internal val canRuForms = mapOf(
-    "Аз" to "могу",
-    "Ти" to "можешь",
-    "Той" to "может",
-    "Ние" to "можем",
-    "Вие" to "можете",
-    "Те" to "могут"
-)
-
-internal val wantForms = mapOf(
-    "Аз" to "искам",
-    "Ти" to "искаш",
-    "Той" to "иска",
-    "Ние" to "искаме",
-    "Вие" to "искате",
-    "Те" to "искат"
-)
-
-internal val wantRuForms = mapOf(
-    "Аз" to "хочу",
-    "Ти" to "хочешь",
-    "Той" to "хочет",
-    "Ние" to "хотим",
-    "Вие" to "хотите",
-    "Те" to "хотят"
-)
-
-internal val mustRuForms = mapOf(
-    "Аз" to "мне нужно",
-    "Ти" to "тебе нужно",
-    "Той" to "ему нужно",
-    "Ние" to "нам нужно",
-    "Вие" to "вам нужно",
-    "Те" to "им нужно"
-)
-
-internal val lesson5ObjectsByInfinitive = mapOf(
-    "ям" to listOf("хляб" to "хлеб"),
-    "пия" to listOf(
-        "вода" to "воду",
-        "кафе" to "кофе"
-    ),
-    "гледам" to listOf("телевизия" to "телевизор"),
-    "уча" to listOf("български" to "болгарский")
-)
-
-internal val lesson6Prepositions = listOf(
-    "в",
-    "на",
-    "с",
-    "при"
-)
-
-internal val lesson6PlacesByPreposition = mapOf(
-    "в" to listOf(
-        "града" to "в городе",
-        "училище" to "в школе",
-        "къщата" to "в доме"
-    ),
-    "на" to listOf(
-        "работа" to "на работе"
-    ),
-    "с" to listOf(
-        "приятеля" to "с другом",
-        "учителя" to "с учителем"
-    ),
-    "при" to listOf(
-        "лекаря" to "у врача"
-    )
-)
-
-internal val lesson7Templates = listOf(
-    Lesson7Template(
-        ru = "Это моя книга",
-        correctWords = listOf("Това", "е", "моята", "книга")
-    ),
-    Lesson7Template(
-        ru = "Это мой друг",
-        correctWords = listOf("Това", "е", "моят", "приятел")
-    ),
-    Lesson7Template(
-        ru = "Это наш ребёнок",
-        correctWords = listOf("Това", "е", "нашето", "дете")
-    ),
-    Lesson7Template(
-        ru = "Это наши книги",
-        correctWords = listOf("Това", "са", "нашите", "книги")
-    ),
-    Lesson7Template(
-        ru = "У меня есть моя книга",
-        correctWords = listOf("Аз", "имам", "моята", "книга")
-    ),
-    Lesson7Template(
-        ru = "У меня есть эта книга",
-        correctWords = listOf("Аз", "имам", "книгата")
-    ),
-    Lesson7Template(
-        ru = "Я беру свою книгу",
-        correctWords = listOf("Аз", "взимам", "моята", "книга")
-    ),
-    Lesson7Template(
-        ru = "Я вижу свою книгу",
-        correctWords = listOf("Аз", "виждам", "моята", "книга")
-    ),
-    Lesson7Template(
-        ru = "Мы любим нашего ребёнка",
-        correctWords = listOf("Ние", "обичаме", "нашето", "дете")
-    ),
-    Lesson7Template(
-        ru = "Я даю тебе свою книгу",
-        correctWords = listOf("Давам", "ти", "моята", "книга")
-    ),
-    Lesson7Template(
-        ru = "Я даю тебе книгу",
-        correctWords = listOf("Давам", "ти", "книгата")
-    ),
-    Lesson7Template(
-        ru = "Это эта книга",
-        correctWords = listOf("Това", "е", "книгата")
-    )
-)
-
-internal val lesson7WordPool = listOf(
-    "Това", "е", "са",
-    "Аз", "Ние", "ти",
-    "имам", "взимам", "виждам", "обичаме", "Давам",
-    "моя", "моята", "моят", "наше", "нашето", "нашите",
-    "книга", "книгата", "приятел", "дете", "книги"
-)
-
-internal val lesson8Templates = listOf(
-    Lesson8Template(
-        ru = "Он старше меня",
-        correctWords = listOf("Той", "е", "по-стар", "от", "мен")
-    ),
-    Lesson8Template(
-        ru = "Я младше его",
-        correctWords = listOf("Аз", "съм", "по-млад", "от", "него")
-    ),
-    Lesson8Template(
-        ru = "Эта книга интереснее той",
-        correctWords = listOf("Тази", "книга", "е", "по-интересна", "от", "онази")
-    ),
-    Lesson8Template(
-        ru = "Моя машина быстрее твоей",
-        correctWords = listOf("Моята", "кола", "е", "по-бърза", "от", "твоята")
-    ),
-    Lesson8Template(
-        ru = "Наш дом больше вашего",
-        correctWords = listOf("Нашата", "къща", "е", "по-голяма", "от", "вашата")
-    ),
-    Lesson8Template(
-        ru = "Мой брат выше меня",
-        correctWords = listOf("Моят", "брат", "е", "по-висок", "от", "мен")
-    ),
-    Lesson8Template(
-        ru = "Телефон дороже часов",
-        correctWords = listOf("Телефонът", "е", "по-скъп", "от", "часовника")
-    ),
-    Lesson8Template(
-        ru = "Книга лучше фильма",
-        correctWords = listOf("Книгата", "е", "по-добра", "от", "филма")
-    ),
-    Lesson8Template(
-        ru = "Это лучшая книга",
-        correctWords = listOf("Това", "е", "най-добрата", "книга")
-    ),
-    Lesson8Template(
-        ru = "Он лучший ученик",
-        correctWords = listOf("Той", "е", "най-добрият", "ученик")
-    ),
-    Lesson8Template(
-        ru = "Это самая дорогая машина",
-        correctWords = listOf("Това", "е", "най-скъпата", "кола")
-    ),
-    Lesson8Template(
-        ru = "Это самый красивый дом",
-        correctWords = listOf("Това", "е", "най-красивият", "дом")
-    ),
-    Lesson8Template(
-        ru = "Это самый интересный фильм",
-        correctWords = listOf("Това", "е", "най-интересният", "филм")
-    ),
-    Lesson8Template(
-        ru = "Это лучший день",
-        correctWords = listOf("Това", "е", "най-добрият", "ден")
-    ),
-    Lesson8Template(
-        ru = "Это лучший день в моей жизни",
-        correctWords = listOf("Това", "е", "най-хубавият", "ден", "в", "живота", "ми")
-    )
-)
-
-internal val lesson8WordPool = listOf(
-    "Това", "Той", "Аз", "Тази",
-    "е", "съм", "от", "в",
-    "мен", "него", "ми",
-    "по-стар", "по-млад", "по-интересна", "по-бърза", "по-голяма", "по-висок", "по-скъп", "по-добра",
-    "най-добрата", "най-добрият", "най-скъпата", "най-красивият", "най-интересният", "най-хубавият",
-    "книга", "книгата", "кола", "къща", "дом", "брат", "ученик", "часовника", "филма", "филм", "ден", "живота",
-    "Моята", "твоята", "Нашата", "вашата", "Телефонът", "Моят", "онази"
 )

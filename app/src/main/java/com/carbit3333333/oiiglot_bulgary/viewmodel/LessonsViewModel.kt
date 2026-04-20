@@ -16,7 +16,7 @@ class LessonsViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
-    private val repository = LessonRepository()
+    private val repository = LessonRepository(application)
     private val progressStore = LessonProgressStore(application)
 
     private val _uiState = MutableStateFlow(LessonsUiState(isLoading = true))
