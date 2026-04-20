@@ -67,6 +67,23 @@ internal fun generateLesson3Exercise(
         sourceText = sourceText,
         correctWords = correctWords,
         distractorPool = distractorPool,
-        hint = buildHint(correctWords)
+        hint = buildLesson3Hint(type, subject)
     )
+}
+
+private fun buildLesson3Hint(
+    sentenceType: Lesson3SentenceType,
+    subject: String
+): String {
+    if (sentenceType == Lesson3SentenceType.PAST_NEGATIVE) {
+        return "💡 \"не\" ставится перед формой прошедшего времени"
+    }
+
+    return when (subject) {
+        "Аз" -> "💡 прошедшее время: форма для \"аз\" часто заканчивается на -х"
+        "Ние" -> "💡 прошедшее время: форма для \"ние\" часто заканчивается на -хме"
+        "Вие" -> "💡 прошедшее время: форма для \"вие\" часто заканчивается на -хте"
+        "Те" -> "💡 прошедшее время: форма для \"те\" часто заканчивается на -ха"
+        else -> "💡 формы для \"ти\" и \"той\" часто лучше запоминать целиком"
+    }
 }

@@ -70,7 +70,7 @@ object Lesson6RealGenerator {
 
         val hint = when {
             template.bgPattern.any { it == LessonRealSentenceGenerator.Token.Fixed("ли") } ->
-                "💡 вопрос: место + ли + съм"
+                "💡 вопрос: место + ли + форма на \"съм\""
             template.bgPattern.any { it == LessonRealSentenceGenerator.Token.Fixed("не") } ->
                 "💡 отрицание: не + форма на \"съм\""
             else ->

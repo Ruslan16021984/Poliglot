@@ -90,8 +90,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "правиха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "делал",
-                    "Ти" to "делал",
+                    "Аз" to "делал(а)",
+                    "Ти" to "делал(а)",
                     "Той" to "делал",
                     "Ние" to "делали",
                     "Вие" to "делали",
@@ -108,8 +108,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "гледаха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "смотрел",
-                    "Ти" to "смотрел",
+                    "Аз" to "смотрел(а)",
+                    "Ти" to "смотрел(а)",
                     "Той" to "смотрел",
                     "Ние" to "смотрели",
                     "Вие" to "смотрели",
@@ -126,8 +126,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "отиваха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "шёл",
-                    "Ти" to "шёл",
+                    "Аз" to "шёл / шла",
+                    "Ти" to "шёл(шла)",
                     "Той" to "шёл",
                     "Ние" to "шли",
                     "Вие" to "шли",
@@ -144,8 +144,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "ядоха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "ел",
-                    "Ти" to "ел",
+                    "Аз" to "ел / ела",
+                    "Ти" to "ел(а)",
                     "Той" to "ел",
                     "Ние" to "ели",
                     "Вие" to "ели",
@@ -162,8 +162,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "пиха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "пил",
-                    "Ти" to "пил",
+                    "Аз" to "пил(а)",
+                    "Ти" to "пил(а)",
                     "Той" to "пил",
                     "Ние" to "пили",
                     "Вие" to "пили",
@@ -180,8 +180,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "работиха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "работал",
-                    "Ти" to "работал",
+                    "Аз" to "работал(а)",
+                    "Ти" to "работал(а)",
                     "Той" to "работал",
                     "Ние" to "работали",
                     "Вие" to "работали",
@@ -198,8 +198,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "учиха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "учился",
-                    "Ти" to "учился",
+                    "Аз" to "учился / училась",
+                    "Ти" to "учился(лась)",
                     "Той" to "учился",
                     "Ние" to "учились",
                     "Вие" to "учились",
@@ -216,8 +216,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "говориха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "говорил",
-                    "Ти" to "говорил",
+                    "Аз" to "говорил(а)",
+                    "Ти" to "говорил(а)",
                     "Той" to "говорил",
                     "Ние" to "говорили",
                     "Вие" to "говорили",
@@ -234,8 +234,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "видяха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "видел",
-                    "Ти" to "видел",
+                    "Аз" to "видел(а)",
+                    "Ти" to "видел(а)",
                     "Той" to "видел",
                     "Ние" to "видели",
                     "Вие" to "видели",
@@ -252,8 +252,8 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                     "Те" to "искаха"
                 ),
                 ruPast = mapOf(
-                    "Аз" to "хотел",
-                    "Ти" to "хотел",
+                    "Аз" to "хотел(а)",
+                    "Ти" to "хотел(а)",
                     "Той" to "хотел",
                     "Ние" to "хотели",
                     "Вие" to "хотели",
@@ -282,7 +282,7 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
             LessonTemplateAsset("Моя машина быстрее твоей", listOf("Моята", "кола", "е", "по-бърза", "от", "твоята"), "💡 полное сравнение в живой фразе"),
             LessonTemplateAsset("Наш дом больше вашего", listOf("Нашата", "къща", "е", "по-голяма", "от", "вашата"), "💡 полное сравнение в живой фразе"),
             LessonTemplateAsset("Мой брат выше меня", listOf("Моят", "брат", "е", "по-висок", "от", "мен"), "💡 сравнение: по- + прилагательное + от"),
-            LessonTemplateAsset("Телефон дороже часов", listOf("Телефонът", "е", "по-скъп", "от", "часовника"), "💡 сравнение предметов"),
+            LessonTemplateAsset("Телефон дороже, чем часы", listOf("Телефонът", "е", "по-скъп", "от", "часовника"), "💡 сравнение предметов"),
             LessonTemplateAsset("Книга лучше фильма", listOf("Книгата", "е", "по-добра", "от", "филма"), "💡 добър → по-добър"),
             LessonTemplateAsset("Это лучшая книга", listOf("Това", "е", "най-добрата", "книга"), "💡 превосходная степень: най- + прилагательное"),
             LessonTemplateAsset("Он лучший ученик", listOf("Той", "е", "най-добрият", "ученик"), "💡 превосходная степень: най- + прилагательное"),

@@ -26,6 +26,13 @@ class LessonSessionRepositoryTest {
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(session.exercises.any { "не" in it.correctAnswerWords })
+        assertTrue(
+            session.exercises.any {
+                it.sourceText.contains("(а)") ||
+                    it.sourceText.contains(" / шла") ||
+                    it.sourceText.contains("(лась)")
+            }
+        )
     }
 
     @Test
