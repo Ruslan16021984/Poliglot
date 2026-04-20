@@ -1,5 +1,11 @@
 package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson1RealGenerator
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson2RealGenerator
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson5RealGenerator
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson6RealGenerator
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson7RealGenerator
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson8RealGenerator
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 
 internal object LessonSessionFactory {
@@ -8,13 +14,13 @@ internal object LessonSessionFactory {
             1 -> LessonSession(
                 lessonId = 1,
                 lessonTitle = "Урок 1",
-                exercises = generateLesson1Exercises()
+                exercises = Lesson1RealGenerator.generateExercises()
             )
 
             2 -> LessonSession(
                 lessonId = 2,
                 lessonTitle = "Глагол \"съм\"",
-                exercises = generateLesson2Exercises()
+                exercises = Lesson2RealGenerator.generateExercises()
             )
 
             3 -> LessonSession(
@@ -32,25 +38,25 @@ internal object LessonSessionFactory {
             5 -> LessonSession(
                 lessonId = 5,
                 lessonTitle = "Могу, хочу, должен",
-                exercises = generateLesson5Exercises()
+                exercises = Lesson5RealGenerator.generateExercises()
             )
 
             6 -> LessonSession(
                 lessonId = 6,
                 lessonTitle = "Предлоги и существительные",
-                exercises = generateLesson6Exercises()
+                exercises = Lesson6RealGenerator.generateExercises()
             )
 
             7 -> LessonSession(
                 lessonId = 7,
                 lessonTitle = "Моя книга: местоимения и артикль",
-                exercises = generateLesson7Exercises()
+                exercises = Lesson7RealGenerator.generateExercises()
             )
 
             8 -> LessonSession(
                 lessonId = 8,
                 lessonTitle = "Сравнение",
-                exercises = generateLesson8Exercises()
+                exercises = Lesson8RealGenerator.generateExercises()
             )
 
             else -> LessonSession(
