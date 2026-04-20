@@ -70,6 +70,67 @@ class LessonSessionRepositoryTest {
         )
         assertTrue(session.exercises.any { it.sourceText.trim().endsWith("?") })
         assertTrue(session.exercises.any { "ли" in it.correctAnswerWords })
+        assertTrue(
+            session.exercises.any {
+                it.correctAnswerWords.containsAll(listOf("Ти", "виждаш", "ли")) ||
+                    it.correctAnswerWords.containsAll(listOf("Ти", "взимаш", "ли"))
+            }
+        )
+    }
+
+    @Test
+    fun `lesson 10 session builds time routine exercises`() {
+        val session = repository.getLessonSession(10)
+
+        assertEquals(60, session.exercises.size)
+        assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(
+            session.exercises.any {
+                it.sourceText.contains("понедельник") ||
+                    it.sourceText.contains("вторник") ||
+                    it.sourceText.contains("среду")
+            }
+        )
+        assertTrue(
+            session.exercises.any {
+                it.correctAnswerWords.any { word ->
+                    word in setOf("в", "във", "след", "преди", "от", "до", "сутрин", "вечер")
+                }
+            }
+        )
+        assertTrue(
+            session.exercises.any {
+                it.sourceText.contains("до пяти") ||
+                    it.sourceText.contains("до трёх") ||
+                    it.sourceText.contains("до двух")
+            }
+        )
+        assertTrue(
+            session.exercises.any {
+                it.sourceText.startsWith("Когда ") || it.sourceText.startsWith("Во сколько ")
+            }
+        )
+        assertTrue(
+            session.exercises.any {
+                it.correctAnswerWords.firstOrNull() == "Кога" ||
+                    it.correctAnswerWords.take(3) == listOf("В", "колко", "часа")
+            }
+        )
+    }
+
+    @Test
+    fun `lesson 10 session covers richer daily routine vocabulary`() {
+        val session = repository.getLessonSession(10)
+        val sourceTexts = session.exercises.map { it.sourceText }
+        val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
+
+        assertTrue(sourceTexts.any { it.contains("четверг") })
+        assertTrue(sourceTexts.any { it.contains("пятницу") })
+        assertTrue(sourceTexts.any { it.contains("Ночью") })
+        assertTrue(sourceTexts.any { it.contains("завтракаю") })
+        assertTrue(sourceTexts.any { it.contains("ужинаю") })
+        assertTrue(bgWords.contains("закусвам"))
+        assertTrue(bgWords.contains("вечерям"))
     }
 
     private fun isValidExercise(exercise: LessonExercise): Boolean {

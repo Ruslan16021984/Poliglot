@@ -8,7 +8,6 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import kotlinx.serialization.json.Json
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -25,17 +24,20 @@ class LessonJsonAssetsTest {
             readAssetText("lessons.json")
         )
 
-        assertEquals(9, lessons.size)
-        assertEquals((1..9).toList(), lessons.map { it.id })
+        assertEquals(10, lessons.size)
+        assertEquals((1..10).toList(), lessons.map { it.id })
         assertTrue(lessons.all { it.title.isNotBlank() })
         assertTrue(lessons.all { it.subtitle.isNotBlank() })
         assertTrue(lessons.all { it.theory.isNotEmpty() })
-        assertTrue(lessons.all { lesson ->
-            lesson.theory.all { block ->
-                !block.title.isNullOrBlank() && !block.text.isNullOrBlank()
+        assertTrue(
+            lessons.all { lesson ->
+                lesson.theory.all { block ->
+                    !block.title.isNullOrBlank() && !block.text.isNullOrBlank()
+                }
             }
-        })
+        )
         assertNotNull(lessons.find { it.id == 9 && it.title == "Урок 9" })
+        assertNotNull(lessons.find { it.id == 10 && it.title == "Урок 10" })
     }
 
     @Test
@@ -52,6 +54,14 @@ class LessonJsonAssetsTest {
         assertEquals(20, assets.lesson9Numbers.size)
         assertEquals(3, assets.lesson9Objects.size)
         assertEquals(5, assets.lesson9Templates.size)
+        assertEquals(17, assets.lesson10TimePhrases.size)
+        assertEquals(9, assets.lesson10RoutineActions.size)
+        assertEquals(3, assets.lesson10Intervals.size)
+        assertEquals(5, assets.lesson10IntervalActions.size)
+        assertEquals(2, assets.lesson10Templates.size)
+        assertEquals(2, assets.lesson10IntervalTemplates.size)
+        assertEquals(9, assets.lesson10QuestionActions.size)
+        assertEquals(2, assets.lesson10QuestionTemplates.size)
 
         assertTrue(assets.lesson3Verbs.all { it.past.keys == assets.lesson3SubjectRu.keys })
         assertTrue(assets.lesson3Verbs.all { it.ruPast.keys == assets.lesson3SubjectRu.keys })
@@ -70,12 +80,31 @@ class LessonJsonAssetsTest {
         )
         assertTrue(assets.lesson9Objects.all { it.singular.isNotBlank() && it.countForm.isNotBlank() })
         assertTrue(assets.lesson9Templates.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
+        assertTrue(assets.lesson10TimePhrases.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
+        assertTrue(assets.lesson10RoutineActions.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
+        assertTrue(assets.lesson10Intervals.all { it.bgFromTokens.isNotEmpty() && it.bgToTokens.isNotEmpty() })
+        assertTrue(assets.lesson10Templates.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
+        assertTrue(assets.lesson10IntervalTemplates.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
+        assertTrue(assets.lesson10QuestionActions.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
+        assertTrue(assets.lesson10QuestionTemplates.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
 
         assertNotNull(assets.lesson7Templates.find { it.ru == "Ты видишь своего друга" })
         assertNotNull(assets.lesson8Templates.find { it.ru == "Это самый прекрасный день в моей жизни" })
         assertNotNull(assets.lesson9Templates.find { it.ruTokens.contains("тебе") })
         assertNotNull(assets.lesson9Templates.find { it.ruTokens.lastOrNull() == "?" })
         assertNotNull(assets.lesson9Numbers.find { it.value == 20 })
+        assertNotNull(assets.lesson10TimePhrases.find { it.bgTokens.contains("във") })
+        assertNotNull(assets.lesson10TimePhrases.find { it.bgTokens.contains("след") })
+        assertNotNull(assets.lesson10TimePhrases.find { it.ruTokens.contains("четверг") })
+        assertNotNull(assets.lesson10TimePhrases.find { it.ruTokens.contains("Ночью") })
+        assertNotNull(assets.lesson10TimePhrases.find { it.ruTokens.contains("Перед") })
+        assertNotNull(assets.lesson10TimePhrases.find { it.ruTokens.contains("дня") })
+        assertNotNull(assets.lesson10RoutineActions.find { it.ruTokens.contains("завтракаю") })
+        assertNotNull(assets.lesson10RoutineActions.find { it.bgTokens.contains("вечерям") })
+        assertNotNull(assets.lesson10IntervalTemplates.find { it.ruTokens.contains("{from}") })
+        assertNotNull(assets.lesson10QuestionTemplates.find { it.ruTokens.contains("Когда") })
+        assertNotNull(assets.lesson10QuestionTemplates.find { it.bgTokens.contains("Кога") })
+        assertNotNull(assets.lesson10QuestionTemplates.find { it.bgTokens.contains("колко") })
     }
 
     private fun readAssetText(fileName: String): String {

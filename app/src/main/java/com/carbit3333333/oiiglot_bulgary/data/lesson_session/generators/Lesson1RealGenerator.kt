@@ -8,6 +8,7 @@ object Lesson1RealGenerator {
     private data class VerbLexeme(
         val formsBg: Map<String, String>,
         val formsRu: Map<String, String>,
+        val ruInfinitive: String,
         val objects: List<Pair<String, String>>
     )
 
@@ -96,6 +97,7 @@ object Lesson1RealGenerator {
                 "Вие" to "смотрите",
                 "Те" to "смотрят"
             ),
+            ruInfinitive = "смотреть",
             objects = listOf(
                 "телевизия" to "телевизор",
                 "филм" to "фильм"
@@ -118,6 +120,7 @@ object Lesson1RealGenerator {
                 "Вие" to "работаете",
                 "Те" to "работают"
             ),
+            ruInfinitive = "работать",
             objects = listOf(
                 "тук" to "здесь",
                 "в града" to "в городе",
@@ -141,9 +144,10 @@ object Lesson1RealGenerator {
                 "Вие" to "учитесь",
                 "Те" to "учатся"
             ),
+            ruInfinitive = "учиться",
             objects = listOf(
                 "в училище" to "в школе",
-                "български" to "болгарский"
+                "вкъщи" to "дома"
             )
         ),
         VerbLexeme(
@@ -163,9 +167,10 @@ object Lesson1RealGenerator {
                 "Вие" to "говорите",
                 "Те" to "говорят"
             ),
+            ruInfinitive = "говорить",
             objects = listOf(
-                "тук" to "здесь",
-                "български" to "по-болгарски"
+                "български" to "по-болгарски",
+                "бавно" to "медленно"
             )
         ),
         VerbLexeme(
@@ -185,6 +190,7 @@ object Lesson1RealGenerator {
                 "Вие" to "пьёте",
                 "Те" to "пьют"
             ),
+            ruInfinitive = "пить",
             objects = listOf(
                 "вода" to "воду",
                 "кафе" to "кофе",
@@ -202,7 +208,7 @@ object Lesson1RealGenerator {
         "говоря", "говориш", "говори", "говорим", "говорите", "говорят",
         "пия", "пиеш", "пие", "пием", "пиете", "пият",
         "телевизия", "филм", "тук", "в града", "на работа", "в училище",
-        "български", "вода", "кафе", "чай"
+        "вкъщи", "български", "бавно", "вода", "кафе", "чай"
     )
 
     fun generateExercises(): List<LessonExercise> {
@@ -210,10 +216,10 @@ object Lesson1RealGenerator {
     }
 
     private fun generateExercise(id: Int): LessonExercise {
-        val template = templates.random()
-        val subject = subjectRu.keys.random()
-        val verbLexeme = verbs.random()
-        val objectPair = verbLexeme.objects.random()
+        val template = templates[(id - 1) % templates.size]
+        val subject = subjectRu.keys.elementAt((id - 1) % subjectRu.size)
+        val verbLexeme = verbs[((id - 1) / subjectRu.size) % verbs.size]
+        val objectPair = verbLexeme.objects[((id - 1) / (subjectRu.size * verbs.size)) % verbLexeme.objects.size]
 
         val lexicon = LessonRealSentenceGenerator.Lexicon(
             subject = LessonRealSentenceGenerator.SubjectForms(
@@ -226,6 +232,14 @@ object Lesson1RealGenerator {
             ),
             objBg = objectPair.first,
             objRu = objectPair.second
+        )
+
+        val sourceText = buildSourceText(
+            template = template,
+            subjectRu = subjectRu.getValue(subject),
+            presentVerbRu = verbLexeme.formsRu.getValue(subject),
+            futureVerbRu = verbLexeme.ruInfinitive,
+            objectRu = objectPair.second
         )
 
         val hint = when {
@@ -252,9 +266,40 @@ object Lesson1RealGenerator {
             id = id,
             template = template,
             lexicon = lexicon,
+            sourceTextOverride = sourceText,
             distractorPool = distractorPool,
             totalWords = 8,
             hint = hint
         )
+    }
+
+    private fun buildSourceText(
+        template: LessonRealSentenceGenerator.SentenceTemplate,
+        subjectRu: String,
+        presentVerbRu: String,
+        futureVerbRu: String,
+        objectRu: String
+    ): String {
+        return when (template.ruPattern) {
+            "{subject} {verb} {object}" -> "$subjectRu $presentVerbRu $objectRu"
+            "{subject} не {verb} {object}" -> "$subjectRu не $presentVerbRu $objectRu"
+            "{subject} {verb} {object}?" -> "$subjectRu $presentVerbRu $objectRu?"
+            "{subject} будет {verb} {object}" -> "$subjectRu ${futureAuxiliary(subjectRu)} $futureVerbRu $objectRu"
+            "{subject} не будет {verb} {object}" -> "$subjectRu не ${futureAuxiliary(subjectRu)} $futureVerbRu $objectRu"
+            "{subject} будет {verb} {object}?" -> "$subjectRu ${futureAuxiliary(subjectRu)} $futureVerbRu $objectRu?"
+            else -> "$subjectRu $presentVerbRu $objectRu"
+        }
+    }
+
+    private fun futureAuxiliary(subjectRu: String): String {
+        return when (subjectRu) {
+            "Я" -> "буду"
+            "Ты" -> "будешь"
+            "Он" -> "будет"
+            "Мы" -> "будем"
+            "Вы" -> "будете"
+            "Они" -> "будут"
+            else -> "будет"
+        }
     }
 }

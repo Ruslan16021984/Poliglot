@@ -60,6 +60,7 @@ object LessonRealSentenceGenerator {
         id: Int,
         template: SentenceTemplate,
         lexicon: Lexicon,
+        sourceTextOverride: String? = null,
         distractorPool: List<String>,
         totalWords: Int = 8,
         hint: String? = null
@@ -74,7 +75,7 @@ object LessonRealSentenceGenerator {
             totalWords = totalWords
         )
 
-        val sourceText = buildRussianText(template.ruPattern, lexicon)
+        val sourceText = sourceTextOverride ?: buildRussianText(template.ruPattern, lexicon)
 
         return LessonExercise(
             id = id,

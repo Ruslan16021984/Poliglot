@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson10RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson1RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson2RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson5RealGenerator
@@ -73,6 +74,21 @@ internal object LessonSessionFactory {
                     numbers = assets.lesson9Numbers,
                     objects = assets.lesson9Objects,
                     templates = assets.lesson9Templates
+                )
+            )
+
+            10 -> LessonSession(
+                lessonId = 10,
+                lessonTitle = "Время и распорядок дня",
+                exercises = Lesson10RealGenerator.generateExercises(
+                    timePhrases = assets.lesson10TimePhrases,
+                    routineActions = assets.lesson10RoutineActions,
+                    intervals = assets.lesson10Intervals,
+                    intervalActions = assets.lesson10IntervalActions,
+                    questionActions = assets.lesson10QuestionActions,
+                    templates = assets.lesson10Templates,
+                    intervalTemplates = assets.lesson10IntervalTemplates,
+                    questionTemplates = assets.lesson10QuestionTemplates
                 )
             )
 

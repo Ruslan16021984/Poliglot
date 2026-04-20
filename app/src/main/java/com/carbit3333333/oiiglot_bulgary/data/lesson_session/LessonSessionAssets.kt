@@ -48,6 +48,28 @@ internal data class Lesson9TemplateAsset(
 )
 
 @Serializable
+internal data class Lesson10PhraseAsset(
+    val ruTokens: List<String>,
+    val bgTokens: List<String>
+)
+
+@Serializable
+internal data class Lesson10IntervalAsset(
+    val ruFromTokens: List<String>,
+    val ruToTokens: List<String>,
+    val bgFromTokens: List<String>,
+    val bgToTokens: List<String>
+)
+
+@Serializable
+internal data class Lesson10TemplateAsset(
+    val ruTokens: List<String>,
+    val bgTokens: List<String>,
+    val hint: String? = null,
+    val isQuestion: Boolean = false
+)
+
+@Serializable
 internal data class LessonSessionAssets(
     val lesson4Items: List<Lesson4Item> = emptyList(),
     val lesson3SubjectRu: Map<String, String> = emptyMap(),
@@ -56,7 +78,15 @@ internal data class LessonSessionAssets(
     val lesson8Templates: List<LessonTemplateAsset> = emptyList(),
     val lesson9Numbers: List<Lesson9NumberAsset> = emptyList(),
     val lesson9Objects: List<Lesson9ObjectAsset> = emptyList(),
-    val lesson9Templates: List<Lesson9TemplateAsset> = emptyList()
+    val lesson9Templates: List<Lesson9TemplateAsset> = emptyList(),
+    val lesson10TimePhrases: List<Lesson10PhraseAsset> = emptyList(),
+    val lesson10RoutineActions: List<Lesson10PhraseAsset> = emptyList(),
+    val lesson10Intervals: List<Lesson10IntervalAsset> = emptyList(),
+    val lesson10IntervalActions: List<Lesson10PhraseAsset> = emptyList(),
+    val lesson10QuestionActions: List<Lesson10PhraseAsset> = emptyList(),
+    val lesson10Templates: List<Lesson10TemplateAsset> = emptyList(),
+    val lesson10IntervalTemplates: List<Lesson10TemplateAsset> = emptyList(),
+    val lesson10QuestionTemplates: List<Lesson10TemplateAsset> = emptyList()
 )
 
 internal class LessonSessionAssetsRepository(
@@ -376,6 +406,112 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
                 ruTokens = listOf("Ты", "берёшь", "{num}", "{object}", "?"),
                 bgTokens = listOf("Ти", "взимаш", "ли", "{num}", "{object}"),
                 hint = "💡 вопрос: глагол + ли + число + предмет"
+            )
+        ),
+        lesson10TimePhrases = listOf(
+            Lesson10PhraseAsset(listOf("В", "понедельник"), listOf("в", "понеделник")),
+            Lesson10PhraseAsset(listOf("Во", "вторник"), listOf("във", "вторник")),
+            Lesson10PhraseAsset(listOf("В", "среду"), listOf("в", "сряда")),
+            Lesson10PhraseAsset(listOf("В", "четверг"), listOf("в", "четвъртък")),
+            Lesson10PhraseAsset(listOf("В", "пятницу"), listOf("в", "петък")),
+            Lesson10PhraseAsset(listOf("Утром"), listOf("сутрин")),
+            Lesson10PhraseAsset(listOf("Днём"), listOf("следобед")),
+            Lesson10PhraseAsset(listOf("Вечером"), listOf("вечер")),
+            Lesson10PhraseAsset(listOf("Ночью"), listOf("нощем")),
+            Lesson10PhraseAsset(listOf("Сегодня"), listOf("днес")),
+            Lesson10PhraseAsset(listOf("Завтра"), listOf("утре")),
+            Lesson10PhraseAsset(listOf("После", "работы"), listOf("след", "работа")),
+            Lesson10PhraseAsset(listOf("Перед", "обедом"), listOf("преди", "обяд")),
+            Lesson10PhraseAsset(listOf("В", "час", "дня"), listOf("в", "един", "час")),
+            Lesson10PhraseAsset(listOf("В", "два", "часа"), listOf("в", "два", "часа")),
+            Lesson10PhraseAsset(listOf("В", "три", "часа"), listOf("в", "три", "часа")),
+            Lesson10PhraseAsset(listOf("В", "пять", "часов"), listOf("в", "пет", "часа"))
+        ),
+        lesson10RoutineActions = listOf(
+            Lesson10PhraseAsset(listOf("работаю"), listOf("работя")),
+            Lesson10PhraseAsset(listOf("у", "меня", "урок"), listOf("имам", "урок")),
+            Lesson10PhraseAsset(listOf("учусь"), listOf("уча")),
+            Lesson10PhraseAsset(listOf("завтракаю"), listOf("закусвам")),
+            Lesson10PhraseAsset(listOf("пью", "кофе"), listOf("пия", "кафе")),
+            Lesson10PhraseAsset(listOf("ужинаю"), listOf("вечерям")),
+            Lesson10PhraseAsset(listOf("отдыхаю"), listOf("почивам")),
+            Lesson10PhraseAsset(listOf("иду", "в", "магазин"), listOf("отивам", "в", "магазина")),
+            Lesson10PhraseAsset(listOf("возвращаюсь", "домой"), listOf("се", "прибирам", "вкъщи"))
+        ),
+        lesson10Intervals = listOf(
+            Lesson10IntervalAsset(
+                ruFromTokens = listOf("с", "девяти"),
+                ruToTokens = listOf("до", "пяти"),
+                bgFromTokens = listOf("от", "девет"),
+                bgToTokens = listOf("до", "пет")
+            ),
+            Lesson10IntervalAsset(
+                ruFromTokens = listOf("с", "двух"),
+                ruToTokens = listOf("до", "трёх"),
+                bgFromTokens = listOf("от", "два"),
+                bgToTokens = listOf("до", "три")
+            ),
+            Lesson10IntervalAsset(
+                ruFromTokens = listOf("с", "часа"),
+                ruToTokens = listOf("до", "двух"),
+                bgFromTokens = listOf("от", "един", "час"),
+                bgToTokens = listOf("до", "два")
+            )
+        ),
+        lesson10IntervalActions = listOf(
+            Lesson10PhraseAsset(listOf("работаю"), listOf("работя")),
+            Lesson10PhraseAsset(listOf("учусь"), listOf("уча")),
+            Lesson10PhraseAsset(listOf("отдыхаю"), listOf("почивам")),
+            Lesson10PhraseAsset(listOf("читаю"), listOf("чета")),
+            Lesson10PhraseAsset(listOf("сплю"), listOf("спя"))
+        ),
+        lesson10QuestionActions = listOf(
+            Lesson10PhraseAsset(listOf("ты", "работаешь"), listOf("работиш")),
+            Lesson10PhraseAsset(listOf("у", "тебя", "урок"), listOf("имаш", "урок")),
+            Lesson10PhraseAsset(listOf("ты", "учишься"), listOf("учиш")),
+            Lesson10PhraseAsset(listOf("ты", "завтракаешь"), listOf("закусваш")),
+            Lesson10PhraseAsset(listOf("ты", "пьёшь", "кофе"), listOf("пиеш", "кафе")),
+            Lesson10PhraseAsset(listOf("ты", "ужинаешь"), listOf("вечеряш")),
+            Lesson10PhraseAsset(listOf("ты", "отдыхаешь"), listOf("почиваш")),
+            Lesson10PhraseAsset(listOf("ты", "идёшь", "в", "магазин"), listOf("отиваш", "в", "магазина")),
+            Lesson10PhraseAsset(listOf("ты", "возвращаешься", "домой"), listOf("се", "прибираш", "вкъщи"))
+        ),
+        lesson10Templates = listOf(
+            Lesson10TemplateAsset(
+                ruTokens = listOf("{time}", "{action}"),
+                bgTokens = listOf("{time}", "{action}"),
+                hint = "💡 время часто ставится в начале фразы"
+            ),
+            Lesson10TemplateAsset(
+                ruTokens = listOf("{action}", "{time}"),
+                bgTokens = listOf("{action}", "{time}"),
+                hint = "💡 порядок слов можно менять, если фраза звучит естественно"
+            )
+        ),
+        lesson10IntervalTemplates = listOf(
+            Lesson10TemplateAsset(
+                ruTokens = listOf("{action}", "{from}", "{to}"),
+                bgTokens = listOf("{action}", "{from}", "{to}"),
+                hint = "💡 промежуток времени: от ... до ..."
+            ),
+            Lesson10TemplateAsset(
+                ruTokens = listOf("{from}", "{to}", "{action}"),
+                bgTokens = listOf("{from}", "{to}", "{action}"),
+                hint = "💡 фразу можно начать с промежутка времени"
+            )
+        ),
+        lesson10QuestionTemplates = listOf(
+            Lesson10TemplateAsset(
+                ruTokens = listOf("Когда", "{action}"),
+                bgTokens = listOf("Кога", "{action}"),
+                hint = "💡 вопросительное слово обычно стоит в начале",
+                isQuestion = true
+            ),
+            Lesson10TemplateAsset(
+                ruTokens = listOf("Во", "сколько", "часов", "{action}"),
+                bgTokens = listOf("В", "колко", "часа", "{action}"),
+                hint = "💡 В колко часа = во сколько",
+                isQuestion = true
             )
         )
     )

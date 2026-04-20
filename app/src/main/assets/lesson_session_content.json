@@ -327,5 +327,111 @@
       "bgTokens": ["Ти", "взимаш", "ли", "{num}", "{object}"],
       "hint": "💡 вопрос: глагол + ли + число + предмет"
     }
+  ],
+  "lesson10TimePhrases": [
+    { "ruTokens": ["В", "понедельник"], "bgTokens": ["в", "понеделник"] },
+    { "ruTokens": ["Во", "вторник"], "bgTokens": ["във", "вторник"] },
+    { "ruTokens": ["В", "среду"], "bgTokens": ["в", "сряда"] },
+    { "ruTokens": ["В", "четверг"], "bgTokens": ["в", "четвъртък"] },
+    { "ruTokens": ["В", "пятницу"], "bgTokens": ["в", "петък"] },
+    { "ruTokens": ["Утром"], "bgTokens": ["сутрин"] },
+    { "ruTokens": ["Днём"], "bgTokens": ["следобед"] },
+    { "ruTokens": ["Вечером"], "bgTokens": ["вечер"] },
+    { "ruTokens": ["Ночью"], "bgTokens": ["нощем"] },
+    { "ruTokens": ["Сегодня"], "bgTokens": ["днес"] },
+    { "ruTokens": ["Завтра"], "bgTokens": ["утре"] },
+    { "ruTokens": ["После", "работы"], "bgTokens": ["след", "работа"] },
+    { "ruTokens": ["Перед", "обедом"], "bgTokens": ["преди", "обяд"] },
+    { "ruTokens": ["В", "час", "дня"], "bgTokens": ["в", "един", "час"] },
+    { "ruTokens": ["В", "два", "часа"], "bgTokens": ["в", "два", "часа"] },
+    { "ruTokens": ["В", "три", "часа"], "bgTokens": ["в", "три", "часа"] },
+    { "ruTokens": ["В", "пять", "часов"], "bgTokens": ["в", "пет", "часа"] }
+  ],
+  "lesson10RoutineActions": [
+    { "ruTokens": ["работаю"], "bgTokens": ["работя"] },
+    { "ruTokens": ["у", "меня", "урок"], "bgTokens": ["имам", "урок"] },
+    { "ruTokens": ["учусь"], "bgTokens": ["уча"] },
+    { "ruTokens": ["завтракаю"], "bgTokens": ["закусвам"] },
+    { "ruTokens": ["пью", "кофе"], "bgTokens": ["пия", "кафе"] },
+    { "ruTokens": ["ужинаю"], "bgTokens": ["вечерям"] },
+    { "ruTokens": ["отдыхаю"], "bgTokens": ["почивам"] },
+    { "ruTokens": ["иду", "в", "магазин"], "bgTokens": ["отивам", "в", "магазина"] },
+    { "ruTokens": ["возвращаюсь", "домой"], "bgTokens": ["се", "прибирам", "вкъщи"] }
+  ],
+  "lesson10Intervals": [
+    {
+      "ruFromTokens": ["с", "девяти"],
+      "ruToTokens": ["до", "пяти"],
+      "bgFromTokens": ["от", "девет"],
+      "bgToTokens": ["до", "пет"]
+    },
+    {
+      "ruFromTokens": ["с", "двух"],
+      "ruToTokens": ["до", "трёх"],
+      "bgFromTokens": ["от", "два"],
+      "bgToTokens": ["до", "три"]
+    },
+    {
+      "ruFromTokens": ["с", "часа"],
+      "ruToTokens": ["до", "двух"],
+      "bgFromTokens": ["от", "един", "час"],
+      "bgToTokens": ["до", "два"]
+    }
+  ],
+  "lesson10IntervalActions": [
+    { "ruTokens": ["работаю"], "bgTokens": ["работя"] },
+    { "ruTokens": ["учусь"], "bgTokens": ["уча"] },
+    { "ruTokens": ["отдыхаю"], "bgTokens": ["почивам"] },
+    { "ruTokens": ["читаю"], "bgTokens": ["чета"] },
+    { "ruTokens": ["сплю"], "bgTokens": ["спя"] }
+  ],
+  "lesson10QuestionActions": [
+    { "ruTokens": ["ты", "работаешь"], "bgTokens": ["работиш"] },
+    { "ruTokens": ["у", "тебя", "урок"], "bgTokens": ["имаш", "урок"] },
+    { "ruTokens": ["ты", "учишься"], "bgTokens": ["учиш"] },
+    { "ruTokens": ["ты", "завтракаешь"], "bgTokens": ["закусваш"] },
+    { "ruTokens": ["ты", "пьёшь", "кофе"], "bgTokens": ["пиеш", "кафе"] },
+    { "ruTokens": ["ты", "ужинаешь"], "bgTokens": ["вечеряш"] },
+    { "ruTokens": ["ты", "отдыхаешь"], "bgTokens": ["почиваш"] },
+    { "ruTokens": ["ты", "идёшь", "в", "магазин"], "bgTokens": ["отиваш", "в", "магазина"] },
+    { "ruTokens": ["ты", "возвращаешься", "домой"], "bgTokens": ["се", "прибираш", "вкъщи"] }
+  ],
+  "lesson10Templates": [
+    {
+      "ruTokens": ["{time}", "{action}"],
+      "bgTokens": ["{time}", "{action}"],
+      "hint": "💡 время часто ставится в начале фразы"
+    },
+    {
+      "ruTokens": ["{action}", "{time}"],
+      "bgTokens": ["{action}", "{time}"],
+      "hint": "💡 порядок слов можно менять, если фраза звучит естественно"
+    }
+  ],
+  "lesson10IntervalTemplates": [
+    {
+      "ruTokens": ["{action}", "{from}", "{to}"],
+      "bgTokens": ["{action}", "{from}", "{to}"],
+      "hint": "💡 промежуток времени: от ... до ..."
+    },
+    {
+      "ruTokens": ["{from}", "{to}", "{action}"],
+      "bgTokens": ["{from}", "{to}", "{action}"],
+      "hint": "💡 фразу можно начать с промежутка времени"
+    }
+  ],
+  "lesson10QuestionTemplates": [
+    {
+      "ruTokens": ["Когда", "{action}"],
+      "bgTokens": ["Кога", "{action}"],
+      "hint": "💡 вопросительное слово обычно стоит в начале",
+      "isQuestion": true
+    },
+    {
+      "ruTokens": ["Во", "сколько", "часов", "{action}"],
+      "bgTokens": ["В", "колко", "часа", "{action}"],
+      "hint": "💡 В колко часа = во сколько",
+      "isQuestion": true
+    }
   ]
 }
