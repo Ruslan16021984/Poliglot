@@ -10,7 +10,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.carbit3333333.oiiglot_bulgary.ui.home.HomeScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonResultScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionScreen
@@ -23,21 +22,10 @@ fun AppNavGraph() {
 
     NavHost(
         navController = navController,
-        startDestination = Destinations.HOME
+        startDestination = Destinations.LESSONS
     ) {
-        composable(Destinations.HOME) {
-            HomeScreen(
-                onStartClick = {
-                    navController.navigate(Destinations.LESSONS)
-                }
-            )
-        }
-
         composable(Destinations.LESSONS) {
             LessonsScreen(
-                onBackClick = {
-                    navController.popBackStack()
-                },
                 onLessonClick = { lessonId ->
                     navController.navigate(Destinations.lessonDetailsRoute(lessonId))
                 }

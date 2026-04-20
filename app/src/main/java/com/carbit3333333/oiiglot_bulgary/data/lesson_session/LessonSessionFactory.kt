@@ -6,6 +6,7 @@ import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson5R
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson6RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson7RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson8RealGenerator
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson9RealGenerator
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 
 internal object LessonSessionFactory {
@@ -63,6 +64,16 @@ internal object LessonSessionFactory {
                 lessonId = 8,
                 lessonTitle = "Сравнение",
                 exercises = Lesson8RealGenerator.generateExercises(assets.lesson8Templates)
+            )
+
+            9 -> LessonSession(
+                lessonId = 9,
+                lessonTitle = "Числа",
+                exercises = Lesson9RealGenerator.generateExercises(
+                    numbers = assets.lesson9Numbers,
+                    objects = assets.lesson9Objects,
+                    templates = assets.lesson9Templates
+                )
             )
 
             else -> LessonSession(

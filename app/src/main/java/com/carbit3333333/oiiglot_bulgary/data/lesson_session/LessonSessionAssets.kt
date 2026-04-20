@@ -19,12 +19,43 @@ internal data class Lesson3VerbAsset(
 )
 
 @Serializable
+internal data class Lesson9NumberAsset(
+    val value: Int,
+    val bgMasculine: String,
+    val bgFeminine: String,
+    val bgNeuter: String,
+    val ruMasculine: String,
+    val ruFeminine: String,
+    val ruNeuter: String
+)
+
+@Serializable
+internal data class Lesson9ObjectAsset(
+    val gender: String,
+    val singular: String,
+    val plural: String,
+    val countForm: String,
+    val ruSingular: String,
+    val ruPlural: String
+)
+
+@Serializable
+internal data class Lesson9TemplateAsset(
+    val ruTokens: List<String>,
+    val bgTokens: List<String>,
+    val hint: String? = null
+)
+
+@Serializable
 internal data class LessonSessionAssets(
     val lesson4Items: List<Lesson4Item> = emptyList(),
     val lesson3SubjectRu: Map<String, String> = emptyMap(),
     val lesson3Verbs: List<Lesson3VerbAsset> = emptyList(),
     val lesson7Templates: List<LessonTemplateAsset> = emptyList(),
-    val lesson8Templates: List<LessonTemplateAsset> = emptyList()
+    val lesson8Templates: List<LessonTemplateAsset> = emptyList(),
+    val lesson9Numbers: List<Lesson9NumberAsset> = emptyList(),
+    val lesson9Objects: List<Lesson9ObjectAsset> = emptyList(),
+    val lesson9Templates: List<Lesson9TemplateAsset> = emptyList()
 )
 
 internal class LessonSessionAssetsRepository(
@@ -291,6 +322,60 @@ internal fun defaultLessonSessionAssets(): LessonSessionAssets {
             LessonTemplateAsset("Это самый интересный фильм", listOf("Това", "е", "най-интересният", "филм"), "💡 с превосходной степенью обычно нужен артикль"),
             LessonTemplateAsset("Это лучший день", listOf("Това", "е", "най-добрият", "ден"), "💡 най- = самый"),
             LessonTemplateAsset("Это самый прекрасный день в моей жизни", listOf("Това", "е", "най-хубавият", "ден", "в", "живота", "ми"), "💡 длинное полное предложение")
+        ),
+        lesson9Numbers = listOf(
+            Lesson9NumberAsset(1, "един", "една", "едно", "один", "одну", "одно"),
+            Lesson9NumberAsset(2, "два", "две", "две", "два", "две", "два"),
+            Lesson9NumberAsset(3, "три", "три", "три", "три", "три", "три"),
+            Lesson9NumberAsset(4, "четири", "четири", "четири", "четыре", "четыре", "четыре"),
+            Lesson9NumberAsset(5, "пет", "пет", "пет", "пять", "пять", "пять"),
+            Lesson9NumberAsset(6, "шест", "шест", "шест", "шесть", "шесть", "шесть"),
+            Lesson9NumberAsset(7, "седем", "седем", "седем", "семь", "семь", "семь"),
+            Lesson9NumberAsset(8, "осем", "осем", "осем", "восемь", "восемь", "восемь"),
+            Lesson9NumberAsset(9, "девет", "девет", "девет", "девять", "девять", "девять"),
+            Lesson9NumberAsset(10, "десет", "десет", "десет", "десять", "десять", "десять"),
+            Lesson9NumberAsset(11, "единадесет", "единадесет", "единадесет", "одиннадцать", "одиннадцать", "одиннадцать"),
+            Lesson9NumberAsset(12, "дванадесет", "дванадесет", "дванадесет", "двенадцать", "двенадцать", "двенадцать"),
+            Lesson9NumberAsset(13, "тринадесет", "тринадесет", "тринадесет", "тринадцать", "тринадцать", "тринадцать"),
+            Lesson9NumberAsset(14, "четиринадесет", "четиринадесет", "четиринадесет", "четырнадцать", "четырнадцать", "четырнадцать"),
+            Lesson9NumberAsset(15, "петнадесет", "петнадесет", "петнадесет", "пятнадцать", "пятнадцать", "пятнадцать"),
+            Lesson9NumberAsset(16, "шестнадесет", "шестнадесет", "шестнадесет", "шестнадцать", "шестнадцать", "шестнадцать"),
+            Lesson9NumberAsset(17, "седемнадесет", "седемнадесет", "седемнадесет", "семнадцать", "семнадцать", "семнадцать"),
+            Lesson9NumberAsset(18, "осемнадесет", "осемнадесет", "осемнадесет", "восемнадцать", "восемнадцать", "восемнадцать"),
+            Lesson9NumberAsset(19, "деветнадесет", "деветнадесет", "деветнадесет", "девятнадцать", "девятнадцать", "девятнадцать"),
+            Lesson9NumberAsset(20, "двадесет", "двадесет", "двадесет", "двадцать", "двадцать", "двадцать")
+        ),
+        lesson9Objects = listOf(
+            Lesson9ObjectAsset("feminine", "книга", "книги", "книги", "книгу", "книги"),
+            Lesson9ObjectAsset("masculine", "телефон", "телефони", "телефона", "телефон", "телефона"),
+            Lesson9ObjectAsset("neuter", "писмо", "писма", "писма", "письмо", "письма")
+        ),
+        lesson9Templates = listOf(
+            Lesson9TemplateAsset(
+                ruTokens = listOf("Я", "беру", "{num}", "{object}"),
+                bgTokens = listOf("Аз", "взимам", "{num}", "{object}"),
+                hint = "💡 после числа форма существительного может меняться"
+            ),
+            Lesson9TemplateAsset(
+                ruTokens = listOf("Я", "вижу", "{num}", "{object}"),
+                bgTokens = listOf("Аз", "виждам", "{num}", "{object}"),
+                hint = "💡 число + существительное"
+            ),
+            Lesson9TemplateAsset(
+                ruTokens = listOf("Я", "даю", "тебе", "{num}", "{object}"),
+                bgTokens = listOf("Аз", "ти", "давам", "{num}", "{object}"),
+                hint = "💡 в болгарском \"ти\" обычно стоит перед глаголом"
+            ),
+            Lesson9TemplateAsset(
+                ruTokens = listOf("Ты", "видишь", "{num}", "{object}", "?"),
+                bgTokens = listOf("Ти", "виждаш", "ли", "{num}", "{object}"),
+                hint = "💡 в вопросе \"ли\" ставится после глагола"
+            ),
+            Lesson9TemplateAsset(
+                ruTokens = listOf("Ты", "берёшь", "{num}", "{object}", "?"),
+                bgTokens = listOf("Ти", "взимаш", "ли", "{num}", "{object}"),
+                hint = "💡 вопрос: глагол + ли + число + предмет"
+            )
         )
     )
 }

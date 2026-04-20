@@ -48,6 +48,30 @@ class LessonSessionRepositoryTest {
         assertTrue(lesson8.exercises.any { it.sourceText.contains("лучший день") })
     }
 
+    @Test
+    fun `lesson 9 session builds number exercises`() {
+        val session = repository.getLessonSession(9)
+
+        assertEquals(60, session.exercises.size)
+        assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(
+            session.exercises.any {
+                it.sourceText.contains("одн") ||
+                    it.sourceText.contains("две") ||
+                    it.sourceText.contains("три")
+            }
+        )
+        assertTrue(
+            session.exercises.any {
+                it.correctAnswerWords.any { word ->
+                    word in setOf("един", "една", "едно", "два", "две", "три", "десет", "единадесет", "двадесет")
+                }
+            }
+        )
+        assertTrue(session.exercises.any { it.sourceText.trim().endsWith("?") })
+        assertTrue(session.exercises.any { "ли" in it.correctAnswerWords })
+    }
+
     private fun isValidExercise(exercise: LessonExercise): Boolean {
         assertTrue(exercise.sourceText.isNotBlank())
         assertEquals("Переведите предложение", exercise.instruction)

@@ -25,8 +25,8 @@ class LessonJsonAssetsTest {
             readAssetText("lessons.json")
         )
 
-        assertEquals(8, lessons.size)
-        assertEquals((1..8).toList(), lessons.map { it.id })
+        assertEquals(9, lessons.size)
+        assertEquals((1..9).toList(), lessons.map { it.id })
         assertTrue(lessons.all { it.title.isNotBlank() })
         assertTrue(lessons.all { it.subtitle.isNotBlank() })
         assertTrue(lessons.all { it.theory.isNotEmpty() })
@@ -35,6 +35,7 @@ class LessonJsonAssetsTest {
                 !block.title.isNullOrBlank() && !block.text.isNullOrBlank()
             }
         })
+        assertNotNull(lessons.find { it.id == 9 && it.title == "Урок 9" })
     }
 
     @Test
@@ -48,15 +49,33 @@ class LessonJsonAssetsTest {
         assertEquals(12, assets.lesson4Items.size)
         assertEquals(12, assets.lesson7Templates.size)
         assertEquals(15, assets.lesson8Templates.size)
+        assertEquals(20, assets.lesson9Numbers.size)
+        assertEquals(3, assets.lesson9Objects.size)
+        assertEquals(5, assets.lesson9Templates.size)
 
         assertTrue(assets.lesson3Verbs.all { it.past.keys == assets.lesson3SubjectRu.keys })
         assertTrue(assets.lesson3Verbs.all { it.ruPast.keys == assets.lesson3SubjectRu.keys })
         assertTrue(assets.lesson4Items.all { it.correctWords.isNotEmpty() })
         assertTrue(assets.lesson7Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
         assertTrue(assets.lesson8Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
+        assertTrue(
+            assets.lesson9Numbers.all {
+                it.bgMasculine.isNotBlank() &&
+                    it.bgFeminine.isNotBlank() &&
+                    it.bgNeuter.isNotBlank() &&
+                    it.ruMasculine.isNotBlank() &&
+                    it.ruFeminine.isNotBlank() &&
+                    it.ruNeuter.isNotBlank()
+            }
+        )
+        assertTrue(assets.lesson9Objects.all { it.singular.isNotBlank() && it.countForm.isNotBlank() })
+        assertTrue(assets.lesson9Templates.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })
 
         assertNotNull(assets.lesson7Templates.find { it.ru == "Ты видишь своего друга" })
         assertNotNull(assets.lesson8Templates.find { it.ru == "Это самый прекрасный день в моей жизни" })
+        assertNotNull(assets.lesson9Templates.find { it.ruTokens.contains("тебе") })
+        assertNotNull(assets.lesson9Templates.find { it.ruTokens.lastOrNull() == "?" })
+        assertNotNull(assets.lesson9Numbers.find { it.value == 20 })
     }
 
     private fun readAssetText(fileName: String): String {

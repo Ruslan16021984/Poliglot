@@ -249,5 +249,80 @@
       "bgWords": ["Това", "е", "най-хубавият", "ден", "в", "живота", "ми"],
       "hint": "💡 длинное полное предложение"
     }
+  ],
+  "lesson9Numbers": [
+    { "value": 1, "bgMasculine": "един", "bgFeminine": "една", "bgNeuter": "едно", "ruMasculine": "один", "ruFeminine": "одну", "ruNeuter": "одно" },
+    { "value": 2, "bgMasculine": "два", "bgFeminine": "две", "bgNeuter": "две", "ruMasculine": "два", "ruFeminine": "две", "ruNeuter": "два" },
+    { "value": 3, "bgMasculine": "три", "bgFeminine": "три", "bgNeuter": "три", "ruMasculine": "три", "ruFeminine": "три", "ruNeuter": "три" },
+    { "value": 4, "bgMasculine": "четири", "bgFeminine": "четири", "bgNeuter": "четири", "ruMasculine": "четыре", "ruFeminine": "четыре", "ruNeuter": "четыре" },
+    { "value": 5, "bgMasculine": "пет", "bgFeminine": "пет", "bgNeuter": "пет", "ruMasculine": "пять", "ruFeminine": "пять", "ruNeuter": "пять" },
+    { "value": 6, "bgMasculine": "шест", "bgFeminine": "шест", "bgNeuter": "шест", "ruMasculine": "шесть", "ruFeminine": "шесть", "ruNeuter": "шесть" },
+    { "value": 7, "bgMasculine": "седем", "bgFeminine": "седем", "bgNeuter": "седем", "ruMasculine": "семь", "ruFeminine": "семь", "ruNeuter": "семь" },
+    { "value": 8, "bgMasculine": "осем", "bgFeminine": "осем", "bgNeuter": "осем", "ruMasculine": "восемь", "ruFeminine": "восемь", "ruNeuter": "восемь" },
+    { "value": 9, "bgMasculine": "девет", "bgFeminine": "девет", "bgNeuter": "девет", "ruMasculine": "девять", "ruFeminine": "девять", "ruNeuter": "девять" },
+    { "value": 10, "bgMasculine": "десет", "bgFeminine": "десет", "bgNeuter": "десет", "ruMasculine": "десять", "ruFeminine": "десять", "ruNeuter": "десять" }
+    ,{ "value": 11, "bgMasculine": "единадесет", "bgFeminine": "единадесет", "bgNeuter": "единадесет", "ruMasculine": "одиннадцать", "ruFeminine": "одиннадцать", "ruNeuter": "одиннадцать" }
+    ,{ "value": 12, "bgMasculine": "дванадесет", "bgFeminine": "дванадесет", "bgNeuter": "дванадесет", "ruMasculine": "двенадцать", "ruFeminine": "двенадцать", "ruNeuter": "двенадцать" }
+    ,{ "value": 13, "bgMasculine": "тринадесет", "bgFeminine": "тринадесет", "bgNeuter": "тринадесет", "ruMasculine": "тринадцать", "ruFeminine": "тринадцать", "ruNeuter": "тринадцать" }
+    ,{ "value": 14, "bgMasculine": "четиринадесет", "bgFeminine": "четиринадесет", "bgNeuter": "четиринадесет", "ruMasculine": "четырнадцать", "ruFeminine": "четырнадцать", "ruNeuter": "четырнадцать" }
+    ,{ "value": 15, "bgMasculine": "петнадесет", "bgFeminine": "петнадесет", "bgNeuter": "петнадесет", "ruMasculine": "пятнадцать", "ruFeminine": "пятнадцать", "ruNeuter": "пятнадцать" }
+    ,{ "value": 16, "bgMasculine": "шестнадесет", "bgFeminine": "шестнадесет", "bgNeuter": "шестнадесет", "ruMasculine": "шестнадцать", "ruFeminine": "шестнадцать", "ruNeuter": "шестнадцать" }
+    ,{ "value": 17, "bgMasculine": "седемнадесет", "bgFeminine": "седемнадесет", "bgNeuter": "седемнадесет", "ruMasculine": "семнадцать", "ruFeminine": "семнадцать", "ruNeuter": "семнадцать" }
+    ,{ "value": 18, "bgMasculine": "осемнадесет", "bgFeminine": "осемнадесет", "bgNeuter": "осемнадесет", "ruMasculine": "восемнадцать", "ruFeminine": "восемнадцать", "ruNeuter": "восемнадцать" }
+    ,{ "value": 19, "bgMasculine": "деветнадесет", "bgFeminine": "деветнадесет", "bgNeuter": "деветнадесет", "ruMasculine": "девятнадцать", "ruFeminine": "девятнадцать", "ruNeuter": "девятнадцать" }
+    ,{ "value": 20, "bgMasculine": "двадесет", "bgFeminine": "двадесет", "bgNeuter": "двадесет", "ruMasculine": "двадцать", "ruFeminine": "двадцать", "ruNeuter": "двадцать" }
+  ],
+  "lesson9Objects": [
+    {
+      "gender": "feminine",
+      "singular": "книга",
+      "plural": "книги",
+      "countForm": "книги",
+      "ruSingular": "книгу",
+      "ruPlural": "книги"
+    },
+    {
+      "gender": "masculine",
+      "singular": "телефон",
+      "plural": "телефони",
+      "countForm": "телефона",
+      "ruSingular": "телефон",
+      "ruPlural": "телефона"
+    },
+    {
+      "gender": "neuter",
+      "singular": "писмо",
+      "plural": "писма",
+      "countForm": "писма",
+      "ruSingular": "письмо",
+      "ruPlural": "письма"
+    }
+  ],
+  "lesson9Templates": [
+    {
+      "ruTokens": ["Я", "беру", "{num}", "{object}"],
+      "bgTokens": ["Аз", "взимам", "{num}", "{object}"],
+      "hint": "💡 после числа форма существительного может меняться"
+    },
+    {
+      "ruTokens": ["Я", "вижу", "{num}", "{object}"],
+      "bgTokens": ["Аз", "виждам", "{num}", "{object}"],
+      "hint": "💡 число + существительное"
+    },
+    {
+      "ruTokens": ["Я", "даю", "тебе", "{num}", "{object}"],
+      "bgTokens": ["Аз", "ти", "давам", "{num}", "{object}"],
+      "hint": "💡 в болгарском \"ти\" обычно стоит перед глаголом"
+    },
+    {
+      "ruTokens": ["Ты", "видишь", "{num}", "{object}", "?"],
+      "bgTokens": ["Ти", "виждаш", "ли", "{num}", "{object}"],
+      "hint": "💡 в вопросе \"ли\" ставится после глагола"
+    },
+    {
+      "ruTokens": ["Ты", "берёшь", "{num}", "{object}", "?"],
+      "bgTokens": ["Ти", "взимаш", "ли", "{num}", "{object}"],
+      "hint": "💡 вопрос: глагол + ли + число + предмет"
+    }
   ]
 }
