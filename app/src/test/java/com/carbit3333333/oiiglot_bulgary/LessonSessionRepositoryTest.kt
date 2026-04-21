@@ -75,6 +75,18 @@ class LessonSessionRepositoryTest {
     }
 
     @Test
+    fun `lesson 5 session avoids incorrect russian collocations`() {
+        val session = repository.getLessonSession(5)
+        val sourceTexts = session.exercises.map { it.sourceText }
+
+        assertEquals(80, session.exercises.size)
+        assertTrue(session.exercises.all(::isValidExercise))
+        assertFalse(sourceTexts.any { it.contains("учиться болгарский") })
+        assertFalse(sourceTexts.any { it.contains("хочу учиться болгарский") })
+        assertTrue(sourceTexts.any { it.contains("учиться дома") || it.contains("учиться в школе") })
+    }
+
+    @Test
     fun `lesson 7 and 8 sessions use migrated template content`() {
         val lesson7 = repository.getLessonSession(7)
         val lesson8 = repository.getLessonSession(8)

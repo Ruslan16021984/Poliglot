@@ -135,12 +135,12 @@ internal val lesson1LegacyVerbs = listOf(
             "Те" to "отиваха"
         ),
         ruPast = mapOf(
-            "Аз" to "шёл",
-            "Ти" to "шёл",
-            "Той" to "шёл",
-            "Ние" to "шли",
-            "Вие" to "шли",
-            "Те" to "шли"
+            "Аз" to "ходил(а)",
+            "Ти" to "ходил(а)",
+            "Той" to "ходил",
+            "Ние" to "ходили",
+            "Вие" to "ходили",
+            "Те" to "ходили"
         )
     ),
     VerbForms(
@@ -170,8 +170,8 @@ internal val lesson1LegacyVerbs = listOf(
             "Те" to "ядоха"
         ),
         ruPast = mapOf(
-            "Аз" to "ел",
-            "Ти" to "ел",
+            "Аз" to "ел(а)",
+            "Ти" to "ел(а)",
             "Той" to "ел",
             "Ние" to "ели",
             "Вие" to "ели",
@@ -275,8 +275,8 @@ internal val lesson1LegacyVerbs = listOf(
             "Те" to "учиха"
         ),
         ruPast = mapOf(
-            "Аз" to "учился",
-            "Ти" to "учился",
+            "Аз" to "учился(ась)",
+            "Ти" to "учился(ась)",
             "Той" to "учился",
             "Ние" to "учились",
             "Вие" to "учились",
