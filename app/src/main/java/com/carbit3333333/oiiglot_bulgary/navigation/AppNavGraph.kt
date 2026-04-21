@@ -10,6 +10,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.carbit3333333.oiiglot_bulgary.ui.dictionary.DictionaryScreen
+import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardTrainingScreen
+import com.carbit3333333.oiiglot_bulgary.ui.dictionary.WordEditorScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonResultScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionScreen
@@ -26,9 +29,81 @@ fun AppNavGraph() {
     ) {
         composable(Destinations.LESSONS) {
             LessonsScreen(
+                onDictionaryClick = {
+                    navController.navigate(Destinations.DICTIONARY_LIST)
+                },
                 onLessonClick = { lessonId ->
                     navController.navigate(Destinations.lessonDetailsRoute(lessonId))
                 }
+            )
+        }
+
+        composable(Destinations.DICTIONARY_LIST) {
+            DictionaryScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onAddWordClick = {
+                    navController.navigate(Destinations.dictionaryEditRoute())
+                },
+                onTrainAllClick = {
+                    navController.navigate(Destinations.dictionaryTrainingRoute())
+                },
+                onTrainGroupClick = { group ->
+                    navController.navigate(
+                        Destinations.dictionaryTrainingRoute(
+                            groupId = group.id,
+                            groupName = group.name
+                        )
+                    )
+                },
+                onWordClick = { wordId ->
+                    navController.navigate(Destinations.dictionaryEditRoute(wordId))
+                }
+            )
+        }
+
+        composable(
+            route = Destinations.DICTIONARY_EDIT,
+            arguments = listOf(
+                navArgument("wordId") {
+                    type = NavType.LongType
+                    defaultValue = -1L
+                }
+            )
+        ) {
+            WordEditorScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Destinations.DICTIONARY_TRAINING,
+            arguments = listOf(
+                navArgument("groupId") {
+                    type = NavType.LongType
+                    defaultValue = -1L
+                },
+                navArgument("groupName") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                }
+            )
+        ) {
+            FlashcardTrainingScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onFinishClick = {
+                    navController.navigate(Destinations.DICTIONARY_LIST) {
+                        popUpTo(Destinations.DICTIONARY_LIST) {
+                            inclusive = false
+                        }
+                        launchSingleTop = true
+                    }
+                },
             )
         }
 

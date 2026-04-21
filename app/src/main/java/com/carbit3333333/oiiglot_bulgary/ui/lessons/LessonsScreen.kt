@@ -48,6 +48,7 @@ import java.util.Locale
 fun LessonsScreen(
     onBackClick: (() -> Unit)? = null,
     onLessonClick: (Int) -> Unit = {},
+    onDictionaryClick: () -> Unit = {},
     viewModel: LessonsViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -56,6 +57,7 @@ fun LessonsScreen(
         uiState = uiState,
         onBackClick = onBackClick,
         onLessonClick = onLessonClick,
+        onDictionaryClick = onDictionaryClick,
         onUnlockAllClick = { viewModel.unlockAllLessons() },
         onResetLessonsClick = { viewModel.resetLessons() }
     )
@@ -66,6 +68,7 @@ fun LessonsScreenContent(
     uiState: LessonsUiState,
     onBackClick: (() -> Unit)?,
     onLessonClick: (Int) -> Unit,
+    onDictionaryClick: () -> Unit,
     onUnlockAllClick: () -> Unit = {},
     onResetLessonsClick: () -> Unit = {}
 ) {
@@ -88,6 +91,7 @@ fun LessonsScreenContent(
         Spacer(modifier = Modifier.height(16.dp))
 
         LessonActionsRow(
+            onDictionaryClick = onDictionaryClick,
             onUnlockAllClick = onUnlockAllClick,
             onResetLessonsClick = onResetLessonsClick
         )
@@ -159,7 +163,7 @@ private fun LessonsHeader(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "9",
+                            text = totalLessons.toString(),
                             style = MaterialTheme.typography.titleMedium,
                             color = Color(0xFF39538D)
                         )
@@ -246,13 +250,54 @@ private fun HeaderStat(
 
 @Composable
 private fun LessonActionsRow(
+    onDictionaryClick: () -> Unit,
     onUnlockAllClick: () -> Unit,
     onResetLessonsClick: () -> Unit
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    Column(
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onDictionaryClick),
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xFFEAF1FF)
+            ),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 14.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = "Мои слова",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = Color(0xFF20243A)
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "Открой личный словарь и запусти тренировку по своим словам.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color(0xFF5C6783)
+                    )
+                }
+
+                OutlinedButton(onClick = onDictionaryClick) {
+                    Text("Открыть")
+                }
+            }
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
         OutlinedButton(
             onClick = onUnlockAllClick,
             modifier = Modifier.weight(1f),
@@ -275,6 +320,7 @@ private fun LessonActionsRow(
             Text("Сбросить")
         }
     }
+}
 }
 
 @Composable
@@ -418,6 +464,7 @@ private fun LessonsScreenContentPreview() {
             ),
             onBackClick = {},
             onLessonClick = {},
+            onDictionaryClick = {},
             onUnlockAllClick = {},
             onResetLessonsClick = {}
         )
