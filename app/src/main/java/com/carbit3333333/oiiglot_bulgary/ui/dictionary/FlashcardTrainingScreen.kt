@@ -39,8 +39,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -62,6 +65,7 @@ import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.utils.AppTextToSpeech
 import com.carbit3333333.oiiglot_bulgary.viewmodel.FlashcardTrainingViewModel
+import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -250,17 +254,19 @@ fun FlashcardTrainingScreenContent(
                     }
 
                     item {
-                        FlashcardSwipeCard(
-                            card = currentCard,
-                            face = uiState.currentCardFace,
-                            direction = uiState.direction,
-                            palette = palette,
-                            onFlipCard = onFlipCard,
-                            onKnowCard = onKnowCard,
-                            onDontKnowCard = onDontKnowCard,
-                            onSpeakBulgarian = onSpeakBulgarian,
-                            onSpeakRussian = onSpeakRussian,
-                        )
+                        key(currentCard.id, uiState.direction) {
+                            FlashcardSwipeCard(
+                                card = currentCard,
+                                face = uiState.currentCardFace,
+                                direction = uiState.direction,
+                                palette = palette,
+                                onFlipCard = onFlipCard,
+                                onKnowCard = onKnowCard,
+                                onDontKnowCard = onDontKnowCard,
+                                onSpeakBulgarian = onSpeakBulgarian,
+                                onSpeakRussian = onSpeakRussian,
+                            )
+                        }
                     }
 
                     item {
@@ -298,13 +304,29 @@ private fun FlashcardSwipeCard(
 ) {
     val density = LocalDensity.current
     val swipeThresholdPx = remember(density) { with(density) { 104.dp.toPx() } }
+    val dismissTravelPx = remember(density) { with(density) { 280.dp.toPx() } }
     var dragOffsetY by remember(card.id, direction) { mutableFloatStateOf(0f) }
+    var dismissDirection by remember(card.id, direction) { mutableStateOf<SwipeDismissDirection?>(null) }
     val cardRotationY by animateFloatAsState(
         targetValue = if (face == FlashcardFace.Front) 0f else 180f,
         animationSpec = tween(durationMillis = 500, easing = FastOutSlowInEasing),
         label = "flashcard_flip",
     )
-    val absoluteTilt = abs(dragOffsetY / swipeThresholdPx).coerceIn(0f, 1f)
+    val animatedOffsetY by animateFloatAsState(
+        targetValue = when (dismissDirection) {
+            SwipeDismissDirection.Up -> -dismissTravelPx
+            SwipeDismissDirection.Down -> dismissTravelPx
+            null -> dragOffsetY
+        },
+        animationSpec = tween(durationMillis = 220, easing = FastOutSlowInEasing),
+        label = "flashcard_swipe_offset",
+    )
+    val cardScale by animateFloatAsState(
+        targetValue = if (dismissDirection == null) 1f else 0.82f,
+        animationSpec = tween(durationMillis = 220, easing = FastOutSlowInEasing),
+        label = "flashcard_swipe_scale",
+    )
+    val absoluteTilt = abs(animatedOffsetY / swipeThresholdPx).coerceIn(0f, 1f)
     val shownFace = if (cardRotationY <= 90f) FlashcardFace.Front else FlashcardFace.Back
 
     val frontLanguage = when (direction) {
@@ -342,29 +364,46 @@ private fun FlashcardSwipeCard(
         FlashcardFace.Back -> backLanguage
     }
 
+    LaunchedEffect(card.id, dismissDirection) {
+        when (dismissDirection) {
+            SwipeDismissDirection.Up -> {
+                delay(180)
+                onKnowCard()
+            }
+            SwipeDismissDirection.Down -> {
+                delay(180)
+                onDontKnowCard()
+            }
+            null -> Unit
+        }
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(470.dp)
-            .offset { IntOffset(x = 0, y = dragOffsetY.roundToInt()) }
+            .offset { IntOffset(x = 0, y = animatedOffsetY.roundToInt()) }
             .graphicsLayer {
                 rotationY = cardRotationY
-                rotationZ = dragOffsetY / 40f
-                scaleX = 1f - (absoluteTilt * 0.02f)
-                scaleY = 1f - (absoluteTilt * 0.02f)
+                rotationZ = animatedOffsetY / 34f
+                scaleX = cardScale - (absoluteTilt * 0.02f)
+                scaleY = cardScale - (absoluteTilt * 0.02f)
                 cameraDistance = 12f * density.density * 72f
+                alpha = if (dismissDirection == null) 1f else 0.96f
             }
             .pointerInput(card.id, direction) {
                 detectVerticalDragGestures(
                     onVerticalDrag = { _, dragAmount ->
-                        dragOffsetY += dragAmount
+                        if (dismissDirection == null) {
+                            dragOffsetY += dragAmount
+                        }
                     },
                     onDragEnd = {
                         when {
-                            dragOffsetY <= -swipeThresholdPx -> onKnowCard()
-                            dragOffsetY >= swipeThresholdPx -> onDontKnowCard()
+                            dragOffsetY <= -swipeThresholdPx -> dismissDirection = SwipeDismissDirection.Up
+                            dragOffsetY >= swipeThresholdPx -> dismissDirection = SwipeDismissDirection.Down
+                            else -> dragOffsetY = 0f
                         }
-                        dragOffsetY = 0f
                     },
                     onDragCancel = {
                         dragOffsetY = 0f
@@ -372,7 +411,13 @@ private fun FlashcardSwipeCard(
                 )
             }
             .pointerInput(card.id, direction) {
-                detectTapGestures(onTap = { onFlipCard() })
+                detectTapGestures(
+                    onTap = {
+                        if (dismissDirection == null) {
+                            onFlipCard()
+                        }
+                    },
+                )
             },
         shape = MaterialTheme.shapes.extraLarge,
         colors = CardDefaults.cardColors(containerColor = palette.surface),
@@ -446,6 +491,11 @@ private fun FlashcardSwipeCard(
             }
         }
     }
+}
+
+private enum class SwipeDismissDirection {
+    Up,
+    Down,
 }
 
 @Composable
