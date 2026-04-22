@@ -105,13 +105,7 @@ fun DictionaryScreenContent(
     onDeleteWordClick: (Long) -> Unit,
     onDismissError: () -> Unit,
 ) {
-    val pageBackground = Color(0xFFF5F7FB)
-    val surfaceColor = Color.White
-    val accentColor = Color(0xFF1F6FE5)
-    val accentTint = Color(0xFFEAF2FF)
-    val titleColor = Color(0xFF2D333C)
-    val bodyColor = Color(0xFF727B8C)
-    val borderColor = Color(0xFFD9E1EC)
+    val palette = rememberDictionaryPalette()
     var pendingDeleteWordId by rememberSaveable { mutableStateOf<Long?>(null) }
     var pendingDeleteWordLabel by rememberSaveable { mutableStateOf("") }
 
@@ -149,7 +143,7 @@ fun DictionaryScreenContent(
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = pageBackground,
+        color = palette.pageBackground,
     ) {
         LazyColumn(
             modifier = Modifier
@@ -168,12 +162,12 @@ fun DictionaryScreenContent(
                         onClick = onBackClick,
                         modifier = Modifier
                             .clip(CircleShape)
-                            .background(surfaceColor),
+                            .background(palette.surface),
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Назад",
-                            tint = titleColor,
+                            tint = palette.title,
                         )
                     }
 
@@ -191,7 +185,7 @@ fun DictionaryScreenContent(
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = surfaceColor),
+                    colors = CardDefaults.cardColors(containerColor = palette.surface),
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 ) {
                     Column(
@@ -210,19 +204,19 @@ fun DictionaryScreenContent(
                                     text = "Мои слова",
                                     style = MaterialTheme.typography.headlineMedium,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = titleColor,
+                                    color = palette.title,
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
                                 Text(
                                     text = "Ваш личный словарь для изучения болгарского языка",
                                     style = MaterialTheme.typography.bodyMedium,
-                                    color = bodyColor,
+                                    color = palette.body,
                                 )
                             }
 
                             Surface(
                                 shape = RoundedCornerShape(16.dp),
-                                color = accentTint,
+                                color = palette.accentSurface,
                             ) {
                                 Box(
                                     modifier = Modifier.padding(12.dp),
@@ -231,7 +225,7 @@ fun DictionaryScreenContent(
                                     Icon(
                                         imageVector = Icons.Default.Star,
                                         contentDescription = null,
-                                        tint = accentColor,
+                                        tint = palette.accent,
                                     )
                                 }
                             }
@@ -247,13 +241,13 @@ fun DictionaryScreenContent(
                                 Icon(
                                     imageVector = Icons.Default.Search,
                                     contentDescription = null,
-                                    tint = bodyColor,
+                                    tint = palette.body,
                                 )
                             },
                             placeholder = {
                                 Text(
                                     text = "Поиск по слову или переводу",
-                                    color = bodyColor,
+                                    color = palette.body,
                                 )
                             },
                         )
@@ -274,7 +268,7 @@ fun DictionaryScreenContent(
             if (uiState.errorMessage != null) {
                 item {
                     Card(
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF4F1)),
+                        colors = CardDefaults.cardColors(containerColor = palette.errorSurface),
                         shape = RoundedCornerShape(18.dp),
                     ) {
                         Row(
@@ -286,7 +280,7 @@ fun DictionaryScreenContent(
                             Text(
                                 text = uiState.errorMessage,
                                 modifier = Modifier.weight(1f),
-                                color = Color(0xFF9C4038),
+                                color = palette.errorText,
                             )
                             OutlinedButton(onClick = onDismissError) {
                                 Text("Ок")
@@ -301,9 +295,9 @@ fun DictionaryScreenContent(
                     groups = uiState.groups,
                     selectedGroupId = uiState.selectedGroupId,
                     onGroupSelect = onGroupSelect,
-                    accentColor = accentColor,
-                    borderColor = borderColor,
-                    bodyColor = bodyColor,
+                    accentColor = palette.accent,
+                    borderColor = palette.border,
+                    bodyColor = palette.body,
                 )
             }
 
@@ -313,7 +307,7 @@ fun DictionaryScreenContent(
                         text = "Группы",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
-                        color = titleColor,
+                        color = palette.title,
                     )
                 }
 
@@ -323,10 +317,11 @@ fun DictionaryScreenContent(
                             GroupTrainingCard(
                                 group = group,
                                 onTrainGroupClick = onTrainGroupClick,
-                                accentColor = accentColor,
-                                borderColor = borderColor,
-                                titleColor = titleColor,
-                                bodyColor = bodyColor,
+                                accentColor = palette.accent,
+                                surfaceColor = palette.elevatedSurface,
+                                borderColor = palette.border,
+                                titleColor = palette.title,
+                                bodyColor = palette.body,
                             )
                         }
                     }
@@ -343,12 +338,12 @@ fun DictionaryScreenContent(
                         text = "Все слова (${uiState.words.size})",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
-                        color = titleColor,
+                        color = palette.title,
                     )
                     Text(
                         text = "По алфавиту",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = bodyColor,
+                        color = palette.body,
                     )
                 }
             }
@@ -380,9 +375,10 @@ fun DictionaryScreenContent(
                             pendingDeleteWordId = word.id
                             pendingDeleteWordLabel = word.bgWord
                         },
-                        titleColor = titleColor,
-                        bodyColor = bodyColor,
-                        borderColor = borderColor,
+                        surfaceColor = palette.elevatedSurface,
+                        titleColor = palette.title,
+                        bodyColor = palette.body,
+                        borderColor = palette.border,
                     )
                 }
             }
@@ -453,6 +449,7 @@ private fun GroupTrainingCard(
     group: WordGroup,
     onTrainGroupClick: (WordGroup) -> Unit,
     accentColor: Color,
+    surfaceColor: Color,
     borderColor: Color,
     titleColor: Color,
     bodyColor: Color,
@@ -461,7 +458,7 @@ private fun GroupTrainingCard(
     Card(
         modifier = Modifier.width(164.dp),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = surfaceColor),
         border = BorderStroke(1.dp, borderColor.copy(alpha = 0.8f)),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
     ) {
@@ -520,6 +517,7 @@ private fun DictionaryWordRow(
     word: DictionaryWordListItem,
     onClick: () -> Unit,
     onDeleteClick: () -> Unit,
+    surfaceColor: Color,
     titleColor: Color,
     bodyColor: Color,
     borderColor: Color,
@@ -529,7 +527,7 @@ private fun DictionaryWordRow(
             .fillMaxWidth()
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = surfaceColor),
         border = BorderStroke(1.dp, borderColor.copy(alpha = 0.7f)),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
     ) {
@@ -582,10 +580,11 @@ private fun EmptyDictionaryBlock(
     title: String,
     message: String,
 ) {
+    val palette = rememberDictionaryPalette()
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(22.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = palette.surface),
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 18.dp, vertical = 20.dp),
@@ -595,12 +594,12 @@ private fun EmptyDictionaryBlock(
                 text = title,
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF2D333C),
+                color = palette.title,
             )
             Text(
                 text = message,
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color(0xFF727B8C),
+                color = palette.body,
             )
         }
     }

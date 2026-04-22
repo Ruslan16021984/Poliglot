@@ -90,15 +90,11 @@ fun FlashcardTrainingScreenContent(
     onRetryLoad: () -> Unit,
     onRetryUnknownCards: () -> Unit,
 ) {
-    val pageBackground = Color(0xFFF5F7FB)
-    val surfaceColor = Color.White
-    val accentColor = Color(0xFF1F6FE5)
-    val accentTint = Color(0xFFEAF2FF)
-    val titleColor = Color(0xFF2D333C)
+    val palette = rememberDictionaryPalette()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = pageBackground,
+        color = palette.pageBackground,
     ) {
         when {
             uiState.isLoading -> {
@@ -108,7 +104,7 @@ fun FlashcardTrainingScreenContent(
                         .windowInsetsPadding(WindowInsets.systemBars),
                     contentAlignment = Alignment.Center,
                 ) {
-                    CircularProgressIndicator(color = accentColor)
+                    CircularProgressIndicator(color = palette.accent)
                 }
             }
 
@@ -172,12 +168,12 @@ fun FlashcardTrainingScreenContent(
                                 onClick = onBackClick,
                                 modifier = Modifier
                                     .clip(MaterialTheme.shapes.extraLarge)
-                                    .background(surfaceColor),
+                                    .background(palette.surface),
                             ) {
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                     contentDescription = "Назад",
-                                    tint = titleColor,
+                                    tint = palette.title,
                                 )
                             }
                             Spacer(modifier = Modifier.width(12.dp))
@@ -185,7 +181,7 @@ fun FlashcardTrainingScreenContent(
                                 text = "Тренировка",
                                 style = MaterialTheme.typography.headlineSmall,
                                 fontWeight = FontWeight.SemiBold,
-                                color = titleColor,
+                                color = palette.title,
                             )
                         }
                     }
@@ -200,18 +196,18 @@ fun FlashcardTrainingScreenContent(
                                 text = uiState.progressText,
                                 style = MaterialTheme.typography.headlineSmall,
                                 fontWeight = FontWeight.SemiBold,
-                                color = titleColor,
+                                color = palette.title,
                             )
                             Spacer(modifier = Modifier.width(14.dp))
                             Surface(
-                                color = accentTint,
+                                color = palette.accentSurface,
                                 shape = MaterialTheme.shapes.extraLarge,
                             ) {
                                 Text(
                                     text = uiState.groupLabel,
                                     modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
                                     style = MaterialTheme.typography.labelLarge,
-                                    color = accentColor,
+                                    color = palette.accent,
                                 )
                             }
                         }
@@ -221,6 +217,7 @@ fun FlashcardTrainingScreenContent(
                         FlashcardSwipeCard(
                             card = currentCard,
                             face = uiState.currentCardFace,
+                            palette = palette,
                             onFlipCard = onFlipCard,
                             onKnowCard = onKnowCard,
                             onDontKnowCard = onDontKnowCard,
@@ -230,15 +227,15 @@ fun FlashcardTrainingScreenContent(
                     item {
                         SwipeHint(
                             text = "Свайп вверх: знаю",
-                            accentColor = Color(0xFF2AA35E),
-                            tint = Color(0xFFE8F8EE),
+                            accentColor = palette.hintPositiveText,
+                            tint = palette.hintPositiveSurface,
                             arrow = "↑",
                         )
                         Spacer(modifier = Modifier.height(14.dp))
                         SwipeHint(
                             text = "Свайп вниз: не знаю",
-                            accentColor = Color(0xFFD94B42),
-                            tint = Color(0xFFFCECEC),
+                            accentColor = palette.hintNegativeText,
+                            tint = palette.hintNegativeSurface,
                             arrow = "↓",
                         )
                     }
@@ -252,6 +249,7 @@ fun FlashcardTrainingScreenContent(
 private fun FlashcardSwipeCard(
     card: FlashcardItem,
     face: FlashcardFace,
+    palette: DictionaryPalette,
     onFlipCard: () -> Unit,
     onKnowCard: () -> Unit,
     onDontKnowCard: () -> Unit,
@@ -303,13 +301,13 @@ private fun FlashcardSwipeCard(
                 detectTapGestures(onTap = { onFlipCard() })
             },
         shape = MaterialTheme.shapes.extraLarge,
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = palette.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(palette.surface)
                 .padding(horizontal = 26.dp, vertical = 30.dp)
                 .graphicsLayer {
                     rotationY = if (shownFace == FlashcardFace.Back) 180f else 0f
@@ -323,14 +321,14 @@ private fun FlashcardSwipeCard(
                 Text(
                     text = if (shownFace == FlashcardFace.Front) "Болгарский" else "Русский",
                     style = MaterialTheme.typography.titleMedium,
-                    color = Color(0xFF727B8C),
+                    color = palette.body,
                 )
                 Spacer(modifier = Modifier.height(26.dp))
                 Text(
                     text = if (shownFace == FlashcardFace.Front) card.bgWord else card.ruTranslation,
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF2D333C),
+                    color = palette.title,
                     textAlign = TextAlign.Center,
                 )
                 Spacer(modifier = Modifier.height(34.dp))
@@ -341,7 +339,7 @@ private fun FlashcardSwipeCard(
                         "Свайп вверх или вниз"
                     },
                     style = MaterialTheme.typography.bodyMedium,
-                    color = Color(0xFF727B8C),
+                    color = palette.body,
                     textAlign = TextAlign.Center,
                 )
             }
@@ -401,6 +399,7 @@ private fun FlashcardTrainingSummary(
     onFinishClick: () -> Unit,
     onRetryUnknownCards: (() -> Unit)?,
 ) {
+    val palette = rememberDictionaryPalette()
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -417,6 +416,7 @@ private fun FlashcardTrainingSummary(
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Назад",
+                        tint = palette.title,
                     )
                 }
                 Spacer(modifier = Modifier.width(12.dp))
@@ -424,7 +424,7 @@ private fun FlashcardTrainingSummary(
                     text = "Тренировка",
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF2D333C),
+                    color = palette.title,
                 )
             }
         }
@@ -435,14 +435,14 @@ private fun FlashcardTrainingSummary(
                 contentAlignment = Alignment.Center,
             ) {
                 Surface(
-                    color = Color(0xFFEAF2FF),
+                    color = palette.accentSurface,
                     shape = MaterialTheme.shapes.extraLarge,
                 ) {
                     Text(
                         text = groupLabel,
                         modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
                         style = MaterialTheme.typography.labelLarge,
-                        color = Color(0xFF1F6FE5),
+                        color = palette.accent,
                     )
                 }
             }
@@ -452,7 +452,7 @@ private fun FlashcardTrainingSummary(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.extraLarge,
-                colors = CardDefaults.cardColors(containerColor = Color.White),
+                colors = CardDefaults.cardColors(containerColor = palette.surface),
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             ) {
                 Box(
@@ -468,32 +468,32 @@ private fun FlashcardTrainingSummary(
                         Text(
                             text = title,
                             style = MaterialTheme.typography.headlineMedium,
-                            color = Color(0xFF2D333C),
+                            color = palette.title,
                             textAlign = TextAlign.Center,
                         )
                         Text(
                             text = subtitle,
                             style = MaterialTheme.typography.bodyLarge,
-                            color = Color(0xFF727B8C),
+                            color = palette.body,
                             textAlign = TextAlign.Center,
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             text = "Знаю: $knownCount",
                             style = MaterialTheme.typography.titleLarge,
-                            color = Color(0xFF2D333C),
+                            color = palette.title,
                         )
                         Text(
                             text = "Не знаю: $unknownCount",
                             style = MaterialTheme.typography.titleLarge,
-                            color = Color(0xFF2D333C),
+                            color = palette.title,
                         )
                         if (onRetryUnknownCards != null) {
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
                                 text = "В повтор войдут только слова, отмеченные как «не знаю».",
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = Color(0xFF727B8C),
+                                color = palette.body,
                                 textAlign = TextAlign.Center,
                             )
                             Spacer(modifier = Modifier.height(4.dp))

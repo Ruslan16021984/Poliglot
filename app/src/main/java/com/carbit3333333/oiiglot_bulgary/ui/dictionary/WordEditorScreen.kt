@@ -56,6 +56,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -165,13 +166,7 @@ private fun WordEditorScreenContent(
     onDismissSuccess: () -> Unit,
     onSpeechInputClick: (WordEditorViewModel.SpeechTarget) -> Unit,
 ) {
-    val pageBackground = Color(0xFFF5F7FB)
-    val surfaceColor = Color.White
-    val accentColor = Color(0xFF1F6FE5)
-    val accentTint = Color(0xFFEAF2FF)
-    val titleColor = Color(0xFF2D333C)
-    val bodyColor = Color(0xFF727B8C)
-    val borderColor = Color(0xFFD9E1EC)
+    val palette = rememberDictionaryPalette()
 
     if (uiState.isNewGroupDialogVisible) {
         AlertDialog(
@@ -214,7 +209,7 @@ private fun WordEditorScreenContent(
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = pageBackground,
+        color = palette.pageBackground,
     ) {
         LazyColumn(
             modifier = Modifier
@@ -237,12 +232,12 @@ private fun WordEditorScreenContent(
                             enabled = uiState.isBackEnabled,
                             modifier = Modifier
                                 .clip(CircleShape)
-                                .background(surfaceColor),
+                                .background(palette.surface),
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = "Назад",
-                                tint = titleColor,
+                                tint = palette.title,
                             )
                         }
                         Spacer(modifier = Modifier.width(12.dp))
@@ -250,7 +245,7 @@ private fun WordEditorScreenContent(
                             text = uiState.screenTitle,
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.SemiBold,
-                            color = titleColor,
+                            color = palette.title,
                         )
                     }
                 }
@@ -260,7 +255,7 @@ private fun WordEditorScreenContent(
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = surfaceColor),
+                    colors = CardDefaults.cardColors(containerColor = palette.surface),
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 ) {
                     Column(
@@ -287,8 +282,7 @@ private fun WordEditorScreenContent(
                                 onSpeechInputClick = {
                                     onSpeechInputClick(WordEditorViewModel.SpeechTarget.Bulgarian)
                                 },
-                                borderColor = borderColor,
-                                bodyColor = bodyColor,
+                                palette = palette,
                             )
 
                             EditorFieldCard(
@@ -301,8 +295,7 @@ private fun WordEditorScreenContent(
                                 onSpeechInputClick = {
                                     onSpeechInputClick(WordEditorViewModel.SpeechTarget.Russian)
                                 },
-                                borderColor = borderColor,
-                                bodyColor = bodyColor,
+                                palette = palette,
                             )
                         }
                     }
@@ -312,7 +305,7 @@ private fun WordEditorScreenContent(
             if (uiState.errorMessage != null) {
                 item {
                     Card(
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF4F1)),
+                        colors = CardDefaults.cardColors(containerColor = palette.errorSurface),
                         shape = RoundedCornerShape(18.dp),
                     ) {
                         Row(
@@ -324,7 +317,7 @@ private fun WordEditorScreenContent(
                             Text(
                                 text = uiState.errorMessage,
                                 modifier = Modifier.weight(1f),
-                                color = Color(0xFF9C4038),
+                                color = palette.errorText,
                             )
                             OutlinedButton(onClick = onDismissError) {
                                 Text("Ок")
@@ -337,7 +330,7 @@ private fun WordEditorScreenContent(
             if (uiState.successMessage != null) {
                 item {
                     Card(
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFEAF8EF)),
+                        colors = CardDefaults.cardColors(containerColor = palette.successSurface),
                         shape = RoundedCornerShape(18.dp),
                     ) {
                         Row(
@@ -349,7 +342,7 @@ private fun WordEditorScreenContent(
                             Text(
                                 text = uiState.successMessage,
                                 modifier = Modifier.weight(1f),
-                                color = Color(0xFF256C42),
+                                color = palette.successText,
                             )
                             OutlinedButton(onClick = onDismissSuccess) {
                                 Text("Ок")
@@ -362,13 +355,13 @@ private fun WordEditorScreenContent(
             if (uiState.isSaving) {
                 item {
                     Card(
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F6FF)),
+                        colors = CardDefaults.cardColors(containerColor = palette.infoSurface),
                         shape = RoundedCornerShape(18.dp),
                     ) {
                         Text(
                             text = "Сохраняем слово. Пожалуйста, дождитесь завершения.",
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
-                            color = titleColor,
+                            color = palette.infoText,
                         )
                     }
                 }
@@ -378,7 +371,7 @@ private fun WordEditorScreenContent(
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = surfaceColor),
+                    colors = CardDefaults.cardColors(containerColor = palette.surface),
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                 ) {
                     Column(
@@ -388,7 +381,7 @@ private fun WordEditorScreenContent(
                         Text(
                             text = "Когда всё заполнено, сохраните карточку в словарь.",
                             style = MaterialTheme.typography.bodyMedium,
-                            color = bodyColor,
+                            color = palette.body,
                         )
                         Button(
                             onClick = onSaveClick,
@@ -407,7 +400,7 @@ private fun WordEditorScreenContent(
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = surfaceColor),
+                    colors = CardDefaults.cardColors(containerColor = palette.surface),
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                 ) {
                     Column(
@@ -418,7 +411,7 @@ private fun WordEditorScreenContent(
                             text = "Группы",
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.SemiBold,
-                            color = titleColor,
+                            color = palette.title,
                         )
 
                         FlowRow(
@@ -430,9 +423,11 @@ private fun WordEditorScreenContent(
                                     group = group,
                                     selected = group.id in uiState.selectedGroupIds,
                                     onClick = { onToggleGroup(group.id) },
-                                    accentColor = accentColor,
-                                    borderColor = borderColor,
-                                    bodyColor = bodyColor,
+                                    accentColor = palette.accent,
+                                    surfaceColor = palette.surface,
+                                    borderColor = palette.border,
+                                    bodyColor = palette.body,
+                                    titleColor = palette.title,
                                     enabled = uiState.isEditorInteractive,
                                 )
                             }
@@ -441,16 +436,16 @@ private fun WordEditorScreenContent(
                                 onClick = onShowNewGroupDialog,
                                 enabled = uiState.isEditorInteractive,
                                 shape = RoundedCornerShape(16.dp),
-                                border = BorderStroke(1.5.dp, accentColor.copy(alpha = 0.55f)),
+                                border = BorderStroke(1.5.dp, palette.accent.copy(alpha = 0.55f)),
                                 contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Add,
                                     contentDescription = null,
-                                    tint = accentColor,
+                                    tint = palette.accent,
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Text("Новая группа", color = accentColor)
+                                Text("Новая группа", color = palette.accent)
                             }
                         }
 
@@ -458,7 +453,7 @@ private fun WordEditorScreenContent(
                             Text(
                                 text = "Пока нет групп. Создай первую, и она сразу появится в выборе.",
                                 style = MaterialTheme.typography.bodySmall,
-                                color = bodyColor,
+                                color = palette.body,
                             )
                         }
                     }
@@ -469,7 +464,7 @@ private fun WordEditorScreenContent(
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(20.dp),
-                    colors = CardDefaults.cardColors(containerColor = surfaceColor),
+                    colors = CardDefaults.cardColors(containerColor = palette.surface),
                     elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 ) {
                     Row(
@@ -481,7 +476,7 @@ private fun WordEditorScreenContent(
                         Icon(
                             imageVector = Icons.Default.Info,
                             contentDescription = null,
-                            tint = titleColor,
+                            tint = palette.title,
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Text(
@@ -489,12 +484,12 @@ private fun WordEditorScreenContent(
                             modifier = Modifier.weight(1f),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Medium,
-                            color = titleColor,
+                            color = palette.title,
                         )
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowDown,
                             contentDescription = null,
-                            tint = bodyColor,
+                            tint = palette.body,
                         )
                     }
                 }
@@ -512,15 +507,14 @@ private fun EditorFieldCard(
     enabled: Boolean,
     onValueChange: (String) -> Unit,
     onSpeechInputClick: () -> Unit,
-    borderColor: Color,
-    bodyColor: Color,
+    palette: DictionaryPalette,
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(
             text = title,
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Medium,
-            color = Color(0xFF2D333C),
+            color = palette.title,
         )
         OutlinedTextField(
             value = value,
@@ -530,7 +524,7 @@ private fun EditorFieldCard(
             readOnly = !enabled,
             singleLine = true,
             shape = RoundedCornerShape(18.dp),
-            placeholder = { Text(placeholder, color = bodyColor) },
+            placeholder = { Text(placeholder, color = palette.body) },
             trailingIcon = {
                 IconButton(
                     onClick = onSpeechInputClick,
@@ -539,7 +533,7 @@ private fun EditorFieldCard(
                     Icon(
                         painter = painterResource(id = android.R.drawable.ic_btn_speak_now),
                         contentDescription = "Голосовой ввод",
-                        tint = bodyColor,
+                        tint = palette.body,
                     )
                 }
             },
@@ -559,15 +553,17 @@ private fun GroupSelectionChip(
     selected: Boolean,
     onClick: () -> Unit,
     accentColor: Color,
+    surfaceColor: Color,
     borderColor: Color,
     bodyColor: Color,
+    titleColor: Color,
     enabled: Boolean,
 ) {
     Surface(
         onClick = onClick,
         enabled = enabled,
         shape = RoundedCornerShape(16.dp),
-        color = if (selected) accentColor.copy(alpha = 0.08f) else Color.White,
+        color = if (selected) accentColor.copy(alpha = 0.08f).compositeOver(surfaceColor) else surfaceColor,
         border = BorderStroke(1.dp, if (selected) accentColor else borderColor),
     ) {
         Row(
@@ -582,7 +578,7 @@ private fun GroupSelectionChip(
             Spacer(modifier = Modifier.width(10.dp))
             Text(
                 text = group.name,
-                color = if (selected) accentColor else Color(0xFF2D333C),
+                color = if (selected) accentColor else titleColor,
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
