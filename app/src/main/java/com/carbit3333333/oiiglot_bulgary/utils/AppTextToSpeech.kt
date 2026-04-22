@@ -7,34 +7,44 @@ import java.util.Locale
 class AppTextToSpeech(context: Context) {
 
     private var textToSpeech: TextToSpeech? = null
-    private var isReady: Boolean = false
+    private var isInitialized: Boolean = false
 
     init {
         textToSpeech = TextToSpeech(context.applicationContext) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                val result = textToSpeech?.setLanguage(Locale("bg", "BG"))
-
-                isReady = result != TextToSpeech.LANG_MISSING_DATA &&
-                        result != TextToSpeech.LANG_NOT_SUPPORTED
-
-                if (isReady) {
-                    textToSpeech?.setSpeechRate(0.9f)
-                }
-            } else {
-                isReady = false
+            isInitialized = status == TextToSpeech.SUCCESS
+            if (isInitialized) {
+                textToSpeech?.setSpeechRate(0.9f)
             }
         }
     }
 
+    fun speakBulgarian(text: String) {
+        speak(text, Locale.forLanguageTag("bg-BG"))
+    }
+
+    fun speakRussian(text: String) {
+        speak(text, Locale.forLanguageTag("ru-RU"))
+    }
+
     fun speak(text: String) {
-        if (!isReady || text.isBlank()) return
+        speakBulgarian(text)
+    }
+
+    fun speak(text: String, locale: Locale) {
+        if (!isInitialized || text.isBlank()) return
+
+        val result = textToSpeech?.setLanguage(locale)
+        val isLanguageReady = result != TextToSpeech.LANG_MISSING_DATA &&
+            result != TextToSpeech.LANG_NOT_SUPPORTED
+
+        if (!isLanguageReady) return
 
         textToSpeech?.stop()
         textToSpeech?.speak(
             text,
             TextToSpeech.QUEUE_FLUSH,
             null,
-            "lesson_tts_${System.currentTimeMillis()}"
+            "lesson_tts_${System.currentTimeMillis()}",
         )
     }
 

@@ -1,4 +1,4 @@
-package com.carbit3333333.oiiglot_bulgary.ui.lessons
+﻿package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,7 +20,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -293,7 +293,7 @@ private fun SessionTopBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            imageVector = Icons.Default.ArrowBack,
+            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = "Назад",
             tint = Color.White,
             modifier = Modifier.clickable(onClick = onBackClick)
@@ -719,3 +719,4 @@ private fun LessonSessionCorrectPreview() {
         }
     }
 }
+

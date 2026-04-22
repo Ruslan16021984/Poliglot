@@ -91,7 +91,8 @@ fun FlashcardTrainingScreen(
         onDontKnowCard = viewModel::markUnknown,
         onRetryLoad = viewModel::retryLoad,
         onRetryUnknownCards = viewModel::retryUnknownCards,
-        onSpeakBulgarian = textToSpeech::speak,
+        onSpeakBulgarian = textToSpeech::speakBulgarian,
+        onSpeakRussian = textToSpeech::speakRussian,
     )
 }
 
@@ -107,6 +108,7 @@ fun FlashcardTrainingScreenContent(
     onRetryLoad: () -> Unit,
     onRetryUnknownCards: () -> Unit,
     onSpeakBulgarian: (String) -> Unit,
+    onSpeakRussian: (String) -> Unit,
 ) {
     val palette = rememberDictionaryPalette()
 
@@ -257,6 +259,7 @@ fun FlashcardTrainingScreenContent(
                             onKnowCard = onKnowCard,
                             onDontKnowCard = onDontKnowCard,
                             onSpeakBulgarian = onSpeakBulgarian,
+                            onSpeakRussian = onSpeakRussian,
                         )
                     }
 
@@ -291,6 +294,7 @@ private fun FlashcardSwipeCard(
     onKnowCard: () -> Unit,
     onDontKnowCard: () -> Unit,
     onSpeakBulgarian: (String) -> Unit,
+    onSpeakRussian: (String) -> Unit,
 ) {
     val density = LocalDensity.current
     val swipeThresholdPx = remember(density) { with(density) { 104.dp.toPx() } }
@@ -318,6 +322,24 @@ private fun FlashcardSwipeCard(
     val backText = when (direction) {
         FlashcardDirection.BgToRu -> card.ruTranslation
         FlashcardDirection.RuToBg -> card.bgWord
+    }
+    val speakAction: () -> Unit = when (shownFace) {
+        FlashcardFace.Front -> {
+            when (direction) {
+                FlashcardDirection.BgToRu -> ({ onSpeakBulgarian(frontText) })
+                FlashcardDirection.RuToBg -> ({ onSpeakRussian(frontText) })
+            }
+        }
+        FlashcardFace.Back -> {
+            when (direction) {
+                FlashcardDirection.BgToRu -> ({ onSpeakRussian(backText) })
+                FlashcardDirection.RuToBg -> ({ onSpeakBulgarian(backText) })
+            }
+        }
+    }
+    val speakLabel = when (shownFace) {
+        FlashcardFace.Front -> frontLanguage
+        FlashcardFace.Back -> backLanguage
     }
 
     Card(
@@ -374,12 +396,12 @@ private fun FlashcardSwipeCard(
                 shape = MaterialTheme.shapes.large,
             ) {
                 TextButton(
-                    onClick = { onSpeakBulgarian(card.bgWord) },
+                    onClick = speakAction,
                     contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp),
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.VolumeUp,
-                        contentDescription = "Произнести по-болгарски",
+                        contentDescription = "Произнести: $speakLabel",
                         tint = palette.accent,
                         modifier = Modifier.size(18.dp),
                     )
@@ -632,6 +654,7 @@ private fun FlashcardTrainingScreenPreview() {
             onRetryLoad = {},
             onRetryUnknownCards = {},
             onSpeakBulgarian = {},
+            onSpeakRussian = {},
         )
     }
 }
