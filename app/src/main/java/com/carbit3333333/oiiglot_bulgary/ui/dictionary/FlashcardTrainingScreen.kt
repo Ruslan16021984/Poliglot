@@ -8,9 +8,9 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,6 +32,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -72,6 +73,7 @@ fun FlashcardTrainingScreen(
         onBackClick = onBackClick,
         onFinishClick = onFinishClick,
         onFlipCard = viewModel::flipCard,
+        onToggleDirection = viewModel::toggleDirection,
         onKnowCard = viewModel::markKnown,
         onDontKnowCard = viewModel::markUnknown,
         onRetryLoad = viewModel::retryLoad,
@@ -85,6 +87,7 @@ fun FlashcardTrainingScreenContent(
     onBackClick: () -> Unit,
     onFinishClick: () -> Unit,
     onFlipCard: () -> Unit,
+    onToggleDirection: () -> Unit,
     onKnowCard: () -> Unit,
     onDontKnowCard: () -> Unit,
     onRetryLoad: () -> Unit,
@@ -113,6 +116,7 @@ fun FlashcardTrainingScreenContent(
                     title = "Не удалось открыть тренировку",
                     subtitle = uiState.errorMessage,
                     groupLabel = uiState.groupLabel,
+                    directionLabel = uiState.directionLabel,
                     knownCount = uiState.knownCount,
                     unknownCount = uiState.unknownCount,
                     buttonLabel = "Повторить",
@@ -127,6 +131,7 @@ fun FlashcardTrainingScreenContent(
                     title = "Тренировка",
                     subtitle = "Слов для тренировки пока нет",
                     groupLabel = uiState.groupLabel,
+                    directionLabel = uiState.directionLabel,
                     knownCount = uiState.knownCount,
                     unknownCount = uiState.unknownCount,
                     buttonLabel = "Вернуться к словарю",
@@ -141,6 +146,7 @@ fun FlashcardTrainingScreenContent(
                     title = "Тренировка завершена",
                     subtitle = "Карточки закончились",
                     groupLabel = uiState.groupLabel,
+                    directionLabel = uiState.directionLabel,
                     knownCount = uiState.knownCount,
                     unknownCount = uiState.unknownCount,
                     buttonLabel = "Вернуться к словарю",
@@ -187,28 +193,40 @@ fun FlashcardTrainingScreenContent(
                     }
 
                     item {
-                        Row(
+                        Column(
                             modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Center,
-                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(12.dp),
                         ) {
-                            Text(
-                                text = uiState.progressText,
-                                style = MaterialTheme.typography.headlineSmall,
-                                fontWeight = FontWeight.SemiBold,
-                                color = palette.title,
-                            )
-                            Spacer(modifier = Modifier.width(14.dp))
-                            Surface(
-                                color = palette.accentSurface,
-                                shape = MaterialTheme.shapes.extraLarge,
+                            Row(
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically,
                             ) {
                                 Text(
-                                    text = uiState.groupLabel,
-                                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
-                                    style = MaterialTheme.typography.labelLarge,
-                                    color = palette.accent,
+                                    text = uiState.progressText,
+                                    style = MaterialTheme.typography.headlineSmall,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = palette.title,
                                 )
+                                Spacer(modifier = Modifier.width(14.dp))
+                                Surface(
+                                    color = palette.accentSurface,
+                                    shape = MaterialTheme.shapes.extraLarge,
+                                ) {
+                                    Text(
+                                        text = uiState.groupLabel,
+                                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
+                                        style = MaterialTheme.typography.labelLarge,
+                                        color = palette.accent,
+                                    )
+                                }
+                            }
+
+                            OutlinedButton(
+                                onClick = onToggleDirection,
+                                shape = MaterialTheme.shapes.large,
+                            ) {
+                                Text(uiState.directionLabel)
                             }
                         }
                     }
@@ -217,6 +235,7 @@ fun FlashcardTrainingScreenContent(
                         FlashcardSwipeCard(
                             card = currentCard,
                             face = uiState.currentCardFace,
+                            direction = uiState.direction,
                             palette = palette,
                             onFlipCard = onFlipCard,
                             onKnowCard = onKnowCard,
@@ -249,6 +268,7 @@ fun FlashcardTrainingScreenContent(
 private fun FlashcardSwipeCard(
     card: FlashcardItem,
     face: FlashcardFace,
+    direction: FlashcardDirection,
     palette: DictionaryPalette,
     onFlipCard: () -> Unit,
     onKnowCard: () -> Unit,
@@ -256,17 +276,31 @@ private fun FlashcardSwipeCard(
 ) {
     val density = LocalDensity.current
     val swipeThresholdPx = remember(density) { with(density) { 104.dp.toPx() } }
-    var dragOffsetY by remember(card.id) { mutableFloatStateOf(0f) }
+    var dragOffsetY by remember(card.id, direction) { mutableFloatStateOf(0f) }
     val cardRotationY by animateFloatAsState(
         targetValue = if (face == FlashcardFace.Front) 0f else 180f,
-        animationSpec = tween(
-            durationMillis = 500,
-            easing = FastOutSlowInEasing,
-        ),
+        animationSpec = tween(durationMillis = 500, easing = FastOutSlowInEasing),
         label = "flashcard_flip",
     )
     val absoluteTilt = abs(dragOffsetY / swipeThresholdPx).coerceIn(0f, 1f)
     val shownFace = if (cardRotationY <= 90f) FlashcardFace.Front else FlashcardFace.Back
+
+    val frontLanguage = when (direction) {
+        FlashcardDirection.BgToRu -> "Болгарский"
+        FlashcardDirection.RuToBg -> "Русский"
+    }
+    val backLanguage = when (direction) {
+        FlashcardDirection.BgToRu -> "Русский"
+        FlashcardDirection.RuToBg -> "Болгарский"
+    }
+    val frontText = when (direction) {
+        FlashcardDirection.BgToRu -> card.bgWord
+        FlashcardDirection.RuToBg -> card.ruTranslation
+    }
+    val backText = when (direction) {
+        FlashcardDirection.BgToRu -> card.ruTranslation
+        FlashcardDirection.RuToBg -> card.bgWord
+    }
 
     Card(
         modifier = Modifier
@@ -280,7 +314,7 @@ private fun FlashcardSwipeCard(
                 scaleY = 1f - (absoluteTilt * 0.02f)
                 cameraDistance = 12f * density.density * 72f
             }
-            .pointerInput(card.id) {
+            .pointerInput(card.id, direction) {
                 detectVerticalDragGestures(
                     onVerticalDrag = { _, dragAmount ->
                         dragOffsetY += dragAmount
@@ -297,7 +331,7 @@ private fun FlashcardSwipeCard(
                     },
                 )
             }
-            .pointerInput(card.id) {
+            .pointerInput(card.id, direction) {
                 detectTapGestures(onTap = { onFlipCard() })
             },
         shape = MaterialTheme.shapes.extraLarge,
@@ -319,13 +353,13 @@ private fun FlashcardSwipeCard(
                 verticalArrangement = Arrangement.Center,
             ) {
                 Text(
-                    text = if (shownFace == FlashcardFace.Front) "Болгарский" else "Русский",
+                    text = if (shownFace == FlashcardFace.Front) frontLanguage else backLanguage,
                     style = MaterialTheme.typography.titleMedium,
                     color = palette.body,
                 )
                 Spacer(modifier = Modifier.height(26.dp))
                 Text(
-                    text = if (shownFace == FlashcardFace.Front) card.bgWord else card.ruTranslation,
+                    text = if (shownFace == FlashcardFace.Front) frontText else backText,
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.SemiBold,
                     color = palette.title,
@@ -392,6 +426,7 @@ private fun FlashcardTrainingSummary(
     title: String,
     subtitle: String,
     groupLabel: String,
+    directionLabel: String,
     knownCount: Int,
     unknownCount: Int,
     buttonLabel: String,
@@ -400,6 +435,7 @@ private fun FlashcardTrainingSummary(
     onRetryUnknownCards: (() -> Unit)?,
 ) {
     val palette = rememberDictionaryPalette()
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -430,9 +466,10 @@ private fun FlashcardTrainingSummary(
         }
 
         item {
-            Box(
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 Surface(
                     color = palette.accentSurface,
@@ -445,6 +482,11 @@ private fun FlashcardTrainingSummary(
                         color = palette.accent,
                     )
                 }
+                Text(
+                    text = directionLabel,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = palette.body,
+                )
             }
         }
 
@@ -533,20 +575,13 @@ private fun FlashcardTrainingScreenPreview() {
                         ruTranslation = "привет",
                     ),
                 ),
+                direction = FlashcardDirection.RuToBg,
                 groupName = "Путешествие",
-                unknownCount = 1,
-                unknownCards = listOf(
-                    FlashcardItem(
-                        id = 1L,
-                        bgWord = "zdravei",
-                        ruTranslation = "привет",
-                    )
-                ),
-                isFinished = true,
             ),
             onBackClick = {},
             onFinishClick = {},
             onFlipCard = {},
+            onToggleDirection = {},
             onKnowCard = {},
             onDontKnowCard = {},
             onRetryLoad = {},

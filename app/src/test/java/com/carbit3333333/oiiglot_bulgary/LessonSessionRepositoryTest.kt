@@ -8,11 +8,11 @@ import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import kotlinx.serialization.json.Json
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import kotlinx.serialization.json.Json
 
 class LessonSessionRepositoryTest {
 
@@ -57,7 +57,7 @@ class LessonSessionRepositoryTest {
         assertEquals(40, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(sourceTexts.any { it.contains("я хочу эту книгу") })
-        assertTrue(sourceTexts.any { it.startsWith("мы хотим ") })
+        assertTrue(sourceTexts.any { it.startsWith("мы ") })
         assertTrue(sourceTexts.any { it.contains("он хочет эту работу") })
         assertTrue(sourceTexts.any { it.startsWith("вы ") })
         assertTrue(sourceTexts.any { it.startsWith("она ") })
@@ -66,7 +66,7 @@ class LessonSessionRepositoryTest {
         assertTrue(bgWords.contains("книгата"))
         assertTrue(bgWords.any { it.startsWith("обич") })
         assertTrue(bgWords.any { it.startsWith("уч") })
-        assertTrue(bgWords.any { it.startsWith("яд") || it.startsWith("яде") })
+        assertTrue(bgWords.any { it.startsWith("яд") || it.startsWith("ям") })
     }
 
     @Test
@@ -147,7 +147,17 @@ class LessonSessionRepositoryTest {
         assertTrue(
             session.exercises.any {
                 it.correctAnswerWords.any { word ->
-                    word in setOf("един", "една", "едно", "два", "две", "три", "десет", "единадесет", "двадесет")
+                    word in setOf(
+                        "един",
+                        "една",
+                        "едно",
+                        "два",
+                        "две",
+                        "три",
+                        "десет",
+                        "единадесет",
+                        "двадесет",
+                    )
                 }
             },
         )

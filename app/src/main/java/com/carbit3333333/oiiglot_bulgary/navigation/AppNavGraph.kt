@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.carbit3333333.oiiglot_bulgary.data.dictionary.FlashcardTrainingPreferencesStore
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.DictionaryScreen
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardTrainingScreen
@@ -110,11 +111,13 @@ fun AppNavGraph() {
         ) { backStackEntry ->
             val context = LocalContext.current
             val repository = remember(context) { PersonalDictionaryRepository(context) }
+            val preferencesStore = remember(context) { FlashcardTrainingPreferencesStore(context) }
             val groupId = backStackEntry.arguments?.getLong("groupId")?.takeIf { it > 0L }
             val groupName = backStackEntry.arguments?.getString("groupName")?.takeIf { it.isNotBlank() }
             val flashcardTrainingViewModel: FlashcardTrainingViewModel = viewModel(
                 factory = FlashcardTrainingViewModel.provideFactory(
                     repository = repository,
+                    preferencesStore = preferencesStore,
                     groupId = groupId,
                     groupName = groupName,
                 )

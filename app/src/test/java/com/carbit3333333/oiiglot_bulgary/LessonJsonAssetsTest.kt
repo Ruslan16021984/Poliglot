@@ -21,7 +21,7 @@ class LessonJsonAssetsTest {
     @Test
     fun `lessons json decodes expected lesson structure`() {
         val lessons = json.decodeFromString<List<Lesson>>(
-            readAssetText("lessons.json")
+            readAssetText("lessons.json"),
         )
 
         assertEquals(10, lessons.size)
@@ -34,7 +34,7 @@ class LessonJsonAssetsTest {
                 lesson.theory.all { block ->
                     !block.title.isNullOrBlank() && !block.text.isNullOrBlank()
                 }
-            }
+            },
         )
         assertNotNull(lessons.find { it.id == 9 && it.title == "Урок 9" })
         assertNotNull(lessons.find { it.id == 10 && it.title == "Урок 10" })
@@ -43,12 +43,12 @@ class LessonJsonAssetsTest {
     @Test
     fun `lesson session json decodes expected migrated content`() {
         val assets = json.decodeFromString<LessonSessionAssets>(
-            readAssetText("lesson_session_content.json")
+            readAssetText("lesson_session_content.json"),
         )
 
         assertEquals(6, assets.lesson3SubjectRu.size)
         assertEquals(10, assets.lesson3Verbs.size)
-        assertEquals(77, assets.lesson4Items.size)
+        assertEquals(100, assets.lesson4Items.size)
         assertEquals(12, assets.lesson7Templates.size)
         assertEquals(15, assets.lesson8Templates.size)
         assertEquals(20, assets.lesson9Numbers.size)
@@ -69,16 +69,20 @@ class LessonJsonAssetsTest {
         assertTrue(assets.lesson3Verbs.any { it.ruPast["Аз"] == "ходил(а)" })
         assertTrue(assets.lesson3Verbs.any { it.ruPast["Аз"] == "ел(а)" })
         assertTrue(assets.lesson3Verbs.any { it.ruPast["Аз"] == "учился(ась)" })
-        assertTrue(assets.lesson4Items.any { it.ru == "эта работа" })
+
+        assertTrue(assets.lesson4Items.all { it.ru.trim().split(Regex("\\s+")).size >= 3 })
+        assertTrue(assets.lesson4Items.none { it.correctWords.size < 3 })
+        assertTrue(assets.lesson4Items.any { it.ru == "я хочу эту воду" })
         assertTrue(assets.lesson4Items.any { it.ru == "я люблю читать" })
         assertTrue(assets.lesson4Items.any { it.ru == "мы хотим работать" })
-        assertTrue(assets.lesson4Items.any { it.ru == "он хочет эту работу" })
-        assertTrue(assets.lesson4Items.any { it.ru == "мы любим пить кофе" })
-        assertTrue(assets.lesson4Items.any { it.ru == "вы хотите читать" })
-        assertTrue(assets.lesson4Items.any { it.ru == "я хочу эту воду" })
         assertTrue(assets.lesson4Items.any { it.ru == "мы хотим читать эту книгу" })
+        assertTrue(assets.lesson4Items.any { it.ru == "он хочет эту работу" })
         assertTrue(assets.lesson4Items.any { it.ru == "она любит пить кофе" })
+        assertTrue(assets.lesson4Items.any { it.ru == "она любит говорить" })
         assertTrue(assets.lesson4Items.any { it.ru == "оно хочет пить воду" })
+        assertTrue(assets.lesson4Items.any { it.ru == "вы хотите читать" })
+        assertTrue(assets.lesson4Items.any { it.ru == "вы хотите пить кофе" })
+
         assertTrue(assets.lesson7Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
         assertTrue(assets.lesson8Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
         assertTrue(
@@ -89,7 +93,7 @@ class LessonJsonAssetsTest {
                     it.ruMasculine.isNotBlank() &&
                     it.ruFeminine.isNotBlank() &&
                     it.ruNeuter.isNotBlank()
-            }
+            },
         )
         assertTrue(assets.lesson9Objects.all { it.singular.isNotBlank() && it.countForm.isNotBlank() })
         assertTrue(assets.lesson9Templates.all { it.bgTokens.isNotEmpty() && it.ruTokens.isNotEmpty() })

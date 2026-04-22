@@ -7,11 +7,17 @@ enum class FlashcardFace {
     Back,
 }
 
+enum class FlashcardDirection {
+    BgToRu,
+    RuToBg,
+}
+
 data class FlashcardTrainingUiState(
     val isLoading: Boolean = false,
     val cards: List<FlashcardItem> = emptyList(),
     val currentIndex: Int = 0,
     val currentCardFace: FlashcardFace = FlashcardFace.Front,
+    val direction: FlashcardDirection = FlashcardDirection.BgToRu,
     val knownCount: Int = 0,
     val unknownCount: Int = 0,
     val unknownCards: List<FlashcardItem> = emptyList(),
@@ -37,4 +43,10 @@ data class FlashcardTrainingUiState(
 
     val groupLabel: String
         get() = groupName ?: "Все слова"
+
+    val directionLabel: String
+        get() = when (direction) {
+            FlashcardDirection.BgToRu -> "Болгарский -> Русский"
+            FlashcardDirection.RuToBg -> "Русский -> Болгарский"
+        }
 }

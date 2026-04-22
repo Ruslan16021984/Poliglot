@@ -2,6 +2,7 @@ package com.carbit3333333.oiiglot_bulgary
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
+import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardDirection
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardFace
 import com.carbit3333333.oiiglot_bulgary.viewmodel.FlashcardTrainingViewModel
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +49,8 @@ class FlashcardTrainingViewModelTest {
             selectedGroupId = null,
             selectedGroupName = "Travel",
             flashcardLoader = { cards },
+            loadSavedDirection = { FlashcardDirection.BgToRu },
+            saveDirection = {},
         )
 
         advanceUntilIdle()
@@ -56,7 +59,13 @@ class FlashcardTrainingViewModelTest {
         assertEquals(cards, viewModel.uiState.value.cards)
         assertEquals("1 / 2", viewModel.uiState.value.progressText)
         assertEquals(FlashcardFace.Front, viewModel.uiState.value.currentCardFace)
+        assertEquals(FlashcardDirection.BgToRu, viewModel.uiState.value.direction)
         assertNull(viewModel.uiState.value.errorMessage)
+
+        viewModel.toggleDirection()
+
+        assertEquals(FlashcardDirection.RuToBg, viewModel.uiState.value.direction)
+        assertEquals(FlashcardFace.Front, viewModel.uiState.value.currentCardFace)
 
         viewModel.flipCard()
 
@@ -69,6 +78,7 @@ class FlashcardTrainingViewModelTest {
         assertEquals(0, viewModel.uiState.value.unknownCount)
         assertFalse(viewModel.uiState.value.isFinished)
         assertEquals(FlashcardFace.Front, viewModel.uiState.value.currentCardFace)
+        assertEquals(FlashcardDirection.RuToBg, viewModel.uiState.value.direction)
         assertEquals("2 / 2", viewModel.uiState.value.progressText)
 
         viewModel.flipCard()
@@ -78,6 +88,7 @@ class FlashcardTrainingViewModelTest {
         assertEquals(1, viewModel.uiState.value.knownCount)
         assertEquals(1, viewModel.uiState.value.unknownCount)
         assertEquals(listOf(cards[1]), viewModel.uiState.value.unknownCards)
+        assertEquals(FlashcardDirection.RuToBg, viewModel.uiState.value.direction)
         assertEquals("2 / 2", viewModel.uiState.value.progressText)
 
         viewModel.retryUnknownCards()
@@ -87,6 +98,7 @@ class FlashcardTrainingViewModelTest {
         assertEquals(0, viewModel.uiState.value.knownCount)
         assertEquals(0, viewModel.uiState.value.unknownCount)
         assertTrue(viewModel.uiState.value.unknownCards.isEmpty())
+        assertEquals(FlashcardDirection.RuToBg, viewModel.uiState.value.direction)
         assertEquals("1 / 1", viewModel.uiState.value.progressText)
     }
 
@@ -96,6 +108,8 @@ class FlashcardTrainingViewModelTest {
             selectedGroupId = null,
             selectedGroupName = null,
             flashcardLoader = { throw IllegalStateException("boom") },
+            loadSavedDirection = { FlashcardDirection.RuToBg },
+            saveDirection = {},
         )
 
         advanceUntilIdle()
@@ -104,6 +118,7 @@ class FlashcardTrainingViewModelTest {
         assertTrue(viewModel.uiState.value.cards.isEmpty())
         assertNull(viewModel.uiState.value.currentCard)
         assertFalse(viewModel.uiState.value.isFinished)
+        assertEquals(FlashcardDirection.RuToBg, viewModel.uiState.value.direction)
         assertEquals(
             "Не удалось загрузить карточки. Попробуйте ещё раз.",
             viewModel.uiState.value.errorMessage,

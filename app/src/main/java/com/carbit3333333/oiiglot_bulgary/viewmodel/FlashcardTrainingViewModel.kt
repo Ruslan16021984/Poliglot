@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
+import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardDirection
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardFace
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardTrainingUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,13 +17,15 @@ class FlashcardTrainingViewModel(
     private val selectedGroupId: Long?,
     private val selectedGroupName: String?,
     private val flashcardLoader: suspend (Long?) -> List<FlashcardItem>,
+    private val loadSavedDirection: suspend () -> FlashcardDirection,
+    private val saveDirection: suspend (FlashcardDirection) -> Unit,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(
         FlashcardTrainingUiState(
             isLoading = true,
             groupName = selectedGroupName,
-        )
+        ),
     )
     val uiState: StateFlow<FlashcardTrainingUiState> = _uiState.asStateFlow()
 
@@ -42,6 +45,25 @@ class FlashcardTrainingViewModel(
                 FlashcardFace.Back -> FlashcardFace.Front
             },
         )
+    }
+
+    fun toggleDirection() {
+        val state = _uiState.value
+        if (state.isLoading) {
+            return
+        }
+
+        val newDirection = when (state.direction) {
+            FlashcardDirection.BgToRu -> FlashcardDirection.RuToBg
+            FlashcardDirection.RuToBg -> FlashcardDirection.BgToRu
+        }
+        _uiState.value = state.copy(
+            direction = newDirection,
+            currentCardFace = FlashcardFace.Front,
+        )
+        viewModelScope.launch {
+            saveDirection(newDirection)
+        }
     }
 
     fun markKnown() {
@@ -67,6 +89,7 @@ class FlashcardTrainingViewModel(
             cards = state.unknownCards,
             currentIndex = 0,
             currentCardFace = FlashcardFace.Front,
+            direction = state.direction,
             knownCount = 0,
             unknownCount = 0,
             unknownCards = emptyList(),
@@ -93,6 +116,9 @@ class FlashcardTrainingViewModel(
         )
 
         viewModelScope.launch {
+            val direction = runCatching { loadSavedDirection() }
+                .getOrDefault(_uiState.value.direction)
+
             runCatching {
                 flashcardLoader(selectedGroupId)
             }.onSuccess { cards ->
@@ -100,11 +126,13 @@ class FlashcardTrainingViewModel(
                     isLoading = false,
                     cards = cards,
                     isFinished = cards.isEmpty(),
+                    direction = direction,
                     groupName = selectedGroupName,
                 )
             }.onFailure {
                 _uiState.value = FlashcardTrainingUiState(
                     isLoading = false,
+                    direction = direction,
                     groupName = selectedGroupName,
                     errorMessage = "Не удалось загрузить карточки. Попробуйте ещё раз.",
                 )
@@ -133,6 +161,7 @@ class FlashcardTrainingViewModel(
     companion object {
         fun provideFactory(
             repository: PersonalDictionaryRepository,
+            preferencesStore: com.carbit3333333.oiiglot_bulgary.data.dictionary.FlashcardTrainingPreferencesStore,
             groupId: Long?,
             groupName: String?,
         ): ViewModelProvider.Factory {
@@ -149,6 +178,12 @@ class FlashcardTrainingViewModel(
                             } else {
                                 repository.loadFlashcardsForOneGroup(requestedGroupId)
                             }
+                        },
+                        loadSavedDirection = {
+                            preferencesStore.loadDirection()
+                        },
+                        saveDirection = { direction ->
+                            preferencesStore.saveDirection(direction)
                         },
                     ) as T
                 }
