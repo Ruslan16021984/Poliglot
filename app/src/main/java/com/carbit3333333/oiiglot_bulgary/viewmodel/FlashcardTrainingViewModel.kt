@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.data.dictionary.FlashcardTrainingPreferencesStore
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardDirection
@@ -57,10 +58,12 @@ class FlashcardTrainingViewModel(
             FlashcardDirection.BgToRu -> FlashcardDirection.RuToBg
             FlashcardDirection.RuToBg -> FlashcardDirection.BgToRu
         }
+
         _uiState.value = state.copy(
             direction = newDirection,
             currentCardFace = FlashcardFace.Front,
         )
+
         viewModelScope.launch {
             saveDirection(newDirection)
         }
@@ -161,7 +164,7 @@ class FlashcardTrainingViewModel(
     companion object {
         fun provideFactory(
             repository: PersonalDictionaryRepository,
-            preferencesStore: com.carbit3333333.oiiglot_bulgary.data.dictionary.FlashcardTrainingPreferencesStore,
+            preferencesStore: FlashcardTrainingPreferencesStore,
             groupId: Long?,
             groupName: String?,
         ): ViewModelProvider.Factory {
@@ -179,12 +182,8 @@ class FlashcardTrainingViewModel(
                                 repository.loadFlashcardsForOneGroup(requestedGroupId)
                             }
                         },
-                        loadSavedDirection = {
-                            preferencesStore.loadDirection()
-                        },
-                        saveDirection = { direction ->
-                            preferencesStore.saveDirection(direction)
-                        },
+                        loadSavedDirection = { preferencesStore.loadDirection() },
+                        saveDirection = { direction -> preferencesStore.saveDirection(direction) },
                     ) as T
                 }
             }
