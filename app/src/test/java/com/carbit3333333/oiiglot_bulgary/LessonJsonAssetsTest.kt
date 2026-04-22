@@ -48,7 +48,7 @@ class LessonJsonAssetsTest {
 
         assertEquals(6, assets.lesson3SubjectRu.size)
         assertEquals(10, assets.lesson3Verbs.size)
-        assertEquals(36, assets.lesson4Items.size)
+        assertEquals(77, assets.lesson4Items.size)
         assertEquals(12, assets.lesson7Templates.size)
         assertEquals(15, assets.lesson8Templates.size)
         assertEquals(20, assets.lesson9Numbers.size)
@@ -75,6 +75,10 @@ class LessonJsonAssetsTest {
         assertTrue(assets.lesson4Items.any { it.ru == "он хочет эту работу" })
         assertTrue(assets.lesson4Items.any { it.ru == "мы любим пить кофе" })
         assertTrue(assets.lesson4Items.any { it.ru == "вы хотите читать" })
+        assertTrue(assets.lesson4Items.any { it.ru == "я хочу эту воду" })
+        assertTrue(assets.lesson4Items.any { it.ru == "мы хотим читать эту книгу" })
+        assertTrue(assets.lesson4Items.any { it.ru == "она любит пить кофе" })
+        assertTrue(assets.lesson4Items.any { it.ru == "оно хочет пить воду" })
         assertTrue(assets.lesson7Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
         assertTrue(assets.lesson8Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
         assertTrue(

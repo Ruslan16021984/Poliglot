@@ -1,15 +1,25 @@
 package com.carbit3333333.oiiglot_bulgary
 
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionRepository
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionAssets
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionFactory
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
+import java.nio.charset.StandardCharsets
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlinx.serialization.json.Json
 
 class LessonSessionRepositoryTest {
 
     private val repository = LessonSessionRepository()
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
 
     @Test
     fun `lesson 1 session builds complete exercises`() {
@@ -31,47 +41,68 @@ class LessonSessionRepositoryTest {
                 it.sourceText.contains("(а)") ||
                     it.sourceText.contains(" / шла") ||
                     it.sourceText.contains("(лась)")
-            }
+            },
         )
     }
 
     @Test
-    fun `lesson 4 session uses expanded noun and action contrasts`() {
-        val session = repository.getLessonSession(4)
+    fun `lesson 4 session uses full sentence practice`() {
+        val session = LessonSessionFactory.create(
+            lessonId = 4,
+            assets = loadLessonSessionAssets(),
+        )
         val sourceTexts = session.exercises.map { it.sourceText }
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(40, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(sourceTexts.any { it.contains("эта работа") })
-        assertTrue(sourceTexts.any { it.contains("я люблю читать") })
-        assertTrue(sourceTexts.any { it.contains("мы хотим работать") })
-        assertTrue(sourceTexts.any { it.contains("эта вода") })
+        assertTrue(sourceTexts.any { it.contains("я хочу эту книгу") })
+        assertTrue(sourceTexts.any { it.startsWith("мы хотим ") })
         assertTrue(sourceTexts.any { it.contains("он хочет эту работу") })
-        assertTrue(sourceTexts.any { it.contains("мы любим пить кофе") })
-        assertTrue(sourceTexts.any { it.contains("вы хотите читать") })
+        assertTrue(sourceTexts.any { it.startsWith("вы ") })
+        assertTrue(sourceTexts.any { it.startsWith("она ") })
+        assertTrue(sourceTexts.any { it.startsWith("оно ") })
         assertTrue(bgWords.contains("работата"))
-        assertTrue(bgWords.contains("чета"))
-        assertTrue(bgWords.contains("обичам"))
-        assertTrue(bgWords.contains("пием"))
+        assertTrue(bgWords.contains("книгата"))
+        assertTrue(bgWords.any { it.startsWith("обич") })
+        assertTrue(bgWords.any { it.startsWith("уч") })
+        assertTrue(bgWords.any { it.startsWith("яд") || it.startsWith("яде") })
     }
 
     @Test
-    fun `lesson 4 session progresses from simple forms to combined constructions`() {
-        val session = repository.getLessonSession(4)
-        val firstBlock = session.exercises.take(8).map { it.sourceText }
-        val secondBlock = session.exercises.drop(8).take(8).map { it.sourceText }
-        val thirdBlock = session.exercises.drop(16).take(8).map { it.sourceText }
-        val lastBlock = session.exercises.drop(24).map { it.sourceText }
-        val basicNouns = setOf("книга", "женщина", "ребёнок", "вода", "работа", "кофе")
-        val definiteNouns = setOf("эта книга", "эта женщина", "этот ребёнок", "эта вода", "эта работа", "это кофе")
-        val bareVerbs = setOf("есть", "пить", "работать", "читать", "учиться", "говорить")
+    fun `lesson 4 session avoids standalone prompt fragments`() {
+        val session = LessonSessionFactory.create(
+            lessonId = 4,
+            assets = loadLessonSessionAssets(),
+        )
+        val standalonePrompts = setOf(
+            "книга",
+            "эта книга",
+            "женщина",
+            "эта женщина",
+            "ребёнок",
+            "этот ребёнок",
+            "вода",
+            "эта вода",
+            "работа",
+            "эта работа",
+            "кофе",
+            "этот кофе",
+            "есть",
+            "пить",
+            "работать",
+            "читать",
+            "учиться",
+            "говорить",
+        )
 
-        assertTrue(firstBlock.all { it in basicNouns })
-        assertTrue(secondBlock.any { it in definiteNouns })
-        assertTrue(secondBlock.none { it.contains("хочу") || it.contains("люблю") })
-        assertTrue(thirdBlock.all { it in bareVerbs })
-        assertTrue(lastBlock.any { it.contains("хочу") || it.contains("люблю") })
+        assertTrue(
+            session.exercises.all { exercise ->
+                val wordCount = exercise.sourceText.trim().split(Regex("\\s+")).size
+                wordCount >= 3
+            },
+        )
+        assertTrue(session.exercises.none { it.sourceText in standalonePrompts })
     }
 
     @Test
@@ -88,8 +119,9 @@ class LessonSessionRepositoryTest {
 
     @Test
     fun `lesson 7 and 8 sessions use migrated template content`() {
-        val lesson7 = repository.getLessonSession(7)
-        val lesson8 = repository.getLessonSession(8)
+        val assets = loadLessonSessionAssets()
+        val lesson7 = LessonSessionFactory.create(lessonId = 7, assets = assets)
+        val lesson8 = LessonSessionFactory.create(lessonId = 8, assets = assets)
 
         assertEquals(60, lesson7.exercises.size)
         assertEquals(60, lesson8.exercises.size)
@@ -110,14 +142,14 @@ class LessonSessionRepositoryTest {
                 it.sourceText.contains("одн") ||
                     it.sourceText.contains("две") ||
                     it.sourceText.contains("три")
-            }
+            },
         )
         assertTrue(
             session.exercises.any {
                 it.correctAnswerWords.any { word ->
                     word in setOf("един", "една", "едно", "два", "две", "три", "десет", "единадесет", "двадесет")
                 }
-            }
+            },
         )
         assertTrue(session.exercises.any { it.sourceText.trim().endsWith("?") })
         assertTrue(session.exercises.any { "ли" in it.correctAnswerWords })
@@ -125,7 +157,7 @@ class LessonSessionRepositoryTest {
             session.exercises.any {
                 it.correctAnswerWords.containsAll(listOf("Ти", "виждаш", "ли")) ||
                     it.correctAnswerWords.containsAll(listOf("Ти", "взимаш", "ли"))
-            }
+            },
         )
     }
 
@@ -140,32 +172,32 @@ class LessonSessionRepositoryTest {
                 it.sourceText.contains("понедельник") ||
                     it.sourceText.contains("вторник") ||
                     it.sourceText.contains("среду")
-            }
+            },
         )
         assertTrue(
             session.exercises.any {
                 it.correctAnswerWords.any { word ->
                     word in setOf("в", "във", "след", "преди", "от", "до", "сутрин", "вечер")
                 }
-            }
+            },
         )
         assertTrue(
             session.exercises.any {
                 it.sourceText.contains("до пяти") ||
                     it.sourceText.contains("до трёх") ||
                     it.sourceText.contains("до двух")
-            }
+            },
         )
         assertTrue(
             session.exercises.any {
                 it.sourceText.startsWith("Когда ") || it.sourceText.startsWith("Во сколько ")
-            }
+            },
         )
         assertTrue(
             session.exercises.any {
                 it.correctAnswerWords.firstOrNull() == "Кога" ||
                     it.correctAnswerWords.take(3) == listOf("В", "колко", "часа")
-            }
+            },
         )
     }
 
@@ -191,5 +223,24 @@ class LessonSessionRepositoryTest {
         assertEquals(8, exercise.availableWords.size)
         assertTrue(exercise.correctAnswerWords.distinct().all { it in exercise.availableWords })
         return true
+    }
+
+    private fun loadLessonSessionAssets(): LessonSessionAssets {
+        val path = resolveAssetPath("lesson_session_content.json")
+        return json.decodeFromString(String(Files.readAllBytes(path), StandardCharsets.UTF_8))
+    }
+
+    private fun resolveAssetPath(fileName: String): Path {
+        val directPath = Paths.get("src", "main", "assets", fileName)
+        if (Files.exists(directPath)) {
+            return directPath
+        }
+
+        val rootPath = Paths.get("app", "src", "main", "assets", fileName)
+        if (Files.exists(rootPath)) {
+            return rootPath
+        }
+
+        return directPath
     }
 }
