@@ -1,8 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordCard
@@ -16,17 +15,14 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class WordEditorViewModel(
-    application: Application,
-    savedStateHandle: SavedStateHandle,
-) : AndroidViewModel(application) {
+    private val repository: PersonalDictionaryRepository,
+    private val initialWordId: Long?,
+) : ViewModel() {
 
     enum class SpeechTarget {
         Bulgarian,
         Russian,
     }
-
-    private val repository = PersonalDictionaryRepository(application)
-    private val initialWordId = savedStateHandle.get<Long>("wordId")?.takeIf { it > 0L }
 
     private val editorState = MutableStateFlow(
         WordEditorUiState(
@@ -67,11 +63,17 @@ class WordEditorViewModel(
     }
 
     fun updateBgWord(value: String) {
-        editorState.value = editorState.value.copy(bgWord = value)
+        editorState.value = editorState.value.copy(
+            bgWord = value,
+            successMessage = null,
+        )
     }
 
     fun updateRuTranslation(value: String) {
-        editorState.value = editorState.value.copy(ruTranslation = value)
+        editorState.value = editorState.value.copy(
+            ruTranslation = value,
+            successMessage = null,
+        )
     }
 
     fun toggleGroupSelection(groupId: Long) {
@@ -79,7 +81,10 @@ class WordEditorViewModel(
         if (!selectedIds.add(groupId)) {
             selectedIds.remove(groupId)
         }
-        editorState.value = editorState.value.copy(selectedGroupIds = selectedIds)
+        editorState.value = editorState.value.copy(
+            selectedGroupIds = selectedIds,
+            successMessage = null,
+        )
     }
 
     fun showNewGroupDialog() {
@@ -143,6 +148,7 @@ class WordEditorViewModel(
             editorState.value = editorState.value.copy(
                 isSaving = true,
                 errorMessage = null,
+                successMessage = null,
             )
 
             runCatching {
@@ -155,17 +161,33 @@ class WordEditorViewModel(
                     )
                 )
             }.onSuccess { savedWordId ->
-                editorState.value = editorState.value.copy(
-                    isSaving = false,
-                    isSaved = true,
-                    wordId = savedWordId,
-                    bgWord = trimmedBgWord,
-                    ruTranslation = trimmedRuTranslation,
-                )
+                editorState.value = if (state.isEditMode) {
+                    state.copy(
+                        isSaving = false,
+                        isSaved = true,
+                        wordId = savedWordId,
+                        bgWord = trimmedBgWord,
+                        ruTranslation = trimmedRuTranslation,
+                        errorMessage = null,
+                        successMessage = "Изменения сохранены",
+                    )
+                } else {
+                    state.copy(
+                        isSaving = false,
+                        isSaved = false,
+                        wordId = null,
+                        bgWord = "",
+                        ruTranslation = "",
+                        showValidationErrors = false,
+                        errorMessage = null,
+                        successMessage = "Слово добавлено. Можно ввести следующее.",
+                    )
+                }
             }.onFailure { throwable ->
-                editorState.value = editorState.value.copy(
+                editorState.value = state.copy(
                     isSaving = false,
                     errorMessage = throwable.message ?: "Не удалось сохранить слово",
+                    successMessage = null,
                 )
             }
         }
@@ -181,10 +203,12 @@ class WordEditorViewModel(
         editorState.value = when (target) {
             SpeechTarget.Bulgarian -> state.copy(
                 bgWord = state.bgWord.appendRecognizedText(trimmedText),
+                successMessage = null,
             )
 
             SpeechTarget.Russian -> state.copy(
                 ruTranslation = state.ruTranslation.appendRecognizedText(trimmedText),
+                successMessage = null,
             )
         }
     }
@@ -197,6 +221,10 @@ class WordEditorViewModel(
 
     fun clearError() {
         editorState.value = editorState.value.copy(errorMessage = null)
+    }
+
+    fun clearSuccess() {
+        editorState.value = editorState.value.copy(successMessage = null)
     }
 
     fun acknowledgeSaveCompleted() {
@@ -237,6 +265,24 @@ class WordEditorViewModel(
             recognizedText
         } else {
             trimEnd() + " " + recognizedText
+        }
+    }
+
+    companion object {
+        fun provideFactory(
+            repository: PersonalDictionaryRepository,
+            wordId: Long?,
+        ): ViewModelProvider.Factory {
+            return object : ViewModelProvider.Factory {
+                @Suppress("UNCHECKED_CAST")
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                    require(modelClass.isAssignableFrom(WordEditorViewModel::class.java))
+                    return WordEditorViewModel(
+                        repository = repository,
+                        initialWordId = wordId?.takeIf { it > 0L },
+                    ) as T
+                }
+            }
         }
     }
 }

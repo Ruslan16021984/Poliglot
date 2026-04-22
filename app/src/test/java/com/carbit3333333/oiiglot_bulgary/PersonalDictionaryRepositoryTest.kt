@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryDatabase
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordCard
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -18,8 +19,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34])
 class PersonalDictionaryRepositoryTest {
 
     @get:Rule
@@ -31,157 +34,181 @@ class PersonalDictionaryRepositoryTest {
 
     @Before
     fun setUp() {
-        context = ApplicationProvider.getApplicationContext()
-        database = PersonalDictionaryDatabase.getInstance(context)
-        database.clearAllTables()
-        repository = PersonalDictionaryRepository(context)
+        runBlocking(Dispatchers.IO) {
+            context = ApplicationProvider.getApplicationContext()
+            resetDatabase()
+            database = PersonalDictionaryDatabase.getInstance(context)
+            repository = PersonalDictionaryRepository(context)
+        }
     }
 
     @After
     fun tearDown() {
-        database.clearAllTables()
+        runBlocking(Dispatchers.IO) {
+            resetDatabase()
+        }
     }
 
     @Test
-    fun `save word without groups persists trimmed values`() = runBlocking {
-        val wordId = repository.saveWord(
-            WordCard(
-                bgWord = "  здравей  ",
-                ruTranslation = "  привет  ",
+    fun `save word without groups persists trimmed values`() {
+        runBlocking(Dispatchers.IO) {
+            val wordId = repository.saveWord(
+                WordCard(
+                    bgWord = "  zdravei  ",
+                    ruTranslation = "  privet  ",
+                )
             )
-        )
 
-        val savedWord = repository.getWordById(wordId)
+            val savedWord = repository.getWordById(wordId)
 
-        assertNotNull(savedWord)
-        assertEquals("здравей", savedWord?.bgWord)
-        assertEquals("привет", savedWord?.ruTranslation)
-        assertTrue(savedWord?.groupIds?.isEmpty() == true)
+            assertNotNull(savedWord)
+            assertEquals("zdravei", savedWord?.bgWord)
+            assertEquals("privet", savedWord?.ruTranslation)
+            assertTrue(savedWord?.groupIds?.isEmpty() == true)
+        }
     }
 
     @Test
-    fun `save word with multiple groups stores all selected groups`() = runBlocking {
-        val travelGroupId = repository.createGroup("Путешествие")
-        val foodGroupId = repository.createGroup("Еда")
+    fun `save word with multiple groups stores all selected groups`() {
+        runBlocking(Dispatchers.IO) {
+            val travelGroupId = repository.createGroup("Travel")
+            val foodGroupId = repository.createGroup("Food")
 
-        val wordId = repository.saveWord(
-            WordCard(
-                bgWord = "билет",
-                ruTranslation = "билет",
-                groupIds = listOf(foodGroupId, travelGroupId, foodGroupId),
+            val wordId = repository.saveWord(
+                WordCard(
+                    bgWord = "bilet",
+                    ruTranslation = "ticket",
+                    groupIds = listOf(foodGroupId, travelGroupId, foodGroupId),
+                )
             )
-        )
 
-        val savedWord = repository.getWordById(wordId)
-        val groups = repository.observeGroupsWithCounts().first()
+            val savedWord = repository.getWordById(wordId)
+            val groups = repository.observeGroupsWithCounts().first()
 
-        assertEquals(listOf(travelGroupId, foodGroupId).sorted(), savedWord?.groupIds)
-        assertEquals(
-            mapOf(
-                "Еда" to 1L,
-                "Путешествие" to 1L,
-            ),
-            groups.associate { it.name to it.wordCount },
-        )
+            assertEquals(listOf(travelGroupId, foodGroupId).sorted(), savedWord?.groupIds)
+            assertEquals(
+                mapOf(
+                    "Food" to 1L,
+                    "Travel" to 1L,
+                ),
+                groups.associate { it.name to it.wordCount },
+            )
+        }
     }
 
     @Test
-    fun `edit word replaces selected groups`() = runBlocking {
-        val travelGroupId = repository.createGroup("Путешествие")
-        val foodGroupId = repository.createGroup("Еда")
-        val phrasesGroupId = repository.createGroup("Фразы")
-        val wordId = repository.saveWord(
-            WordCard(
-                bgWord = "искам",
-                ruTranslation = "хочу",
-                groupIds = listOf(travelGroupId, foodGroupId),
+    fun `edit word replaces selected groups`() {
+        runBlocking(Dispatchers.IO) {
+            val travelGroupId = repository.createGroup("Travel")
+            val foodGroupId = repository.createGroup("Food")
+            val phrasesGroupId = repository.createGroup("Phrases")
+            val wordId = repository.saveWord(
+                WordCard(
+                    bgWord = "iskam",
+                    ruTranslation = "want",
+                    groupIds = listOf(travelGroupId, foodGroupId),
+                )
             )
-        )
 
-        repository.saveWord(
-            WordCard(
-                id = wordId,
-                bgWord = "искам да",
-                ruTranslation = "хочу",
-                groupIds = listOf(phrasesGroupId),
+            repository.saveWord(
+                WordCard(
+                    id = wordId,
+                    bgWord = "iskam da",
+                    ruTranslation = "want",
+                    groupIds = listOf(phrasesGroupId),
+                )
             )
-        )
 
-        val savedWord = repository.getWordById(wordId)
-        val groups = repository.observeGroupsWithCounts().first()
+            val savedWord = repository.getWordById(wordId)
+            val groups = repository.observeGroupsWithCounts().first()
 
-        assertEquals("искам да", savedWord?.bgWord)
-        assertEquals(listOf(phrasesGroupId), savedWord?.groupIds)
-        assertEquals(0L, groups.first { it.id == travelGroupId }.wordCount)
-        assertEquals(0L, groups.first { it.id == foodGroupId }.wordCount)
-        assertEquals(1L, groups.first { it.id == phrasesGroupId }.wordCount)
+            assertEquals("iskam da", savedWord?.bgWord)
+            assertEquals(listOf(phrasesGroupId), savedWord?.groupIds)
+            assertEquals(0L, groups.first { it.id == travelGroupId }.wordCount)
+            assertEquals(0L, groups.first { it.id == foodGroupId }.wordCount)
+            assertEquals(1L, groups.first { it.id == phrasesGroupId }.wordCount)
+        }
     }
 
     @Test
-    fun `delete word removes it from repository outputs`() = runBlocking {
-        val wordId = repository.saveWord(
-            WordCard(
-                bgWord = "вода",
-                ruTranslation = "вода",
+    fun `delete word removes it from repository outputs`() {
+        runBlocking(Dispatchers.IO) {
+            val wordId = repository.saveWord(
+                WordCard(
+                    bgWord = "voda",
+                    ruTranslation = "water",
+                )
             )
-        )
 
-        repository.deleteWord(wordId)
+            repository.deleteWord(wordId)
 
-        assertNull(repository.getWordById(wordId))
-        assertTrue(repository.observeAllWords().first().isEmpty())
+            assertNull(repository.getWordById(wordId))
+            assertTrue(repository.observeAllWords().first().isEmpty())
+        }
     }
 
     @Test
-    fun `load flashcards for all words returns every saved word`() = runBlocking {
-        repository.saveWord(
-            WordCard(
-                bgWord = "чай",
-                ruTranslation = "чай",
+    fun `load flashcards for all words returns every saved word`() {
+        runBlocking(Dispatchers.IO) {
+            repository.saveWord(
+                WordCard(
+                    bgWord = "chai",
+                    ruTranslation = "tea",
+                )
             )
-        )
-        repository.saveWord(
-            WordCard(
-                bgWord = "кафе",
-                ruTranslation = "кофе",
+            repository.saveWord(
+                WordCard(
+                    bgWord = "kafe",
+                    ruTranslation = "coffee",
+                )
             )
-        )
 
-        val flashcards = repository.loadFlashcardsForAllWords()
+            val flashcards = repository.loadFlashcardsForAllWords()
 
-        assertEquals(2, flashcards.size)
-        assertEquals(setOf("чай", "кафе"), flashcards.map { it.bgWord }.toSet())
+            assertEquals(2, flashcards.size)
+            assertEquals(setOf("chai", "kafe"), flashcards.map { it.bgWord }.toSet())
+        }
     }
 
     @Test
-    fun `load flashcards for one group returns only grouped words`() = runBlocking {
-        val travelGroupId = repository.createGroup("Путешествие")
-        val foodGroupId = repository.createGroup("Еда")
-        repository.saveWord(
-            WordCard(
-                bgWord = "гара",
-                ruTranslation = "вокзал",
-                groupIds = listOf(travelGroupId),
+    fun `load flashcards for one group returns only grouped words`() {
+        runBlocking(Dispatchers.IO) {
+            val travelGroupId = repository.createGroup("Travel")
+            val foodGroupId = repository.createGroup("Food")
+            repository.saveWord(
+                WordCard(
+                    bgWord = "gara",
+                    ruTranslation = "station",
+                    groupIds = listOf(travelGroupId),
+                )
             )
-        )
-        repository.saveWord(
-            WordCard(
-                bgWord = "супа",
-                ruTranslation = "суп",
-                groupIds = listOf(foodGroupId),
+            repository.saveWord(
+                WordCard(
+                    bgWord = "supa",
+                    ruTranslation = "soup",
+                    groupIds = listOf(foodGroupId),
+                )
             )
-        )
-        repository.saveWord(
-            WordCard(
-                bgWord = "карта",
-                ruTranslation = "карта",
-                groupIds = listOf(travelGroupId, foodGroupId),
+            repository.saveWord(
+                WordCard(
+                    bgWord = "karta",
+                    ruTranslation = "map",
+                    groupIds = listOf(travelGroupId, foodGroupId),
+                )
             )
-        )
 
-        val flashcards = repository.loadFlashcardsForOneGroup(travelGroupId)
+            val flashcards = repository.loadFlashcardsForOneGroup(travelGroupId)
 
-        assertEquals(2, flashcards.size)
-        assertEquals(setOf("гара", "карта"), flashcards.map { it.bgWord }.toSet())
+            assertEquals(2, flashcards.size)
+            assertEquals(setOf("gara", "karta"), flashcards.map { it.bgWord }.toSet())
+        }
+    }
+
+    private fun resetDatabase() {
+        runCatching { database.close() }
+        val instanceField = PersonalDictionaryDatabase::class.java.getDeclaredField("INSTANCE")
+        instanceField.isAccessible = true
+        instanceField.set(null, null)
+        context.deleteDatabase("personal_dictionary.db")
     }
 }

@@ -4,12 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.DictionaryScreen
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardTrainingScreen
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.WordEditorScreen
@@ -17,7 +20,9 @@ import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonResultScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonsScreen
+import com.carbit3333333.oiiglot_bulgary.viewmodel.FlashcardTrainingViewModel
 import com.carbit3333333.oiiglot_bulgary.viewmodel.LessonResultViewModel
+import com.carbit3333333.oiiglot_bulgary.viewmodel.WordEditorViewModel
 
 @Composable
 fun AppNavGraph() {
@@ -71,11 +76,22 @@ fun AppNavGraph() {
                     defaultValue = -1L
                 }
             )
-        ) {
+        ) { backStackEntry ->
+            val context = LocalContext.current
+            val repository = remember(context) { PersonalDictionaryRepository(context) }
+            val wordId = backStackEntry.arguments?.getLong("wordId")?.takeIf { it > 0L }
+            val wordEditorViewModel: WordEditorViewModel = viewModel(
+                factory = WordEditorViewModel.provideFactory(
+                    repository = repository,
+                    wordId = wordId,
+                )
+            )
+
             WordEditorScreen(
                 onBackClick = {
                     navController.popBackStack()
-                }
+                },
+                viewModel = wordEditorViewModel,
             )
         }
 
@@ -91,7 +107,19 @@ fun AppNavGraph() {
                     defaultValue = ""
                 }
             )
-        ) {
+        ) { backStackEntry ->
+            val context = LocalContext.current
+            val repository = remember(context) { PersonalDictionaryRepository(context) }
+            val groupId = backStackEntry.arguments?.getLong("groupId")?.takeIf { it > 0L }
+            val groupName = backStackEntry.arguments?.getString("groupName")?.takeIf { it.isNotBlank() }
+            val flashcardTrainingViewModel: FlashcardTrainingViewModel = viewModel(
+                factory = FlashcardTrainingViewModel.provideFactory(
+                    repository = repository,
+                    groupId = groupId,
+                    groupName = groupName,
+                )
+            )
+
             FlashcardTrainingScreen(
                 onBackClick = {
                     navController.popBackStack()
@@ -104,6 +132,7 @@ fun AppNavGraph() {
                         launchSingleTop = true
                     }
                 },
+                viewModel = flashcardTrainingViewModel,
             )
         }
 

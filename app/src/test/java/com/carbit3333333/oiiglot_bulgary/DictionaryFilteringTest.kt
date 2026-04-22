@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryDatabase
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordCard
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -15,8 +16,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34])
 class DictionaryFilteringTest {
 
     @get:Rule
@@ -27,63 +30,83 @@ class DictionaryFilteringTest {
     private lateinit var repository: PersonalDictionaryRepository
 
     @Before
-    fun setUp() = runBlocking {
-        context = ApplicationProvider.getApplicationContext()
-        database = PersonalDictionaryDatabase.getInstance(context)
-        database.clearAllTables()
-        repository = PersonalDictionaryRepository(context)
+    fun setUp() {
+        runBlocking(Dispatchers.IO) {
+            context = ApplicationProvider.getApplicationContext()
+            resetDatabase()
+            database = PersonalDictionaryDatabase.getInstance(context)
+            repository = PersonalDictionaryRepository(context)
 
-        val travelGroupId = repository.createGroup("Путешествие")
-        val foodGroupId = repository.createGroup("Еда")
+            val travelGroupId = repository.createGroup("Travel")
+            val foodGroupId = repository.createGroup("Food")
 
-        repository.saveWord(
-            WordCard(
-                bgWord = "здравей",
-                ruTranslation = "привет",
-                groupIds = listOf(travelGroupId),
+            repository.saveWord(
+                WordCard(
+                    bgWord = "zdravei",
+                    ruTranslation = "privet",
+                    groupIds = listOf(travelGroupId),
+                )
             )
-        )
-        repository.saveWord(
-            WordCard(
-                bgWord = "супа",
-                ruTranslation = "суп",
-                groupIds = listOf(foodGroupId),
+            repository.saveWord(
+                WordCard(
+                    bgWord = "supa",
+                    ruTranslation = "sup",
+                    groupIds = listOf(foodGroupId),
+                )
             )
-        )
-        repository.saveWord(
-            WordCard(
-                bgWord = "гара",
-                ruTranslation = "вокзал",
-                groupIds = listOf(travelGroupId),
+            repository.saveWord(
+                WordCard(
+                    bgWord = "gara",
+                    ruTranslation = "vokzal",
+                    groupIds = listOf(travelGroupId),
+                )
             )
-        )
+        }
     }
 
     @After
     fun tearDown() {
-        database.clearAllTables()
+        runBlocking(Dispatchers.IO) {
+            resetDatabase()
+        }
     }
 
     @Test
-    fun `query matches bulgarian word`() = runBlocking {
-        val result = repository.observeFilteredWords(query = "здрав", groupId = null).first()
+    fun `query matches bulgarian word`() {
+        runBlocking(Dispatchers.IO) {
+            val result = repository.observeFilteredWords(query = "zdrav", groupId = null).first()
 
-        assertEquals(listOf("здравей"), result.map { it.bgWord })
+            assertEquals(listOf("zdravei"), result.map { it.bgWord })
+        }
     }
 
     @Test
-    fun `query matches russian translation`() = runBlocking {
-        val result = repository.observeFilteredWords(query = "вокз", groupId = null).first()
+    fun `query matches russian translation`() {
+        runBlocking(Dispatchers.IO) {
+            val result = repository.observeFilteredWords(query = "vokz", groupId = null).first()
 
-        assertEquals(listOf("гара"), result.map { it.bgWord })
+            assertEquals(listOf("gara"), result.map { it.bgWord })
+        }
     }
 
     @Test
-    fun `group filter narrows results`() = runBlocking {
-        val travelGroupId = repository.observeGroupsWithCounts().first().first { it.name == "Путешествие" }.id
+    fun `group filter narrows results`() {
+        runBlocking(Dispatchers.IO) {
+            val travelGroupId = repository.observeGroupsWithCounts().first()
+                .first { it.name == "Travel" }
+                .id
 
-        val result = repository.observeFilteredWords(query = "", groupId = travelGroupId).first()
+            val result = repository.observeFilteredWords(query = "", groupId = travelGroupId).first()
 
-        assertEquals(setOf("здравей", "гара"), result.map { it.bgWord }.toSet())
+            assertEquals(setOf("zdravei", "gara"), result.map { it.bgWord }.toSet())
+        }
+    }
+
+    private fun resetDatabase() {
+        runCatching { database.close() }
+        val instanceField = PersonalDictionaryDatabase::class.java.getDeclaredField("INSTANCE")
+        instanceField.isAccessible = true
+        instanceField.set(null, null)
+        context.deleteDatabase("personal_dictionary.db")
     }
 }

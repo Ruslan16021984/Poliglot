@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
+import com.carbit3333333.oiiglot_bulgary.model.dictionary.DictionaryWordListItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.DictionaryListUiState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class DictionaryViewModel(
-    application: Application
+    application: Application,
 ) : AndroidViewModel(application) {
 
     private val repository = PersonalDictionaryRepository(application)
@@ -28,17 +29,17 @@ class DictionaryViewModel(
     private val selectedGroupIdState = MutableStateFlow<Long?>(null)
     private val errorMessageState = MutableStateFlow<String?>(null)
 
-    private val filteredWords: StateFlow<List<com.carbit3333333.oiiglot_bulgary.model.dictionary.DictionaryWordListItem>> =
+    private val filteredWords: StateFlow<List<DictionaryWordListItem>> =
         combine(
             queryState,
-            selectedGroupIdState
+            selectedGroupIdState,
         ) { query, selectedGroupId ->
             query.trim() to selectedGroupId
         }
             .flatMapLatest { (query, selectedGroupId) ->
                 repository.observeFilteredWords(
                     query = query,
-                    groupId = selectedGroupId
+                    groupId = selectedGroupId,
                 ).catch {
                     errorMessageState.value = it.message ?: "Не удалось загрузить слова"
                     emit(emptyList())
@@ -47,7 +48,7 @@ class DictionaryViewModel(
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
-                initialValue = emptyList()
+                initialValue = emptyList(),
             )
 
     val groups: StateFlow<List<WordGroup>> =
@@ -59,7 +60,7 @@ class DictionaryViewModel(
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
-                initialValue = emptyList()
+                initialValue = emptyList(),
             )
 
     val hasAnyWordsForTraining: StateFlow<Boolean> =
@@ -72,7 +73,7 @@ class DictionaryViewModel(
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
-                initialValue = false
+                initialValue = false,
             )
 
     val uiState: StateFlow<DictionaryListUiState> = combine(
@@ -80,7 +81,7 @@ class DictionaryViewModel(
         selectedGroupIdState,
         filteredWords,
         groups,
-        errorMessageState
+        errorMessageState,
     ) { query, selectedGroupId, words, groups, errorMessage ->
         DictionaryListUiState(
             isLoading = false,
@@ -88,12 +89,12 @@ class DictionaryViewModel(
             selectedGroupId = selectedGroupId,
             words = words,
             groups = groups,
-            errorMessage = errorMessage
+            errorMessage = errorMessage,
         )
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = DictionaryListUiState(isLoading = true)
+        initialValue = DictionaryListUiState(isLoading = true),
     )
 
     fun updateQuery(query: String) {

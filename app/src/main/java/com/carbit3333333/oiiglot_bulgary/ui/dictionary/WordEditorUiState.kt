@@ -16,6 +16,7 @@ data class WordEditorUiState(
     val isSaveEnabled: Boolean = true,
     val isSaved: Boolean = false,
     val errorMessage: String? = null,
+    val successMessage: String? = null,
 ) {
     val isEditMode: Boolean
         get() = wordId != null
@@ -23,11 +24,14 @@ data class WordEditorUiState(
     val primaryButtonText: String
         get() = if (isEditMode) "Сохранить изменения" else "Добавить слово"
 
+    val screenTitle: String
+        get() = if (isEditMode) "Редактирование" else "Новое слово"
+
     val bgWordError: String?
         get() = if (showValidationErrors && bgWord.trim().isEmpty()) "Введите слово на болгарском" else null
 
     val ruTranslationError: String?
-        get() = if (showValidationErrors && ruTranslation.trim().isEmpty()) "Введите перевод на русском" else null
+        get() = if (showValidationErrors && ruTranslation.trim().isEmpty()) "Введите перевод" else null
 
     val isBackEnabled: Boolean
         get() = !isSaving

@@ -14,14 +14,19 @@ data class FlashcardTrainingUiState(
     val currentCardFace: FlashcardFace = FlashcardFace.Front,
     val knownCount: Int = 0,
     val unknownCount: Int = 0,
+    val unknownCards: List<FlashcardItem> = emptyList(),
     val isFinished: Boolean = false,
     val groupName: String? = null,
+    val errorMessage: String? = null,
 ) {
     val currentCard: FlashcardItem?
         get() = cards.getOrNull(currentIndex)
 
     val totalCount: Int
         get() = cards.size
+
+    val hasUnknownCards: Boolean
+        get() = unknownCards.isNotEmpty()
 
     val progressText: String
         get() = when {
