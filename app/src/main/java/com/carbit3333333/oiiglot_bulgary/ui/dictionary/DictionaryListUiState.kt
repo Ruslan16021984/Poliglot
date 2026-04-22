@@ -8,6 +8,9 @@ data class DictionaryListUiState(
     val query: String = "",
     val selectedGroupId: Long? = null,
     val words: List<DictionaryWordListItem> = emptyList(),
+    val visibleWords: List<DictionaryWordListItem> = emptyList(),
+    val totalWordsCount: Int = 0,
+    val canLoadMore: Boolean = false,
     val groups: List<WordGroup> = emptyList(),
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
 )

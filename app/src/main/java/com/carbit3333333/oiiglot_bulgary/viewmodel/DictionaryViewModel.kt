@@ -23,10 +23,15 @@ class DictionaryViewModel(
     application: Application,
 ) : AndroidViewModel(application) {
 
+    private companion object {
+        const val PAGE_SIZE = 20
+    }
+
     private val repository = PersonalDictionaryRepository(application)
 
     private val queryState = MutableStateFlow("")
     private val selectedGroupIdState = MutableStateFlow<Long?>(null)
+    private val visibleWordsLimitState = MutableStateFlow(PAGE_SIZE)
     private val errorMessageState = MutableStateFlow<String?>(null)
 
     private val filteredWords: StateFlow<List<DictionaryWordListItem>> =
@@ -50,6 +55,23 @@ class DictionaryViewModel(
                 started = SharingStarted.WhileSubscribed(5_000),
                 initialValue = emptyList(),
             )
+
+    private val visibleWordsUiState: StateFlow<VisibleWordsUiState> =
+        combine(
+            filteredWords,
+            visibleWordsLimitState,
+        ) { words, visibleWordsLimit ->
+            val visibleWords = words.take(visibleWordsLimit)
+            VisibleWordsUiState(
+                allWords = words,
+                visibleWords = visibleWords,
+                canLoadMore = visibleWords.size < words.size,
+            )
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = VisibleWordsUiState(),
+        )
 
     val groups: StateFlow<List<WordGroup>> =
         repository.observeGroupsWithCounts()
@@ -79,15 +101,18 @@ class DictionaryViewModel(
     val uiState: StateFlow<DictionaryListUiState> = combine(
         queryState,
         selectedGroupIdState,
-        filteredWords,
+        visibleWordsUiState,
         groups,
         errorMessageState,
-    ) { query, selectedGroupId, words, groups, errorMessage ->
+    ) { query, selectedGroupId, visibleWordsState, groups, errorMessage ->
         DictionaryListUiState(
             isLoading = false,
             query = query,
             selectedGroupId = selectedGroupId,
-            words = words,
+            words = visibleWordsState.allWords,
+            visibleWords = visibleWordsState.visibleWords,
+            totalWordsCount = visibleWordsState.allWords.size,
+            canLoadMore = visibleWordsState.canLoadMore,
             groups = groups,
             errorMessage = errorMessage,
         )
@@ -99,10 +124,16 @@ class DictionaryViewModel(
 
     fun updateQuery(query: String) {
         queryState.value = query
+        visibleWordsLimitState.value = PAGE_SIZE
     }
 
     fun selectGroup(groupId: Long?) {
         selectedGroupIdState.value = if (selectedGroupIdState.value == groupId) null else groupId
+        visibleWordsLimitState.value = PAGE_SIZE
+    }
+
+    fun loadMoreWords() {
+        visibleWordsLimitState.value += PAGE_SIZE
     }
 
     fun clearError() {
@@ -118,4 +149,10 @@ class DictionaryViewModel(
             }
         }
     }
+
+    private data class VisibleWordsUiState(
+        val allWords: List<DictionaryWordListItem> = emptyList(),
+        val visibleWords: List<DictionaryWordListItem> = emptyList(),
+        val canLoadMore: Boolean = false,
+    )
 }

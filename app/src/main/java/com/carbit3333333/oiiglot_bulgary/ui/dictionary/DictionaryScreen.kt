@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
@@ -22,6 +23,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,6 +38,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -46,6 +49,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -63,6 +67,7 @@ import com.carbit3333333.oiiglot_bulgary.model.dictionary.DictionaryWordListItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.viewmodel.DictionaryViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun DictionaryScreen(
@@ -86,6 +91,7 @@ fun DictionaryScreen(
         onWordClick = onWordClick,
         onQueryChange = viewModel::updateQuery,
         onGroupSelect = viewModel::selectGroup,
+        onLoadMoreClick = viewModel::loadMoreWords,
         onDeleteWordClick = viewModel::deleteWord,
         onDismissError = viewModel::clearError,
     )
@@ -102,10 +108,14 @@ fun DictionaryScreenContent(
     onWordClick: (Long) -> Unit,
     onQueryChange: (String) -> Unit,
     onGroupSelect: (Long?) -> Unit,
+    onLoadMoreClick: () -> Unit,
     onDeleteWordClick: (Long) -> Unit,
     onDismissError: () -> Unit,
 ) {
     val palette = rememberDictionaryPalette()
+    val listState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
+    val showScrollToTopButton = listState.firstVisibleItemIndex > 6
     var pendingDeleteWordId by rememberSaveable { mutableStateOf<Long?>(null) }
     var pendingDeleteWordLabel by rememberSaveable { mutableStateOf("") }
 
@@ -145,7 +155,9 @@ fun DictionaryScreenContent(
         modifier = Modifier.fillMaxSize(),
         color = palette.pageBackground,
     ) {
+        Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
+            state = listState,
             modifier = Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.systemBars),
@@ -335,7 +347,7 @@ fun DictionaryScreenContent(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = "Все слова (${uiState.words.size})",
+                        text = "Все слова (${uiState.totalWordsCount})",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = palette.title,
@@ -355,7 +367,7 @@ fun DictionaryScreenContent(
                         message = "Сейчас подтянем слова и группы.",
                     )
                 }
-            } else if (uiState.words.isEmpty()) {
+            } else if (uiState.visibleWords.isEmpty()) {
                 item {
                     EmptyDictionaryBlock(
                         title = "Пока нет слов",
@@ -367,7 +379,7 @@ fun DictionaryScreenContent(
                     )
                 }
             } else {
-                items(uiState.words, key = { it.id }) { word ->
+                items(uiState.visibleWords, key = { it.id }) { word ->
                     DictionaryWordRow(
                         word = word,
                         onClick = { onWordClick(word.id) },
@@ -380,6 +392,48 @@ fun DictionaryScreenContent(
                         bodyColor = palette.body,
                         borderColor = palette.border,
                     )
+                }
+                if (uiState.canLoadMore) {
+                    item {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            Text(
+                                text = "Показано ${uiState.visibleWords.size} из ${uiState.totalWordsCount}",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = palette.body,
+                            )
+                            Button(
+                                onClick = onLoadMoreClick,
+                                modifier = Modifier.fillMaxWidth(),
+                                shape = RoundedCornerShape(16.dp),
+                                contentPadding = PaddingValues(vertical = 14.dp),
+                            ) {
+                                Text("Показать ещё")
+                            }
+                        }
+                    }
+                }
+            }
+            }
+            if (showScrollToTopButton) {
+                ExtendedFloatingActionButton(
+                    onClick = {
+                        coroutineScope.launch {
+                            listState.animateScrollToItem(0)
+                        }
+                    },
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .navigationBarsPadding()
+                        .padding(end = 18.dp, bottom = 18.dp),
+                    containerColor = palette.accent,
+                    contentColor = Color.White,
+                    shape = RoundedCornerShape(18.dp),
+                ) {
+                    Text("Наверх")
                 }
             }
         }
@@ -654,6 +708,20 @@ private fun DictionaryScreenContentPreview() {
                         ruTranslation = "кофе",
                     ),
                 ),
+                visibleWords = listOf(
+                    DictionaryWordListItem(
+                        id = 1L,
+                        bgWord = "zdravei",
+                        ruTranslation = "РїСЂРёРІРµС‚",
+                    ),
+                    DictionaryWordListItem(
+                        id = 2L,
+                        bgWord = "bilet",
+                        ruTranslation = "Р±РёР»РµС‚",
+                    ),
+                ),
+                totalWordsCount = 4,
+                canLoadMore = true,
                 groups = listOf(
                     WordGroup(id = 1L, name = "Путешествие", wordCount = 24),
                     WordGroup(id = 2L, name = "Еда", wordCount = 18),
@@ -668,6 +736,7 @@ private fun DictionaryScreenContentPreview() {
             onWordClick = {},
             onQueryChange = {},
             onGroupSelect = {},
+            onLoadMoreClick = {},
             onDeleteWordClick = {},
             onDismissError = {},
         )
