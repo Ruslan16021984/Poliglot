@@ -27,6 +27,13 @@ class LessonSessionRepositoryTest {
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(session.exercises.any { it.sourceText.startsWith("РћРЅР° ") })
+        assertTrue(session.exercises.any { it.sourceText.startsWith("РћРЅРѕ ") })
+        assertTrue(session.exercises.any { it.correctAnswerWords.firstOrNull() == "РўСЏ" })
+        assertTrue(session.exercises.any { it.correctAnswerWords.firstOrNull() == "РўРѕ" })
+        assertTrue(session.exercises.any { "С‰Рµ" in it.correctAnswerWords })
+        assertTrue(session.exercises.any { "РЅСЏРјР°" in it.correctAnswerWords })
+        assertTrue(session.exercises.any { it.sourceText.contains("Р±СѓРґРµС‚") || it.sourceText.contains("Р±СѓРґСѓС‚") })
     }
 
     @Test

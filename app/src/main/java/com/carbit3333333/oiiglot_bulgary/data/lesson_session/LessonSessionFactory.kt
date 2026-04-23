@@ -19,7 +19,11 @@ internal object LessonSessionFactory {
             1 -> LessonSession(
                 lessonId = 1,
                 lessonTitle = "Урок 1",
-                exercises = Lesson1RealGenerator.generateExercises()
+                exercises = Lesson1RealGenerator.generateExercises(
+                    subjects = assets.lesson1Subjects,
+                    templates = assets.lesson1Templates,
+                    verbs = assets.lesson1Verbs
+                )
             )
 
             2 -> LessonSession(

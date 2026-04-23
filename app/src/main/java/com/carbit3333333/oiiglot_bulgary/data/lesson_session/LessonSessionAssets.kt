@@ -13,6 +13,38 @@ internal data class LessonTemplateAsset(
 )
 
 @Serializable
+internal data class Lesson1SubjectAsset(
+    val bg: String,
+    val ru: String,
+    val futureAuxRu: String,
+    val haveRuPresent: String = "",
+    val haveRuFuture: String = ""
+)
+
+@Serializable
+internal data class Lesson1ObjectAsset(
+    val bg: String,
+    val ru: String
+)
+
+@Serializable
+internal data class Lesson1VerbAsset(
+    val kind: String = "default",
+    val ruInfinitive: String,
+    val formsBg: Map<String, String>,
+    val formsRu: Map<String, String>,
+    val objects: List<Lesson1ObjectAsset>
+)
+
+@Serializable
+internal data class Lesson1TemplateAsset(
+    val key: String,
+    val ruPattern: String,
+    val bgTokens: List<String>,
+    val hint: String? = null
+)
+
+@Serializable
 internal data class Lesson3VerbAsset(
     val past: Map<String, String>,
     val ruPast: Map<String, String>
@@ -71,6 +103,9 @@ internal data class Lesson10TemplateAsset(
 
 @Serializable
 internal data class LessonSessionAssets(
+    val lesson1Subjects: List<Lesson1SubjectAsset> = emptyList(),
+    val lesson1Templates: List<Lesson1TemplateAsset> = emptyList(),
+    val lesson1Verbs: List<Lesson1VerbAsset> = emptyList(),
     val lesson4Items: List<Lesson4Item> = emptyList(),
     val lesson3SubjectRu: Map<String, String> = emptyMap(),
     val lesson3Verbs: List<Lesson3VerbAsset> = emptyList(),

@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary
 
+import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardDirection
@@ -46,6 +47,7 @@ class FlashcardTrainingViewModelTest {
             FlashcardItem(id = 2L, bgWord = "chai", ruTranslation = "tea"),
         )
         val viewModel = FlashcardTrainingViewModel(
+            application = Application(),
             selectedGroupId = null,
             selectedGroupName = "Travel",
             flashcardLoader = { cards },
@@ -105,6 +107,7 @@ class FlashcardTrainingViewModelTest {
     @Test
     fun `load failure exposes explicit error state`() = runTest {
         val viewModel = FlashcardTrainingViewModel(
+            application = Application(),
             selectedGroupId = null,
             selectedGroupName = null,
             flashcardLoader = { throw IllegalStateException("boom") },

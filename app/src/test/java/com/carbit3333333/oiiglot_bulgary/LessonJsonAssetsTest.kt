@@ -46,6 +46,9 @@ class LessonJsonAssetsTest {
             readAssetText("lesson_session_content.json"),
         )
 
+        assertEquals(8, assets.lesson1Subjects.size)
+        assertEquals(6, assets.lesson1Templates.size)
+        assertEquals(5, assets.lesson1Verbs.size)
         assertEquals(6, assets.lesson3SubjectRu.size)
         assertEquals(10, assets.lesson3Verbs.size)
         assertEquals(100, assets.lesson4Items.size)
@@ -62,6 +65,14 @@ class LessonJsonAssetsTest {
         assertEquals(2, assets.lesson10IntervalTemplates.size)
         assertEquals(9, assets.lesson10QuestionActions.size)
         assertEquals(2, assets.lesson10QuestionTemplates.size)
+
+        assertTrue(assets.lesson1Subjects.any { it.bg == "Тя" && it.ru == "Она" })
+        assertTrue(assets.lesson1Subjects.any { it.bg == "То" && it.ru == "Оно" })
+        assertTrue(assets.lesson1Subjects.any { it.bg == "Те" && it.ru == "Они" })
+        assertTrue(assets.lesson1Templates.all { it.bgTokens.isNotEmpty() && it.ruPattern.isNotBlank() })
+        assertTrue(assets.lesson1Verbs.all { it.objects.isNotEmpty() })
+        assertTrue(assets.lesson1Verbs.all { it.formsBg.keys.size == assets.lesson1Subjects.size })
+        assertTrue(assets.lesson1Verbs.all { it.formsRu.keys.size == assets.lesson1Subjects.size })
 
         assertTrue(assets.lesson3Verbs.all { it.past.keys == assets.lesson3SubjectRu.keys })
         assertTrue(assets.lesson3Verbs.all { it.ruPast.keys == assets.lesson3SubjectRu.keys })
