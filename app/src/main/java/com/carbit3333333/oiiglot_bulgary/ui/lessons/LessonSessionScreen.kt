@@ -392,7 +392,7 @@ private fun InstructionBlock(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(colorScheme.tertiaryContainer)
+            .background(Color(0xFFD9EBD7))
             .padding(horizontal = 16.dp, vertical = 12.dp)
     ) {
         Text(
@@ -427,7 +427,7 @@ private fun WrongAnswerBlock(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(colorScheme.tertiaryContainer)
+                .background(Color(0xFFD9EBD7))
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -462,7 +462,7 @@ private fun CorrectAnswerBlock(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(colorScheme.tertiaryContainer)
+                .background(Color(0xFFD9EBD7))
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -620,7 +620,7 @@ private fun ProgressStrip(
         results.forEach { result ->
             val color = when (result) {
                 ExerciseResult.NONE -> MaterialTheme.colorScheme.outlineVariant
-                ExerciseResult.CORRECT -> MaterialTheme.colorScheme.tertiary
+                ExerciseResult.CORRECT -> Color(0xFF93F189)
                 ExerciseResult.WRONG -> MaterialTheme.colorScheme.error
             }
 
