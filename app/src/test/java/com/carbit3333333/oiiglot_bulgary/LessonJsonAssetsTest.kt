@@ -47,7 +47,8 @@ class LessonJsonAssetsTest {
         )
 
         assertEquals(8, assets.lesson1Subjects.size)
-        assertEquals(6, assets.lesson1Templates.size)
+        assertTrue(assets.lesson1Sentences.size >= 50)
+        assertEquals(0, assets.lesson1Templates.size)
         assertEquals(7, assets.lesson1Verbs.size)
         assertEquals(8, assets.lesson3SubjectRu.size)
         assertEquals(12, assets.lesson3Verbs.size)
@@ -55,15 +56,15 @@ class LessonJsonAssetsTest {
         assertEquals(20, assets.lesson7Templates.size)
         assertEquals(25, assets.lesson8Templates.size)
         assertEquals(20, assets.lesson9Numbers.size)
-        assertEquals(3, assets.lesson9Objects.size)
-        assertEquals(5, assets.lesson9Templates.size)
+        assertEquals(5, assets.lesson9Objects.size)
+        assertEquals(8, assets.lesson9Templates.size)
         assertEquals(17, assets.lesson10TimePhrases.size)
-        assertEquals(9, assets.lesson10RoutineActions.size)
+        assertEquals(12, assets.lesson10RoutineActions.size)
         assertEquals(3, assets.lesson10Intervals.size)
-        assertEquals(5, assets.lesson10IntervalActions.size)
+        assertEquals(7, assets.lesson10IntervalActions.size)
         assertEquals(2, assets.lesson10Templates.size)
         assertEquals(2, assets.lesson10IntervalTemplates.size)
-        assertEquals(9, assets.lesson10QuestionActions.size)
+        assertEquals(12, assets.lesson10QuestionActions.size)
         assertEquals(2, assets.lesson10QuestionTemplates.size)
 
         assertTrue(assets.lesson1Subjects.any { it.bg == "Тя" && it.ru == "Она" })
@@ -142,6 +143,10 @@ class LessonJsonAssetsTest {
         assertNotNull(assets.lesson8Templates.find { it.ru == "Он самый высокий в классе" })
         assertNotNull(assets.lesson9Templates.find { it.ruTokens.contains("тебе") })
         assertNotNull(assets.lesson9Templates.find { it.ruTokens.lastOrNull() == "?" })
+        assertNotNull(assets.lesson9Objects.find { it.singular == "билет" && it.ruMany == "билетов" })
+        assertNotNull(assets.lesson9Objects.find { it.singular == "чаша" && it.ruMany == "чашек" })
+        assertNotNull(assets.lesson9Templates.find { it.ruTokens == listOf("Я", "покупаю", "{num}", "{object}") })
+        assertNotNull(assets.lesson9Templates.find { it.bgTokens == listOf("Аз", "имам", "{num}", "{object}") })
         assertNotNull(assets.lesson9Numbers.find { it.value == 20 })
         assertNotNull(assets.lesson10TimePhrases.find { it.bgTokens.contains("във") })
         assertNotNull(assets.lesson10TimePhrases.find { it.bgTokens.contains("след") })
@@ -151,6 +156,9 @@ class LessonJsonAssetsTest {
         assertNotNull(assets.lesson10TimePhrases.find { it.ruTokens.contains("дня") })
         assertNotNull(assets.lesson10RoutineActions.find { it.ruTokens.contains("завтракаю") })
         assertNotNull(assets.lesson10RoutineActions.find { it.bgTokens.contains("вечерям") })
+        assertNotNull(assets.lesson10RoutineActions.find { it.bgTokens.contains("обядвам") })
+        assertNotNull(assets.lesson10RoutineActions.find { it.ruTokens == listOf("читаю", "дома") })
+        assertNotNull(assets.lesson10RoutineActions.find { it.ruTokens == listOf("иду", "домой") })
         assertNotNull(
             assets.lesson10RoutineActions.find {
                 it.ruTokens == listOf("возвращаюсь", "домой") &&
@@ -161,6 +169,11 @@ class LessonJsonAssetsTest {
         assertNotNull(assets.lesson10QuestionTemplates.find { it.ruTokens.contains("Когда") })
         assertNotNull(assets.lesson10QuestionTemplates.find { it.bgTokens.contains("Кога") })
         assertNotNull(assets.lesson10QuestionTemplates.find { it.bgTokens.contains("колко") })
+        assertNotNull(assets.lesson10IntervalActions.find { it.bgTokens.contains("обядвам") })
+        assertNotNull(assets.lesson10IntervalActions.find { it.ruTokens == listOf("пью", "кофе") })
+        assertNotNull(assets.lesson10QuestionActions.find { it.bgTokens.contains("обядваш") })
+        assertNotNull(assets.lesson10QuestionActions.find { it.ruTokens == listOf("ты", "читаешь", "дома") })
+        assertNotNull(assets.lesson10QuestionActions.find { it.ruTokens == listOf("ты", "идёшь", "домой") })
     }
 
     private fun readAssetText(fileName: String): String {

@@ -75,10 +75,15 @@ class LessonSessionStore(private val context: Context) {
                 )
             },
             currentExerciseIndex = saved.currentExerciseIndex,
-            selectedWords = saved.selectedWords,
+            // Start resumed exercises from a clean choice grid so the user always sees all 8 options first.
+            selectedWords = emptyList(),
             results = saved.results.map { ExerciseResult.valueOf(it) },
             correctCount = saved.correctCount,
-            wrongCount = saved.wrongCount
+            wrongCount = saved.wrongCount,
+            currentResult = ExerciseResult.NONE,
+            praiseText = null,
+            isLessonFinished = false,
+            lessonResult = null
         )
     }
 

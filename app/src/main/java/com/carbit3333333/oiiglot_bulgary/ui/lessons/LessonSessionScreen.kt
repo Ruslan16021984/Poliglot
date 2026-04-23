@@ -6,6 +6,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -14,12 +15,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.animation.animateContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
@@ -44,7 +51,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.carbit3333333.oiiglot_bulgary.R
@@ -54,6 +63,7 @@ import com.carbit3333333.oiiglot_bulgary.model.LessonResult
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.utils.AppTextToSpeech
 import com.carbit3333333.oiiglot_bulgary.viewmodel.LessonSessionViewModel
+import kotlin.math.ceil
 
 @Composable
 fun LessonSessionScreen(
@@ -556,7 +566,6 @@ private fun SelectedWordChip(
 }
 
 @Composable
-@OptIn(ExperimentalLayoutApi::class)
 private fun WordGrid(
     words: List<String>,
     selectedWords: List<String>,
@@ -564,19 +573,44 @@ private fun WordGrid(
     cardColor: Color,
     modifier: Modifier = Modifier
 ) {
-    val visibleWords = words.filterNot { selectedWords.contains(it) }
+    val hiddenWords = selectedWords.toMutableList()
+    val visibleWords = words.filter { word ->
+        hiddenWords.remove(word).not()
+    }
 
-    FlowRow(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        visibleWords.forEach { word ->
-            WordButton(
-                text = word,
-                onClick = { onWordClick(word) },
-                containerColor = cardColor,
-            )
+    BoxWithConstraints(modifier = modifier) {
+        val spacing = 12.dp
+        val columns = when {
+            maxWidth < 220.dp -> 1
+            maxWidth < 840.dp -> 2
+            else -> 3
+        }
+        val cardWidth = ((maxWidth - spacing * (columns - 1)) / columns)
+            .coerceAtLeast(110.dp)
+            .coerceAtMost(220.dp)
+        val baseCardHeight = 88.dp
+        val minRows = 2
+        val currentRows = ceil(visibleWords.size / columns.toFloat()).toInt().coerceAtLeast(minRows)
+        val minGridHeight = (baseCardHeight * currentRows) + (spacing * (currentRows - 1))
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(columns),
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = minGridHeight)
+                .animateContentSize(),
+            horizontalArrangement = Arrangement.spacedBy(spacing),
+            verticalArrangement = Arrangement.spacedBy(spacing),
+            userScrollEnabled = false
+        ) {
+            items(visibleWords) { word ->
+                WordButton(
+                    text = word,
+                    onClick = { onWordClick(word) },
+                    containerColor = cardColor,
+                    width = cardWidth,
+                )
+            }
         }
     }
 }
@@ -586,23 +620,38 @@ private fun WordButton(
     text: String,
     onClick: () -> Unit,
     containerColor: Color,
+    width: Dp,
 ) {
+    val compact = width < 140.dp
+    val textStyle = if (compact) {
+        MaterialTheme.typography.titleLarge
+    } else {
+        MaterialTheme.typography.headlineSmall
+    }
+    val horizontalPadding = if (compact) 10.dp else 12.dp
+    val verticalPadding = if (compact) 12.dp else 10.dp
+
     Card(
         modifier = Modifier
-            .width(150.dp)
-            .height(88.dp)
+            .width(width)
+            .heightIn(min = 88.dp)
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = containerColor)
     ) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = horizontalPadding, vertical = verticalPadding),
             contentAlignment = Alignment.Center
         ) {
             Text(
                 text = text,
                 color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.headlineSmall
+                style = textStyle,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+                maxLines = 2
             )
         }
     }

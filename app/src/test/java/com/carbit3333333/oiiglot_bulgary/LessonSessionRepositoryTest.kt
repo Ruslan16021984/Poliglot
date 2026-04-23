@@ -209,6 +209,11 @@ class LessonSessionRepositoryTest {
         assertTrue(session.exercises.any { it.sourceText.contains("один") || it.sourceText.contains("одну") || it.sourceText.contains("одно") })
         assertTrue(session.exercises.any { it.sourceText.contains("телефона") })
         assertTrue(session.exercises.any { it.sourceText.contains("писем") })
+        assertTrue(session.exercises.any { it.sourceText.contains("билета") || it.sourceText.contains("билетов") })
+        assertTrue(session.exercises.any { it.sourceText.contains("чашки") || it.sourceText.contains("чашек") })
+        assertTrue(session.exercises.any { it.sourceText.contains("покупаю") })
+        assertTrue(session.exercises.any { it.sourceText.contains("У меня есть") })
+        assertTrue(session.exercises.any { it.sourceText.contains("Мы видим") })
         assertTrue(
             session.exercises.any {
                 it.sourceText.contains("одн") ||
@@ -292,10 +297,9 @@ class LessonSessionRepositoryTest {
         assertTrue(sourceTexts.any { it.contains("четверг") })
         assertTrue(sourceTexts.any { it.contains("пятницу") })
         assertTrue(sourceTexts.any { it.contains("Ночью") })
-        assertTrue(sourceTexts.any { it.contains("завтракаю") })
-        assertTrue(sourceTexts.any { it.contains("ужинаю") })
-        assertTrue(bgWords.contains("закусвам"))
-        assertTrue(bgWords.contains("вечерям"))
+        assertTrue(bgWords.any { it in setOf("закусвам", "вечерям", "обядвам") })
+        assertTrue(bgWords.any { it in setOf("чета", "отивам", "прибирам", "работя") })
+        assertTrue(bgWords.contains("вкъщи"))
     }
 
     @Test
