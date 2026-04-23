@@ -61,9 +61,9 @@ internal object Lesson1RealGenerator {
         verbs: List<VerbEntry>,
     ): LessonExercise {
         val template = templates[(id - 1) % templates.size]
-        val subject = subjects[((id - 1) / templates.size) % subjects.size]
-        val verb = verbs[((id - 1) / (templates.size * subjects.size)) % verbs.size]
-        val obj = verb.objects[((id - 1) / (templates.size * subjects.size * verbs.size)) % verb.objects.size]
+        val subject = subjects[((id - 1) * 3) % subjects.size]
+        val verb = verbs[((id - 1) * 5) % verbs.size]
+        val obj = verb.objects[((id - 1) / templates.size) % verb.objects.size]
 
         val lexicon = LessonRealSentenceGenerator.Lexicon(
             subject = LessonRealSentenceGenerator.SubjectForms(
@@ -78,18 +78,16 @@ internal object Lesson1RealGenerator {
             objRu = obj.ru,
         )
 
-        val sourceText = buildSourceText(
-            subject = subject,
-            verb = verb,
-            obj = obj,
-            template = template.sentenceTemplate,
-        )
-
         return LessonRealSentenceGenerator.buildExercise(
             id = id,
             template = template.sentenceTemplate,
             lexicon = lexicon,
-            sourceTextOverride = sourceText,
+            sourceTextOverride = buildSourceText(
+                subject = subject,
+                verb = verb,
+                obj = obj,
+                template = template.sentenceTemplate,
+            ),
             distractorPool = buildDistractorPool(subjects, verbs),
             totalWords = 8,
             hint = template.hint,
@@ -103,21 +101,26 @@ internal object Lesson1RealGenerator {
         template: LessonRealSentenceGenerator.SentenceTemplate,
     ): String {
         if (verb.kind == "have") {
-            return when (template.ruPattern) {
-                "{subject} {verb} {object}" -> "${subject.haveRuPresent} ${obj.ru}"
-                "{subject} не {verb} {object}" -> "${subject.haveRuPresent} нет ${obj.ru}"
-                "{subject} {verb} {object}?" -> "${subject.haveRuPresent} ${obj.ru}?"
-                "{subject} {futureAux} {infinitive} {object}" -> "${subject.haveRuFuture} ${obj.ru}"
-                "{subject} не {futureAux} {infinitive} {object}" -> "${subject.haveRuFuture} не будет ${obj.ru}"
-                "{subject} {futureAux} {infinitive} {object}?" -> "${subject.haveRuFuture} ${obj.ru}?"
-                else -> "${subject.haveRuPresent} ${obj.ru}"
+            val isFuture = template.ruPattern.contains("{futureAuxRu}") || template.ruPattern.contains("{futureAux}")
+            val isNegative = template.ruPattern.contains(" не ")
+            val isQuestion = template.ruPattern.trimEnd().endsWith("?")
+            val base = if (isFuture) subject.haveRuFuture else subject.haveRuPresent
+
+            val sentence = when {
+                isFuture && isNegative -> "$base не будет ${obj.ru}"
+                isNegative -> "$base нет ${obj.ru}"
+                else -> "$base ${obj.ru}"
             }
+
+            return if (isQuestion) "$sentence?" else sentence
         }
 
         return template.ruPattern
             .replace("{subject}", subject.ru)
             .replace("{verb}", verb.formsRu.getValue(subject.bg))
+            .replace("{futureAuxRu}", subject.futureAuxRu)
             .replace("{futureAux}", subject.futureAuxRu)
+            .replace("{ruInfinitive}", verb.ruInfinitive)
             .replace("{infinitive}", verb.ruInfinitive)
             .replace("{object}", obj.ru)
             .replace("  ", " ")
@@ -167,7 +170,7 @@ internal object Lesson1RealGenerator {
                 formsBg = it.formsBg,
                 formsRu = it.formsRu,
                 ruInfinitive = it.ruInfinitive,
-                objects = it.objects.map(Lesson1ObjectAsset::toObjectEntry),
+                objects = it.objects.map { item -> item.toObjectEntry() },
             )
         }
     }
@@ -228,249 +231,101 @@ internal object Lesson1RealGenerator {
 
     private fun defaultTemplates(): List<TemplateEntry> {
         return listOf(
-            TemplateEntry(
-                hint = "💡 собирай полное предложение",
-                sentenceTemplate = LessonRealSentenceGenerator.SentenceTemplate(
-                    ruPattern = "{subject} {verb} {object}",
-                    bgPattern = listOf(
-                        LessonRealSentenceGenerator.Token.SubjectBg,
-                        LessonRealSentenceGenerator.Token.VerbBg,
-                        LessonRealSentenceGenerator.Token.ObjectBg,
-                    ),
-                ),
+            template(
+                hint = "Собери полное предложение",
+                ruPattern = "{subject} {verb} {object}",
+                bgTokens = listOf("{subject}", "{verb}", "{object}"),
             ),
-            TemplateEntry(
-                hint = "💡 отрицание: не + глагол",
-                sentenceTemplate = LessonRealSentenceGenerator.SentenceTemplate(
-                    ruPattern = "{subject} не {verb} {object}",
-                    bgPattern = listOf(
-                        LessonRealSentenceGenerator.Token.SubjectBg,
-                        LessonRealSentenceGenerator.Token.Fixed("не"),
-                        LessonRealSentenceGenerator.Token.VerbBg,
-                        LessonRealSentenceGenerator.Token.ObjectBg,
-                    ),
-                ),
+            template(
+                hint = "Отрицание: не + глагол",
+                ruPattern = "{subject} не {verb} {object}",
+                bgTokens = listOf("{subject}", "не", "{verb}", "{object}"),
             ),
-            TemplateEntry(
-                hint = "💡 вопрос: глагол + ли",
-                sentenceTemplate = LessonRealSentenceGenerator.SentenceTemplate(
-                    ruPattern = "{subject} {verb} {object}?",
-                    bgPattern = listOf(
-                        LessonRealSentenceGenerator.Token.SubjectBg,
-                        LessonRealSentenceGenerator.Token.VerbBg,
-                        LessonRealSentenceGenerator.Token.Fixed("ли"),
-                        LessonRealSentenceGenerator.Token.ObjectBg,
-                    ),
-                ),
+            template(
+                hint = "Вопрос: глагол + ли",
+                ruPattern = "{subject} {verb} {object}?",
+                bgTokens = listOf("{subject}", "{verb}", "ли", "{object}"),
             ),
-            TemplateEntry(
-                hint = "💡 будущее время: ще + глагол",
-                sentenceTemplate = LessonRealSentenceGenerator.SentenceTemplate(
-                    ruPattern = "{subject} {futureAux} {infinitive} {object}",
-                    bgPattern = listOf(
-                        LessonRealSentenceGenerator.Token.SubjectBg,
-                        LessonRealSentenceGenerator.Token.Fixed("ще"),
-                        LessonRealSentenceGenerator.Token.VerbBg,
-                        LessonRealSentenceGenerator.Token.ObjectBg,
-                    ),
-                ),
+            template(
+                hint = "Будущее время: ще + глагол",
+                ruPattern = "{subject} {futureAuxRu} {ruInfinitive} {object}",
+                bgTokens = listOf("{subject}", "ще", "{verb}", "{object}"),
             ),
-            TemplateEntry(
-                hint = "💡 отрицание в будущем: няма да + глагол",
-                sentenceTemplate = LessonRealSentenceGenerator.SentenceTemplate(
-                    ruPattern = "{subject} не {futureAux} {infinitive} {object}",
-                    bgPattern = listOf(
-                        LessonRealSentenceGenerator.Token.SubjectBg,
-                        LessonRealSentenceGenerator.Token.Fixed("няма"),
-                        LessonRealSentenceGenerator.Token.Fixed("да"),
-                        LessonRealSentenceGenerator.Token.VerbBg,
-                        LessonRealSentenceGenerator.Token.ObjectBg,
-                    ),
-                ),
+            template(
+                hint = "Отрицание в будущем: няма да + глагол",
+                ruPattern = "{subject} {futureAuxRu} не {ruInfinitive} {object}",
+                bgTokens = listOf("{subject}", "няма", "да", "{verb}", "{object}"),
             ),
-            TemplateEntry(
-                hint = "💡 вопрос в будущем: ще + глагол + ли",
-                sentenceTemplate = LessonRealSentenceGenerator.SentenceTemplate(
-                    ruPattern = "{subject} {futureAux} {infinitive} {object}?",
-                    bgPattern = listOf(
-                        LessonRealSentenceGenerator.Token.SubjectBg,
-                        LessonRealSentenceGenerator.Token.Fixed("ще"),
-                        LessonRealSentenceGenerator.Token.VerbBg,
-                        LessonRealSentenceGenerator.Token.Fixed("ли"),
-                        LessonRealSentenceGenerator.Token.ObjectBg,
-                    ),
-                ),
+            template(
+                hint = "Вопрос в будущем: ще + глагол + ли",
+                ruPattern = "{subject} {futureAuxRu} {ruInfinitive} {object}?",
+                bgTokens = listOf("{subject}", "ще", "{verb}", "ли", "{object}"),
             ),
         )
     }
 
     private fun defaultVerbs(): List<VerbEntry> {
         return listOf(
-            VerbEntry(
+            verbEntry(
                 kind = "default",
-                formsBg = mapOf(
-                    "Аз" to "гледам",
-                    "Ти" to "гледаш",
-                    "Той" to "гледа",
-                    "Тя" to "гледа",
-                    "То" to "гледа",
-                    "Ние" to "гледаме",
-                    "Вие" to "гледате",
-                    "Те" to "гледат",
-                ),
-                formsRu = mapOf(
-                    "Аз" to "смотрю",
-                    "Ти" to "смотришь",
-                    "Той" to "смотрит",
-                    "Тя" to "смотрит",
-                    "То" to "смотрит",
-                    "Ние" to "смотрим",
-                    "Вие" to "смотрите",
-                    "Те" to "смотрят",
-                ),
                 ruInfinitive = "смотреть",
+                formsBg = listOf("гледам", "гледаш", "гледа", "гледа", "гледа", "гледаме", "гледате", "гледат"),
+                formsRu = listOf("смотрю", "смотришь", "смотрит", "смотрит", "смотрит", "смотрим", "смотрите", "смотрят"),
                 objects = listOf(
                     ObjectEntry("телевизия", "телевизор"),
                     ObjectEntry("филм", "фильм"),
+                    ObjectEntry("сериал", "сериал"),
                 ),
             ),
-            VerbEntry(
+            verbEntry(
                 kind = "default",
-                formsBg = mapOf(
-                    "Аз" to "работя",
-                    "Ти" to "работиш",
-                    "Той" to "работи",
-                    "Тя" to "работи",
-                    "То" to "работи",
-                    "Ние" to "работим",
-                    "Вие" to "работите",
-                    "Те" to "работят",
-                ),
-                formsRu = mapOf(
-                    "Аз" to "работаю",
-                    "Ти" to "работаешь",
-                    "Той" to "работает",
-                    "Тя" to "работает",
-                    "То" to "работает",
-                    "Ние" to "работаем",
-                    "Вие" to "работаете",
-                    "Те" to "работают",
-                ),
                 ruInfinitive = "работать",
+                formsBg = listOf("работя", "работиш", "работи", "работи", "работи", "работим", "работите", "работят"),
+                formsRu = listOf("работаю", "работаешь", "работает", "работает", "работает", "работаем", "работаете", "работают"),
                 objects = listOf(
                     ObjectEntry("тук", "здесь"),
                     ObjectEntry("в града", "в городе"),
-                    ObjectEntry("на работа", "на работе"),
+                    ObjectEntry("в офиса", "в офисе"),
                 ),
             ),
-            VerbEntry(
+            verbEntry(
                 kind = "default",
-                formsBg = mapOf(
-                    "Аз" to "уча",
-                    "Ти" to "учиш",
-                    "Той" to "учи",
-                    "Тя" to "учи",
-                    "То" to "учи",
-                    "Ние" to "учим",
-                    "Вие" to "учите",
-                    "Те" to "учат",
-                ),
-                formsRu = mapOf(
-                    "Аз" to "учусь",
-                    "Ти" to "учишься",
-                    "Той" to "учится",
-                    "Тя" to "учится",
-                    "То" to "учится",
-                    "Ние" to "учимся",
-                    "Вие" to "учитесь",
-                    "Те" to "учатся",
-                ),
                 ruInfinitive = "учиться",
+                formsBg = listOf("уча", "учиш", "учи", "учи", "учи", "учим", "учите", "учат"),
+                formsRu = listOf("учусь", "учишься", "учится", "учится", "учится", "учимся", "учитесь", "учатся"),
                 objects = listOf(
                     ObjectEntry("в училище", "в школе"),
                     ObjectEntry("вкъщи", "дома"),
+                    ObjectEntry("в университета", "в университете"),
                 ),
             ),
-            VerbEntry(
+            verbEntry(
                 kind = "default",
-                formsBg = mapOf(
-                    "Аз" to "говоря",
-                    "Ти" to "говориш",
-                    "Той" to "говори",
-                    "Тя" to "говори",
-                    "То" to "говори",
-                    "Ние" to "говорим",
-                    "Вие" to "говорите",
-                    "Те" to "говорят",
-                ),
-                formsRu = mapOf(
-                    "Аз" to "говорю",
-                    "Ти" to "говоришь",
-                    "Той" to "говорит",
-                    "Тя" to "говорит",
-                    "То" to "говорит",
-                    "Ние" to "говорим",
-                    "Вие" to "говорите",
-                    "Те" to "говорят",
-                ),
                 ruInfinitive = "говорить",
+                formsBg = listOf("говоря", "говориш", "говори", "говори", "говори", "говорим", "говорите", "говорят"),
+                formsRu = listOf("говорю", "говоришь", "говорит", "говорит", "говорит", "говорим", "говорите", "говорят"),
                 objects = listOf(
                     ObjectEntry("български", "по-болгарски"),
                     ObjectEntry("бавно", "медленно"),
+                    ObjectEntry("с приятел", "с другом"),
                 ),
             ),
-            VerbEntry(
+            verbEntry(
                 kind = "default",
-                formsBg = mapOf(
-                    "Аз" to "пия",
-                    "Ти" to "пиеш",
-                    "Той" to "пие",
-                    "Тя" to "пие",
-                    "То" to "пие",
-                    "Ние" to "пием",
-                    "Вие" to "пиете",
-                    "Те" to "пият",
-                ),
-                formsRu = mapOf(
-                    "Аз" to "пью",
-                    "Ти" to "пьёшь",
-                    "Той" to "пьёт",
-                    "Тя" to "пьёт",
-                    "То" to "пьёт",
-                    "Ние" to "пьём",
-                    "Вие" to "пьёте",
-                    "Те" to "пьют",
-                ),
                 ruInfinitive = "пить",
+                formsBg = listOf("пия", "пиеш", "пие", "пие", "пие", "пием", "пиете", "пият"),
+                formsRu = listOf("пью", "пьёшь", "пьёт", "пьёт", "пьёт", "пьём", "пьёте", "пьют"),
                 objects = listOf(
                     ObjectEntry("вода", "воду"),
                     ObjectEntry("кафе", "кофе"),
                     ObjectEntry("чай", "чай"),
                 ),
             ),
-            VerbEntry(
+            verbEntry(
                 kind = "default",
-                formsBg = mapOf(
-                    "Аз" to "обичам",
-                    "Ти" to "обичаш",
-                    "Той" to "обича",
-                    "Тя" to "обича",
-                    "То" to "обича",
-                    "Ние" to "обичаме",
-                    "Вие" to "обичате",
-                    "Те" to "обичат",
-                ),
-                formsRu = mapOf(
-                    "Аз" to "люблю",
-                    "Ти" to "любишь",
-                    "Той" to "любит",
-                    "Тя" to "любит",
-                    "То" to "любит",
-                    "Ние" to "любим",
-                    "Вие" to "любите",
-                    "Те" to "любят",
-                ),
                 ruInfinitive = "любить",
+                formsBg = listOf("обичам", "обичаш", "обича", "обича", "обича", "обичаме", "обичате", "обичат"),
+                formsRu = listOf("люблю", "любишь", "любит", "любит", "любит", "любим", "любите", "любят"),
                 objects = listOf(
                     ObjectEntry("кафе", "кофе"),
                     ObjectEntry("чай", "чай"),
@@ -478,29 +333,11 @@ internal object Lesson1RealGenerator {
                     ObjectEntry("книга", "книгу"),
                 ),
             ),
-            VerbEntry(
+            verbEntry(
                 kind = "have",
-                formsBg = mapOf(
-                    "Аз" to "имам",
-                    "Ти" to "имаш",
-                    "Той" to "има",
-                    "Тя" to "има",
-                    "То" to "има",
-                    "Ние" to "имаме",
-                    "Вие" to "имате",
-                    "Те" to "имат",
-                ),
-                formsRu = mapOf(
-                    "Аз" to "есть",
-                    "Ти" to "есть",
-                    "Той" to "есть",
-                    "Тя" to "есть",
-                    "То" to "есть",
-                    "Ние" to "есть",
-                    "Вие" to "есть",
-                    "Те" to "есть",
-                ),
                 ruInfinitive = "иметь",
+                formsBg = listOf("имам", "имаш", "има", "има", "има", "имаме", "имате", "имат"),
+                formsRu = listOf("имею", "имеешь", "имеет", "имеет", "имеет", "имеем", "имеете", "имеют"),
                 objects = listOf(
                     ObjectEntry("книга", "книга"),
                     ObjectEntry("време", "время"),
@@ -508,6 +345,37 @@ internal object Lesson1RealGenerator {
                     ObjectEntry("телефон", "телефон"),
                 ),
             ),
+        )
+    }
+
+    private fun template(
+        hint: String,
+        ruPattern: String,
+        bgTokens: List<String>,
+    ): TemplateEntry {
+        return TemplateEntry(
+            hint = hint,
+            sentenceTemplate = LessonRealSentenceGenerator.SentenceTemplate(
+                ruPattern = ruPattern,
+                bgPattern = bgTokens.map(::tokenFromAsset),
+            ),
+        )
+    }
+
+    private fun verbEntry(
+        kind: String,
+        ruInfinitive: String,
+        formsBg: List<String>,
+        formsRu: List<String>,
+        objects: List<ObjectEntry>,
+    ): VerbEntry {
+        val subjects = listOf("Аз", "Ти", "Той", "Тя", "То", "Ние", "Вие", "Те")
+        return VerbEntry(
+            kind = kind,
+            formsBg = subjects.zip(formsBg).toMap(),
+            formsRu = subjects.zip(formsRu).toMap(),
+            ruInfinitive = ruInfinitive,
+            objects = objects,
         )
     }
 }
