@@ -32,7 +32,7 @@ internal object Lesson10RealGenerator {
         var intervalIndex = 0
         var questionIndex = 0
 
-        for (id in 1..60) {
+        for (id in 1..100) {
             val exercise = when {
                 id % 4 == 0 -> generateQuestionExercise(
                     id = id,

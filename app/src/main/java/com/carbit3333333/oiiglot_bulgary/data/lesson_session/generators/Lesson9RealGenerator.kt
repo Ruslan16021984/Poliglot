@@ -57,7 +57,7 @@ internal object Lesson9RealGenerator {
         templates: List<Lesson9TemplateAsset>
     ): List<LessonExercise> {
         val distractorPool = buildDistractorPool(numbers, objects, templates)
-        return (1..60).map { id ->
+        return (1..100).map { id ->
             generateExercise(
                 id = id,
                 numbers = numbers,

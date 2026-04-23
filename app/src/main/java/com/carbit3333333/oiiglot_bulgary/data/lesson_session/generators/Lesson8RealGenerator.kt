@@ -8,7 +8,7 @@ internal object Lesson8RealGenerator {
 
     internal fun generateExercises(templates: List<LessonTemplateAsset>): List<LessonExercise> {
         val distractorPool = buildDistractorPool(templates)
-        return (1..60).map { id -> generateExercise(id, templates, distractorPool) }
+        return (1..100).map { id -> generateExercise(id, templates, distractorPool) }
     }
 
     private fun generateExercise(

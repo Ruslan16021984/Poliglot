@@ -22,7 +22,11 @@ object Lesson6RealGenerator {
         "на работа" to "на работе",
         "при лекаря" to "у врача",
         "с приятеля" to "с другом",
-        "в къщата" to "в доме"
+        "в къщата" to "в доме",
+        "в магазина" to "в магазине",
+        "в офиса" to "в офисе",
+        "при учителя" to "у учителя",
+        "с колегата" to "с коллегой"
     )
 
     private val templates = listOf(
@@ -56,7 +60,7 @@ object Lesson6RealGenerator {
 
     fun generateExercises(): List<LessonExercise> {
         val distractorPool = buildDistractorPool()
-        return (1..60).map { id -> generateExercise(id, distractorPool) }
+        return (1..100).map { id -> generateExercise(id, distractorPool) }
     }
 
     private fun generateExercise(
@@ -65,7 +69,8 @@ object Lesson6RealGenerator {
     ): LessonExercise {
         val template = templates[(id - 1) % templates.size]
         val (subjectBg, subjectRu, verbBg) = subjectForms[((id - 1) / templates.size) % subjectForms.size]
-        val (placeBg, placeRu) = placePhrases[((id - 1) / (templates.size * subjectForms.size)) % placePhrases.size]
+        val placeIndex = ((id - 1) * cycleStep(placePhrases.size)) % placePhrases.size
+        val (placeBg, placeRu) = placePhrases[placeIndex]
 
         val hint = when {
             template.bgPattern.any { it == LessonRealSentenceGenerator.Token.Fixed("ли") } ->
@@ -104,5 +109,20 @@ object Lesson6RealGenerator {
             addAll(listOf("не", "ли"))
             addAll(placePhrases.map { it.first })
         }.distinct()
+    }
+
+    private fun cycleStep(size: Int): Int {
+        if (size <= 1) return 1
+
+        return (2..size).firstOrNull { candidate ->
+            greatestCommonDivisor(candidate, size) == 1
+        } ?: 1
+    }
+
+    private tailrec fun greatestCommonDivisor(
+        left: Int,
+        right: Int
+    ): Int {
+        return if (right == 0) left else greatestCommonDivisor(right, left % right)
     }
 }

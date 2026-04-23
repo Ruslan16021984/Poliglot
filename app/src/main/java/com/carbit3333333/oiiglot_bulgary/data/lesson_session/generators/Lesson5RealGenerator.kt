@@ -38,7 +38,8 @@ object Lesson5RealGenerator {
             ru = "смотреть",
             objects = listOf(
                 "филм" to "фильм",
-                "телевизия" to "телевизор"
+                "телевизия" to "телевизор",
+                "сериал" to "сериал"
             )
         ),
         Verb(
@@ -55,7 +56,8 @@ object Lesson5RealGenerator {
             ru = "пить",
             objects = listOf(
                 "кафе" to "кофе",
-                "вода" to "воду"
+                "вода" to "воду",
+                "чай" to "чай"
             )
         ),
         Verb(
@@ -72,7 +74,9 @@ object Lesson5RealGenerator {
             ru = "работать",
             objects = listOf(
                 "тук" to "здесь",
-                "в града" to "в городе"
+                "в града" to "в городе",
+                "в офиса" to "в офисе",
+                "вкъщи" to "дома"
             )
         ),
         Verb(
@@ -89,7 +93,42 @@ object Lesson5RealGenerator {
             ru = "учиться",
             objects = listOf(
                 "в училище" to "в школе",
-                "вкъщи" to "дома"
+                "вкъщи" to "дома",
+                "в университета" to "в университете"
+            )
+        ),
+        Verb(
+            bg = mapOf(
+                "Аз" to "чета",
+                "Ти" to "четеш",
+                "Той" to "чете",
+                "Тя" to "чете",
+                "То" to "чете",
+                "Ние" to "четем",
+                "Вие" to "четете",
+                "Те" to "четат"
+            ),
+            ru = "читать",
+            objects = listOf(
+                "книга" to "книгу",
+                "писмо" to "письмо"
+            )
+        ),
+        Verb(
+            bg = mapOf(
+                "Аз" to "отивам",
+                "Ти" to "отиваш",
+                "Той" to "отива",
+                "Тя" to "отива",
+                "То" to "отива",
+                "Ние" to "отиваме",
+                "Вие" to "отивате",
+                "Те" to "отиват"
+            ),
+            ru = "идти",
+            objects = listOf(
+                "в магазина" to "в магазин",
+                "вкъщи" to "домой"
             )
         )
     )
@@ -150,20 +189,8 @@ object Lesson5RealGenerator {
         "Те" to "им нужно"
     )
 
-    private val distractorPool = listOf(
-        "Аз","Ти","Той","Тя","То","Ние","Вие","Те",
-        "не","ли","да","трябва",
-        "мога","можеш","може","можем","можете","могат",
-        "искам","искаш","иска","искаме","искате","искат",
-        "гледам","гледаш","гледа",
-        "пия","пиеш","пие",
-        "работя","работиш","работи",
-        "уча","учиш","учи",
-        "филм","телевизия","кафе","вода","тук","в града","в училище","вкъщи"
-    )
-
     fun generateExercises(): List<LessonExercise> {
-        return (1..80).map { generateExercise(it) }
+        return (1..100).map { generateExercise(it) }
     }
 
     private fun generateExercise(id: Int): LessonExercise {
@@ -225,7 +252,7 @@ object Lesson5RealGenerator {
             lexicon = LessonRealSentenceGenerator.Lexicon(
                 subject = LessonRealSentenceGenerator.SubjectForms(subject, subjectRu.getValue(subject))
             ),
-            distractorPool = distractorPool,
+            distractorPool = buildDistractorPool(),
             hint = hint
         )
     }
@@ -273,5 +300,15 @@ object Lesson5RealGenerator {
             }
 
         return if (useQuestion) "$normalized?" else normalized
+    }
+
+    private fun buildDistractorPool(): List<String> {
+        return buildList {
+            addAll(subjectRu.keys)
+            addAll(listOf("не", "ли", "да", "трябва"))
+            addAll(modalForms.flatMap { (bgForms, _) -> bgForms.values })
+            addAll(verbs.flatMap { it.bg.values })
+            addAll(verbs.flatMap { verb -> verb.objects.map { it.first } })
+        }.distinct()
     }
 }

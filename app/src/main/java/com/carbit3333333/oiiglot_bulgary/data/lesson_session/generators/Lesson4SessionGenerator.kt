@@ -4,7 +4,7 @@ import com.carbit3333333.oiiglot_bulgary.model.Lesson4Item
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
 internal fun generateLesson4Exercises(items: List<Lesson4Item>): List<LessonExercise> {
-    return (1..40).map { id ->
+    return (1..100).map { id ->
         generateLesson4Exercise(
             id = id,
             items = items,
