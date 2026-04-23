@@ -5,6 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.carbit3333333.oiiglot_bulgary.data.LessonProgressStore
 import com.carbit3333333.oiiglot_bulgary.data.LessonRepository
+import com.carbit3333333.oiiglot_bulgary.data.settings.AppLanguage
+import com.carbit3333333.oiiglot_bulgary.data.settings.AppSettingsStore
+import com.carbit3333333.oiiglot_bulgary.data.settings.AppThemeMode
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonsUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,6 +21,7 @@ class LessonsViewModel(
 
     private val repository = LessonRepository(application)
     private val progressStore = LessonProgressStore(application)
+    private val settingsStore = AppSettingsStore(application)
 
     private val _uiState = MutableStateFlow(LessonsUiState(isLoading = true))
     val uiState: StateFlow<LessonsUiState> = _uiState.asStateFlow()
@@ -32,9 +36,11 @@ class LessonsViewModel(
 
             combine(
                 progressStore.openedLessonIdFlow,
-                progressStore.getLessonResultsFlow(lessonIds)
-            ) { openedLessonId, savedResults ->
-                repository.getLessons().map { lesson ->
+                progressStore.getLessonResultsFlow(lessonIds),
+                settingsStore.themeModeFlow,
+                settingsStore.languageFlow,
+            ) { openedLessonId, savedResults, themeMode, appLanguage ->
+                val lessons = repository.getLessons().map { lesson ->
                     val savedResult = savedResults[lesson.id]
 
                     lesson.copy(
@@ -45,12 +51,28 @@ class LessonsViewModel(
                         totalProgress = savedResult?.totalSteps ?: 0
                     )
                 }
-            }.collect { lessons ->
-                _uiState.value = LessonsUiState(
+
+                LessonsUiState(
                     isLoading = false,
-                    lessons = lessons
+                    lessons = lessons,
+                    appThemeMode = themeMode,
+                    appLanguage = appLanguage,
                 )
+            }.collect { state ->
+                _uiState.value = state
             }
+        }
+    }
+
+    fun updateThemeMode(themeMode: AppThemeMode) {
+        viewModelScope.launch {
+            settingsStore.saveThemeMode(themeMode)
+        }
+    }
+
+    fun updateLanguage(appLanguage: AppLanguage) {
+        viewModelScope.launch {
+            settingsStore.saveLanguage(appLanguage)
         }
     }
 

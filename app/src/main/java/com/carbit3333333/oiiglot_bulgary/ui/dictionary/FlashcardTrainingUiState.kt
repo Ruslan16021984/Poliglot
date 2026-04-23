@@ -40,13 +40,4 @@ data class FlashcardTrainingUiState(
             isFinished -> "$totalCount / $totalCount"
             else -> "${currentIndex + 1} / $totalCount"
         }
-
-    val groupLabel: String
-        get() = groupName ?: "Все слова"
-
-    val directionLabel: String
-        get() = when (direction) {
-            FlashcardDirection.BgToRu -> "Болгарский -> Русский"
-            FlashcardDirection.RuToBg -> "Русский -> Болгарский"
-        }
 }

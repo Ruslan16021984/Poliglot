@@ -1,4 +1,4 @@
-﻿package com.carbit3333333.oiiglot_bulgary.ui.lessons
+package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,10 +39,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.ExerciseResult
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 import com.carbit3333333.oiiglot_bulgary.model.LessonResult
@@ -225,7 +227,7 @@ fun LessonSessionScreenContent(
 
                             ExerciseResult.WRONG -> {
                                 Text(
-                                    text = "Нажмите на экран, чтобы перейти к следующему тесту.",
+                                    text = stringResource(R.string.lesson_session_wrong_continue),
                                     style = MaterialTheme.typography.bodyLarge,
                                     color = Color.Gray,
                                     modifier = Modifier.padding(horizontal = 24.dp)
@@ -244,7 +246,7 @@ fun LessonSessionScreenContent(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Нет упражнений",
+                        text = stringResource(R.string.lesson_session_no_exercises),
                         style = MaterialTheme.typography.titleLarge
                     )
                 }
@@ -262,7 +264,7 @@ fun LessonSessionScreenContent(
                         containerColor = Color(0xFF2E7D32)
                     )
                 ) {
-                    Text("Проверить")
+                    Text(stringResource(R.string.common_check))
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -294,7 +296,7 @@ private fun SessionTopBar(
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-            contentDescription = "Назад",
+            contentDescription = stringResource(R.string.common_back),
             tint = Color.White,
             modifier = Modifier.clickable(onClick = onBackClick)
         )
@@ -465,7 +467,7 @@ private fun AnswerArea(
     ) {
         if (selectedWords.isEmpty()) {
             Text(
-                text = "Выберите слова",
+                text = stringResource(R.string.lesson_session_select_words),
                 modifier = Modifier.padding(16.dp),
                 color = Color.Gray,
                 style = MaterialTheme.typography.bodyLarge
@@ -719,4 +721,3 @@ private fun LessonSessionCorrectPreview() {
         }
     }
 }
-

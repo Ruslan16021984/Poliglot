@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -22,9 +22,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.LessonResult
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import java.util.Locale
@@ -38,9 +40,9 @@ fun LessonResultScreen(
     onBackToLessonsClick: () -> Unit
 ) {
     val titleText = if (result.isPassed) {
-        "Урок пройден"
+        stringResource(R.string.lesson_result_passed_title)
     } else {
-        "Урок не пройден"
+        stringResource(R.string.lesson_result_failed_title)
     }
 
     val titleColor = if (result.isPassed) {
@@ -92,29 +94,29 @@ fun LessonResultScreen(
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
                 ResultRow(
-                    label = "Всего упражнений",
+                    label = stringResource(R.string.lesson_result_total_exercises),
                     value = result.totalExercises.toString()
                 )
 
                 ResultRow(
-                    label = "Правильных",
+                    label = stringResource(R.string.lesson_result_correct),
                     value = result.correctCount.toString(),
                     valueColor = Color(0xFF2E7D32)
                 )
 
                 ResultRow(
-                    label = "Неправильных",
+                    label = stringResource(R.string.lesson_result_wrong),
                     value = result.wrongCount.toString(),
                     valueColor = Color(0xFFC62828)
                 )
 
                 ResultRow(
-                    label = "Балл",
+                    label = stringResource(R.string.lesson_result_score_label),
                     value = scoreText
                 )
 
                 ResultRow(
-                    label = "Проходной балл",
+                    label = stringResource(R.string.lesson_result_passing_score),
                     value = "4.5"
                 )
             }
@@ -125,12 +127,12 @@ fun LessonResultScreen(
         Text(
             text = if (result.isPassed) {
                 if (hasNextLesson) {
-                    "Следующий урок открыт."
+                    stringResource(R.string.lesson_result_next_opened)
                 } else {
-                    "Это последний доступный урок."
+                    stringResource(R.string.lesson_result_last_available)
                 }
             } else {
-                "Нужно пройти урок не ниже чем на 4.5 балла."
+                stringResource(R.string.lesson_result_need_higher_score)
             },
             style = MaterialTheme.typography.bodyLarge,
             color = Color(0xFF666666)
@@ -147,7 +149,7 @@ fun LessonResultScreen(
                         containerColor = Color(0xFF2E7D32)
                     )
                 ) {
-                    Text("Следующий урок")
+                    Text(stringResource(R.string.lesson_result_next_lesson))
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -160,7 +162,7 @@ fun LessonResultScreen(
                     containerColor = Color(0xFF757575)
                 )
             ) {
-                Text("К списку уроков")
+                Text(stringResource(R.string.lesson_result_back_to_list))
             }
         } else {
             Button(
@@ -170,7 +172,7 @@ fun LessonResultScreen(
                     containerColor = Color(0xFF2E7D32)
                 )
             ) {
-                Text("Пройти заново")
+                Text(stringResource(R.string.lesson_result_retry))
             }
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -182,7 +184,7 @@ fun LessonResultScreen(
                     containerColor = Color(0xFF757575)
                 )
             ) {
-                Text("К списку уроков")
+                Text(stringResource(R.string.lesson_result_back_to_list))
             }
         }
 

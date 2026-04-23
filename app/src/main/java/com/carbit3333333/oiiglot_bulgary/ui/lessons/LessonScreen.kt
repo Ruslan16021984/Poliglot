@@ -19,10 +19,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
 import com.carbit3333333.oiiglot_bulgary.model.TheoryBlock
 import com.carbit3333333.oiiglot_bulgary.ui.common.HighlightedEndingText
@@ -63,25 +65,27 @@ fun LessonScreenContent(
     ) {
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = onBackClick) {
-            Text(text = "Назад")
+            Text(text = stringResource(R.string.common_back))
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
         when {
             uiState.isLoading -> {
-                Text(text = "Загрузка...")
+                Text(text = stringResource(R.string.common_loading))
             }
 
             uiState.errorMessage != null -> {
-                Text(text = uiState.errorMessage ?: "Ошибка")
+                Text(text = uiState.errorMessage ?: stringResource(R.string.common_error))
             }
 
             uiState.lesson != null -> {
                 val lesson = uiState.lesson
 
                 LazyColumn(
-                    modifier = Modifier.weight(1f).padding(bottom = 16.dp),
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(bottom = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     item {
@@ -100,7 +104,7 @@ fun LessonScreenContent(
 
                     item {
                         Text(
-                            text = "Теория",
+                            text = stringResource(R.string.lesson_theory_title),
                             style = MaterialTheme.typography.titleLarge
                         )
                     }
@@ -108,9 +112,10 @@ fun LessonScreenContent(
                     items(lesson.theory) { theoryBlock ->
                         TheoryBlockItem(theoryBlock = theoryBlock)
                     }
+
                     item {
                         Text(
-                            text = "Окончания глаголов",
+                            text = stringResource(R.string.lesson_verb_endings_title),
                             style = MaterialTheme.typography.titleLarge
                         )
                     }
@@ -126,7 +131,7 @@ fun LessonScreenContent(
                     onClick = { onStartExerciseClick(lesson.id) },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text(text = "Начать упражнения")
+                    Text(text = stringResource(R.string.lesson_start_exercises))
                 }
             }
         }
@@ -144,7 +149,7 @@ private fun VerbEndingExamples() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Обрати внимание, как меняются окончания:",
+                text = stringResource(R.string.lesson_endings_attention),
                 style = MaterialTheme.typography.bodyLarge
             )
 

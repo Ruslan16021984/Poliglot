@@ -8,6 +8,7 @@ object Destinations {
     const val LESSON_DETAILS = "lesson_details"
     const val LESSON_SESSION = "lesson_session"
     const val LESSON_RESULT = "lesson_result"
+    const val SETTINGS = "settings"
     const val DICTIONARY_LIST = "dictionary"
     const val DICTIONARY_EDIT = "dictionary_edit?wordId={wordId}"
     const val DICTIONARY_TRAINING = "dictionary_training?groupId={groupId}&groupName={groupName}"

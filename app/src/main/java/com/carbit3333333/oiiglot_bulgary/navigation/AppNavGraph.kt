@@ -21,6 +21,8 @@ import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonResultScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionScreen
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonsScreen
+import com.carbit3333333.oiiglot_bulgary.ui.settings.SettingsScreen
+import com.carbit3333333.oiiglot_bulgary.viewmodel.AppSettingsViewModel
 import com.carbit3333333.oiiglot_bulgary.viewmodel.FlashcardTrainingViewModel
 import com.carbit3333333.oiiglot_bulgary.viewmodel.LessonResultViewModel
 import com.carbit3333333.oiiglot_bulgary.viewmodel.WordEditorViewModel
@@ -38,9 +40,27 @@ fun AppNavGraph() {
                 onDictionaryClick = {
                     navController.navigate(Destinations.DICTIONARY_LIST)
                 },
+                onSettingsClick = {
+                    navController.navigate(Destinations.SETTINGS)
+                },
                 onLessonClick = { lessonId ->
                     navController.navigate(Destinations.lessonDetailsRoute(lessonId))
                 }
+            )
+        }
+
+        composable(Destinations.SETTINGS) {
+            val context = LocalContext.current
+            val application = context.applicationContext as android.app.Application
+            val appSettingsViewModel: AppSettingsViewModel = viewModel(
+                factory = AppSettingsViewModel.provideFactory(application)
+            )
+
+            SettingsScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                viewModel = appSettingsViewModel,
             )
         }
 
@@ -79,10 +99,12 @@ fun AppNavGraph() {
             )
         ) { backStackEntry ->
             val context = LocalContext.current
+            val application = context.applicationContext as android.app.Application
             val repository = remember(context) { PersonalDictionaryRepository(context) }
             val wordId = backStackEntry.arguments?.getLong("wordId")?.takeIf { it > 0L }
             val wordEditorViewModel: WordEditorViewModel = viewModel(
                 factory = WordEditorViewModel.provideFactory(
+                    application = application,
                     repository = repository,
                     wordId = wordId,
                 )
@@ -110,12 +132,14 @@ fun AppNavGraph() {
             )
         ) { backStackEntry ->
             val context = LocalContext.current
+            val application = context.applicationContext as android.app.Application
             val repository = remember(context) { PersonalDictionaryRepository(context) }
             val preferencesStore = remember(context) { FlashcardTrainingPreferencesStore(context) }
             val groupId = backStackEntry.arguments?.getLong("groupId")?.takeIf { it > 0L }
             val groupName = backStackEntry.arguments?.getString("groupName")?.takeIf { it.isNotBlank() }
             val flashcardTrainingViewModel: FlashcardTrainingViewModel = viewModel(
                 factory = FlashcardTrainingViewModel.provideFactory(
+                    application = application,
                     repository = repository,
                     preferencesStore = preferencesStore,
                     groupId = groupId,

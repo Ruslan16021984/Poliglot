@@ -54,6 +54,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,6 +62,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.utils.AppTextToSpeech
@@ -115,6 +117,14 @@ fun FlashcardTrainingScreenContent(
     onSpeakRussian: (String) -> Unit,
 ) {
     val palette = rememberDictionaryPalette()
+    val groupLabel = uiState.groupName ?: stringResource(R.string.flashcard_all_words)
+    val directionLabel = stringResource(
+        if (uiState.direction == FlashcardDirection.BgToRu) {
+            R.string.flashcard_direction_bg_ru
+        } else {
+            R.string.flashcard_direction_ru_bg
+        }
+    )
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -134,13 +144,13 @@ fun FlashcardTrainingScreenContent(
 
             uiState.errorMessage != null -> {
                 FlashcardTrainingSummary(
-                    title = "Не удалось открыть тренировку",
+                    title = stringResource(R.string.flashcard_open_error_title),
                     subtitle = uiState.errorMessage,
-                    groupLabel = uiState.groupLabel,
-                    directionLabel = uiState.directionLabel,
+                    groupLabel = groupLabel,
+                    directionLabel = directionLabel,
                     knownCount = uiState.knownCount,
                     unknownCount = uiState.unknownCount,
-                    buttonLabel = "Повторить",
+                    buttonLabel = stringResource(R.string.flashcard_retry),
                     onBackClick = onBackClick,
                     onFinishClick = onRetryLoad,
                     onRetryUnknownCards = null,
@@ -149,13 +159,13 @@ fun FlashcardTrainingScreenContent(
 
             uiState.currentCard == null -> {
                 FlashcardTrainingSummary(
-                    title = "Тренировка",
-                    subtitle = "Слов для тренировки пока нет",
-                    groupLabel = uiState.groupLabel,
-                    directionLabel = uiState.directionLabel,
+                    title = stringResource(R.string.flashcard_training_title),
+                    subtitle = stringResource(R.string.flashcard_empty_subtitle),
+                    groupLabel = groupLabel,
+                    directionLabel = directionLabel,
                     knownCount = uiState.knownCount,
                     unknownCount = uiState.unknownCount,
-                    buttonLabel = "Вернуться к словарю",
+                    buttonLabel = stringResource(R.string.flashcard_back_to_dictionary),
                     onBackClick = onBackClick,
                     onFinishClick = onFinishClick,
                     onRetryUnknownCards = null,
@@ -164,13 +174,13 @@ fun FlashcardTrainingScreenContent(
 
             uiState.isFinished -> {
                 FlashcardTrainingSummary(
-                    title = "Тренировка завершена",
-                    subtitle = "Карточки закончились",
-                    groupLabel = uiState.groupLabel,
-                    directionLabel = uiState.directionLabel,
+                    title = stringResource(R.string.flashcard_finish_title),
+                    subtitle = stringResource(R.string.flashcard_finish_subtitle),
+                    groupLabel = groupLabel,
+                    directionLabel = directionLabel,
                     knownCount = uiState.knownCount,
                     unknownCount = uiState.unknownCount,
-                    buttonLabel = "Вернуться к словарю",
+                    buttonLabel = stringResource(R.string.flashcard_back_to_dictionary),
                     onBackClick = onBackClick,
                     onFinishClick = onFinishClick,
                     onRetryUnknownCards = if (uiState.hasUnknownCards) onRetryUnknownCards else null,
@@ -200,13 +210,13 @@ fun FlashcardTrainingScreenContent(
                             ) {
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                    contentDescription = "Назад",
+                                    contentDescription = stringResource(R.string.common_back),
                                     tint = palette.title,
                                 )
                             }
                             Spacer(modifier = Modifier.width(12.dp))
                             Text(
-                                text = "Тренировка",
+                                text = stringResource(R.string.flashcard_training_title),
                                 style = MaterialTheme.typography.headlineSmall,
                                 fontWeight = FontWeight.SemiBold,
                                 color = palette.title,
@@ -236,7 +246,7 @@ fun FlashcardTrainingScreenContent(
                                     shape = MaterialTheme.shapes.extraLarge,
                                 ) {
                                     Text(
-                                        text = uiState.groupLabel,
+                                        text = groupLabel,
                                         modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
                                         style = MaterialTheme.typography.labelLarge,
                                         color = palette.accent,
@@ -248,7 +258,7 @@ fun FlashcardTrainingScreenContent(
                                 onClick = onToggleDirection,
                                 shape = MaterialTheme.shapes.large,
                             ) {
-                                Text(uiState.directionLabel)
+                                Text(directionLabel)
                             }
                         }
                     }
@@ -271,14 +281,14 @@ fun FlashcardTrainingScreenContent(
 
                     item {
                         SwipeHint(
-                            text = "Свайп вверх: знаю",
+                            text = stringResource(R.string.flashcard_swipe_up_known),
                             accentColor = palette.hintPositiveText,
                             tint = palette.hintPositiveSurface,
                             arrow = "↑",
                         )
                         Spacer(modifier = Modifier.height(14.dp))
                         SwipeHint(
-                            text = "Свайп вниз: не знаю",
+                            text = stringResource(R.string.flashcard_swipe_down_unknown),
                             accentColor = palette.hintNegativeText,
                             tint = palette.hintNegativeSurface,
                             arrow = "↓",
@@ -329,14 +339,20 @@ private fun FlashcardSwipeCard(
     val absoluteTilt = abs(animatedOffsetY / swipeThresholdPx).coerceIn(0f, 1f)
     val shownFace = if (cardRotationY <= 90f) FlashcardFace.Front else FlashcardFace.Back
 
-    val frontLanguage = when (direction) {
-        FlashcardDirection.BgToRu -> "Болгарский"
-        FlashcardDirection.RuToBg -> "Русский"
-    }
-    val backLanguage = when (direction) {
-        FlashcardDirection.BgToRu -> "Русский"
-        FlashcardDirection.RuToBg -> "Болгарский"
-    }
+    val frontLanguage = stringResource(
+        if (direction == FlashcardDirection.BgToRu) {
+            R.string.flashcard_language_bg
+        } else {
+            R.string.flashcard_language_ru
+        }
+    )
+    val backLanguage = stringResource(
+        if (direction == FlashcardDirection.BgToRu) {
+            R.string.flashcard_language_ru
+        } else {
+            R.string.flashcard_language_bg
+        }
+    )
     val frontText = when (direction) {
         FlashcardDirection.BgToRu -> card.bgWord
         FlashcardDirection.RuToBg -> card.ruTranslation
@@ -352,6 +368,7 @@ private fun FlashcardSwipeCard(
                 FlashcardDirection.RuToBg -> ({ onSpeakRussian(frontText) })
             }
         }
+
         FlashcardFace.Back -> {
             when (direction) {
                 FlashcardDirection.BgToRu -> ({ onSpeakRussian(backText) })
@@ -370,10 +387,12 @@ private fun FlashcardSwipeCard(
                 delay(180)
                 onKnowCard()
             }
+
             SwipeDismissDirection.Down -> {
                 delay(180)
                 onDontKnowCard()
             }
+
             null -> Unit
         }
     }
@@ -446,13 +465,16 @@ private fun FlashcardSwipeCard(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.VolumeUp,
-                        contentDescription = "Произнести: $speakLabel",
+                        contentDescription = stringResource(
+                            R.string.flashcard_speak_content_description,
+                            speakLabel,
+                        ),
                         tint = palette.accent,
                         modifier = Modifier.size(18.dp),
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Слушать",
+                        text = stringResource(R.string.common_listen),
                         color = palette.accent,
                         style = MaterialTheme.typography.labelLarge,
                         fontWeight = FontWeight.SemiBold,
@@ -480,9 +502,9 @@ private fun FlashcardSwipeCard(
                 Spacer(modifier = Modifier.height(34.dp))
                 Text(
                     text = if (shownFace == FlashcardFace.Front) {
-                        "Коснитесь, чтобы перевернуть"
+                        stringResource(R.string.flashcard_hint_flip)
                     } else {
-                        "Свайп вверх или вниз"
+                        stringResource(R.string.flashcard_hint_swipe)
                     },
                     style = MaterialTheme.typography.bodyMedium,
                     color = palette.body,
@@ -568,13 +590,13 @@ private fun FlashcardTrainingSummary(
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Назад",
+                        contentDescription = stringResource(R.string.common_back),
                         tint = palette.title,
                     )
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "Тренировка",
+                    text = stringResource(R.string.flashcard_training_title),
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.SemiBold,
                     color = palette.title,
@@ -638,19 +660,19 @@ private fun FlashcardTrainingSummary(
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = "Знаю: $knownCount",
+                            text = stringResource(R.string.flashcard_known_count, knownCount),
                             style = MaterialTheme.typography.titleLarge,
                             color = palette.title,
                         )
                         Text(
-                            text = "Не знаю: $unknownCount",
+                            text = stringResource(R.string.flashcard_unknown_count, unknownCount),
                             style = MaterialTheme.typography.titleLarge,
                             color = palette.title,
                         )
                         if (onRetryUnknownCards != null) {
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
-                                text = "В повтор войдут только слова, отмеченные как «не знаю».",
+                                text = stringResource(R.string.flashcard_retry_unknown_hint),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = palette.body,
                                 textAlign = TextAlign.Center,
@@ -661,7 +683,7 @@ private fun FlashcardTrainingSummary(
                                 modifier = Modifier.fillMaxWidth(),
                                 shape = MaterialTheme.shapes.large,
                             ) {
-                                Text("Повторить трудные слова")
+                                Text(stringResource(R.string.flashcard_retry_unknown))
                             }
                         }
                         Spacer(modifier = Modifier.height(8.dp))

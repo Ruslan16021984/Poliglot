@@ -57,12 +57,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.viewmodel.WordEditorViewModel
@@ -73,6 +76,7 @@ fun WordEditorScreen(
     viewModel: WordEditorViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
     var speechTarget by remember { mutableStateOf<WordEditorViewModel.SpeechTarget?>(null) }
 
     BackHandler(enabled = uiState.isSaving) {
@@ -132,9 +136,9 @@ fun WordEditorScreen(
                 putExtra(
                     RecognizerIntent.EXTRA_PROMPT,
                     if (target == WordEditorViewModel.SpeechTarget.Bulgarian) {
-                        "Скажите слово на болгарском"
+                        context.getString(R.string.word_editor_speech_prompt_bg)
                     } else {
-                        "Скажите перевод на русском"
+                        context.getString(R.string.word_editor_speech_prompt_ru)
                     },
                 )
             }
@@ -175,7 +179,7 @@ private fun WordEditorScreenContent(
                     onDismissNewGroupDialog()
                 }
             },
-            title = { Text("Новая группа") },
+            title = { Text(stringResource(R.string.word_editor_new_group_title)) },
             text = {
                 OutlinedTextField(
                     value = uiState.newGroupName,
@@ -183,8 +187,8 @@ private fun WordEditorScreenContent(
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
                     enabled = uiState.isEditorInteractive,
-                    label = { Text("Название группы") },
-                    placeholder = { Text("Например, Путешествие") },
+                    label = { Text(stringResource(R.string.word_editor_group_name_label)) },
+                    placeholder = { Text(stringResource(R.string.word_editor_group_name_placeholder)) },
                     shape = RoundedCornerShape(16.dp),
                 )
             },
@@ -193,7 +197,7 @@ private fun WordEditorScreenContent(
                     onClick = onCreateGroup,
                     enabled = uiState.isEditorInteractive && uiState.newGroupName.trim().isNotEmpty(),
                 ) {
-                    Text("Создать")
+                    Text(stringResource(R.string.common_create))
                 }
             },
             dismissButton = {
@@ -201,7 +205,7 @@ private fun WordEditorScreenContent(
                     onClick = onDismissNewGroupDialog,
                     enabled = uiState.isEditorInteractive,
                 ) {
-                    Text("Отмена")
+                    Text(stringResource(R.string.common_cancel))
                 }
             },
         )
@@ -236,13 +240,17 @@ private fun WordEditorScreenContent(
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Назад",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = palette.title,
                             )
                         }
                         Spacer(modifier = Modifier.width(12.dp))
                         Text(
-                            text = uiState.screenTitle,
+                            text = if (uiState.isEditMode) {
+                                stringResource(R.string.word_editor_edit_title)
+                            } else {
+                                stringResource(R.string.word_editor_new_title)
+                            },
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.SemiBold,
                             color = palette.title,
@@ -273,10 +281,14 @@ private fun WordEditorScreenContent(
                             }
                         } else {
                             EditorFieldCard(
-                                title = "Болгарский",
+                                title = stringResource(R.string.word_editor_bg_title),
                                 value = uiState.bgWord,
-                                placeholder = "Введите слово на болгарском",
-                                supportingText = uiState.bgWordError,
+                                placeholder = stringResource(R.string.word_editor_bg_placeholder),
+                                supportingText = if (uiState.hasBgWordError) {
+                                    stringResource(R.string.word_editor_bg_required)
+                                } else {
+                                    null
+                                },
                                 enabled = uiState.isEditorInteractive,
                                 onValueChange = onBgWordChange,
                                 onSpeechInputClick = {
@@ -286,10 +298,14 @@ private fun WordEditorScreenContent(
                             )
 
                             EditorFieldCard(
-                                title = "Русский перевод",
+                                title = stringResource(R.string.word_editor_ru_title),
                                 value = uiState.ruTranslation,
-                                placeholder = "Введите перевод",
-                                supportingText = uiState.ruTranslationError,
+                                placeholder = stringResource(R.string.word_editor_ru_placeholder),
+                                supportingText = if (uiState.hasRuTranslationError) {
+                                    stringResource(R.string.word_editor_ru_required)
+                                } else {
+                                    null
+                                },
                                 enabled = uiState.isEditorInteractive,
                                 onValueChange = onRuTranslationChange,
                                 onSpeechInputClick = {
@@ -320,7 +336,7 @@ private fun WordEditorScreenContent(
                                 color = palette.errorText,
                             )
                             OutlinedButton(onClick = onDismissError) {
-                                Text("Ок")
+                                Text(stringResource(R.string.common_ok))
                             }
                         }
                     }
@@ -345,7 +361,7 @@ private fun WordEditorScreenContent(
                                 color = palette.successText,
                             )
                             OutlinedButton(onClick = onDismissSuccess) {
-                                Text("Ок")
+                                Text(stringResource(R.string.common_ok))
                             }
                         }
                     }
@@ -359,7 +375,7 @@ private fun WordEditorScreenContent(
                         shape = RoundedCornerShape(18.dp),
                     ) {
                         Text(
-                            text = "Сохраняем слово. Пожалуйста, дождитесь завершения.",
+                            text = stringResource(R.string.word_editor_saving_message),
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
                             color = palette.infoText,
                         )
@@ -379,7 +395,7 @@ private fun WordEditorScreenContent(
                         verticalArrangement = Arrangement.spacedBy(12.dp),
                     ) {
                         Text(
-                            text = "Когда всё заполнено, сохраните карточку в словарь.",
+                            text = stringResource(R.string.word_editor_save_hint),
                             style = MaterialTheme.typography.bodyMedium,
                             color = palette.body,
                         )
@@ -390,7 +406,13 @@ private fun WordEditorScreenContent(
                             shape = RoundedCornerShape(18.dp),
                             contentPadding = PaddingValues(vertical = 16.dp),
                         ) {
-                            Text(uiState.primaryButtonText)
+                            Text(
+                                if (uiState.isEditMode) {
+                                    stringResource(R.string.word_editor_save_changes)
+                                } else {
+                                    stringResource(R.string.word_editor_add_word)
+                                }
+                            )
                         }
                     }
                 }
@@ -408,7 +430,7 @@ private fun WordEditorScreenContent(
                         verticalArrangement = Arrangement.spacedBy(14.dp),
                     ) {
                         Text(
-                            text = "Группы",
+                            text = stringResource(R.string.word_editor_groups_title),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.SemiBold,
                             color = palette.title,
@@ -445,13 +467,13 @@ private fun WordEditorScreenContent(
                                     tint = palette.accent,
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Text("Новая группа", color = palette.accent)
+                                Text(stringResource(R.string.word_editor_new_group), color = palette.accent)
                             }
                         }
 
                         if (uiState.availableGroups.isEmpty()) {
                             Text(
-                                text = "Пока нет групп. Создай первую, и она сразу появится в выборе.",
+                                text = stringResource(R.string.word_editor_no_groups),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = palette.body,
                             )
@@ -480,7 +502,7 @@ private fun WordEditorScreenContent(
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Text(
-                            text = "Дополнительно",
+                            text = stringResource(R.string.word_editor_additional),
                             modifier = Modifier.weight(1f),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Medium,
@@ -532,7 +554,7 @@ private fun EditorFieldCard(
                 ) {
                     Icon(
                         painter = painterResource(id = android.R.drawable.ic_btn_speak_now),
-                        contentDescription = "Голосовой ввод",
+                        contentDescription = stringResource(R.string.word_editor_voice_input),
                         tint = palette.body,
                     )
                 }

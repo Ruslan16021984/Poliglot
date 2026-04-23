@@ -1,8 +1,11 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.FlashcardTrainingPreferencesStore
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
@@ -15,12 +18,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class FlashcardTrainingViewModel(
+    application: Application,
     private val selectedGroupId: Long?,
     private val selectedGroupName: String?,
     private val flashcardLoader: suspend (Long?) -> List<FlashcardItem>,
     private val loadSavedDirection: suspend () -> FlashcardDirection,
     private val saveDirection: suspend (FlashcardDirection) -> Unit,
-) : ViewModel() {
+) : AndroidViewModel(application) {
+
+    private val resources = application.resources
 
     private val _uiState = MutableStateFlow(
         FlashcardTrainingUiState(
@@ -98,9 +104,9 @@ class FlashcardTrainingViewModel(
             unknownCards = emptyList(),
             isFinished = false,
             groupName = if (selectedGroupName.isNullOrBlank()) {
-                "Повтор трудных слов"
+                resources.getString(R.string.flashcard_repeat_difficult_title)
             } else {
-                "$selectedGroupName • повтор"
+                resources.getString(R.string.flashcard_repeat_group_title, selectedGroupName)
             },
         )
     }
@@ -137,7 +143,7 @@ class FlashcardTrainingViewModel(
                     isLoading = false,
                     direction = direction,
                     groupName = selectedGroupName,
-                    errorMessage = "Не удалось загрузить карточки. Попробуйте ещё раз.",
+                    errorMessage = resources.getString(R.string.flashcard_error_load_cards),
                 )
             }
         }
@@ -163,6 +169,7 @@ class FlashcardTrainingViewModel(
 
     companion object {
         fun provideFactory(
+            application: Application,
             repository: PersonalDictionaryRepository,
             preferencesStore: FlashcardTrainingPreferencesStore,
             groupId: Long?,
@@ -173,6 +180,7 @@ class FlashcardTrainingViewModel(
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     require(modelClass.isAssignableFrom(FlashcardTrainingViewModel::class.java))
                     return FlashcardTrainingViewModel(
+                        application = application,
                         selectedGroupId = groupId?.takeIf { it > 0L },
                         selectedGroupName = groupName?.takeIf { it.isNotBlank() },
                         flashcardLoader = { requestedGroupId ->

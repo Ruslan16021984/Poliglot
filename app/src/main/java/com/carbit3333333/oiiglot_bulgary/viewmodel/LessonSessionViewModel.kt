@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.data.LessonProgressStore
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionRepository
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionStore
@@ -23,15 +24,16 @@ class LessonSessionViewModel(
     private val repository = LessonSessionRepository(application)
     private val progressStore = LessonProgressStore(application)
     private val sessionStore = LessonSessionStore(application)
+    private val resources = application.resources
 
     private var resultSaved = false
 
     private val praises = listOf(
-        "Браво!",
-        "Супер!",
-        "Чудесно!",
-        "Отлично!",
-        "Талант!"
+        R.string.lesson_session_praise_bravo,
+        R.string.lesson_session_praise_super,
+        R.string.lesson_session_praise_wonderful,
+        R.string.lesson_session_praise_excellent,
+        R.string.lesson_session_praise_talent,
     )
 
     private val _uiState = MutableStateFlow(LessonSessionUiState())
@@ -105,7 +107,7 @@ class LessonSessionViewModel(
                 results = newResults,
                 currentResult = ExerciseResult.CORRECT,
                 correctCount = state.correctCount + 1,
-                praiseText = praises.random()
+                praiseText = resources.getString(praises.random())
             )
             saveCurrentSession()
 

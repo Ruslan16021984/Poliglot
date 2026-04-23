@@ -2,6 +2,7 @@ package com.carbit3333333.oiiglot_bulgary.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.data.LessonRepository
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,6 +14,7 @@ class LessonViewModel(
 ) : AndroidViewModel(application) {
 
     private val repository = LessonRepository(application)
+    private val resources = application.resources
 
     private val _uiState = MutableStateFlow(LessonUiState())
     val uiState: StateFlow<LessonUiState> = _uiState.asStateFlow()
@@ -23,7 +25,7 @@ class LessonViewModel(
         _uiState.value = if (lesson != null) {
             LessonUiState(lesson = lesson)
         } else {
-            LessonUiState(errorMessage = "Урок не найден")
+            LessonUiState(errorMessage = resources.getString(R.string.lesson_not_found))
         }
     }
 }

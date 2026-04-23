@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.DictionaryWordListItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
@@ -28,6 +29,7 @@ class DictionaryViewModel(
     }
 
     private val repository = PersonalDictionaryRepository(application)
+    private val resources = application.resources
 
     private val queryState = MutableStateFlow("")
     private val selectedGroupIdState = MutableStateFlow<Long?>(null)
@@ -46,7 +48,7 @@ class DictionaryViewModel(
                     query = query,
                     groupId = selectedGroupId,
                 ).catch {
-                    errorMessageState.value = it.message ?: "Не удалось загрузить слова"
+                    errorMessageState.value = it.message ?: resources.getString(R.string.dictionary_error_load_words)
                     emit(emptyList())
                 }
             }
@@ -76,7 +78,7 @@ class DictionaryViewModel(
     val groups: StateFlow<List<WordGroup>> =
         repository.observeGroupsWithCounts()
             .catch {
-                errorMessageState.value = it.message ?: "Не удалось загрузить группы"
+                errorMessageState.value = it.message ?: resources.getString(R.string.dictionary_error_load_groups)
                 emit(emptyList())
             }
             .stateIn(
@@ -89,7 +91,7 @@ class DictionaryViewModel(
         repository.observeAllWords()
             .map { words -> words.isNotEmpty() }
             .catch {
-                errorMessageState.value = it.message ?: "Не удалось загрузить слова"
+                errorMessageState.value = it.message ?: resources.getString(R.string.dictionary_error_load_words)
                 emit(false)
             }
             .stateIn(
@@ -145,7 +147,7 @@ class DictionaryViewModel(
             runCatching {
                 repository.deleteWord(wordId)
             }.onFailure { throwable ->
-                errorMessageState.value = throwable.message ?: "Не удалось удалить слово"
+                errorMessageState.value = throwable.message ?: resources.getString(R.string.dictionary_error_delete_word)
             }
         }
     }

@@ -57,12 +57,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.DictionaryWordListItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
@@ -125,8 +127,15 @@ fun DictionaryScreenContent(
                 pendingDeleteWordId = null
                 pendingDeleteWordLabel = ""
             },
-            title = { Text("Удалить слово?") },
-            text = { Text("Слово \"$pendingDeleteWordLabel\" будет удалено из личного словаря.") },
+            title = { Text(stringResource(R.string.dictionary_delete_word_title)) },
+            text = {
+                Text(
+                    stringResource(
+                        R.string.dictionary_delete_word_message,
+                        pendingDeleteWordLabel,
+                    )
+                )
+            },
             confirmButton = {
                 Button(
                     onClick = {
@@ -135,7 +144,7 @@ fun DictionaryScreenContent(
                         pendingDeleteWordLabel = ""
                     },
                 ) {
-                    Text("Удалить")
+                    Text(stringResource(R.string.common_delete))
                 }
             },
             dismissButton = {
@@ -145,7 +154,7 @@ fun DictionaryScreenContent(
                         pendingDeleteWordLabel = ""
                     },
                 ) {
-                    Text("Отмена")
+                    Text(stringResource(R.string.common_cancel))
                 }
             },
         )
@@ -156,268 +165,276 @@ fun DictionaryScreenContent(
         color = palette.pageBackground,
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.systemBars),
-            contentPadding = PaddingValues(horizontal = 18.dp, vertical = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
-        ) {
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    IconButton(
-                        onClick = onBackClick,
-                        modifier = Modifier
-                            .clip(CircleShape)
-                            .background(palette.surface),
+            LazyColumn(
+                state = listState,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.systemBars),
+                contentPadding = PaddingValues(horizontal = 18.dp, vertical = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp),
+            ) {
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Назад",
-                            tint = palette.title,
-                        )
-                    }
-
-                    Button(
-                        onClick = onAddWordClick,
-                        shape = RoundedCornerShape(14.dp),
-                        contentPadding = PaddingValues(horizontal = 18.dp, vertical = 12.dp),
-                    ) {
-                        Text("Добавить")
-                    }
-                }
-            }
-
-            item {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(24.dp),
-                    colors = CardDefaults.cardColors(containerColor = palette.surface),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(20.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp),
-                    ) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.Top,
+                        IconButton(
+                            onClick = onBackClick,
+                            modifier = Modifier
+                                .clip(CircleShape)
+                                .background(palette.surface),
                         ) {
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = "Мои слова",
-                                    style = MaterialTheme.typography.headlineMedium,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = palette.title,
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = "Ваш личный словарь для изучения болгарского языка",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = palette.body,
-                                )
-                            }
-
-                            Surface(
-                                shape = RoundedCornerShape(16.dp),
-                                color = palette.accentSurface,
-                            ) {
-                                Box(
-                                    modifier = Modifier.padding(12.dp),
-                                    contentAlignment = Alignment.Center,
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.Star,
-                                        contentDescription = null,
-                                        tint = palette.accent,
-                                    )
-                                }
-                            }
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = stringResource(R.string.common_back),
+                                tint = palette.title,
+                            )
                         }
-
-                        OutlinedTextField(
-                            value = uiState.query,
-                            onValueChange = onQueryChange,
-                            modifier = Modifier.fillMaxWidth(),
-                            singleLine = true,
-                            shape = RoundedCornerShape(16.dp),
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Default.Search,
-                                    contentDescription = null,
-                                    tint = palette.body,
-                                )
-                            },
-                            placeholder = {
-                                Text(
-                                    text = "Поиск по слову или переводу",
-                                    color = palette.body,
-                                )
-                            },
-                        )
 
                         Button(
-                            onClick = onTrainAllClick,
-                            modifier = Modifier.fillMaxWidth(),
-                            enabled = hasAnyWordsForTraining,
-                            shape = RoundedCornerShape(16.dp),
-                            contentPadding = PaddingValues(vertical = 14.dp),
+                            onClick = onAddWordClick,
+                            shape = RoundedCornerShape(14.dp),
+                            contentPadding = PaddingValues(horizontal = 18.dp, vertical = 12.dp),
                         ) {
-                            Text("Учить все слова")
+                            Text(stringResource(R.string.dictionary_add_button))
                         }
                     }
                 }
-            }
 
-            if (uiState.errorMessage != null) {
                 item {
                     Card(
-                        colors = CardDefaults.cardColors(containerColor = palette.errorSurface),
-                        shape = RoundedCornerShape(18.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(24.dp),
+                        colors = CardDefaults.cardColors(containerColor = palette.surface),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                     ) {
-                        Row(
+                        Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 14.dp),
-                            verticalAlignment = Alignment.CenterVertically,
+                                .padding(20.dp),
+                            verticalArrangement = Arrangement.spacedBy(16.dp),
                         ) {
-                            Text(
-                                text = uiState.errorMessage,
-                                modifier = Modifier.weight(1f),
-                                color = palette.errorText,
-                            )
-                            OutlinedButton(onClick = onDismissError) {
-                                Text("Ок")
-                            }
-                        }
-                    }
-                }
-            }
-
-            item {
-                GroupChipsRow(
-                    groups = uiState.groups,
-                    selectedGroupId = uiState.selectedGroupId,
-                    onGroupSelect = onGroupSelect,
-                    accentColor = palette.accent,
-                    borderColor = palette.border,
-                    bodyColor = palette.body,
-                )
-            }
-
-            if (uiState.groups.isNotEmpty()) {
-                item {
-                    Text(
-                        text = "Группы",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = palette.title,
-                    )
-                }
-
-                item {
-                    LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        items(uiState.groups, key = { it.id }) { group ->
-                            GroupTrainingCard(
-                                group = group,
-                                onTrainGroupClick = onTrainGroupClick,
-                                accentColor = palette.accent,
-                                surfaceColor = palette.elevatedSurface,
-                                borderColor = palette.border,
-                                titleColor = palette.title,
-                                bodyColor = palette.body,
-                            )
-                        }
-                    }
-                }
-            }
-
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = "Все слова (${uiState.totalWordsCount})",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = palette.title,
-                    )
-                    Text(
-                        text = "По алфавиту",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = palette.body,
-                    )
-                }
-            }
-
-            if (uiState.isLoading) {
-                item {
-                    EmptyDictionaryBlock(
-                        title = "Загрузка словаря",
-                        message = "Сейчас подтянем слова и группы.",
-                    )
-                }
-            } else if (uiState.visibleWords.isEmpty()) {
-                item {
-                    EmptyDictionaryBlock(
-                        title = "Пока нет слов",
-                        message = if (uiState.query.isBlank() && uiState.selectedGroupId == null) {
-                            "Добавь первое слово, чтобы собрать свой словарь."
-                        } else {
-                            "По текущему фильтру ничего не найдено. Попробуй другой запрос или группу."
-                        },
-                    )
-                }
-            } else {
-                items(uiState.visibleWords, key = { it.id }) { word ->
-                    DictionaryWordRow(
-                        word = word,
-                        onClick = { onWordClick(word.id) },
-                        onDeleteClick = {
-                            pendingDeleteWordId = word.id
-                            pendingDeleteWordLabel = word.bgWord
-                        },
-                        surfaceColor = palette.elevatedSurface,
-                        titleColor = palette.title,
-                        bodyColor = palette.body,
-                        borderColor = palette.border,
-                    )
-                }
-                if (uiState.canLoadMore) {
-                    item {
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(
-                                text = "Показано ${uiState.visibleWords.size} из ${uiState.totalWordsCount}",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = palette.body,
-                            )
-                            Button(
-                                onClick = onLoadMoreClick,
+                            Row(
                                 modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.Top,
+                            ) {
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = stringResource(R.string.dictionary_title),
+                                        style = MaterialTheme.typography.headlineMedium,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = palette.title,
+                                    )
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = stringResource(R.string.dictionary_description),
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = palette.body,
+                                    )
+                                }
+
+                                Surface(
+                                    shape = RoundedCornerShape(16.dp),
+                                    color = palette.accentSurface,
+                                ) {
+                                    Box(
+                                        modifier = Modifier.padding(12.dp),
+                                        contentAlignment = Alignment.Center,
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Default.Star,
+                                            contentDescription = null,
+                                            tint = palette.accent,
+                                        )
+                                    }
+                                }
+                            }
+
+                            OutlinedTextField(
+                                value = uiState.query,
+                                onValueChange = onQueryChange,
+                                modifier = Modifier.fillMaxWidth(),
+                                singleLine = true,
+                                shape = RoundedCornerShape(16.dp),
+                                leadingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Search,
+                                        contentDescription = null,
+                                        tint = palette.body,
+                                    )
+                                },
+                                placeholder = {
+                                    Text(
+                                        text = stringResource(R.string.dictionary_search_placeholder),
+                                        color = palette.body,
+                                    )
+                                },
+                            )
+
+                            Button(
+                                onClick = onTrainAllClick,
+                                modifier = Modifier.fillMaxWidth(),
+                                enabled = hasAnyWordsForTraining,
                                 shape = RoundedCornerShape(16.dp),
                                 contentPadding = PaddingValues(vertical = 14.dp),
                             ) {
-                                Text("Показать ещё")
+                                Text(stringResource(R.string.dictionary_train_all))
+                            }
+                        }
+                    }
+                }
+
+                if (uiState.errorMessage != null) {
+                    item {
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = palette.errorSurface),
+                            shape = RoundedCornerShape(18.dp),
+                        ) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 14.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Text(
+                                    text = uiState.errorMessage,
+                                    modifier = Modifier.weight(1f),
+                                    color = palette.errorText,
+                                )
+                                OutlinedButton(onClick = onDismissError) {
+                                    Text(stringResource(R.string.common_ok))
+                                }
+                            }
+                        }
+                    }
+                }
+
+                item {
+                    GroupChipsRow(
+                        groups = uiState.groups,
+                        selectedGroupId = uiState.selectedGroupId,
+                        onGroupSelect = onGroupSelect,
+                        accentColor = palette.accent,
+                        borderColor = palette.border,
+                        bodyColor = palette.body,
+                    )
+                }
+
+                if (uiState.groups.isNotEmpty()) {
+                    item {
+                        Text(
+                            text = stringResource(R.string.dictionary_groups_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = palette.title,
+                        )
+                    }
+
+                    item {
+                        LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                            items(uiState.groups, key = { it.id }) { group ->
+                                GroupTrainingCard(
+                                    group = group,
+                                    onTrainGroupClick = onTrainGroupClick,
+                                    accentColor = palette.accent,
+                                    surfaceColor = palette.elevatedSurface,
+                                    borderColor = palette.border,
+                                    titleColor = palette.title,
+                                    bodyColor = palette.body,
+                                )
+                            }
+                        }
+                    }
+                }
+
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = stringResource(
+                                R.string.dictionary_words_count_title,
+                                uiState.totalWordsCount,
+                            ),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = palette.title,
+                        )
+                        Text(
+                            text = stringResource(R.string.dictionary_sort_alphabetical),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = palette.body,
+                        )
+                    }
+                }
+
+                if (uiState.isLoading) {
+                    item {
+                        EmptyDictionaryBlock(
+                            title = stringResource(R.string.dictionary_loading_title),
+                            message = stringResource(R.string.dictionary_loading_message),
+                        )
+                    }
+                } else if (uiState.visibleWords.isEmpty()) {
+                    item {
+                        EmptyDictionaryBlock(
+                            title = stringResource(R.string.dictionary_empty_title),
+                            message = if (uiState.query.isBlank() && uiState.selectedGroupId == null) {
+                                stringResource(R.string.dictionary_empty_message)
+                            } else {
+                                stringResource(R.string.dictionary_empty_filtered_message)
+                            },
+                        )
+                    }
+                } else {
+                    items(uiState.visibleWords, key = { it.id }) { word ->
+                        DictionaryWordRow(
+                            word = word,
+                            onClick = { onWordClick(word.id) },
+                            onDeleteClick = {
+                                pendingDeleteWordId = word.id
+                                pendingDeleteWordLabel = word.bgWord
+                            },
+                            surfaceColor = palette.elevatedSurface,
+                            titleColor = palette.title,
+                            bodyColor = palette.body,
+                            borderColor = palette.border,
+                        )
+                    }
+                    if (uiState.canLoadMore) {
+                        item {
+                            Column(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(8.dp),
+                            ) {
+                                Text(
+                                    text = stringResource(
+                                        R.string.dictionary_load_more_progress,
+                                        uiState.visibleWords.size,
+                                        uiState.totalWordsCount,
+                                    ),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = palette.body,
+                                )
+                                Button(
+                                    onClick = onLoadMoreClick,
+                                    modifier = Modifier.fillMaxWidth(),
+                                    shape = RoundedCornerShape(16.dp),
+                                    contentPadding = PaddingValues(vertical = 14.dp),
+                                ) {
+                                    Text(stringResource(R.string.common_show_more))
+                                }
                             }
                         }
                     }
                 }
             }
-            }
+
             if (showScrollToTopButton) {
                 ExtendedFloatingActionButton(
                     onClick = {
@@ -433,7 +450,7 @@ fun DictionaryScreenContent(
                     contentColor = Color.White,
                     shape = RoundedCornerShape(18.dp),
                 ) {
-                    Text("Наверх")
+                    Text(stringResource(R.string.common_scroll_to_top))
                 }
             }
         }
@@ -454,7 +471,7 @@ private fun GroupChipsRow(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         DictionaryFilterChip(
-            label = "Все",
+            label = stringResource(R.string.dictionary_all_filter),
             selected = selectedGroupId == null,
             onClick = { onGroupSelect(null) },
             accentColor = accentColor,
@@ -547,7 +564,7 @@ private fun GroupTrainingCard(
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = "${group.wordCount} слов",
+                    text = stringResource(R.string.dictionary_word_count, group.wordCount),
                     style = MaterialTheme.typography.bodySmall,
                     color = bodyColor,
                 )
@@ -560,7 +577,7 @@ private fun GroupTrainingCard(
                 shape = RoundedCornerShape(14.dp),
                 border = BorderStroke(1.dp, accentColor.copy(alpha = 0.35f)),
             ) {
-                Text("Учить", color = accentColor)
+                Text(stringResource(R.string.dictionary_train_group), color = accentColor)
             }
         }
     }
@@ -615,7 +632,7 @@ private fun DictionaryWordRow(
             IconButton(onClick = onDeleteClick) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Удалить слово",
+                    contentDescription = stringResource(R.string.dictionary_delete_word_content_description),
                     tint = bodyColor,
                 )
             }
@@ -712,12 +729,12 @@ private fun DictionaryScreenContentPreview() {
                     DictionaryWordListItem(
                         id = 1L,
                         bgWord = "zdravei",
-                        ruTranslation = "РїСЂРёРІРµС‚",
+                        ruTranslation = "привет",
                     ),
                     DictionaryWordListItem(
                         id = 2L,
                         bgWord = "bilet",
-                        ruTranslation = "Р±РёР»РµС‚",
+                        ruTranslation = "билет",
                     ),
                 ),
                 totalWordsCount = 4,

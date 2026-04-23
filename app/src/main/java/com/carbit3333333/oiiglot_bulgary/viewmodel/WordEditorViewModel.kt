@@ -1,8 +1,11 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordCard
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.WordEditorUiState
@@ -15,14 +18,17 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class WordEditorViewModel(
+    application: Application,
     private val repository: PersonalDictionaryRepository,
     private val initialWordId: Long?,
-) : ViewModel() {
+) : AndroidViewModel(application) {
 
     enum class SpeechTarget {
         Bulgarian,
         Russian,
     }
+
+    private val resources = application.resources
 
     private val editorState = MutableStateFlow(
         WordEditorUiState(
@@ -34,7 +40,7 @@ class WordEditorViewModel(
     private val groupsState = repository.observeGroupsWithCounts()
         .catch { throwable ->
             editorState.value = editorState.value.copy(
-                errorMessage = throwable.message ?: "Не удалось загрузить группы",
+                errorMessage = throwable.message ?: resources.getString(R.string.word_editor_error_load_groups),
             )
             emit(emptyList())
         }
@@ -123,12 +129,12 @@ class WordEditorViewModel(
                     )
                 } else {
                     editorState.value = editorState.value.copy(
-                        errorMessage = "Группа с таким названием уже есть или не была создана",
+                        errorMessage = resources.getString(R.string.word_editor_error_duplicate_group),
                     )
                 }
             }.onFailure { throwable ->
                 editorState.value = editorState.value.copy(
-                    errorMessage = throwable.message ?: "Не удалось создать группу",
+                    errorMessage = throwable.message ?: resources.getString(R.string.word_editor_error_create_group),
                 )
             }
         }
@@ -169,7 +175,7 @@ class WordEditorViewModel(
                         bgWord = trimmedBgWord,
                         ruTranslation = trimmedRuTranslation,
                         errorMessage = null,
-                        successMessage = "Изменения сохранены",
+                        successMessage = resources.getString(R.string.word_editor_success_saved),
                     )
                 } else {
                     state.copy(
@@ -180,13 +186,13 @@ class WordEditorViewModel(
                         ruTranslation = "",
                         showValidationErrors = false,
                         errorMessage = null,
-                        successMessage = "Слово добавлено. Можно ввести следующее.",
+                        successMessage = resources.getString(R.string.word_editor_success_added_next),
                     )
                 }
             }.onFailure { throwable ->
                 editorState.value = state.copy(
                     isSaving = false,
-                    errorMessage = throwable.message ?: "Не удалось сохранить слово",
+                    errorMessage = throwable.message ?: resources.getString(R.string.word_editor_error_save_word),
                     successMessage = null,
                 )
             }
@@ -215,7 +221,7 @@ class WordEditorViewModel(
 
     fun onSpeechRecognitionUnavailable() {
         editorState.value = editorState.value.copy(
-            errorMessage = "Голосовой ввод недоступен на этом устройстве",
+            errorMessage = resources.getString(R.string.word_editor_error_speech_unavailable),
         )
     }
 
@@ -239,7 +245,7 @@ class WordEditorViewModel(
                 editorState.value = if (word == null) {
                     WordEditorUiState(
                         isLoading = false,
-                        errorMessage = "Слово не найдено. Можно сохранить его заново как новое.",
+                        errorMessage = resources.getString(R.string.word_editor_error_word_not_found),
                     )
                 } else {
                     editorState.value.copy(
@@ -254,7 +260,7 @@ class WordEditorViewModel(
             }.onFailure { throwable ->
                 editorState.value = editorState.value.copy(
                     isLoading = false,
-                    errorMessage = throwable.message ?: "Не удалось загрузить слово",
+                    errorMessage = throwable.message ?: resources.getString(R.string.word_editor_error_load_word),
                 )
             }
         }
@@ -270,6 +276,7 @@ class WordEditorViewModel(
 
     companion object {
         fun provideFactory(
+            application: Application,
             repository: PersonalDictionaryRepository,
             wordId: Long?,
         ): ViewModelProvider.Factory {
@@ -278,6 +285,7 @@ class WordEditorViewModel(
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     require(modelClass.isAssignableFrom(WordEditorViewModel::class.java))
                     return WordEditorViewModel(
+                        application = application,
                         repository = repository,
                         initialWordId = wordId?.takeIf { it > 0L },
                     ) as T

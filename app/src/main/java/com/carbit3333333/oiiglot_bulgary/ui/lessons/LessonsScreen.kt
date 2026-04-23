@@ -1,33 +1,35 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,10 +37,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.viewmodel.LessonsViewModel
@@ -49,6 +53,7 @@ fun LessonsScreen(
     onBackClick: (() -> Unit)? = null,
     onLessonClick: (Int) -> Unit = {},
     onDictionaryClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {},
     viewModel: LessonsViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -58,6 +63,7 @@ fun LessonsScreen(
         onBackClick = onBackClick,
         onLessonClick = onLessonClick,
         onDictionaryClick = onDictionaryClick,
+        onSettingsClick = onSettingsClick,
         onUnlockAllClick = { viewModel.unlockAllLessons() },
         onResetLessonsClick = { viewModel.resetLessons() }
     )
@@ -69,6 +75,7 @@ fun LessonsScreenContent(
     onBackClick: (() -> Unit)?,
     onLessonClick: (Int) -> Unit,
     onDictionaryClick: () -> Unit,
+    onSettingsClick: () -> Unit,
     onUnlockAllClick: () -> Unit = {},
     onResetLessonsClick: () -> Unit = {}
 ) {
@@ -80,13 +87,16 @@ fun LessonsScreenContent(
     ) {
         if (onBackClick != null) {
             Button(onClick = onBackClick) {
-                Text(text = "Назад")
+                Text(text = stringResource(R.string.common_back))
             }
 
             Spacer(modifier = Modifier.height(20.dp))
         }
 
-        LessonsHeader(uiState = uiState)
+        LessonsHeader(
+            uiState = uiState,
+            onSettingsClick = onSettingsClick,
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -100,11 +110,11 @@ fun LessonsScreenContent(
 
         when {
             uiState.isLoading -> {
-                Text(text = "Загрузка...")
+                Text(text = stringResource(R.string.common_loading))
             }
 
             uiState.errorMessage != null -> {
-                Text(text = uiState.errorMessage ?: "Ошибка")
+                Text(text = uiState.errorMessage ?: stringResource(R.string.common_error))
             }
 
             else -> {
@@ -131,7 +141,8 @@ fun LessonsScreenContent(
 
 @Composable
 private fun LessonsHeader(
-    uiState: LessonsUiState
+    uiState: LessonsUiState,
+    onSettingsClick: () -> Unit,
 ) {
     val totalLessons = uiState.lessons.size
     val completedLessons = uiState.lessons.count { it.isCompleted }
@@ -151,38 +162,52 @@ private fun LessonsHeader(
                 .padding(20.dp)
         ) {
             Row(
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Surface(
-                    color = Color(0xFFE5ECFF),
-                    shape = MaterialTheme.shapes.medium
+                Row(
+                    modifier = Modifier.weight(1f),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .size(42.dp),
-                        contentAlignment = Alignment.Center
+                    Surface(
+                        color = Color(0xFFE5ECFF),
+                        shape = MaterialTheme.shapes.medium
                     ) {
+                        Box(
+                            modifier = Modifier.size(42.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = totalLessons.toString(),
+                                style = MaterialTheme.typography.titleMedium,
+                                color = Color(0xFF39538D)
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.width(12.dp))
+
+                    Column {
                         Text(
-                            text = totalLessons.toString(),
-                            style = MaterialTheme.typography.titleMedium,
-                            color = Color(0xFF39538D)
+                            text = stringResource(R.string.lessons_list_title),
+                            style = MaterialTheme.typography.headlineSmall,
+                            color = Color(0xFF20243A)
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = stringResource(R.string.lessons_list_subtitle),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color(0xFF6A728F)
                         )
                     }
                 }
 
-                Spacer(modifier = Modifier.width(12.dp))
-
-                Column {
-                    Text(
-                        text = "Список уроков",
-                        style = MaterialTheme.typography.headlineSmall,
-                        color = Color(0xFF20243A)
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Продолжай обучение с того места, где остановился",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color(0xFF6A728F)
+                IconButton(onClick = onSettingsClick) {
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = stringResource(R.string.settings_more_options),
+                        tint = Color(0xFF6A728F),
                     )
                 }
             }
@@ -195,19 +220,19 @@ private fun LessonsHeader(
             ) {
                 HeaderStat(
                     modifier = Modifier.weight(1f),
-                    label = "Доступно",
+                    label = stringResource(R.string.lessons_stat_available),
                     value = "$availableLessons/$totalLessons",
                     accent = Color(0xFF5C74AF)
                 )
                 HeaderStat(
                     modifier = Modifier.weight(1f),
-                    label = "В процессе",
+                    label = stringResource(R.string.lessons_stat_in_progress),
                     value = inProgressLessons.toString(),
                     accent = Color(0xFF2E7DCE)
                 )
                 HeaderStat(
                     modifier = Modifier.weight(1f),
-                    label = "Завершено",
+                    label = stringResource(R.string.lessons_stat_completed),
                     value = completedLessons.toString(),
                     accent = Color(0xFF2E8B57)
                 )
@@ -276,20 +301,20 @@ private fun LessonActionsRow(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = "Мои слова",
+                        text = stringResource(R.string.lessons_dictionary_title),
                         style = MaterialTheme.typography.titleMedium,
                         color = Color(0xFF20243A)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "Открой личный словарь и запусти тренировку по своим словам.",
+                        text = stringResource(R.string.lessons_dictionary_subtitle),
                         style = MaterialTheme.typography.bodySmall,
                         color = Color(0xFF5C6783)
                     )
                 }
 
                 OutlinedButton(onClick = onDictionaryClick) {
-                    Text("Открыть")
+                    Text(stringResource(R.string.common_open))
                 }
             }
         }
@@ -298,29 +323,29 @@ private fun LessonActionsRow(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-        OutlinedButton(
-            onClick = onUnlockAllClick,
-            modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp)
-        ) {
-            Text("Открыть все")
-        }
+            OutlinedButton(
+                onClick = onUnlockAllClick,
+                modifier = Modifier.weight(1f),
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp)
+            ) {
+                Text(stringResource(R.string.lessons_unlock_all))
+            }
 
-        OutlinedButton(
-            onClick = onResetLessonsClick,
-            modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Refresh,
-                contentDescription = null,
-                modifier = Modifier.size(18.dp)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Сбросить")
+            OutlinedButton(
+                onClick = onResetLessonsClick,
+                modifier = Modifier.weight(1f),
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Refresh,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(stringResource(R.string.lessons_reset))
+            }
         }
     }
-}
 }
 
 @Composable
@@ -368,11 +393,17 @@ private fun LessonItem(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 val progressText = when {
-                    lesson.isLocked -> "Прогресс: недоступно"
+                    lesson.isLocked -> stringResource(R.string.lessons_progress_locked)
                     lesson.totalProgress > 0 -> {
-                        "Прогресс: ${lesson.currentProgress}/${lesson.totalProgress} (${lesson.progressPercent}%)"
+                        stringResource(
+                            R.string.lessons_progress_value,
+                            lesson.currentProgress,
+                            lesson.totalProgress,
+                            lesson.progressPercent,
+                        )
                     }
-                    else -> "Прогресс: 0%"
+
+                    else -> stringResource(R.string.lessons_progress_empty)
                 }
 
                 val progressColor = when {
@@ -391,11 +422,15 @@ private fun LessonItem(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 val resultText = when {
-                    lesson.isLocked -> "Откроется после прохождения предыдущего урока"
-                    lesson.isCompleted -> "Результат: пройден"
-                    lesson.bestScore != null -> "Результат: ${String.format(Locale.US, "%.1f", lesson.bestScore)}"
-                    lesson.currentProgress > 0 -> "Результат: ещё не завершён"
-                    else -> "Результат: ещё не проходили"
+                    lesson.isLocked -> stringResource(R.string.lessons_result_locked)
+                    lesson.isCompleted -> stringResource(R.string.lessons_result_passed)
+                    lesson.bestScore != null -> stringResource(
+                        R.string.lessons_result_score,
+                        String.format(Locale.US, "%.1f", lesson.bestScore)
+                    )
+
+                    lesson.currentProgress > 0 -> stringResource(R.string.lessons_result_incomplete)
+                    else -> stringResource(R.string.lessons_result_not_started)
                 }
 
                 val resultColor = when {
@@ -416,7 +451,7 @@ private fun LessonItem(
             if (lesson.isLocked) {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = "Locked",
+                    contentDescription = null,
                     tint = Color(0xFF9E9E9E)
                 )
             }
@@ -465,6 +500,7 @@ private fun LessonsScreenContentPreview() {
             onBackClick = {},
             onLessonClick = {},
             onDictionaryClick = {},
+            onSettingsClick = {},
             onUnlockAllClick = {},
             onResetLessonsClick = {}
         )
