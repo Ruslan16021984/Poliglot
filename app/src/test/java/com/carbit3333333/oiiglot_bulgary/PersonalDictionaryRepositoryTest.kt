@@ -86,13 +86,8 @@ class PersonalDictionaryRepositoryTest {
             val groups = repository.observeGroupsWithCounts().first()
 
             assertEquals(listOf(travelGroupId, foodGroupId).sorted(), savedWord?.groupIds)
-            assertEquals(
-                mapOf(
-                    "Food" to 1L,
-                    "Travel" to 1L,
-                ),
-                groups.associate { it.name to it.wordCount },
-            )
+            assertEquals(1L, groups.first { it.name == "Food" }.wordCount)
+            assertEquals(1L, groups.first { it.name == "Travel" }.wordCount)
         }
     }
 
@@ -135,38 +130,69 @@ class PersonalDictionaryRepositoryTest {
         runBlocking(Dispatchers.IO) {
             val wordId = repository.saveWord(
                 WordCard(
-                    bgWord = "voda",
-                    ruTranslation = "water",
+                    bgWord = "test_remove_only_user_word",
+                    ruTranslation = "test remove only user word",
                 )
             )
 
             repository.deleteWord(wordId)
 
             assertNull(repository.getWordById(wordId))
-            assertTrue(repository.observeAllWords().first().isEmpty())
+            assertTrue(repository.observeAllWords().first().none { it.bgWord == "test_remove_only_user_word" })
         }
     }
 
     @Test
-    fun `load flashcards for all words returns every saved word`() {
+    fun `load flashcards for all words returns saved words together with course words`() {
         runBlocking(Dispatchers.IO) {
             repository.saveWord(
                 WordCard(
-                    bgWord = "chai",
-                    ruTranslation = "tea",
+                    bgWord = "custom_chai",
+                    ruTranslation = "custom tea",
                 )
             )
             repository.saveWord(
                 WordCard(
-                    bgWord = "kafe",
-                    ruTranslation = "coffee",
+                    bgWord = "custom_kafe",
+                    ruTranslation = "custom coffee",
                 )
             )
 
             val flashcards = repository.loadFlashcardsForAllWords()
 
-            assertEquals(2, flashcards.size)
-            assertEquals(setOf("chai", "kafe"), flashcards.map { it.bgWord }.toSet())
+            assertTrue(flashcards.map { it.bgWord }.containsAll(listOf("custom_chai", "custom_kafe")))
+            assertTrue(flashcards.any { it.bgWord == "гледам" })
+        }
+    }
+
+    @Test
+    fun `repository exposes separate built in course group and protects built in words`() {
+        runBlocking(Dispatchers.IO) {
+            val groups = repository.observeGroupsWithCounts().first()
+            val courseGroup = groups.firstOrNull { it.id < 0L }
+
+            assertNotNull(courseGroup)
+            assertTrue(courseGroup!!.wordCount > 0L)
+
+            val allWords = repository.observeAllWords().first()
+            val builtInWord = allWords.firstOrNull { it.isBuiltIn }
+
+            assertNotNull(builtInWord)
+            repository.deleteWord(requireNotNull(builtInWord).id)
+
+            val afterDelete = repository.observeAllWords().first()
+            assertTrue(afterDelete.any { it.id == builtInWord.id && it.isBuiltIn })
+        }
+    }
+
+    @Test
+    fun `built in course words keep lesson source metadata`() {
+        runBlocking(Dispatchers.IO) {
+            val builtInWord = repository.observeAllWords().first()
+                .firstOrNull { it.isBuiltIn && it.bgWord == "гледам" }
+
+            assertNotNull(builtInWord)
+            assertEquals(1, builtInWord?.sourceLessonNumber)
         }
     }
 

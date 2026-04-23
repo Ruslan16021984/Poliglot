@@ -160,4 +160,7 @@
     <string name="settings_more_options">Открыть настройки</string>
     <string name="settings_theme_description">Выберите, какой вид приложения вам удобнее.</string>
     <string name="settings_language_description">Выберите язык интерфейса и теории уроков.</string>
+    <string name="dictionary_course_group_name">Слова уроков</string>
+    <string name="dictionary_course_word_badge">Из курса</string>
+    <string name="dictionary_course_lesson_badge">Урок %1$d</string>
 </resources>

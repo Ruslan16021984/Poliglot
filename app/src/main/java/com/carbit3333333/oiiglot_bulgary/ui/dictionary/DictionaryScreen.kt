@@ -394,12 +394,21 @@ fun DictionaryScreenContent(
                     items(uiState.visibleWords, key = { it.id }) { word ->
                         DictionaryWordRow(
                             word = word,
-                            onClick = { onWordClick(word.id) },
+                            onClick = {
+                                if (!word.isBuiltIn) {
+                                    onWordClick(word.id)
+                                }
+                            },
                             onDeleteClick = {
-                                pendingDeleteWordId = word.id
-                                pendingDeleteWordLabel = word.bgWord
+                                if (!word.isBuiltIn) {
+                                    pendingDeleteWordId = word.id
+                                    pendingDeleteWordLabel = word.bgWord
+                                }
                             },
                             surfaceColor = palette.elevatedSurface,
+                            builtInSurfaceColor = palette.accentSurface,
+                            builtInBadgeColor = palette.accent,
+                            builtInBadgeTextColor = palette.accentText,
                             titleColor = palette.title,
                             bodyColor = palette.body,
                             borderColor = palette.border,
@@ -597,6 +606,9 @@ private fun DictionaryWordRow(
     onClick: () -> Unit,
     onDeleteClick: () -> Unit,
     surfaceColor: Color,
+    builtInSurfaceColor: Color,
+    builtInBadgeColor: Color,
+    builtInBadgeTextColor: Color,
     titleColor: Color,
     bodyColor: Color,
     borderColor: Color,
@@ -604,9 +616,11 @@ private fun DictionaryWordRow(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick),
+            .clickable(enabled = !word.isBuiltIn, onClick = onClick),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = surfaceColor),
+        colors = CardDefaults.cardColors(
+            containerColor = if (word.isBuiltIn) builtInSurfaceColor else surfaceColor
+        ),
         border = BorderStroke(1.dp, borderColor.copy(alpha = 0.7f)),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
     ) {
@@ -619,6 +633,35 @@ private fun DictionaryWordRow(
             Column(
                 modifier = Modifier.weight(1f),
             ) {
+                if (word.isBuiltIn) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Surface(
+                            color = builtInBadgeColor,
+                            shape = RoundedCornerShape(999.dp),
+                        ) {
+                            Text(
+                                text = stringResource(R.string.dictionary_course_word_badge),
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                                style = MaterialTheme.typography.labelMedium,
+                                color = builtInBadgeTextColor,
+                            )
+                        }
+                        word.sourceLessonNumber?.let { lessonNumber ->
+                            Surface(
+                                color = builtInBadgeColor.copy(alpha = 0.18f),
+                                shape = RoundedCornerShape(999.dp),
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.dictionary_course_lesson_badge, lessonNumber),
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = titleColor,
+                                )
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
                 Text(
                     text = word.bgWord,
                     style = MaterialTheme.typography.titleMedium,
@@ -637,19 +680,21 @@ private fun DictionaryWordRow(
                 )
             }
 
-            IconButton(onClick = onDeleteClick) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = stringResource(R.string.dictionary_delete_word_content_description),
-                    tint = bodyColor,
+            if (!word.isBuiltIn) {
+                IconButton(onClick = onDeleteClick) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = stringResource(R.string.dictionary_delete_word_content_description),
+                        tint = bodyColor,
+                    )
+                }
+
+                Text(
+                    text = ">",
+                    color = bodyColor,
+                    style = MaterialTheme.typography.titleMedium,
                 )
             }
-
-            Text(
-                text = ">",
-                color = bodyColor,
-                style = MaterialTheme.typography.titleMedium,
-            )
         }
     }
 }

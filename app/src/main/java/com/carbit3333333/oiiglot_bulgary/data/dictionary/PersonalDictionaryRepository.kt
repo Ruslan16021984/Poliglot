@@ -2,6 +2,7 @@ package com.carbit3333333.oiiglot_bulgary.data.dictionary
 
 import android.content.Context
 import androidx.room.withTransaction
+import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.DictionaryWordListItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordCard
@@ -18,6 +19,8 @@ class PersonalDictionaryRepository(
     private val database = PersonalDictionaryDatabase.getInstance(appContext)
     private val wordCardDao = database.wordCardDao()
     private val wordGroupDao = database.wordGroupDao()
+    private val courseWordsRepository = CourseDictionaryWordsRepository(appContext)
+    private val builtInWords = courseWordsRepository.loadWords()
 
     fun observeAllWords(): Flow<List<DictionaryWordListItem>> {
         return observeFilteredWords(query = "", groupId = null)
@@ -27,16 +30,43 @@ class PersonalDictionaryRepository(
         query: String,
         groupId: Long? = null,
     ): Flow<List<DictionaryWordListItem>> {
-        return wordCardDao.observeWords(query = query, groupId = groupId)
-            .map { words -> words.map { it.toListItem() } }
+        val effectiveGroupId = groupId.takeUnless { it == CourseDictionaryWordsRepository.COURSE_GROUP_ID }
+        val normalizedQuery = query.trim()
+        return wordCardDao.observeWords(query = normalizedQuery, groupId = effectiveGroupId)
+            .map { words ->
+                val userWords = if (groupId == CourseDictionaryWordsRepository.COURSE_GROUP_ID) {
+                    emptyList()
+                } else {
+                    words.map { it.toListItem() }
+                }
+                val courseWords = if (groupId == null || groupId == CourseDictionaryWordsRepository.COURSE_GROUP_ID) {
+                    builtInWords.filter { it.matchesQuery(normalizedQuery) }
+                } else {
+                    emptyList()
+                }
+
+                mergeWords(
+                    builtIn = courseWords,
+                    user = userWords,
+                )
+            }
     }
 
     fun observeGroupsWithCounts(): Flow<List<WordGroup>> {
         return wordGroupDao.observeAllGroupsWithCounts()
-            .map { groups -> groups.map { it.toDomain() } }
+            .map { groups ->
+                listOf(
+                    WordGroup(
+                        id = CourseDictionaryWordsRepository.COURSE_GROUP_ID,
+                        name = appContext.getString(R.string.dictionary_course_group_name),
+                        wordCount = builtInWords.size.toLong(),
+                    )
+                ) + groups.map { it.toDomain() }
+            }
     }
 
     suspend fun getWordById(wordId: Long): WordCard? {
+        if (wordId <= 0L) return null
         return wordCardDao.getWordWithGroupsById(wordId)?.toDomain()
     }
 
@@ -103,6 +133,7 @@ class PersonalDictionaryRepository(
     }
 
     suspend fun deleteWord(wordId: Long) {
+        if (wordId <= 0L) return
         database.withTransaction {
             val word = wordCardDao.getWordWithGroupsById(wordId)?.wordCard ?: return@withTransaction
             wordCardDao.deleteWord(word)
@@ -110,10 +141,17 @@ class PersonalDictionaryRepository(
     }
 
     suspend fun loadFlashcardsForAllWords(): List<FlashcardItem> {
-        return loadFlashcards(query = "", groupId = null)
+        val userWords = loadFlashcards(query = "", groupId = null)
+        return mergeFlashcards(
+            builtIn = builtInWords.map { it.toFlashcardItem() },
+            user = userWords,
+        )
     }
 
     suspend fun loadFlashcardsForOneGroup(groupId: Long): List<FlashcardItem> {
+        if (groupId == CourseDictionaryWordsRepository.COURSE_GROUP_ID) {
+            return builtInWords.map { it.toFlashcardItem() }
+        }
         return loadFlashcards(query = "", groupId = groupId)
     }
 
@@ -135,6 +173,49 @@ class PersonalDictionaryRepository(
     }
 
     private fun WordCardEntity.toFlashcardItem(): FlashcardItem {
+        return FlashcardItem(
+            id = id,
+            bgWord = bgWord,
+            ruTranslation = ruTranslation,
+        )
+    }
+
+    private fun DictionaryWordListItem.matchesQuery(query: String): Boolean {
+        if (query.isBlank()) return true
+        val normalizedQuery = query.lowercase()
+        return bgWord.lowercase().contains(normalizedQuery) ||
+            ruTranslation.lowercase().contains(normalizedQuery)
+    }
+
+    private fun mergeWords(
+        builtIn: List<DictionaryWordListItem>,
+        user: List<DictionaryWordListItem>,
+    ): List<DictionaryWordListItem> {
+        val merged = LinkedHashMap<String, DictionaryWordListItem>()
+        builtIn.forEach { word -> merged[word.mergeKey()] = word }
+        user.forEach { word -> merged[word.mergeKey()] = word }
+        return merged.values.sortedBy { it.bgWord.lowercase() }
+    }
+
+    private fun mergeFlashcards(
+        builtIn: List<FlashcardItem>,
+        user: List<FlashcardItem>,
+    ): List<FlashcardItem> {
+        val merged = LinkedHashMap<String, FlashcardItem>()
+        builtIn.forEach { word -> merged[word.mergeKey()] = word }
+        user.forEach { word -> merged[word.mergeKey()] = word }
+        return merged.values.sortedBy { it.bgWord.lowercase() }
+    }
+
+    private fun DictionaryWordListItem.mergeKey(): String {
+        return "${bgWord.lowercase()}|${ruTranslation.lowercase()}"
+    }
+
+    private fun FlashcardItem.mergeKey(): String {
+        return "${bgWord.lowercase()}|${ruTranslation.lowercase()}"
+    }
+
+    private fun DictionaryWordListItem.toFlashcardItem(): FlashcardItem {
         return FlashcardItem(
             id = id,
             bgWord = bgWord,

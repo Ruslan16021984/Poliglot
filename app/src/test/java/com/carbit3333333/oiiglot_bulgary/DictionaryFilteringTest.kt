@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -90,6 +91,16 @@ class DictionaryFilteringTest {
     }
 
     @Test
+    fun `query also finds built in course words`() {
+        runBlocking(Dispatchers.IO) {
+            val result = repository.observeFilteredWords(query = "смотреть", groupId = null).first()
+
+            assertEquals(listOf("гледам"), result.map { it.bgWord })
+            assertEquals(true, result.first().isBuiltIn)
+        }
+    }
+
+    @Test
     fun `group filter narrows results`() {
         runBlocking(Dispatchers.IO) {
             val travelGroupId = repository.observeGroupsWithCounts().first()
@@ -99,6 +110,21 @@ class DictionaryFilteringTest {
             val result = repository.observeFilteredWords(query = "", groupId = travelGroupId).first()
 
             assertEquals(setOf("zdravei", "gara"), result.map { it.bgWord }.toSet())
+        }
+    }
+
+    @Test
+    fun `built in course group shows only course words`() {
+        runBlocking(Dispatchers.IO) {
+            val courseGroupId = repository.observeGroupsWithCounts().first()
+                .first { it.id < 0L }
+                .id
+
+            val result = repository.observeFilteredWords(query = "", groupId = courseGroupId).first()
+
+            assertTrue(result.isNotEmpty())
+            assertTrue(result.all { it.isBuiltIn })
+            assertTrue(result.any { it.bgWord == "гледам" })
         }
     }
 

@@ -1,7 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary
 
-import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import android.app.Application
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardDirection
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.FlashcardFace
@@ -29,7 +29,6 @@ class FlashcardTrainingViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val testDispatcher = StandardTestDispatcher()
-
     @Before
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
@@ -53,6 +52,9 @@ class FlashcardTrainingViewModelTest {
             flashcardLoader = { cards },
             loadSavedDirection = { FlashcardDirection.BgToRu },
             saveDirection = {},
+            repeatDifficultTitle = "Repeat difficult words",
+            repeatGroupTitleFormatter = { groupName -> "Repeat: $groupName" },
+            loadErrorMessage = "Не удалось загрузить карточки. Попробуйте ещё раз.",
         )
 
         advanceUntilIdle()
@@ -113,6 +115,9 @@ class FlashcardTrainingViewModelTest {
             flashcardLoader = { throw IllegalStateException("boom") },
             loadSavedDirection = { FlashcardDirection.RuToBg },
             saveDirection = {},
+            repeatDifficultTitle = "Repeat difficult words",
+            repeatGroupTitleFormatter = { groupName -> "Repeat: $groupName" },
+            loadErrorMessage = "Не удалось загрузить карточки. Попробуйте ещё раз.",
         )
 
         advanceUntilIdle()

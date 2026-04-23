@@ -24,9 +24,12 @@ class FlashcardTrainingViewModel(
     private val flashcardLoader: suspend (Long?) -> List<FlashcardItem>,
     private val loadSavedDirection: suspend () -> FlashcardDirection,
     private val saveDirection: suspend (FlashcardDirection) -> Unit,
+    private val repeatDifficultTitle: String = application.getString(R.string.flashcard_repeat_difficult_title),
+    private val repeatGroupTitleFormatter: (String) -> String = { groupName ->
+        application.getString(R.string.flashcard_repeat_group_title, groupName)
+    },
+    private val loadErrorMessage: String = application.getString(R.string.flashcard_error_load_cards),
 ) : AndroidViewModel(application) {
-
-    private val resources = application.resources
 
     private val _uiState = MutableStateFlow(
         FlashcardTrainingUiState(
@@ -104,9 +107,9 @@ class FlashcardTrainingViewModel(
             unknownCards = emptyList(),
             isFinished = false,
             groupName = if (selectedGroupName.isNullOrBlank()) {
-                resources.getString(R.string.flashcard_repeat_difficult_title)
+                repeatDifficultTitle
             } else {
-                resources.getString(R.string.flashcard_repeat_group_title, selectedGroupName)
+                repeatGroupTitleFormatter(selectedGroupName)
             },
         )
     }
@@ -143,7 +146,7 @@ class FlashcardTrainingViewModel(
                     isLoading = false,
                     direction = direction,
                     groupName = selectedGroupName,
-                    errorMessage = resources.getString(R.string.flashcard_error_load_cards),
+                    errorMessage = loadErrorMessage,
                 )
             }
         }
@@ -181,7 +184,7 @@ class FlashcardTrainingViewModel(
                     require(modelClass.isAssignableFrom(FlashcardTrainingViewModel::class.java))
                     return FlashcardTrainingViewModel(
                         application = application,
-                        selectedGroupId = groupId?.takeIf { it > 0L },
+                        selectedGroupId = groupId,
                         selectedGroupName = groupName?.takeIf { it.isNotBlank() },
                         flashcardLoader = { requestedGroupId ->
                             if (requestedGroupId == null) {
