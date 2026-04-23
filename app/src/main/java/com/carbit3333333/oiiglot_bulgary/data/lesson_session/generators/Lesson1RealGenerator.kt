@@ -105,9 +105,10 @@ internal object Lesson1RealGenerator {
             val isNegative = template.ruPattern.contains(" не ")
             val isQuestion = template.ruPattern.trimEnd().endsWith("?")
             val base = if (isFuture) subject.haveRuFuture else subject.haveRuPresent
+            val futureStem = base.removeSuffix(" будет")
 
             val sentence = when {
-                isFuture && isNegative -> "$base не будет ${obj.ru}"
+                isFuture && isNegative -> "$futureStem не будет ${obj.ru}"
                 isNegative -> "$base нет ${obj.ru}"
                 else -> "$base ${obj.ru}"
             }

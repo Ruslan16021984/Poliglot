@@ -157,7 +157,7 @@
     <string name="settings_language_ukrainian">Українська</string>
     <string name="settings_save">Зберегти</string>
     <string name="settings_summary">Керуй виглядом застосунку та мовою інтерфейсу.</string>
-    <string name="settings_more_options">Р’С–РґРєСЂРёС‚Рё РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ</string>
-    <string name="settings_theme_description">РћР±РµСЂС–С‚СЊ, СЏРєРёР№ РІРёРіР»СЏРґ Р·Р°СЃС‚РѕСЃСѓРЅРєСѓ РІР°Рј Р·СЂСѓС‡РЅС–С€РёР№.</string>
-    <string name="settings_language_description">РћР±РµСЂС–С‚СЊ РјРѕРІСѓ С–РЅС‚РµСЂС„РµР№СЃСѓ С‚Р° С‚РµРѕСЂС–С— СѓСЂРѕРєС–РІ.</string>
+    <string name="settings_more_options">Відкрити налаштування</string>
+    <string name="settings_theme_description">Оберіть, який вигляд застосунку вам зручніший.</string>
+    <string name="settings_language_description">Оберіть мову інтерфейсу та теорії уроків.</string>
 </resources>
