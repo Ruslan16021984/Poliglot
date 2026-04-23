@@ -37,6 +37,14 @@ class LessonSessionRepositoryTest {
         assertTrue(session.exercises.any { it.correctAnswerWords.any { word -> word == "обичам" || word == "обича" } })
         assertTrue(session.exercises.any { it.correctAnswerWords.any { word -> word == "имам" || word == "има" } })
         assertTrue(session.exercises.any { it.sourceText.contains("у меня есть") || it.sourceText.contains("у него есть") })
+        assertFalse(session.exercises.any { it.sourceText.contains("будет не будет") })
+        assertFalse(session.exercises.any { it.sourceText.contains("есть нет") })
+        assertFalse(
+            session.exercises.any {
+                it.correctAnswerWords.firstOrNull() == "То" &&
+                    (it.correctAnswerWords.any { word -> word == "имам" || word == "има" })
+            },
+        )
     }
 
     @Test

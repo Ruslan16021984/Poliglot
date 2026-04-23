@@ -117,11 +117,12 @@ fun LessonSessionScreenContent(
     onSpeakClick: (String) -> Unit
 ) {
     val currentExercise = uiState.currentExercise
+    val colorScheme = MaterialTheme.colorScheme
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF3F3F3))
+            .background(colorScheme.background)
             .clickable(
                 enabled = uiState.currentResult == ExerciseResult.WRONG,
                 indication = null,
@@ -140,7 +141,11 @@ fun LessonSessionScreenContent(
                 lessonTitle = uiState.lessonTitle,
                 correctCount = uiState.correctCount,
                 wrongCount = uiState.wrongCount,
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
+                containerColor = colorScheme.primary,
+                onPrimaryColor = colorScheme.onPrimary,
+                correctAccent = colorScheme.tertiary,
+                wrongAccent = colorScheme.error,
             )
 
             if (currentExercise != null) {
@@ -158,7 +163,7 @@ fun LessonSessionScreenContent(
                     Text(
                         text = it,
                         style = MaterialTheme.typography.bodySmall,
-                        color = Color.Gray
+                        color = colorScheme.onSurfaceVariant
                     )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
@@ -221,7 +226,7 @@ fun LessonSessionScreenContent(
                                 Text(
                                     text = uiState.praiseText ?: "",
                                     style = MaterialTheme.typography.displayMedium,
-                                    color = Color(0xFF4CAF50)
+                                    color = colorScheme.tertiary
                                 )
                             }
 
@@ -229,7 +234,7 @@ fun LessonSessionScreenContent(
                                 Text(
                                     text = stringResource(R.string.lesson_session_wrong_continue),
                                     style = MaterialTheme.typography.bodyLarge,
-                                    color = Color.Gray,
+                                    color = colorScheme.onSurfaceVariant,
                                     modifier = Modifier.padding(horizontal = 24.dp)
                                 )
                             }
@@ -261,7 +266,7 @@ fun LessonSessionScreenContent(
                         .padding(horizontal = 16.dp)
                         .padding(top = 12.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF2E7D32)
+                        containerColor = colorScheme.tertiary
                     )
                 ) {
                     Text(stringResource(R.string.common_check))
@@ -285,19 +290,23 @@ private fun SessionTopBar(
     lessonTitle: String,
     correctCount: Int,
     wrongCount: Int,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    containerColor: Color,
+    onPrimaryColor: Color,
+    correctAccent: Color,
+    wrongAccent: Color,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFF4CAF50))
+            .background(containerColor)
             .padding(horizontal = 12.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = stringResource(R.string.common_back),
-            tint = Color.White,
+            tint = onPrimaryColor,
             modifier = Modifier.clickable(onClick = onBackClick)
         )
 
@@ -305,23 +314,23 @@ private fun SessionTopBar(
 
         Text(
             text = lessonTitle,
-            color = Color.White,
+            color = onPrimaryColor,
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.weight(1f)
         )
 
         CounterItem(
             label = correctCount.toString(),
-            circleColor = Color.White,
-            textColor = Color(0xFF2E7D32)
+            circleColor = onPrimaryColor,
+            textColor = correctAccent
         )
 
         Spacer(modifier = Modifier.width(10.dp))
 
         CounterItem(
             label = wrongCount.toString(),
-            circleColor = Color.White,
-            textColor = Color(0xFFC62828)
+            circleColor = onPrimaryColor,
+            textColor = wrongAccent
         )
     }
 }
@@ -354,15 +363,16 @@ private fun CounterItem(
 private fun InstructionBlock(
     text: String
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFD9EBD7))
+            .background(colorScheme.tertiaryContainer)
             .padding(horizontal = 16.dp, vertical = 12.dp)
     ) {
         Text(
             text = text,
-            color = Color(0xFF4B6A4B),
+            color = colorScheme.onTertiaryContainer,
             style = MaterialTheme.typography.titleMedium
         )
     }
@@ -374,16 +384,17 @@ private fun WrongAnswerBlock(
     correctText: String,
     onSpeakClick: (String) -> Unit
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     Column {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFF6D7D7))
+                .background(colorScheme.errorContainer)
                 .padding(horizontal = 16.dp, vertical = 12.dp)
         ) {
             Text(
                 text = if (selectedText.isBlank()) " " else selectedText,
-                color = Color(0xFFC62828),
+                color = colorScheme.onErrorContainer,
                 style = MaterialTheme.typography.titleLarge
             )
         }
@@ -391,13 +402,13 @@ private fun WrongAnswerBlock(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFD9EBD7))
+                .background(colorScheme.tertiaryContainer)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = correctText,
-                color = Color(0xFF2E7D32),
+                color = colorScheme.onTertiaryContainer,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.weight(1f)
             )
@@ -421,17 +432,18 @@ private fun CorrectAnswerBlock(
     praiseText: String?,
     onSpeakClick: (String) -> Unit
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     Column {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFD9EBD7))
+                .background(colorScheme.tertiaryContainer)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = answerText,
-                color = Color(0xFF2E7D32),
+                color = colorScheme.onTertiaryContainer,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.weight(1f)
             )
@@ -460,16 +472,17 @@ private fun AnswerArea(
     onWordClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     Card(
         modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        colors = CardDefaults.cardColors(containerColor = colorScheme.surface)
     ) {
         if (selectedWords.isEmpty()) {
             Text(
                 text = stringResource(R.string.lesson_session_select_words),
                 modifier = Modifier.padding(16.dp),
-                color = Color.Gray,
+                color = colorScheme.onSurfaceVariant,
                 style = MaterialTheme.typography.bodyLarge
             )
         } else {
@@ -494,10 +507,11 @@ private fun SelectedWordChip(
     text: String,
     onClick: () -> Unit
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     Box(
         modifier = Modifier
             .background(
-                color = Color(0xFFE8F5E9),
+                color = colorScheme.tertiaryContainer,
                 shape = RoundedCornerShape(10.dp)
             )
             .clickable(onClick = onClick)
@@ -505,7 +519,8 @@ private fun SelectedWordChip(
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
+            color = colorScheme.onTertiaryContainer,
         )
     }
 }
@@ -545,7 +560,7 @@ private fun WordButton(
             .height(88.dp)
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -553,7 +568,7 @@ private fun WordButton(
         ) {
             Text(
                 text = text,
-                color = Color(0xFF666666),
+                color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.headlineSmall
             )
         }
@@ -571,9 +586,9 @@ private fun ProgressStrip(
     ) {
         results.forEach { result ->
             val color = when (result) {
-                ExerciseResult.NONE -> Color(0xFFBDBDBD)
-                ExerciseResult.CORRECT -> Color(0xFF4CAF50)
-                ExerciseResult.WRONG -> Color(0xFFE53935)
+                ExerciseResult.NONE -> MaterialTheme.colorScheme.outlineVariant
+                ExerciseResult.CORRECT -> MaterialTheme.colorScheme.tertiary
+                ExerciseResult.WRONG -> MaterialTheme.colorScheme.error
             }
 
             Box(

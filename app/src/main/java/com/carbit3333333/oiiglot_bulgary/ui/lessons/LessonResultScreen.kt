@@ -39,6 +39,7 @@ fun LessonResultScreen(
     onNextLessonClick: () -> Unit,
     onBackToLessonsClick: () -> Unit
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     val titleText = if (result.isPassed) {
         stringResource(R.string.lesson_result_passed_title)
     } else {
@@ -46,9 +47,9 @@ fun LessonResultScreen(
     }
 
     val titleColor = if (result.isPassed) {
-        Color(0xFF2E7D32)
+        colorScheme.tertiary
     } else {
-        Color(0xFFC62828)
+        colorScheme.error
     }
 
     val scoreText = String.format(Locale.US, "%.1f", result.score)
@@ -56,7 +57,7 @@ fun LessonResultScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF3F3F3))
+            .background(colorScheme.background)
             .statusBarsPadding()
             .navigationBarsPadding()
             .padding(16.dp),
@@ -85,7 +86,7 @@ fun LessonResultScreen(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White)
+            colors = CardDefaults.cardColors(containerColor = colorScheme.surface)
         ) {
             Column(
                 modifier = Modifier
@@ -101,13 +102,13 @@ fun LessonResultScreen(
                 ResultRow(
                     label = stringResource(R.string.lesson_result_correct),
                     value = result.correctCount.toString(),
-                    valueColor = Color(0xFF2E7D32)
+                    valueColor = colorScheme.tertiary
                 )
 
                 ResultRow(
                     label = stringResource(R.string.lesson_result_wrong),
                     value = result.wrongCount.toString(),
-                    valueColor = Color(0xFFC62828)
+                    valueColor = colorScheme.error
                 )
 
                 ResultRow(
@@ -135,7 +136,7 @@ fun LessonResultScreen(
                 stringResource(R.string.lesson_result_need_higher_score)
             },
             style = MaterialTheme.typography.bodyLarge,
-            color = Color(0xFF666666)
+            color = colorScheme.onSurfaceVariant
         )
 
         Spacer(modifier = Modifier.weight(1f))
@@ -146,7 +147,7 @@ fun LessonResultScreen(
                     onClick = onNextLessonClick,
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF2E7D32)
+                        containerColor = colorScheme.tertiary
                     )
                 ) {
                     Text(stringResource(R.string.lesson_result_next_lesson))
@@ -159,7 +160,7 @@ fun LessonResultScreen(
                 onClick = onBackToLessonsClick,
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF757575)
+                    containerColor = colorScheme.secondary
                 )
             ) {
                 Text(stringResource(R.string.lesson_result_back_to_list))
@@ -169,7 +170,7 @@ fun LessonResultScreen(
                 onClick = onRetryClick,
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF2E7D32)
+                    containerColor = colorScheme.tertiary
                 )
             ) {
                 Text(stringResource(R.string.lesson_result_retry))
@@ -181,7 +182,7 @@ fun LessonResultScreen(
                 onClick = onBackToLessonsClick,
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF757575)
+                    containerColor = colorScheme.secondary
                 )
             ) {
                 Text(stringResource(R.string.lesson_result_back_to_list))
@@ -196,7 +197,7 @@ fun LessonResultScreen(
 private fun ResultRow(
     label: String,
     value: String,
-    valueColor: Color = Color(0xFF222222)
+    valueColor: Color = MaterialTheme.colorScheme.onSurface
 ) {
     androidx.compose.foundation.layout.Row(
         modifier = Modifier.fillMaxWidth(),
@@ -205,7 +206,7 @@ private fun ResultRow(
         Text(
             text = label,
             style = MaterialTheme.typography.bodyLarge,
-            color = Color(0xFF666666)
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Text(

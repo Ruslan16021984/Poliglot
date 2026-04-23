@@ -79,6 +79,16 @@ fun LessonsScreenContent(
     onUnlockAllClick: () -> Unit = {},
     onResetLessonsClick: () -> Unit = {}
 ) {
+    val colorScheme = MaterialTheme.colorScheme
+    val headerContainer = colorScheme.surfaceContainerLow
+    val headerAccentSurface = colorScheme.primaryContainer
+    val headerAccentText = colorScheme.onPrimaryContainer
+    val headerTitle = colorScheme.onSurface
+    val headerBody = colorScheme.onSurfaceVariant
+    val dictionaryContainer = colorScheme.secondaryContainer
+    val dictionaryTitle = colorScheme.onSecondaryContainer
+    val dictionaryBody = colorScheme.onSecondaryContainer.copy(alpha = 0.78f)
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -96,6 +106,11 @@ fun LessonsScreenContent(
         LessonsHeader(
             uiState = uiState,
             onSettingsClick = onSettingsClick,
+            containerColor = headerContainer,
+            accentSurfaceColor = headerAccentSurface,
+            accentTextColor = headerAccentText,
+            titleColor = headerTitle,
+            bodyColor = headerBody,
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -103,7 +118,10 @@ fun LessonsScreenContent(
         LessonActionsRow(
             onDictionaryClick = onDictionaryClick,
             onUnlockAllClick = onUnlockAllClick,
-            onResetLessonsClick = onResetLessonsClick
+            onResetLessonsClick = onResetLessonsClick,
+            containerColor = dictionaryContainer,
+            titleColor = dictionaryTitle,
+            bodyColor = dictionaryBody,
         )
 
         Spacer(modifier = Modifier.height(18.dp))
@@ -126,6 +144,14 @@ fun LessonsScreenContent(
                     items(uiState.lessons) { lesson ->
                         LessonItem(
                             lesson = lesson,
+                            cardColor = colorScheme.surface,
+                            lockedCardColor = colorScheme.surfaceContainerLow,
+                            titleColor = colorScheme.onSurface,
+                            subtitleColor = colorScheme.onSurfaceVariant,
+                            lockedTextColor = colorScheme.outline,
+                            progressDefaultColor = colorScheme.onSurfaceVariant,
+                            progressActiveColor = colorScheme.primary,
+                            progressDoneColor = colorScheme.tertiary,
                             onClick = {
                                 if (!lesson.isLocked) {
                                     onLessonClick(lesson.id)
@@ -143,6 +169,11 @@ fun LessonsScreenContent(
 private fun LessonsHeader(
     uiState: LessonsUiState,
     onSettingsClick: () -> Unit,
+    containerColor: Color,
+    accentSurfaceColor: Color,
+    accentTextColor: Color,
+    titleColor: Color,
+    bodyColor: Color,
 ) {
     val totalLessons = uiState.lessons.size
     val completedLessons = uiState.lessons.count { it.isCompleted }
@@ -152,7 +183,7 @@ private fun LessonsHeader(
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.elevatedCardColors(
-            containerColor = Color(0xFFF7F8FC)
+            containerColor = containerColor,
         ),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 3.dp)
     ) {
@@ -171,7 +202,7 @@ private fun LessonsHeader(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Surface(
-                        color = Color(0xFFE5ECFF),
+                        color = accentSurfaceColor,
                         shape = MaterialTheme.shapes.medium
                     ) {
                         Box(
@@ -181,7 +212,7 @@ private fun LessonsHeader(
                             Text(
                                 text = totalLessons.toString(),
                                 style = MaterialTheme.typography.titleMedium,
-                                color = Color(0xFF39538D)
+                                color = accentTextColor,
                             )
                         }
                     }
@@ -192,13 +223,13 @@ private fun LessonsHeader(
                         Text(
                             text = stringResource(R.string.lessons_list_title),
                             style = MaterialTheme.typography.headlineSmall,
-                            color = Color(0xFF20243A)
+                            color = titleColor,
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
                             text = stringResource(R.string.lessons_list_subtitle),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = Color(0xFF6A728F)
+                            color = bodyColor,
                         )
                     }
                 }
@@ -207,7 +238,7 @@ private fun LessonsHeader(
                     Icon(
                         imageVector = Icons.Default.MoreVert,
                         contentDescription = stringResource(R.string.settings_more_options),
-                        tint = Color(0xFF6A728F),
+                        tint = bodyColor,
                     )
                 }
             }
@@ -222,19 +253,19 @@ private fun LessonsHeader(
                     modifier = Modifier.weight(1f),
                     label = stringResource(R.string.lessons_stat_available),
                     value = "$availableLessons/$totalLessons",
-                    accent = Color(0xFF5C74AF)
+                    accent = MaterialTheme.colorScheme.primary,
                 )
                 HeaderStat(
                     modifier = Modifier.weight(1f),
                     label = stringResource(R.string.lessons_stat_in_progress),
                     value = inProgressLessons.toString(),
-                    accent = Color(0xFF2E7DCE)
+                    accent = MaterialTheme.colorScheme.secondary,
                 )
                 HeaderStat(
                     modifier = Modifier.weight(1f),
                     label = stringResource(R.string.lessons_stat_completed),
                     value = completedLessons.toString(),
-                    accent = Color(0xFF2E8B57)
+                    accent = MaterialTheme.colorScheme.tertiary,
                 )
             }
         }
@@ -250,7 +281,7 @@ private fun HeaderStat(
 ) {
     Surface(
         modifier = modifier,
-        color = Color.White,
+        color = MaterialTheme.colorScheme.surface,
         shape = MaterialTheme.shapes.large,
         tonalElevation = 1.dp,
         shadowElevation = 0.dp
@@ -267,7 +298,7 @@ private fun HeaderStat(
             Text(
                 text = label,
                 style = MaterialTheme.typography.bodySmall,
-                color = Color(0xFF6A728F)
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
     }
@@ -277,7 +308,10 @@ private fun HeaderStat(
 private fun LessonActionsRow(
     onDictionaryClick: () -> Unit,
     onUnlockAllClick: () -> Unit,
-    onResetLessonsClick: () -> Unit
+    onResetLessonsClick: () -> Unit,
+    containerColor: Color,
+    titleColor: Color,
+    bodyColor: Color,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -287,7 +321,7 @@ private fun LessonActionsRow(
                 .fillMaxWidth()
                 .clickable(onClick = onDictionaryClick),
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFEAF1FF)
+                containerColor = containerColor,
             ),
             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
@@ -303,13 +337,13 @@ private fun LessonActionsRow(
                     Text(
                         text = stringResource(R.string.lessons_dictionary_title),
                         style = MaterialTheme.typography.titleMedium,
-                        color = Color(0xFF20243A)
+                        color = titleColor,
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = stringResource(R.string.lessons_dictionary_subtitle),
                         style = MaterialTheme.typography.bodySmall,
-                        color = Color(0xFF5C6783)
+                        color = bodyColor,
                     )
                 }
 
@@ -351,11 +385,19 @@ private fun LessonActionsRow(
 @Composable
 private fun LessonItem(
     lesson: Lesson,
+    cardColor: Color,
+    lockedCardColor: Color,
+    titleColor: Color,
+    subtitleColor: Color,
+    lockedTextColor: Color,
+    progressDefaultColor: Color,
+    progressActiveColor: Color,
+    progressDoneColor: Color,
     onClick: () -> Unit
 ) {
-    val containerColor = if (lesson.isLocked) Color(0xFFF3F4F7) else Color.White
-    val textColor = if (lesson.isLocked) Color(0xFF9E9E9E) else Color(0xFF20243A)
-    val subtitleColor = if (lesson.isLocked) Color(0xFFAAAAAA) else Color(0xFF4F566F)
+    val containerColor = if (lesson.isLocked) lockedCardColor else cardColor
+    val textColor = if (lesson.isLocked) lockedTextColor else titleColor
+    val subtitleTextColor = if (lesson.isLocked) lockedTextColor.copy(alpha = 0.85f) else subtitleColor
 
     Card(
         modifier = Modifier
@@ -387,7 +429,7 @@ private fun LessonItem(
                 Text(
                     text = lesson.subtitle,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = subtitleColor
+                    color = subtitleTextColor
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -407,10 +449,10 @@ private fun LessonItem(
                 }
 
                 val progressColor = when {
-                    lesson.isLocked -> Color(0xFF9E9E9E)
-                    lesson.progressPercent in 1..99 -> Color(0xFF1565C0)
-                    lesson.progressPercent >= 100 -> Color(0xFF2E7D32)
-                    else -> Color(0xFF666666)
+                    lesson.isLocked -> lockedTextColor
+                    lesson.progressPercent in 1..99 -> progressActiveColor
+                    lesson.progressPercent >= 100 -> progressDoneColor
+                    else -> progressDefaultColor
                 }
 
                 Text(
@@ -434,11 +476,11 @@ private fun LessonItem(
                 }
 
                 val resultColor = when {
-                    lesson.isLocked -> Color(0xFF9E9E9E)
-                    lesson.isCompleted -> Color(0xFF2E7D32)
-                    lesson.bestScore != null -> Color(0xFF666666)
-                    lesson.currentProgress > 0 -> Color(0xFF1565C0)
-                    else -> Color(0xFF666666)
+                    lesson.isLocked -> lockedTextColor
+                    lesson.isCompleted -> progressDoneColor
+                    lesson.bestScore != null -> progressDefaultColor
+                    lesson.currentProgress > 0 -> progressActiveColor
+                    else -> progressDefaultColor
                 }
 
                 Text(
@@ -452,7 +494,7 @@ private fun LessonItem(
                 Icon(
                     imageVector = Icons.Default.Lock,
                     contentDescription = null,
-                    tint = Color(0xFF9E9E9E)
+                    tint = lockedTextColor
                 )
             }
         }

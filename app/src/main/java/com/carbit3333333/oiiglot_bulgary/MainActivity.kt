@@ -9,13 +9,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.core.os.LocaleListCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppLanguage
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppSettingsStore
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppThemeMode
 import com.carbit3333333.oiiglot_bulgary.navigation.AppNavGraph
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +27,13 @@ class MainActivity : AppCompatActivity() {
         val appSettingsStore = AppSettingsStore(applicationContext)
 
         lifecycleScope.launch {
-            applyLanguageIfNeeded(appSettingsStore.languageFlow.first())
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                appSettingsStore.languageFlow
+                    .distinctUntilChanged()
+                    .collect { language ->
+                        applyLanguageIfNeeded(language)
+                    }
+            }
         }
 
         setContent {

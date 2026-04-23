@@ -61,8 +61,13 @@ internal object Lesson1RealGenerator {
         verbs: List<VerbEntry>,
     ): LessonExercise {
         val template = templates[(id - 1) % templates.size]
-        val subject = subjects[((id - 1) * 3) % subjects.size]
-        val verb = verbs[((id - 1) * 5) % verbs.size]
+        val verb = verbs[((id - 1) / templates.size) % verbs.size]
+        val subjectPool = if (verb.kind == "have") {
+            subjects.filterNot { it.bg == "То" }
+        } else {
+            subjects
+        }
+        val subject = subjectPool[((id - 1) * 3) % subjectPool.size]
         val obj = verb.objects[((id - 1) / templates.size) % verb.objects.size]
 
         val lexicon = LessonRealSentenceGenerator.Lexicon(
@@ -104,13 +109,17 @@ internal object Lesson1RealGenerator {
             val isFuture = template.ruPattern.contains("{futureAuxRu}") || template.ruPattern.contains("{futureAux}")
             val isNegative = template.ruPattern.contains(" не ")
             val isQuestion = template.ruPattern.trimEnd().endsWith("?")
-            val base = if (isFuture) subject.haveRuFuture else subject.haveRuPresent
-            val futureStem = base.removeSuffix(" будет")
+            val presentBase = subject.haveRuPresent.trim()
+            val futureBase = subject.haveRuFuture.trim()
+            val presentStem = presentBase.removeSuffix(" есть").trimEnd()
+            val futureStem = futureBase.removeSuffix(" будет").trimEnd()
+            val objectText = if (isNegative) russianHaveNegativeObject(obj.ru) else obj.ru
 
             val sentence = when {
-                isFuture && isNegative -> "$futureStem не будет ${obj.ru}"
-                isNegative -> "$base нет ${obj.ru}"
-                else -> "$base ${obj.ru}"
+                isFuture && isNegative -> "$futureStem не будет $objectText"
+                isFuture -> "$futureBase ${obj.ru}"
+                isNegative -> "$presentStem нет $objectText"
+                else -> "$presentBase ${obj.ru}"
             }
 
             return if (isQuestion) "$sentence?" else sentence
@@ -186,6 +195,16 @@ internal object Lesson1RealGenerator {
             "{verb}" -> LessonRealSentenceGenerator.Token.VerbBg
             "{object}" -> LessonRealSentenceGenerator.Token.ObjectBg
             else -> LessonRealSentenceGenerator.Token.Fixed(raw)
+        }
+    }
+
+    private fun russianHaveNegativeObject(raw: String): String {
+        return when (raw) {
+            "книга" -> "книги"
+            "время" -> "времени"
+            "работа" -> "работы"
+            "телефон" -> "телефона"
+            else -> raw
         }
     }
 
