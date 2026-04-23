@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -57,81 +59,108 @@ fun LessonScreenContent(
     onBackClick: () -> Unit,
     onStartExerciseClick: (Int) -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp)
-            .navigationBarsPadding()
+    val colorScheme = MaterialTheme.colorScheme
+
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = colorScheme.background
     ) {
-        Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = onBackClick) {
-            Text(text = stringResource(R.string.common_back))
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        when {
-            uiState.isLoading -> {
-                Text(text = stringResource(R.string.common_loading))
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(24.dp)
+                .navigationBarsPadding()
+        ) {
+            Spacer(modifier = Modifier.height(24.dp))
+            Button(
+                onClick = onBackClick,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorScheme.primaryContainer,
+                    contentColor = colorScheme.onPrimaryContainer
+                )
+            ) {
+                Text(text = stringResource(R.string.common_back))
             }
 
-            uiState.errorMessage != null -> {
-                Text(text = uiState.errorMessage ?: stringResource(R.string.common_error))
-            }
+            Spacer(modifier = Modifier.height(24.dp))
 
-            uiState.lesson != null -> {
-                val lesson = uiState.lesson
-
-                LazyColumn(
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(bottom = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    item {
-                        Text(
-                            text = lesson.title,
-                            style = MaterialTheme.typography.headlineSmall
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-
-                        Text(
-                            text = lesson.subtitle,
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                    }
-
-                    item {
-                        Text(
-                            text = stringResource(R.string.lesson_theory_title),
-                            style = MaterialTheme.typography.titleLarge
-                        )
-                    }
-
-                    items(lesson.theory) { theoryBlock ->
-                        TheoryBlockItem(theoryBlock = theoryBlock)
-                    }
-
-                    item {
-                        Text(
-                            text = stringResource(R.string.lesson_verb_endings_title),
-                            style = MaterialTheme.typography.titleLarge
-                        )
-                    }
-
-                    item {
-                        VerbEndingExamples()
-                    }
+            when {
+                uiState.isLoading -> {
+                    Text(
+                        text = stringResource(R.string.common_loading),
+                        color = colorScheme.onBackground
+                    )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                uiState.errorMessage != null -> {
+                    Text(
+                        text = uiState.errorMessage ?: stringResource(R.string.common_error),
+                        color = colorScheme.error
+                    )
+                }
 
-                Button(
-                    onClick = { onStartExerciseClick(lesson.id) },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(text = stringResource(R.string.lesson_start_exercises))
+                uiState.lesson != null -> {
+                    val lesson = uiState.lesson
+
+                    LazyColumn(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(bottom = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        item {
+                            Text(
+                                text = lesson.title,
+                                style = MaterialTheme.typography.headlineSmall,
+                                color = colorScheme.onBackground
+                            )
+
+                            Spacer(modifier = Modifier.height(8.dp))
+
+                            Text(
+                                text = lesson.subtitle,
+                                style = MaterialTheme.typography.titleMedium,
+                                color = colorScheme.onBackground
+                            )
+                        }
+
+                        item {
+                            Text(
+                                text = stringResource(R.string.lesson_theory_title),
+                                style = MaterialTheme.typography.titleLarge,
+                                color = colorScheme.onBackground
+                            )
+                        }
+
+                        items(lesson.theory) { theoryBlock ->
+                            TheoryBlockItem(theoryBlock = theoryBlock)
+                        }
+
+                        item {
+                            Text(
+                                text = stringResource(R.string.lesson_verb_endings_title),
+                                style = MaterialTheme.typography.titleLarge,
+                                color = colorScheme.onBackground
+                            )
+                        }
+
+                        item {
+                            VerbEndingExamples()
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Button(
+                        onClick = { onStartExerciseClick(lesson.id) },
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorScheme.primary,
+                            contentColor = colorScheme.onPrimary
+                        )
+                    ) {
+                        Text(text = stringResource(R.string.lesson_start_exercises))
+                    }
                 }
             }
         }
@@ -140,8 +169,11 @@ fun LessonScreenContent(
 
 @Composable
 private fun VerbEndingExamples() {
+    val colorScheme = MaterialTheme.colorScheme
+
     Card(
         modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
         Column(
@@ -150,7 +182,8 @@ private fun VerbEndingExamples() {
         ) {
             Text(
                 text = stringResource(R.string.lesson_endings_attention),
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                color = colorScheme.onSurface
             )
 
             HighlightedEndingText(word = "правя", ending = "я")
@@ -167,8 +200,11 @@ private fun VerbEndingExamples() {
 private fun TheoryBlockItem(
     theoryBlock: TheoryBlock
 ) {
+    val colorScheme = MaterialTheme.colorScheme
+
     Card(
         modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
         Column(
@@ -177,7 +213,8 @@ private fun TheoryBlockItem(
             theoryBlock.title?.let { title ->
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    color = colorScheme.onSurface
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -186,7 +223,8 @@ private fun TheoryBlockItem(
             theoryBlock.text?.let { text ->
                 Text(
                     text = text,
-                    style = MaterialTheme.typography.bodyLarge
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = colorScheme.onSurface
                 )
             }
         }

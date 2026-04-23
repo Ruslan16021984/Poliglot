@@ -44,4 +44,25 @@ class Lesson1RussianGrammarTest {
         assertTrue(sourceTexts.any { it.contains("учусь дома") || it.contains("учимся дома") })
         assertTrue(sourceTexts.any { it.contains("говорю медленно") || it.contains("говорят медленно") })
     }
+
+    @Test
+    fun `lesson 1 should build have sentences naturally in future negative`() {
+        val session = repository.getLessonSession(1)
+        val sourceTexts = session.exercises.map { it.sourceText }
+        val normalizedSourceTexts = sourceTexts.map { it.lowercase() }
+
+        assertFalse(sourceTexts.any { it.contains("будет не будет") })
+        assertFalse(sourceTexts.any { it.contains("есть нет") })
+        assertTrue(normalizedSourceTexts.any { it.contains("не будет") })
+        assertTrue(
+            normalizedSourceTexts.any {
+                it.contains("у него не будет") ||
+                    it.contains("у неё не будет") ||
+                    it.contains("у тебя не будет") ||
+                    it.contains("у нас не будет") ||
+                    it.contains("у вас не будет") ||
+                    it.contains("у них не будет")
+            }
+        )
+    }
 }

@@ -447,7 +447,7 @@ fun DictionaryScreenContent(
                         .navigationBarsPadding()
                         .padding(end = 18.dp, bottom = 18.dp),
                     containerColor = palette.accent,
-                    contentColor = Color.White,
+                    contentColor = palette.accentText,
                     shape = RoundedCornerShape(18.dp),
                 ) {
                     Text(stringResource(R.string.common_scroll_to_top))
@@ -466,6 +466,8 @@ private fun GroupChipsRow(
     borderColor: Color,
     bodyColor: Color,
 ) {
+    val palette = rememberDictionaryPalette()
+
     Row(
         modifier = Modifier.horizontalScroll(rememberScrollState()),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -475,6 +477,8 @@ private fun GroupChipsRow(
             selected = selectedGroupId == null,
             onClick = { onGroupSelect(null) },
             accentColor = accentColor,
+            accentTextColor = palette.accentText,
+            surfaceColor = palette.surface,
             borderColor = borderColor,
             bodyColor = bodyColor,
         )
@@ -484,6 +488,8 @@ private fun GroupChipsRow(
                 selected = selectedGroupId == group.id,
                 onClick = { onGroupSelect(group.id) },
                 accentColor = accentColor,
+                accentTextColor = palette.accentText,
+                surfaceColor = palette.surface,
                 borderColor = borderColor,
                 bodyColor = bodyColor,
             )
@@ -497,19 +503,21 @@ private fun DictionaryFilterChip(
     selected: Boolean,
     onClick: () -> Unit,
     accentColor: Color,
+    accentTextColor: Color,
+    surfaceColor: Color,
     borderColor: Color,
     bodyColor: Color,
 ) {
     Surface(
         onClick = onClick,
         shape = RoundedCornerShape(999.dp),
-        color = if (selected) accentColor else Color.White,
+        color = if (selected) accentColor else surfaceColor,
         border = if (selected) null else BorderStroke(1.dp, borderColor),
     ) {
         Text(
             text = label,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp),
-            color = if (selected) Color.White else bodyColor,
+            color = if (selected) accentTextColor else bodyColor,
             style = MaterialTheme.typography.labelLarge,
         )
     }
@@ -685,13 +693,15 @@ private fun iconForGroup(name: String): ImageVector {
     }
 }
 
+@Composable
 private fun colorForGroup(name: String): Color {
     val normalized = name.lowercase()
+    val colorScheme = MaterialTheme.colorScheme
     return when {
-        "еда" in normalized || "ресторан" in normalized -> Color(0xFF2FB36F)
-        "пут" in normalized || "дорог" in normalized || "поезд" in normalized -> Color(0xFF8B5CF6)
-        "быт" in normalized || "дом" in normalized -> Color(0xFF3491FF)
-        else -> Color(0xFFE54BA8)
+        "еда" in normalized || "ресторан" in normalized -> colorScheme.tertiary
+        "пут" in normalized || "дорог" in normalized || "поезд" in normalized -> colorScheme.secondary
+        "быт" in normalized || "дом" in normalized -> colorScheme.primary
+        else -> colorScheme.error
     }
 }
 

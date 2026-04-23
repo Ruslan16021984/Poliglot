@@ -94,10 +94,16 @@ class LessonJsonAssetsTest {
         assertTrue(assets.lesson4Items.any { it.ru == "она любит говорить" })
         assertTrue(assets.lesson4Items.any { it.ru == "оно хочет пить воду" })
         assertTrue(assets.lesson4Items.any { it.ru == "вы хотите читать" })
-        assertTrue(assets.lesson4Items.any { it.ru == "вы хотите пить кофе" })
+        assertTrue(assets.lesson4Items.any { it.ru == "вы любите пить кофе" })
+        assertTrue(assets.lesson4Items.any { it.ru == "вы хотите читать эту книгу" })
 
         assertTrue(assets.lesson7Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
         assertTrue(assets.lesson8Templates.all { it.bgWords.isNotEmpty() && it.ru.isNotBlank() })
+        assertNotNull(assets.lesson7Templates.find { it.ru == "У меня есть своя книга" && "своята" in it.bgWords })
+        assertNotNull(assets.lesson7Templates.find { it.ru == "Я даю тебе свою книгу" && it.bgWords.firstOrNull() == "Аз" })
+        assertNotNull(assets.lesson8Templates.find { it.ru == "Эта книга интереснее той книги" && it.bgWords.takeLast(2) == listOf("онази", "книга") })
+        assertNotNull(assets.lesson8Templates.find { it.ru == "Моя машина быстрее твоей" && it.bgWords.takeLast(2) == listOf("твоята", "кола") })
+        assertNotNull(assets.lesson8Templates.find { it.ru == "Наш дом больше вашего дома" && it.bgWords.takeLast(2) == listOf("вашия", "дом") })
         assertTrue(
             assets.lesson9Numbers.all {
                 it.bgMasculine.isNotBlank() &&
@@ -131,6 +137,12 @@ class LessonJsonAssetsTest {
         assertNotNull(assets.lesson10TimePhrases.find { it.ruTokens.contains("дня") })
         assertNotNull(assets.lesson10RoutineActions.find { it.ruTokens.contains("завтракаю") })
         assertNotNull(assets.lesson10RoutineActions.find { it.bgTokens.contains("вечерям") })
+        assertNotNull(
+            assets.lesson10RoutineActions.find {
+                it.ruTokens == listOf("возвращаюсь", "домой") &&
+                    it.bgTokens == listOf("се", "прибирам", "вкъщи")
+            },
+        )
         assertNotNull(assets.lesson10IntervalTemplates.find { it.ruTokens.contains("{from}") })
         assertNotNull(assets.lesson10QuestionTemplates.find { it.ruTokens.contains("Когда") })
         assertNotNull(assets.lesson10QuestionTemplates.find { it.bgTokens.contains("Кога") })

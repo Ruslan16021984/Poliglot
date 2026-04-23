@@ -64,6 +64,8 @@ object Lesson2RealGenerator {
         Triple("Аз", "Я", "съм"),
         Triple("Ти", "Ты", "си"),
         Triple("Той", "Он", "е"),
+        Triple("Тя", "Она", "е"),
+        Triple("То", "Оно", "е"),
         Triple("Ние", "Мы", "сме"),
         Triple("Вие", "Вы", "сте"),
         Triple("Те", "Они", "са")
@@ -90,31 +92,26 @@ object Lesson2RealGenerator {
         "сок" to "сок"
     )
 
-    private val distractorPool = listOf(
-        "Аз", "Ти", "Той", "Ние", "Вие", "Те",
-        "съм", "си", "е", "сме", "сте", "са",
-        "не", "ли", "Това",
-        "вкъщи", "тук", "в училище", "в града", "на работа",
-        "лекар", "учител", "приятел",
-        "книга", "кафе", "вода", "хляб", "телефон", "чай", "сок"
-    )
-
     fun generateExercises(): List<LessonExercise> {
+        val distractorPool = buildDistractorPool()
         return (1..100).map { id ->
-            generateExercise(id)
+            generateExercise(id, distractorPool)
         }
     }
 
-    private fun generateExercise(id: Int): LessonExercise {
-        val template = templates.random()
+    private fun generateExercise(
+        id: Int,
+        distractorPool: List<String>
+    ): LessonExercise {
+        val template = templates[(id - 1) % templates.size]
 
-        val subjectTriple = subjectForms.random()
+        val subjectTriple = subjectForms[((id - 1) / templates.size) % subjectForms.size]
         val subjectBg = subjectTriple.first
         val subjectRu = subjectTriple.second
         val verbBg = subjectTriple.third
 
-        val placePair = places.random()
-        val nounPair = nouns.random()
+        val placePair = places[((id - 1) / (templates.size * subjectForms.size)) % places.size]
+        val nounPair = nouns[((id - 1) / (templates.size * subjectForms.size)) % nouns.size]
 
         val lexicon = LessonRealSentenceGenerator.Lexicon(
             subject = LessonRealSentenceGenerator.SubjectForms(
@@ -140,7 +137,7 @@ object Lesson2RealGenerator {
                 "💡 это → Това е ..."
 
             template.bgPattern.any { it == LessonRealSentenceGenerator.Token.Fixed("ли") } ->
-                "💡 с \"съм\" вопрос часто строится так: слово + ли + съм"
+                "💡 вопрос с \"съм\": слово или место + ли + форма"
 
             template.bgPattern.any { it == LessonRealSentenceGenerator.Token.Fixed("не") } ->
                 "💡 отрицание: не + форма на \"съм\""
@@ -156,5 +153,15 @@ object Lesson2RealGenerator {
             totalWords = 8,
             hint = hint
         )
+    }
+
+    private fun buildDistractorPool(): List<String> {
+        return buildList {
+            addAll(subjectForms.map { it.first })
+            addAll(subjectForms.map { it.third })
+            addAll(listOf("не", "ли", "Това", "е"))
+            addAll(places.map { it.first })
+            addAll(nouns.map { it.first })
+        }.distinct()
     }
 }

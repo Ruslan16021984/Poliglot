@@ -1,6 +1,9 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +26,7 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -80,18 +84,24 @@ fun LessonsScreenContent(
     onResetLessonsClick: () -> Unit = {}
 ) {
     val colorScheme = MaterialTheme.colorScheme
-    val headerContainer = colorScheme.surfaceContainerLow
-    val headerAccentSurface = colorScheme.primaryContainer
-    val headerAccentText = colorScheme.onPrimaryContainer
+    val isDarkTheme = isSystemInDarkTheme()
+    val headerContainer = if (isDarkTheme) colorScheme.surfaceContainerHigh else colorScheme.surfaceContainerLow
+    val headerAccentSurface = if (isDarkTheme) colorScheme.primary.copy(alpha = 0.20f) else colorScheme.primaryContainer
+    val headerAccentText = if (isDarkTheme) colorScheme.primary else colorScheme.onPrimaryContainer
     val headerTitle = colorScheme.onSurface
     val headerBody = colorScheme.onSurfaceVariant
-    val dictionaryContainer = colorScheme.secondaryContainer
-    val dictionaryTitle = colorScheme.onSecondaryContainer
-    val dictionaryBody = colorScheme.onSecondaryContainer.copy(alpha = 0.78f)
+    val dictionaryContainer = if (isDarkTheme) colorScheme.surfaceContainer else colorScheme.secondaryContainer
+    val dictionaryTitle = if (isDarkTheme) colorScheme.onSurface else colorScheme.onSecondaryContainer
+    val dictionaryBody = if (isDarkTheme) colorScheme.onSurfaceVariant else colorScheme.onSecondaryContainer.copy(alpha = 0.78f)
+    val lessonCardColor = if (isDarkTheme) colorScheme.surfaceContainerLow else colorScheme.surface
+    val lockedLessonCardColor = if (isDarkTheme) colorScheme.surfaceContainer else colorScheme.surfaceContainerLow
+    val actionOutlineColor = if (isDarkTheme) colorScheme.outlineVariant else colorScheme.outline
+    val actionTextColor = colorScheme.primary
 
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(colorScheme.background)
             .windowInsetsPadding(WindowInsets.systemBars)
             .padding(horizontal = 20.dp, vertical = 20.dp)
     ) {
@@ -122,6 +132,8 @@ fun LessonsScreenContent(
             containerColor = dictionaryContainer,
             titleColor = dictionaryTitle,
             bodyColor = dictionaryBody,
+            actionOutlineColor = actionOutlineColor,
+            actionTextColor = actionTextColor,
         )
 
         Spacer(modifier = Modifier.height(18.dp))
@@ -144,8 +156,8 @@ fun LessonsScreenContent(
                     items(uiState.lessons) { lesson ->
                         LessonItem(
                             lesson = lesson,
-                            cardColor = colorScheme.surface,
-                            lockedCardColor = colorScheme.surfaceContainerLow,
+                            cardColor = lessonCardColor,
+                            lockedCardColor = lockedLessonCardColor,
                             titleColor = colorScheme.onSurface,
                             subtitleColor = colorScheme.onSurfaceVariant,
                             lockedTextColor = colorScheme.outline,
@@ -312,6 +324,8 @@ private fun LessonActionsRow(
     containerColor: Color,
     titleColor: Color,
     bodyColor: Color,
+    actionOutlineColor: Color,
+    actionTextColor: Color,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -347,7 +361,13 @@ private fun LessonActionsRow(
                     )
                 }
 
-                OutlinedButton(onClick = onDictionaryClick) {
+                OutlinedButton(
+                    onClick = onDictionaryClick,
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = actionTextColor,
+                    ),
+                    border = BorderStroke(1.dp, actionOutlineColor)
+                ) {
                     Text(stringResource(R.string.common_open))
                 }
             }
@@ -360,7 +380,11 @@ private fun LessonActionsRow(
             OutlinedButton(
                 onClick = onUnlockAllClick,
                 modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp)
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = actionTextColor,
+                ),
+                border = BorderStroke(1.dp, actionOutlineColor)
             ) {
                 Text(stringResource(R.string.lessons_unlock_all))
             }
@@ -368,7 +392,11 @@ private fun LessonActionsRow(
             OutlinedButton(
                 onClick = onResetLessonsClick,
                 modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp)
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = actionTextColor,
+                ),
+                border = BorderStroke(1.dp, actionOutlineColor)
             ) {
                 Icon(
                     imageVector = Icons.Default.Refresh,

@@ -234,7 +234,7 @@ private fun SettingOptionRow(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(18.dp),
-        color = Color.Transparent,
+        color = MaterialTheme.colorScheme.surface.copy(alpha = 0f),
     ) {
         Row(
             modifier = Modifier

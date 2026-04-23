@@ -13,6 +13,13 @@ internal data class LessonTemplateAsset(
 )
 
 @Serializable
+internal data class LessonFixedSentenceAsset(
+    val ru: String,
+    val correctWords: List<String>,
+    val hint: String? = null
+)
+
+@Serializable
 internal data class Lesson1SubjectAsset(
     val bg: String,
     val ru: String,
@@ -103,6 +110,7 @@ internal data class Lesson10TemplateAsset(
 
 @Serializable
 internal data class LessonSessionAssets(
+    val lesson1Sentences: List<LessonFixedSentenceAsset> = emptyList(),
     val lesson1Subjects: List<Lesson1SubjectAsset> = emptyList(),
     val lesson1Templates: List<Lesson1TemplateAsset> = emptyList(),
     val lesson1Verbs: List<Lesson1VerbAsset> = emptyList(),

@@ -13,7 +13,7 @@ import androidx.compose.ui.text.withStyle
 fun HighlightedEndingText(
     word: String,
     ending: String,
-    highlightColor: Color = Color(0xFF2E7D32)
+    highlightColor: Color = MaterialTheme.colorScheme.tertiary
 ) {
     val splitIndex = word.length - ending.length
 

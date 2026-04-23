@@ -26,15 +26,15 @@ internal fun generateLesson3Exercise(
     subjectRuMap: Map<String, String>,
     verbs: List<Lesson3VerbAsset>
 ): LessonExercise {
-    val type = if ((1..100).random() <= 70) {
-        Lesson3SentenceType.PAST
-    } else {
+    val type = if (id % 4 == 0) {
         Lesson3SentenceType.PAST_NEGATIVE
+    } else {
+        Lesson3SentenceType.PAST
     }
 
     val subjects = subjectRuMap.keys.toList()
-    val verb = verbs.random()
-    val subject = subjects.random()
+    val verb = verbs[(id - 1) % verbs.size]
+    val subject = subjects[((id - 1) / verbs.size) % subjects.size]
 
     val bgVerb = verb.past.getValue(subject)
     val ruSubject = subjectRuMap.getValue(subject)

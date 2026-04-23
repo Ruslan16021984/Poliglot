@@ -9,6 +9,8 @@ object Lesson6RealGenerator {
         Triple("Аз", "Я", "съм"),
         Triple("Ти", "Ты", "си"),
         Triple("Той", "Он", "е"),
+        Triple("Тя", "Она", "е"),
+        Triple("То", "Оно", "е"),
         Triple("Ние", "Мы", "сме"),
         Triple("Вие", "Вы", "сте"),
         Triple("Те", "Они", "са")
@@ -52,25 +54,22 @@ object Lesson6RealGenerator {
         )
     )
 
-    private val distractorPool = listOf(
-        "Аз", "Ти", "Той", "Ние", "Вие", "Те",
-        "съм", "си", "е", "сме", "сте", "са",
-        "не", "ли",
-        "в града", "в училище", "на работа", "при лекаря", "с приятеля", "в къщата"
-    )
-
     fun generateExercises(): List<LessonExercise> {
-        return (1..60).map { id -> generateExercise(id) }
+        val distractorPool = buildDistractorPool()
+        return (1..60).map { id -> generateExercise(id, distractorPool) }
     }
 
-    private fun generateExercise(id: Int): LessonExercise {
-        val template = templates.random()
-        val (subjectBg, subjectRu, verbBg) = subjectForms.random()
-        val (placeBg, placeRu) = placePhrases.random()
+    private fun generateExercise(
+        id: Int,
+        distractorPool: List<String>
+    ): LessonExercise {
+        val template = templates[(id - 1) % templates.size]
+        val (subjectBg, subjectRu, verbBg) = subjectForms[((id - 1) / templates.size) % subjectForms.size]
+        val (placeBg, placeRu) = placePhrases[((id - 1) / (templates.size * subjectForms.size)) % placePhrases.size]
 
         val hint = when {
             template.bgPattern.any { it == LessonRealSentenceGenerator.Token.Fixed("ли") } ->
-                "💡 вопрос: место + ли + форма на \"съм\""
+                "💡 вопрос: место или слово + ли + форма на \"съм\""
             template.bgPattern.any { it == LessonRealSentenceGenerator.Token.Fixed("не") } ->
                 "💡 отрицание: не + форма на \"съм\""
             else ->
@@ -96,5 +95,14 @@ object Lesson6RealGenerator {
             totalWords = 8,
             hint = hint
         )
+    }
+
+    private fun buildDistractorPool(): List<String> {
+        return buildList {
+            addAll(subjectForms.map { it.first })
+            addAll(subjectForms.map { it.third })
+            addAll(listOf("не", "ли"))
+            addAll(placePhrases.map { it.first })
+        }.distinct()
     }
 }

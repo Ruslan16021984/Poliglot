@@ -24,6 +24,7 @@ class LessonSessionRepositoryTest {
     @Test
     fun `lesson 1 session builds complete exercises`() {
         val session = repository.getLessonSession(1)
+        val normalizedSourceTexts = session.exercises.map { it.sourceText.lowercase() }
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
@@ -36,7 +37,7 @@ class LessonSessionRepositoryTest {
         assertTrue(session.exercises.any { it.sourceText.contains("будет") || it.sourceText.contains("будут") })
         assertTrue(session.exercises.any { it.correctAnswerWords.any { word -> word == "обичам" || word == "обича" } })
         assertTrue(session.exercises.any { it.correctAnswerWords.any { word -> word == "имам" || word == "има" } })
-        assertTrue(session.exercises.any { it.sourceText.contains("у меня есть") || it.sourceText.contains("у него есть") })
+        assertTrue(normalizedSourceTexts.any { it.contains("у меня есть") || it.contains("у него есть") })
         assertFalse(session.exercises.any { it.sourceText.contains("будет не будет") })
         assertFalse(session.exercises.any { it.sourceText.contains("есть нет") })
         assertFalse(
@@ -54,6 +55,12 @@ class LessonSessionRepositoryTest {
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(session.exercises.any { "не" in it.correctAnswerWords })
+        assertTrue(session.exercises.any { it.sourceText.startsWith("Я ") })
+        assertTrue(session.exercises.any { it.sourceText.startsWith("Ты ") })
+        assertTrue(session.exercises.any { it.sourceText.startsWith("Он ") })
+        assertTrue(session.exercises.any { it.sourceText.startsWith("Мы ") })
+        assertTrue(session.exercises.any { it.sourceText.startsWith("Вы ") })
+        assertTrue(session.exercises.any { it.sourceText.startsWith("Они ") })
         assertTrue(
             session.exercises.any {
                 it.sourceText.contains("(а)") ||
@@ -132,7 +139,30 @@ class LessonSessionRepositoryTest {
         assertTrue(session.exercises.all(::isValidExercise))
         assertFalse(sourceTexts.any { it.contains("учиться болгарский") })
         assertFalse(sourceTexts.any { it.contains("хочу учиться болгарский") })
+        assertFalse(sourceTexts.any { it.contains("Я мне нужно") })
+        assertFalse(sourceTexts.any { it.contains("Ты тебе нужно") })
+        assertFalse(sourceTexts.any { it.contains("Он ему нужно") })
+        assertFalse(sourceTexts.any { it.contains("Она ей нужно") })
+        assertFalse(sourceTexts.any { it.contains("Оно ему нужно") })
         assertTrue(sourceTexts.any { it.contains("учиться дома") || it.contains("учиться в школе") })
+        assertTrue(sourceTexts.any { it.startsWith("Ей нужно") || it.startsWith("Она ") })
+        assertTrue(sourceTexts.any { it.startsWith("Ему нужно") || it.startsWith("Оно ") })
+    }
+
+    @Test
+    fun `lesson 2 and 6 sessions cover feminine and neuter subjects`() {
+        val lesson2 = repository.getLessonSession(2)
+        val lesson6 = repository.getLessonSession(6)
+
+        assertTrue(lesson2.exercises.any { it.sourceText.startsWith("Она ") })
+        assertTrue(lesson2.exercises.any { it.sourceText.startsWith("Оно ") })
+        assertTrue(lesson2.exercises.any { it.correctAnswerWords.firstOrNull() == "Тя" })
+        assertTrue(lesson2.exercises.any { it.correctAnswerWords.firstOrNull() == "То" })
+
+        assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Она ") })
+        assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Оно ") })
+        assertTrue(lesson6.exercises.any { it.correctAnswerWords.firstOrNull() == "Тя" })
+        assertTrue(lesson6.exercises.any { it.correctAnswerWords.firstOrNull() == "То" })
     }
 
     @Test
@@ -146,7 +176,12 @@ class LessonSessionRepositoryTest {
         assertTrue(lesson7.exercises.all(::isValidExercise))
         assertTrue(lesson8.exercises.all(::isValidExercise))
         assertTrue(lesson7.exercises.any { it.sourceText.contains("своего друга") })
+        assertTrue(lesson7.exercises.any { it.sourceText.contains("даю тебе свою книгу") })
+        assertTrue(lesson7.exercises.any { it.correctAnswerWords.contains("своята") })
         assertTrue(lesson8.exercises.any { it.sourceText.contains("лучший день") })
+        assertTrue(lesson8.exercises.any { it.sourceText.contains("той книги") })
+        assertTrue(lesson8.exercises.any { it.sourceText.contains("твоей") })
+        assertTrue(lesson8.exercises.any { it.sourceText.contains("вашего дома") })
     }
 
     @Test
@@ -155,6 +190,10 @@ class LessonSessionRepositoryTest {
 
         assertEquals(60, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(session.exercises.any { it.sourceText.contains("двадцать") })
+        assertTrue(session.exercises.any { it.sourceText.contains("один") || it.sourceText.contains("одну") || it.sourceText.contains("одно") })
+        assertTrue(session.exercises.any { it.sourceText.contains("телефона") })
+        assertTrue(session.exercises.any { it.sourceText.contains("писем") })
         assertTrue(
             session.exercises.any {
                 it.sourceText.contains("одн") ||

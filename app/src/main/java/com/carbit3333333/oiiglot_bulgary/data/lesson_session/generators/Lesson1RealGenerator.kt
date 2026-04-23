@@ -1,9 +1,11 @@
 package com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators
 
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonFixedSentenceAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1ObjectAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1SubjectAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1TemplateAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1VerbAsset
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.buildTranslationExercise
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.support.LessonRealSentenceGenerator
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
@@ -36,10 +38,15 @@ internal object Lesson1RealGenerator {
     )
 
     internal fun generateExercises(
+        fixedSentences: List<LessonFixedSentenceAsset> = emptyList(),
         subjects: List<Lesson1SubjectAsset> = emptyList(),
         templates: List<Lesson1TemplateAsset> = emptyList(),
         verbs: List<Lesson1VerbAsset> = emptyList(),
     ): List<LessonExercise> {
+        if (fixedSentences.isNotEmpty()) {
+            return generateFixedExercises(fixedSentences)
+        }
+
         val subjectEntries = subjects.mapToSubjectEntries().ifEmpty { defaultSubjects() }
         val templateEntries = templates.mapToTemplateEntries().ifEmpty { defaultTemplates() }
         val verbEntries = verbs.mapToVerbEntries().ifEmpty { defaultVerbs() }
@@ -54,21 +61,44 @@ internal object Lesson1RealGenerator {
         }
     }
 
+    private fun generateFixedExercises(
+        fixedSentences: List<LessonFixedSentenceAsset>,
+    ): List<LessonExercise> {
+        val distractorPool = buildList {
+            addAll(fixedSentences.flatMap { it.correctWords })
+            addAll(listOf("не", "ли", "ще", "няма", "да"))
+        }.distinct()
+
+        return (1..100).map { id ->
+            val item = fixedSentences[(id - 1) % fixedSentences.size]
+            buildTranslationExercise(
+                id = id,
+                sourceText = item.ru,
+                correctWords = item.correctWords,
+                distractorPool = distractorPool,
+                hint = item.hint,
+            )
+        }
+    }
+
     private fun generateExercise(
         id: Int,
         subjects: List<SubjectEntry>,
         templates: List<TemplateEntry>,
         verbs: List<VerbEntry>,
     ): LessonExercise {
-        val template = templates[(id - 1) % templates.size]
-        val verb = verbs[((id - 1) / templates.size) % verbs.size]
+        val templateIndex = (id - 1) % templates.size
+        val verbIndex = ((id - 1) / templates.size) % verbs.size
+        val repetitionIndex = (id - 1) / (templates.size * verbs.size)
+        val template = templates[templateIndex]
+        val verb = verbs[verbIndex]
         val subjectPool = if (verb.kind == "have") {
             subjects.filterNot { it.bg == "То" }
         } else {
             subjects
         }
-        val subject = subjectPool[((id - 1) * 3) % subjectPool.size]
-        val obj = verb.objects[((id - 1) / templates.size) % verb.objects.size]
+        val subject = subjectPool[(templateIndex + verbIndex + repetitionIndex * 2) % subjectPool.size]
+        val obj = verb.objects[(templateIndex + repetitionIndex + verbIndex) % verb.objects.size]
 
         val lexicon = LessonRealSentenceGenerator.Lexicon(
             subject = LessonRealSentenceGenerator.SubjectForms(
@@ -109,18 +139,12 @@ internal object Lesson1RealGenerator {
             val isFuture = template.ruPattern.contains("{futureAuxRu}") || template.ruPattern.contains("{futureAux}")
             val isNegative = template.ruPattern.contains(" не ")
             val isQuestion = template.ruPattern.trimEnd().endsWith("?")
-            val presentBase = subject.haveRuPresent.trim()
-            val futureBase = subject.haveRuFuture.trim()
-            val presentStem = presentBase.removeSuffix(" есть").trimEnd()
-            val futureStem = futureBase.removeSuffix(" будет").trimEnd()
-            val objectText = if (isNegative) russianHaveNegativeObject(obj.ru) else obj.ru
-
-            val sentence = when {
-                isFuture && isNegative -> "$futureStem не будет $objectText"
-                isFuture -> "$futureBase ${obj.ru}"
-                isNegative -> "$presentStem нет $objectText"
-                else -> "$presentBase ${obj.ru}"
-            }
+            val sentence = buildRussianHaveSentence(
+                subject = subject,
+                obj = obj,
+                isFuture = isFuture,
+                isNegative = isNegative,
+            )
 
             return if (isQuestion) "$sentence?" else sentence
         }
@@ -135,6 +159,38 @@ internal object Lesson1RealGenerator {
             .replace("{object}", obj.ru)
             .replace("  ", " ")
             .trim()
+    }
+
+    private fun buildRussianHaveSentence(
+        subject: SubjectEntry,
+        obj: ObjectEntry,
+        isFuture: Boolean,
+        isNegative: Boolean,
+    ): String {
+        val presentBase = subject.haveRuPresent.trim()
+        val futureBase = subject.haveRuFuture.trim()
+        val negativeObject = russianHaveNegativeObject(obj.ru)
+        val presentStem = withoutTrailingWord(presentBase, "есть")
+        val futureStem = withoutTrailingWord(futureBase, "будет")
+
+        return when {
+            isFuture && isNegative -> "$futureStem не будет $negativeObject"
+            isFuture -> "$futureBase ${obj.ru}"
+            isNegative -> "$presentStem нет $negativeObject"
+            else -> "$presentBase ${obj.ru}"
+        }
+    }
+
+    private fun withoutTrailingWord(
+        text: String,
+        trailingWord: String,
+    ): String {
+        val suffix = " $trailingWord"
+        return if (text.endsWith(suffix)) {
+            text.removeSuffix(suffix).trimEnd()
+        } else {
+            text
+        }
     }
 
     private fun buildDistractorPool(

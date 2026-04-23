@@ -56,12 +56,14 @@ internal object Lesson9RealGenerator {
         objects: List<Lesson9ObjectAsset>,
         templates: List<Lesson9TemplateAsset>
     ): List<LessonExercise> {
+        val distractorPool = buildDistractorPool(numbers, objects, templates)
         return (1..60).map { id ->
             generateExercise(
                 id = id,
                 numbers = numbers,
                 objects = objects,
-                templates = templates
+                templates = templates,
+                distractorPool = distractorPool
             )
         }
     }
@@ -70,11 +72,12 @@ internal object Lesson9RealGenerator {
         id: Int,
         numbers: List<Lesson9NumberAsset>,
         objects: List<Lesson9ObjectAsset>,
-        templates: List<Lesson9TemplateAsset>
+        templates: List<Lesson9TemplateAsset>,
+        distractorPool: List<String>
     ): LessonExercise {
-        val number = numbers.random()
-        val noun = objects.random()
-        val template = templates.random()
+        val template = templates[(id - 1) % templates.size]
+        val noun = objects[((id - 1) * 2) % objects.size]
+        val number = numbers[(id - 1) % numbers.size]
         val phrase = applyNumber(number, noun)
 
         val sourceText = template.ruTokens
@@ -95,8 +98,6 @@ internal object Lesson9RealGenerator {
                 else -> token
             }
         }
-
-        val distractorPool = buildDistractorPool(numbers, objects, templates)
 
         return buildTranslationExercise(
             id = id,

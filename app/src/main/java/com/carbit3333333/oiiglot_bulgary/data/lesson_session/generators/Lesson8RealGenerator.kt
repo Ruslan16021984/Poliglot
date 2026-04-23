@@ -6,41 +6,39 @@ import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
 internal object Lesson8RealGenerator {
 
-    private val distractorPool = listOf(
-        "Това", "Той", "Аз", "Тази",
-        "е", "съм", "от", "в",
-        "мен", "него", "ми",
-        "по-стар", "по-млад", "по-интересна", "по-бърза", "по-голям", "по-голяма", "по-висок", "по-скъп", "по-добра",
-        "най-добрата", "най-добрият", "най-скъпата", "най-красивият", "най-интересният", "най-хубавият",
-        "книга", "книгата", "кола", "къща", "дом", "брат", "ученик", "часовника", "филма", "филм", "ден", "живота",
-        "Моята", "твоята", "Нашата", "Нашият", "вашата", "вашия", "Телефонът", "Моят", "онази"
-    )
-
     internal fun generateExercises(templates: List<LessonTemplateAsset>): List<LessonExercise> {
-        return (1..60).map { id -> generateExercise(id, templates) }
+        val distractorPool = buildDistractorPool(templates)
+        return (1..60).map { id -> generateExercise(id, templates, distractorPool) }
     }
 
     private fun generateExercise(
         id: Int,
-        templates: List<LessonTemplateAsset>
+        templates: List<LessonTemplateAsset>,
+        distractorPool: List<String>,
     ): LessonExercise {
-        val template = templates.random()
+        val template = templates[(id - 1) % templates.size]
 
         return LessonRealSentenceGenerator.buildExercise(
             id = id,
             template = LessonRealSentenceGenerator.SentenceTemplate(
                 ruPattern = template.ru,
-                bgPattern = template.bgWords.map { LessonRealSentenceGenerator.Token.Fixed(it) }
+                bgPattern = template.bgWords.map(LessonRealSentenceGenerator.Token::Fixed),
             ),
             lexicon = LessonRealSentenceGenerator.Lexicon(
                 subject = LessonRealSentenceGenerator.SubjectForms(
                     bg = "Аз",
-                    ru = "Я"
-                )
+                    ru = "Я",
+                ),
             ),
             distractorPool = distractorPool,
             totalWords = 8,
-            hint = template.hint
+            hint = template.hint,
         )
+    }
+
+    private fun buildDistractorPool(templates: List<LessonTemplateAsset>): List<String> {
+        return templates
+            .flatMap { it.bgWords }
+            .distinct()
     }
 }

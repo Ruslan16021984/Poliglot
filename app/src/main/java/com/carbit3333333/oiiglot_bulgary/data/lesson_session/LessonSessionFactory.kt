@@ -20,6 +20,7 @@ internal object LessonSessionFactory {
                 lessonId = 1,
                 lessonTitle = "Урок 1",
                 exercises = Lesson1RealGenerator.generateExercises(
+                    fixedSentences = assets.lesson1Sentences,
                     subjects = assets.lesson1Subjects,
                     templates = assets.lesson1Templates,
                     verbs = assets.lesson1Verbs

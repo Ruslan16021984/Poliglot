@@ -10,6 +10,8 @@ object Lesson5RealGenerator {
         "Аз" to "Я",
         "Ти" to "Ты",
         "Той" to "Он",
+        "Тя" to "Она",
+        "То" to "Оно",
         "Ние" to "Мы",
         "Вие" to "Вы",
         "Те" to "Они"
@@ -27,6 +29,8 @@ object Lesson5RealGenerator {
                 "Аз" to "гледам",
                 "Ти" to "гледаш",
                 "Той" to "гледа",
+                "Тя" to "гледа",
+                "То" to "гледа",
                 "Ние" to "гледаме",
                 "Вие" to "гледате",
                 "Те" to "гледат"
@@ -42,6 +46,8 @@ object Lesson5RealGenerator {
                 "Аз" to "пия",
                 "Ти" to "пиеш",
                 "Той" to "пие",
+                "Тя" to "пие",
+                "То" to "пие",
                 "Ние" to "пием",
                 "Вие" to "пиете",
                 "Те" to "пият"
@@ -57,6 +63,8 @@ object Lesson5RealGenerator {
                 "Аз" to "работя",
                 "Ти" to "работиш",
                 "Той" to "работи",
+                "Тя" to "работи",
+                "То" to "работи",
                 "Ние" to "работим",
                 "Вие" to "работите",
                 "Те" to "работят"
@@ -72,6 +80,8 @@ object Lesson5RealGenerator {
                 "Аз" to "уча",
                 "Ти" to "учиш",
                 "Той" to "учи",
+                "Тя" to "учи",
+                "То" to "учи",
                 "Ние" to "учим",
                 "Вие" to "учите",
                 "Те" to "учат"
@@ -90,6 +100,8 @@ object Lesson5RealGenerator {
             "Аз" to "мога",
             "Ти" to "можеш",
             "Той" to "може",
+            "Тя" to "може",
+            "То" to "може",
             "Ние" to "можем",
             "Вие" to "можете",
             "Те" to "могат"
@@ -97,6 +109,8 @@ object Lesson5RealGenerator {
             "Аз" to "могу",
             "Ти" to "можешь",
             "Той" to "может",
+            "Тя" to "может",
+            "То" to "может",
             "Ние" to "можем",
             "Вие" to "можете",
             "Те" to "могут"
@@ -107,6 +121,8 @@ object Lesson5RealGenerator {
             "Аз" to "искам",
             "Ти" to "искаш",
             "Той" to "иска",
+            "Тя" to "иска",
+            "То" to "иска",
             "Ние" to "искаме",
             "Вие" to "искате",
             "Те" to "искат"
@@ -114,6 +130,8 @@ object Lesson5RealGenerator {
             "Аз" to "хочу",
             "Ти" to "хочешь",
             "Той" to "хочет",
+            "Тя" to "хочет",
+            "То" to "хочет",
             "Ние" to "хотим",
             "Вие" to "хотите",
             "Те" to "хотят"
@@ -125,13 +143,15 @@ object Lesson5RealGenerator {
         "Аз" to "мне нужно",
         "Ти" to "тебе нужно",
         "Той" to "ему нужно",
+        "Тя" to "ей нужно",
+        "То" to "ему нужно",
         "Ние" to "нам нужно",
         "Вие" to "вам нужно",
         "Те" to "им нужно"
     )
 
     private val distractorPool = listOf(
-        "Аз","Ти","Той","Ние","Вие","Те",
+        "Аз","Ти","Той","Тя","То","Ние","Вие","Те",
         "не","ли","да","трябва",
         "мога","можеш","може","можем","можете","могат",
         "искам","искаш","иска","искаме","искате","искат",
@@ -147,16 +167,16 @@ object Lesson5RealGenerator {
     }
 
     private fun generateExercise(id: Int): LessonExercise {
+        val subjects = subjectRu.keys.toList()
+        val subject = subjects[(id - 1) % subjects.size]
+        val verb = verbs[((id - 1) / subjects.size) % verbs.size]
+        val obj = verb.objects[((id - 1) / (subjects.size * verbs.size).coerceAtLeast(1)) % verb.objects.size]
 
-        val subject = subjectRu.keys.random()
-        val verb = verbs.random()
-        val obj = verb.objects.random()
+        val useMust = id % 5 == 0
+        val useQuestion = id % 3 == 0
+        val useNegative = id % 4 == 0
 
-        val useMust = (1..100).random() <= 20
-        val useQuestion = (1..100).random() <= 30
-        val useNegative = (1..100).random() <= 30
-
-        val (modalBgMap, modalRuMap) = modalForms.random()
+        val (modalBgMap, modalRuMap) = modalForms[((id - 1) / (subjects.size * verbs.size * verb.objects.size).coerceAtLeast(1)) % modalForms.size]
 
         val modalBg = if (useMust) "трябва" else modalBgMap.getValue(subject)
         val modalRu = if (useMust) mustRu.getValue(subject) else modalRuMap.getValue(subject)
@@ -177,20 +197,15 @@ object Lesson5RealGenerator {
         correctWords.add(verbBg)
         correctWords.add(obj.first)
 
-        val sourceText = buildString {
-            append(subjectRu.getValue(subject))
-            append(" ")
-
-            if (useNegative) append("не ")
-
-            append(modalRu)
-            append(" ")
-            append(verb.ru)
-            append(" ")
-            append(obj.second)
-
-            if (useQuestion) append("?")
-        }
+        val sourceText = buildRussianSourceText(
+            subject = subject,
+            modalRu = modalRu,
+            verbRu = verb.ru,
+            objectRu = obj.second,
+            useMust = useMust,
+            useNegative = useNegative,
+            useQuestion = useQuestion,
+        )
 
         val hint = when {
             useMust -> "💡 трябва + да + глагол"
@@ -213,5 +228,50 @@ object Lesson5RealGenerator {
             distractorPool = distractorPool,
             hint = hint
         )
+    }
+
+    private fun buildRussianSourceText(
+        subject: String,
+        modalRu: String,
+        verbRu: String,
+        objectRu: String,
+        useMust: Boolean,
+        useNegative: Boolean,
+        useQuestion: Boolean,
+    ): String {
+        val sentence = if (useMust) {
+            val normalizedModalRu = if (useNegative) {
+                modalRu.replace(" нужно", " не нужно")
+            } else {
+                modalRu
+            }
+            buildString {
+                append(normalizedModalRu)
+                append(" ")
+                append(verbRu)
+                append(" ")
+                append(objectRu)
+            }
+        } else {
+            buildString {
+                append(subjectRu.getValue(subject))
+                append(" ")
+                if (useNegative) append("не ")
+                append(modalRu)
+                append(" ")
+                append(verbRu)
+                append(" ")
+                append(objectRu)
+            }
+        }
+
+        val normalized = sentence
+            .replace(Regex("\\s+"), " ")
+            .trim()
+            .replaceFirstChar { char ->
+                if (char.isLowerCase()) char.titlecase() else char.toString()
+            }
+
+        return if (useQuestion) "$normalized?" else normalized
     }
 }
