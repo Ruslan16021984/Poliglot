@@ -3,11 +3,15 @@ package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 import com.carbit3333333.oiiglot_bulgary.model.Lesson4Item
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
-internal fun generateLesson4Exercises(items: List<Lesson4Item>): List<LessonExercise> {
+internal fun generateLesson4Exercises(
+    items: List<Lesson4Item>,
+    exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
+): List<LessonExercise> {
     return (1..100).map { id ->
         generateLesson4Exercise(
             id = id,
             items = items,
+            exerciseLocale = exerciseLocale,
         )
     }
 }
@@ -15,6 +19,7 @@ internal fun generateLesson4Exercises(items: List<Lesson4Item>): List<LessonExer
 internal fun generateLesson4Exercise(
     id: Int,
     items: List<Lesson4Item>,
+    exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
 ): LessonExercise {
     val item = selectLesson4Item(
         id = id,
@@ -27,23 +32,37 @@ internal fun generateLesson4Exercise(
             listOf("Ти", "Те", "не")
         ).distinct()
 
-    val hint = when {
+    return buildTranslationExercise(
+        id = id,
+        sourceText = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> item.uk ?: item.ru
+            LessonExerciseLocale.Russian -> item.ru
+        },
+        correctWords = correctWords,
+        distractorPool = distractorPool,
+        hint = buildLesson4Hint(correctWords, exerciseLocale),
+    )
+}
+
+private fun buildLesson4Hint(
+    correctWords: List<String>,
+    exerciseLocale: LessonExerciseLocale,
+): String? {
+    return when {
+        "да" in correctWords && exerciseLocale == LessonExerciseLocale.Ukrainian ->
+            "💡 Після искам / обичам дія йде з \"да\"."
+
         "да" in correctWords ->
             "💡 После искам / обичам действие идёт с \"да\"."
+
+        hasDefiniteObject(correctWords) && exerciseLocale == LessonExerciseLocale.Ukrainian ->
+            "💡 Якщо йдеться про конкретний предмет, використовуй форму з артиклем."
 
         hasDefiniteObject(correctWords) ->
             "💡 Если речь о конкретном предмете, используй форму с артиклем."
 
         else -> null
     }
-
-    return buildTranslationExercise(
-        id = id,
-        sourceText = item.ru,
-        correctWords = correctWords,
-        distractorPool = distractorPool,
-        hint = hint,
-    )
 }
 
 private fun selectLesson4Item(

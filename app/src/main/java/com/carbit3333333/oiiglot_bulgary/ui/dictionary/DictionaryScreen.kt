@@ -78,6 +78,7 @@ fun DictionaryScreen(
     onTrainAllClick: () -> Unit,
     onTrainGroupClick: (WordGroup) -> Unit,
     onWordClick: (Long) -> Unit,
+    onOpenLessonClick: (Int) -> Unit,
     viewModel: DictionaryViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -91,6 +92,7 @@ fun DictionaryScreen(
         onTrainAllClick = onTrainAllClick,
         onTrainGroupClick = onTrainGroupClick,
         onWordClick = onWordClick,
+        onOpenLessonClick = onOpenLessonClick,
         onQueryChange = viewModel::updateQuery,
         onGroupSelect = viewModel::selectGroup,
         onLoadMoreClick = viewModel::loadMoreWords,
@@ -108,6 +110,7 @@ fun DictionaryScreenContent(
     onTrainAllClick: () -> Unit,
     onTrainGroupClick: (WordGroup) -> Unit,
     onWordClick: (Long) -> Unit,
+    onOpenLessonClick: (Int) -> Unit,
     onQueryChange: (String) -> Unit,
     onGroupSelect: (Long?) -> Unit,
     onLoadMoreClick: () -> Unit,
@@ -395,9 +398,14 @@ fun DictionaryScreenContent(
                         DictionaryWordRow(
                             word = word,
                             onClick = {
-                                if (!word.isBuiltIn) {
+                                if (word.isBuiltIn) {
+                                    word.sourceLessonNumber?.let(onOpenLessonClick)
+                                } else {
                                     onWordClick(word.id)
                                 }
+                            },
+                            onOpenLessonClick = {
+                                word.sourceLessonNumber?.let(onOpenLessonClick)
                             },
                             onDeleteClick = {
                                 if (!word.isBuiltIn) {
@@ -604,6 +612,7 @@ private fun GroupTrainingCard(
 private fun DictionaryWordRow(
     word: DictionaryWordListItem,
     onClick: () -> Unit,
+    onOpenLessonClick: () -> Unit,
     onDeleteClick: () -> Unit,
     surfaceColor: Color,
     builtInSurfaceColor: Color,
@@ -616,7 +625,10 @@ private fun DictionaryWordRow(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(enabled = !word.isBuiltIn, onClick = onClick),
+            .clickable(
+                enabled = !word.isBuiltIn || word.sourceLessonNumber != null,
+                onClick = onClick,
+            ),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = if (word.isBuiltIn) builtInSurfaceColor else surfaceColor
@@ -678,6 +690,21 @@ private fun DictionaryWordRow(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
+                if (word.isBuiltIn && word.sourceLessonNumber != null) {
+                    Spacer(modifier = Modifier.height(10.dp))
+                    OutlinedButton(
+                        onClick = onOpenLessonClick,
+                        shape = RoundedCornerShape(999.dp),
+                        border = BorderStroke(1.dp, builtInBadgeColor.copy(alpha = 0.35f)),
+                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.dictionary_open_lesson_action),
+                            color = builtInBadgeColor,
+                            style = MaterialTheme.typography.labelLarge,
+                        )
+                    }
+                }
             }
 
             if (!word.isBuiltIn) {
@@ -692,6 +719,12 @@ private fun DictionaryWordRow(
                 Text(
                     text = ">",
                     color = bodyColor,
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            } else if (word.sourceLessonNumber != null) {
+                Text(
+                    text = ">",
+                    color = builtInBadgeColor,
                     style = MaterialTheme.typography.titleMedium,
                 )
             }
@@ -806,6 +839,7 @@ private fun DictionaryScreenContentPreview() {
             onTrainAllClick = {},
             onTrainGroupClick = {},
             onWordClick = {},
+            onOpenLessonClick = {},
             onQueryChange = {},
             onGroupSelect = {},
             onLoadMoreClick = {},

@@ -163,4 +163,5 @@
     <string name="dictionary_course_group_name">Слова уроків</string>
     <string name="dictionary_course_word_badge">З курсу</string>
     <string name="dictionary_course_lesson_badge">Урок %1$d</string>
+    <string name="dictionary_open_lesson_action">До уроку</string>
 </resources>

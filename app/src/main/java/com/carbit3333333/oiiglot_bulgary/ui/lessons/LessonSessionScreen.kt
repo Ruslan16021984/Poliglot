@@ -2,7 +2,6 @@ package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -131,14 +130,12 @@ fun LessonSessionScreenContent(
 ) {
     val currentExercise = uiState.currentExercise
     val colorScheme = MaterialTheme.colorScheme
-    val isDarkTheme = isSystemInDarkTheme()
-    val elevatedCardColor = if (isDarkTheme) colorScheme.surfaceContainer else colorScheme.surfaceContainerLow
-    val wordCardColor = if (isDarkTheme) colorScheme.surfaceContainerHigh else colorScheme.surfaceContainerLow
+    val palette = rememberLessonSessionPalette()
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorScheme.background)
+            .background(palette.pageBackground)
             .clickable(
                 enabled = uiState.currentResult == ExerciseResult.WRONG,
                 indication = null,
@@ -158,10 +155,11 @@ fun LessonSessionScreenContent(
                 correctCount = uiState.correctCount,
                 wrongCount = uiState.wrongCount,
                 onBackClick = onBackClick,
-                containerColor = colorScheme.primary,
-                onPrimaryColor = colorScheme.onPrimary,
-                correctAccent = colorScheme.tertiary,
-                wrongAccent = colorScheme.error,
+                containerColor = palette.topBar,
+                onPrimaryColor = palette.topBarText,
+                correctAccent = palette.counterCorrect,
+                wrongAccent = palette.counterWrong,
+                counterSurface = palette.counterSurface,
             )
 
             if (currentExercise != null) {
@@ -169,12 +167,13 @@ fun LessonSessionScreenContent(
 
                 Card(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = elevatedCardColor
+                        containerColor = palette.cardSurface
                     ),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, palette.cardBorder),
                 ) {
                     Column(
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp)
@@ -183,7 +182,7 @@ fun LessonSessionScreenContent(
                             text = currentExercise.sourceText,
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.SemiBold,
-                            color = colorScheme.onSurface,
+                            color = palette.titleText,
                         )
 
                         currentExercise.hint?.let {
@@ -192,7 +191,7 @@ fun LessonSessionScreenContent(
                             Text(
                                 text = it,
                                 style = MaterialTheme.typography.bodySmall,
-                                color = colorScheme.onSurfaceVariant
+                                color = palette.bodyText
                             )
                         }
                     }
@@ -229,8 +228,8 @@ fun LessonSessionScreenContent(
                     AnswerArea(
                         selectedWords = uiState.selectedWords,
                         onWordClick = onSelectedWordClick,
-                        containerColor = elevatedCardColor,
-                        chipColor = if (isDarkTheme) colorScheme.secondaryContainer.copy(alpha = 0.92f) else colorScheme.secondaryContainer,
+                        containerColor = palette.cardSurface,
+                        chipColor = palette.selectedChipSurface,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp)
@@ -242,7 +241,9 @@ fun LessonSessionScreenContent(
                         words = currentExercise.availableWords,
                         selectedWords = uiState.selectedWords,
                         onWordClick = onWordClick,
-                        cardColor = wordCardColor,
+                        cardColor = palette.cardSurface,
+                        cardBorderColor = palette.cardBorder,
+                        textColor = palette.titleText,
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f)
@@ -260,7 +261,7 @@ fun LessonSessionScreenContent(
                                 Text(
                                     text = uiState.praiseText ?: "",
                                     style = MaterialTheme.typography.displayMedium,
-                                    color = colorScheme.tertiary
+                                    color = palette.counterCorrect
                                 )
                             }
 
@@ -268,7 +269,7 @@ fun LessonSessionScreenContent(
                                 Text(
                                     text = stringResource(R.string.lesson_session_wrong_continue),
                                     style = MaterialTheme.typography.bodyLarge,
-                                    color = colorScheme.onSurfaceVariant,
+                                    color = palette.bodyText,
                                     modifier = Modifier.padding(horizontal = 24.dp)
                                 )
                             }
@@ -300,8 +301,10 @@ fun LessonSessionScreenContent(
                         .padding(horizontal = 16.dp)
                         .padding(top = 12.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = colorScheme.primary,
-                        contentColor = colorScheme.onPrimary
+                        containerColor = palette.primaryButton,
+                        contentColor = palette.primaryButtonText,
+                        disabledContainerColor = palette.disabledButton,
+                        disabledContentColor = palette.disabledButtonText,
                     )
                 ) {
                     Text(stringResource(R.string.common_check))
@@ -330,6 +333,7 @@ private fun SessionTopBar(
     onPrimaryColor: Color,
     correctAccent: Color,
     wrongAccent: Color,
+    counterSurface: Color,
 ) {
     Row(
         modifier = Modifier
@@ -398,16 +402,16 @@ private fun CounterItem(
 private fun InstructionBlock(
     text: String
 ) {
-    val colorScheme = MaterialTheme.colorScheme
+    val palette = rememberLessonSessionPalette()
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFD9EBD7))
+            .background(palette.instructionSurface)
             .padding(horizontal = 16.dp, vertical = 12.dp)
     ) {
         Text(
             text = text,
-            color = colorScheme.onTertiaryContainer,
+            color = palette.instructionText,
             style = MaterialTheme.typography.titleMedium
         )
     }
@@ -420,6 +424,7 @@ private fun WrongAnswerBlock(
     onSpeakClick: (String) -> Unit
 ) {
     val colorScheme = MaterialTheme.colorScheme
+    val palette = rememberLessonSessionPalette()
     Column {
         Box(
             modifier = Modifier
@@ -437,13 +442,13 @@ private fun WrongAnswerBlock(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFD9EBD7))
+                .background(palette.instructionSurface)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = correctText,
-                color = colorScheme.onTertiaryContainer,
+                color = palette.instructionText,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.weight(1f)
             )
@@ -454,7 +459,7 @@ private fun WrongAnswerBlock(
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.VolumeUp,
                     contentDescription = stringResource(R.string.common_listen),
-                    tint = colorScheme.onTertiaryContainer,
+                    tint = palette.instructionText,
                 )
             }
         }
@@ -467,18 +472,18 @@ private fun CorrectAnswerBlock(
     praiseText: String?,
     onSpeakClick: (String) -> Unit
 ) {
-    val colorScheme = MaterialTheme.colorScheme
+    val palette = rememberLessonSessionPalette()
     Column {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFD9EBD7))
+                .background(palette.instructionSurface)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = answerText,
-                color = colorScheme.onTertiaryContainer,
+                color = palette.instructionText,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.weight(1f)
             )
@@ -489,7 +494,7 @@ private fun CorrectAnswerBlock(
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.VolumeUp,
                     contentDescription = stringResource(R.string.common_listen),
-                    tint = colorScheme.onTertiaryContainer,
+                    tint = palette.instructionText,
                 )
             }
         }
@@ -509,17 +514,18 @@ private fun AnswerArea(
     chipColor: Color,
     modifier: Modifier = Modifier
 ) {
-    val colorScheme = MaterialTheme.colorScheme
+    val palette = rememberLessonSessionPalette()
     Card(
         modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = containerColor)
+        colors = CardDefaults.cardColors(containerColor = containerColor),
+        border = androidx.compose.foundation.BorderStroke(1.dp, palette.cardBorder),
     ) {
         if (selectedWords.isEmpty()) {
             Text(
                 text = stringResource(R.string.lesson_session_select_words),
                 modifier = Modifier.padding(16.dp),
-                color = colorScheme.onSurfaceVariant,
+                color = palette.bodyText,
                 style = MaterialTheme.typography.bodyLarge
             )
         } else {
@@ -533,7 +539,7 @@ private fun AnswerArea(
                         text = word,
                         onClick = { onWordClick(word) },
                         containerColor = chipColor,
-                        textColor = colorScheme.onSecondaryContainer,
+                        textColor = palette.selectedChipText,
                     )
                 }
             }
@@ -571,27 +577,34 @@ private fun WordGrid(
     selectedWords: List<String>,
     onWordClick: (String) -> Unit,
     cardColor: Color,
+    cardBorderColor: Color,
+    textColor: Color,
     modifier: Modifier = Modifier
 ) {
     val hiddenWords = selectedWords.toMutableList()
     val visibleWords = words.filter { word ->
         hiddenWords.remove(word).not()
     }
+    val gridVerticalPadding = 6.dp
+    val gridHorizontalPadding = 4.dp
 
     BoxWithConstraints(modifier = modifier) {
         val spacing = 12.dp
+        val availableWidth = (maxWidth - gridHorizontalPadding * 2).coerceAtLeast(0.dp)
         val columns = when {
             maxWidth < 220.dp -> 1
             maxWidth < 840.dp -> 2
             else -> 3
         }
-        val cardWidth = ((maxWidth - spacing * (columns - 1)) / columns)
+        val cardWidth = ((availableWidth - spacing * (columns - 1)) / columns)
             .coerceAtLeast(110.dp)
             .coerceAtMost(220.dp)
         val baseCardHeight = 88.dp
         val minRows = 2
         val currentRows = ceil(visibleWords.size / columns.toFloat()).toInt().coerceAtLeast(minRows)
-        val minGridHeight = (baseCardHeight * currentRows) + (spacing * (currentRows - 1))
+        val minGridHeight = (baseCardHeight * currentRows) +
+            (spacing * (currentRows - 1)) +
+            (gridVerticalPadding * 2)
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(columns),
@@ -599,6 +612,10 @@ private fun WordGrid(
                 .fillMaxWidth()
                 .heightIn(min = minGridHeight)
                 .animateContentSize(),
+            contentPadding = androidx.compose.foundation.layout.PaddingValues(
+                horizontal = gridHorizontalPadding,
+                vertical = gridVerticalPadding,
+            ),
             horizontalArrangement = Arrangement.spacedBy(spacing),
             verticalArrangement = Arrangement.spacedBy(spacing),
             userScrollEnabled = false
@@ -608,6 +625,8 @@ private fun WordGrid(
                     text = word,
                     onClick = { onWordClick(word) },
                     containerColor = cardColor,
+                    borderColor = cardBorderColor,
+                    textColor = textColor,
                     width = cardWidth,
                 )
             }
@@ -620,6 +639,8 @@ private fun WordButton(
     text: String,
     onClick: () -> Unit,
     containerColor: Color,
+    borderColor: Color,
+    textColor: Color,
     width: Dp,
 ) {
     val compact = width < 140.dp
@@ -637,7 +658,8 @@ private fun WordButton(
             .heightIn(min = 88.dp)
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = containerColor)
+        colors = CardDefaults.cardColors(containerColor = containerColor),
+        border = androidx.compose.foundation.BorderStroke(1.dp, borderColor),
     ) {
         Box(
             modifier = Modifier
@@ -647,7 +669,7 @@ private fun WordButton(
         ) {
             Text(
                 text = text,
-                color = MaterialTheme.colorScheme.onSurface,
+                color = textColor,
                 style = textStyle,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
@@ -662,15 +684,16 @@ private fun ProgressStrip(
     results: List<ExerciseResult>,
     modifier: Modifier = Modifier
 ) {
+    val palette = rememberLessonSessionPalette()
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         results.forEach { result ->
             val color = when (result) {
-                ExerciseResult.NONE -> MaterialTheme.colorScheme.outlineVariant
-                ExerciseResult.CORRECT -> Color(0xFF93F189)
-                ExerciseResult.WRONG -> MaterialTheme.colorScheme.error
+                ExerciseResult.NONE -> palette.progressIdle
+                ExerciseResult.CORRECT -> palette.progressCorrect
+                ExerciseResult.WRONG -> palette.progressWrong
             }
 
             Box(

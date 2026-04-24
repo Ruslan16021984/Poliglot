@@ -13,9 +13,10 @@ import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 internal object LessonSessionFactory {
     fun create(
         lessonId: Int,
-        assets: LessonSessionAssets
+        assets: LessonSessionAssets,
+        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
     ): LessonSession {
-        return when (lessonId) {
+        val session = when (lessonId) {
             1 -> LessonSession(
                 lessonId = 1,
                 lessonTitle = "Урок 1",
@@ -23,14 +24,14 @@ internal object LessonSessionFactory {
                     fixedSentences = assets.lesson1Sentences,
                     subjects = assets.lesson1Subjects,
                     templates = assets.lesson1Templates,
-                    verbs = assets.lesson1Verbs
-                )
+                    verbs = assets.lesson1Verbs,
+                ),
             )
 
             2 -> LessonSession(
                 lessonId = 2,
                 lessonTitle = "Глагол \"съм\"",
-                exercises = Lesson2RealGenerator.generateExercises()
+                exercises = Lesson2RealGenerator.generateExercises(),
             )
 
             3 -> LessonSession(
@@ -38,38 +39,41 @@ internal object LessonSessionFactory {
                 lessonTitle = "Прошедшее время",
                 exercises = generateLesson3Exercises(
                     subjectRuMap = assets.lesson3SubjectRu,
-                    verbs = assets.lesson3Verbs
-                )
+                    verbs = assets.lesson3Verbs,
+                ),
             )
 
             4 -> LessonSession(
                 lessonId = 4,
                 lessonTitle = "Предмет или действие",
-                exercises = generateLesson4Exercises(assets.lesson4Items)
+                exercises = generateLesson4Exercises(
+                    items = assets.lesson4Items,
+                    exerciseLocale = exerciseLocale,
+                ),
             )
 
             5 -> LessonSession(
                 lessonId = 5,
                 lessonTitle = "Могу, хочу, должен",
-                exercises = Lesson5RealGenerator.generateExercises()
+                exercises = Lesson5RealGenerator.generateExercises(),
             )
 
             6 -> LessonSession(
                 lessonId = 6,
                 lessonTitle = "Предлоги и существительные",
-                exercises = Lesson6RealGenerator.generateExercises()
+                exercises = Lesson6RealGenerator.generateExercises(),
             )
 
             7 -> LessonSession(
                 lessonId = 7,
                 lessonTitle = "Моя книга: местоимения и артикль",
-                exercises = Lesson7RealGenerator.generateExercises(assets.lesson7Templates)
+                exercises = Lesson7RealGenerator.generateExercises(assets.lesson7Templates),
             )
 
             8 -> LessonSession(
                 lessonId = 8,
                 lessonTitle = "Сравнение",
-                exercises = Lesson8RealGenerator.generateExercises(assets.lesson8Templates)
+                exercises = Lesson8RealGenerator.generateExercises(assets.lesson8Templates),
             )
 
             9 -> LessonSession(
@@ -78,8 +82,8 @@ internal object LessonSessionFactory {
                 exercises = Lesson9RealGenerator.generateExercises(
                     numbers = assets.lesson9Numbers,
                     objects = assets.lesson9Objects,
-                    templates = assets.lesson9Templates
-                )
+                    templates = assets.lesson9Templates,
+                ),
             )
 
             10 -> LessonSession(
@@ -93,15 +97,24 @@ internal object LessonSessionFactory {
                     questionActions = assets.lesson10QuestionActions,
                     templates = assets.lesson10Templates,
                     intervalTemplates = assets.lesson10IntervalTemplates,
-                    questionTemplates = assets.lesson10QuestionTemplates
-                )
+                    questionTemplates = assets.lesson10QuestionTemplates,
+                ),
             )
 
             else -> LessonSession(
                 lessonId = lessonId,
                 lessonTitle = "Урок $lessonId",
-                exercises = generateLesson1Exercises()
+                exercises = generateLesson1Exercises(),
             )
+        }
+
+        return if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+            session.copy(
+                lessonTitle = UkrainianLessonStrings.lessonTitle(session.lessonId),
+                exercises = localizeLessonExercises(session.exercises, exerciseLocale),
+            )
+        } else {
+            session
         }
     }
 }

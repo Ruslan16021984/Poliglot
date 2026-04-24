@@ -6,7 +6,8 @@ import kotlinx.serialization.Serializable
 data class Lesson4Item(
     val type: Type,
     val ru: String,
-    val correctWords: List<String>
+    val correctWords: List<String>,
+    val uk: String? = null,
 ) {
     @Serializable
     enum class Type {

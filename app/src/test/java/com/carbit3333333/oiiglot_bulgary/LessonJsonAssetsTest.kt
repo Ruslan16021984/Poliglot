@@ -89,8 +89,10 @@ class LessonJsonAssetsTest {
         assertTrue(assets.lesson3Verbs.any { it.ruPast["То"] == "имело" })
 
         assertTrue(assets.lesson4Items.all { it.ru.trim().split(Regex("\\s+")).size >= 3 })
+        assertTrue(assets.lesson4Items.all { !it.uk.isNullOrBlank() })
         assertTrue(assets.lesson4Items.none { it.correctWords.size < 3 })
         assertTrue(assets.lesson4Items.any { it.ru == "я хочу эту воду" })
+        assertTrue(assets.lesson4Items.any { it.uk == "я хочу цю воду" })
         assertTrue(assets.lesson4Items.any { it.ru == "я люблю читать" })
         assertTrue(assets.lesson4Items.any { it.ru == "мы хотим работать" })
         assertTrue(assets.lesson4Items.any { it.ru == "мы хотим читать эту книгу" })

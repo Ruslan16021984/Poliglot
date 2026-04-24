@@ -85,6 +85,9 @@ fun AppNavGraph() {
                 },
                 onWordClick = { wordId ->
                     navController.navigate(Destinations.dictionaryEditRoute(wordId))
+                },
+                onOpenLessonClick = { lessonId ->
+                    navController.navigate(Destinations.lessonDetailsRoute(lessonId))
                 }
             )
         }
