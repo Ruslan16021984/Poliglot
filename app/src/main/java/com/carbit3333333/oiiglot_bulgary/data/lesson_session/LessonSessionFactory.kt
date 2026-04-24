@@ -67,13 +67,19 @@ internal object LessonSessionFactory {
             7 -> LessonSession(
                 lessonId = 7,
                 lessonTitle = "Моя книга: местоимения и артикль",
-                exercises = Lesson7RealGenerator.generateExercises(assets.lesson7Templates),
+                exercises = Lesson7RealGenerator.generateExercises(
+                    templates = assets.lesson7Templates,
+                    exerciseLocale = exerciseLocale,
+                ),
             )
 
             8 -> LessonSession(
                 lessonId = 8,
                 lessonTitle = "Сравнение",
-                exercises = Lesson8RealGenerator.generateExercises(assets.lesson8Templates),
+                exercises = Lesson8RealGenerator.generateExercises(
+                    templates = assets.lesson8Templates,
+                    exerciseLocale = exerciseLocale,
+                ),
             )
 
             9 -> LessonSession(
@@ -111,7 +117,11 @@ internal object LessonSessionFactory {
         return if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
             session.copy(
                 lessonTitle = UkrainianLessonStrings.lessonTitle(session.lessonId),
-                exercises = localizeLessonExercises(session.exercises, exerciseLocale),
+                exercises = if (session.lessonId in setOf(4, 7, 8)) {
+                    localizeLessonExercisesUsingExistingSource(session.exercises, exerciseLocale)
+                } else {
+                    localizeLessonExercises(session.exercises, exerciseLocale)
+                },
             )
         } else {
             session

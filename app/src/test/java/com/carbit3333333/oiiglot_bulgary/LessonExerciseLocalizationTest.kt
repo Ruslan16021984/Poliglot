@@ -1,8 +1,10 @@
 package com.carbit3333333.oiiglot_bulgary
 
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonExerciseLocale
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonTemplateAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generateLesson4Exercise
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.localizeLessonExercises
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson7RealGenerator
 import com.carbit3333333.oiiglot_bulgary.model.Lesson4Item
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 import org.junit.Assert.assertEquals
@@ -54,5 +56,31 @@ class LessonExerciseLocalizationTest {
         )
 
         assertEquals("я хочу цю книгу", exercise.sourceText)
+    }
+
+    @Test
+    fun `lesson 7 uses exact ukrainian source text when it exists`() {
+        val exercise = Lesson7RealGenerator.generateExercises(
+            templates = listOf(
+                LessonTemplateAsset(
+                    ru = "Это моя книга",
+                    uk = "Це моя книга",
+                    bgWords = listOf("Това", "е", "моята", "книга"),
+                ),
+                LessonTemplateAsset(
+                    ru = "Это мой друг",
+                    uk = "Це мій друг",
+                    bgWords = listOf("Това", "е", "моят", "приятел"),
+                ),
+                LessonTemplateAsset(
+                    ru = "Это наша машина",
+                    uk = "Це наша машина",
+                    bgWords = listOf("Това", "е", "нашата", "кола"),
+                ),
+            ),
+            exerciseLocale = LessonExerciseLocale.Ukrainian,
+        ).first()
+
+        assertEquals("Це моя книга", exercise.sourceText)
     }
 }

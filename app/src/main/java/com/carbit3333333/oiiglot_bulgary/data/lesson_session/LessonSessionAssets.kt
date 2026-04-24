@@ -9,7 +9,8 @@ import kotlinx.serialization.json.Json
 internal data class LessonTemplateAsset(
     val ru: String,
     val bgWords: List<String>,
-    val hint: String? = null
+    val hint: String? = null,
+    val uk: String? = null,
 )
 
 @Serializable

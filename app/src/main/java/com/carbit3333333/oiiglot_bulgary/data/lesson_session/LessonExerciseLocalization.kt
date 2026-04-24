@@ -26,9 +26,36 @@ internal fun localizeLessonExercises(
 ): List<LessonExercise> {
     if (locale == LessonExerciseLocale.Russian) return exercises
 
+    return localizeLessonExercisesInternal(
+        exercises = exercises,
+        translateSourceText = true,
+    )
+}
+
+internal fun localizeLessonExercisesUsingExistingSource(
+    exercises: List<LessonExercise>,
+    locale: LessonExerciseLocale,
+): List<LessonExercise> {
+    if (locale == LessonExerciseLocale.Russian) return exercises
+
+    return localizeLessonExercisesInternal(
+        exercises = exercises,
+        translateSourceText = false,
+    )
+}
+
+private fun localizeLessonExercisesInternal(
+    exercises: List<LessonExercise>,
+    translateSourceText: Boolean,
+): List<LessonExercise> {
+
     return exercises.map { exercise ->
         exercise.copy(
-            sourceText = RussianToUkrainianLessonTranslator.translate(exercise.sourceText),
+            sourceText = if (translateSourceText) {
+                RussianToUkrainianLessonTranslator.translate(exercise.sourceText)
+            } else {
+                exercise.sourceText
+            },
             instruction = UkrainianLessonStrings.translationInstruction,
             hint = exercise.hint?.let(RussianToUkrainianLessonTranslator::translateHint),
         )
