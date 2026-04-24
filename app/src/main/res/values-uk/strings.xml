@@ -125,6 +125,10 @@
     <string name="lesson_session_wrong_continue">Натисніть на екран, щоб перейти до наступного тесту.</string>
     <string name="lesson_session_no_exercises">Немає вправ</string>
     <string name="lesson_session_select_words">Виберіть слова</string>
+    <string name="lesson_session_voice_input">Голосове введення відповіді</string>
+    <string name="lesson_session_voice_prompt">Скажіть відповідь болгарською</string>
+    <string name="lesson_session_voice_unavailable">Голосове введення недоступне на цьому пристрої</string>
+    <string name="lesson_session_voice_no_match">Не вдалося розпізнати відповідні слова</string>
     <string name="lesson_session_praise_bravo">Браво!</string>
     <string name="lesson_session_praise_super">Супер!</string>
     <string name="lesson_session_praise_wonderful">Чудово!</string>

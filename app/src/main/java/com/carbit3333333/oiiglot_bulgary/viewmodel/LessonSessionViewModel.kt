@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class LessonSessionViewModel(
     application: Application
@@ -90,6 +91,33 @@ class LessonSessionViewModel(
         mutable.remove(word)
 
         _uiState.value = state.copy(selectedWords = mutable)
+        saveCurrentSession()
+    }
+
+    fun applyRecognizedAnswer(recognizedText: String) {
+        val state = _uiState.value
+        val exercise = state.currentExercise ?: return
+        if (state.currentResult != ExerciseResult.NONE) return
+
+        val recognizedTokens = tokenizeRecognizedAnswer(recognizedText)
+        if (recognizedTokens.isEmpty()) return
+
+        val availableWords = exercise.availableWords.toMutableList()
+        val matchedWords = mutableListOf<String>()
+
+        recognizedTokens.forEach { recognizedToken ->
+            val matchedIndex = availableWords.indexOfFirst { availableWord ->
+                normalizeRecognizedToken(availableWord) == recognizedToken
+            }
+
+            if (matchedIndex >= 0) {
+                matchedWords += availableWords.removeAt(matchedIndex)
+            }
+        }
+
+        if (matchedWords.isEmpty()) return
+
+        _uiState.value = state.copy(selectedWords = matchedWords)
         saveCurrentSession()
     }
 
@@ -244,5 +272,19 @@ class LessonSessionViewModel(
         viewModelScope.launch {
             sessionStore.saveSession(currentLessonId, _uiState.value)
         }
+    }
+
+    private fun tokenizeRecognizedAnswer(recognizedText: String): List<String> {
+        return recognizedText
+            .split(Regex("\\s+"))
+            .map(::normalizeRecognizedToken)
+            .filter { it.isNotBlank() }
+    }
+
+    private fun normalizeRecognizedToken(token: String): String {
+        return token
+            .lowercase(Locale.ROOT)
+            .replace("ѝ", "и")
+            .replace(Regex("[^\\p{L}\\p{Nd}]"), "")
     }
 }

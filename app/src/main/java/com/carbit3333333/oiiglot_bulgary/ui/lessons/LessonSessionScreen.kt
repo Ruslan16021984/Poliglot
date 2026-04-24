@@ -1,5 +1,12 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.speech.RecognizerIntent
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -29,6 +36,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -63,6 +71,7 @@ import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.utils.AppTextToSpeech
 import com.carbit3333333.oiiglot_bulgary.viewmodel.LessonSessionViewModel
 import kotlin.math.ceil
+import java.util.Locale
 
 @Composable
 fun LessonSessionScreen(
@@ -74,6 +83,25 @@ fun LessonSessionScreen(
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
     val textToSpeech = remember { AppTextToSpeech(context) }
+    val speechRecognizerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        val spokenText = result.data
+            ?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            ?.firstOrNull()
+            ?.trim()
+            .orEmpty()
+
+        if (result.resultCode == Activity.RESULT_OK && spokenText.isNotBlank()) {
+            viewModel.applyRecognizedAnswer(spokenText)
+        } else {
+            Toast.makeText(
+                context,
+                context.getString(R.string.lesson_session_voice_no_match),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
     LaunchedEffect(lessonId) {
         viewModel.loadLessonSession(lessonId)
@@ -114,6 +142,31 @@ fun LessonSessionScreen(
         onWrongAnswerScreenTap = viewModel::onWrongAnswerScreenTap,
         onSpeakClick = { text ->
             textToSpeech.speak(text)
+        },
+        onVoiceInputClick = {
+            val speechIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                putExtra(
+                    RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+                )
+                putExtra(RecognizerIntent.EXTRA_LANGUAGE, "bg-BG")
+                putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "bg-BG")
+                putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_PREFERENCE, "bg-BG")
+                putExtra(
+                    RecognizerIntent.EXTRA_PROMPT,
+                    context.getString(R.string.lesson_session_voice_prompt)
+                )
+            }
+
+            try {
+                speechRecognizerLauncher.launch(speechIntent)
+            } catch (_: ActivityNotFoundException) {
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.lesson_session_voice_unavailable),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     )
 }
@@ -126,7 +179,8 @@ fun LessonSessionScreenContent(
     onSelectedWordClick: (String) -> Unit,
     onCheckClick: () -> Unit,
     onWrongAnswerScreenTap: () -> Unit,
-    onSpeakClick: (String) -> Unit
+    onSpeakClick: (String) -> Unit,
+    onVoiceInputClick: () -> Unit
 ) {
     val currentExercise = uiState.currentExercise
     val colorScheme = MaterialTheme.colorScheme
@@ -180,7 +234,7 @@ fun LessonSessionScreenContent(
                     ) {
                         Text(
                             text = currentExercise.sourceText,
-                            style = MaterialTheme.typography.headlineSmall,
+                            style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.SemiBold,
                             color = palette.titleText,
                         )
@@ -293,21 +347,49 @@ fun LessonSessionScreenContent(
             }
 
             if (uiState.currentResult == ExerciseResult.NONE && currentExercise != null) {
-                Button(
-                    onClick = onCheckClick,
-                    enabled = uiState.selectedWords.isNotEmpty(),
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp)
                         .padding(top = 12.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = palette.primaryButton,
-                        contentColor = palette.primaryButtonText,
-                        disabledContainerColor = palette.disabledButton,
-                        disabledContentColor = palette.disabledButtonText,
-                    )
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(stringResource(R.string.common_check))
+                    Button(
+                        onClick = onCheckClick,
+                        enabled = uiState.selectedWords.isNotEmpty(),
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(42.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = palette.primaryButton,
+                            contentColor = palette.primaryButtonText,
+                            disabledContainerColor = palette.disabledButton,
+                            disabledContentColor = palette.disabledButtonText,
+                        )
+                    ) {
+                        Text(stringResource(R.string.common_check))
+                    }
+
+                    Spacer(modifier = Modifier.width(12.dp))
+
+                    Surface(
+                        modifier = Modifier
+                            .width(42.dp)
+                            .height(42.dp)
+                            .clickable(onClick = onVoiceInputClick),
+                        shape = CircleShape,
+                        color = palette.primaryButton,
+                        tonalElevation = 0.dp,
+                        shadowElevation = 2.dp
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Icon(
+                                imageVector = Icons.Filled.Mic,
+                                contentDescription = stringResource(R.string.lesson_session_voice_input),
+                                tint = palette.primaryButtonText
+                            )
+                        }
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -586,6 +668,7 @@ private fun WordGrid(
         hiddenWords.remove(word).not()
     }
     val gridVerticalPadding = 6.dp
+    val gridBottomPadding = 18.dp
     val gridHorizontalPadding = 4.dp
 
     BoxWithConstraints(modifier = modifier) {
@@ -613,12 +696,14 @@ private fun WordGrid(
                 .heightIn(min = minGridHeight)
                 .animateContentSize(),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                horizontal = gridHorizontalPadding,
-                vertical = gridVerticalPadding,
+                start = gridHorizontalPadding,
+                top = gridVerticalPadding,
+                end = gridHorizontalPadding,
+                bottom = gridVerticalPadding + gridBottomPadding,
             ),
             horizontalArrangement = Arrangement.spacedBy(spacing),
             verticalArrangement = Arrangement.spacedBy(spacing),
-            userScrollEnabled = false
+            userScrollEnabled = true
         ) {
             items(visibleWords) { word ->
                 WordButton(
@@ -655,7 +740,7 @@ private fun WordButton(
     Card(
         modifier = Modifier
             .width(width)
-            .heightIn(min = 88.dp)
+            .heightIn(min = 80.dp)
             .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = containerColor),
@@ -720,11 +805,11 @@ private fun LessonSessionScreenPreview() {
                             sourceText = "Ты будешь есть?",
                             instruction = "Переведите предложение",
                             correctAnswerWords = listOf("Ти", "ще", "ядеш", "ли"),
-                            availableWords = listOf("Ти", "ще", "ядеш", "ли", "Аз", "не", "правя", "да")
+                            availableWords = listOf("Ти", "ще", "ядеш", "ли", "Аз", "не", "правяправяправя", "да")
                         )
                     ),
                     currentExerciseIndex = 0,
-                    selectedWords = listOf("Ти", "ще"),
+                    selectedWords = listOf(),
                     results = listOf(
                         ExerciseResult.CORRECT,
                         ExerciseResult.WRONG,
@@ -747,7 +832,8 @@ private fun LessonSessionScreenPreview() {
                 onSelectedWordClick = {},
                 onCheckClick = {},
                 onWrongAnswerScreenTap = {},
-                onSpeakClick = {}
+                onSpeakClick = {},
+                onVoiceInputClick = {}
             )
         }
     }
@@ -787,7 +873,8 @@ private fun LessonSessionWrongPreview() {
                 onSelectedWordClick = {},
                 onCheckClick = {},
                 onWrongAnswerScreenTap = {},
-                onSpeakClick = {}
+                onSpeakClick = {},
+                onVoiceInputClick = {}
             )
         }
     }
@@ -836,7 +923,8 @@ private fun LessonSessionCorrectPreview() {
                 onSelectedWordClick = {},
                 onCheckClick = {},
                 onWrongAnswerScreenTap = {},
-                onSpeakClick = {}
+                onSpeakClick = {},
+                onVoiceInputClick = {}
             )
         }
     }
