@@ -86,15 +86,15 @@ internal object Lesson10RealGenerator {
         val template = templates[sequenceIndex % templates.size]
 
         val sourceTemplateTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianTemplateTokens(template.ukTokens)
             LessonExerciseLocale.Russian -> template.ruTokens
         }
         val sourceTimeTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> timePhrase.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianTimePhrase(timePhrase.ukTokens)
             LessonExerciseLocale.Russian -> timePhrase.ruTokens
         }
         val sourceActionTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> action.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianActionPhrase(action.ukTokens)
             LessonExerciseLocale.Russian -> action.ruTokens
         }
 
@@ -141,19 +141,19 @@ internal object Lesson10RealGenerator {
         val template = templates[sequenceIndex % templates.size]
 
         val sourceTemplateTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianTemplateTokens(template.ukTokens)
             LessonExerciseLocale.Russian -> template.ruTokens
         }
         val sourceActionTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> action.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianActionPhrase(action.ukTokens)
             LessonExerciseLocale.Russian -> action.ruTokens
         }
         val sourceFromTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> interval.ukFromTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianIntervalTokens(interval.ukFromTokens)
             LessonExerciseLocale.Russian -> interval.ruFromTokens
         }
         val sourceToTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> interval.ukToTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianIntervalTokens(interval.ukToTokens)
             LessonExerciseLocale.Russian -> interval.ruToTokens
         }
 
@@ -200,11 +200,11 @@ internal object Lesson10RealGenerator {
         val template = templates[sequenceIndex % templates.size]
 
         val sourceTemplateTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianTemplateTokens(template.ukTokens)
             LessonExerciseLocale.Russian -> template.ruTokens
         }
         val sourceActionTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> action.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianQuestionAction(action.ukTokens)
             LessonExerciseLocale.Russian -> action.ruTokens
         }
 
@@ -254,6 +254,161 @@ internal object Lesson10RealGenerator {
     private fun capitalizeSentence(text: String): String {
         return text.replaceFirstChar { char ->
             if (char.isLowerCase()) char.titlecase() else char.toString()
+        }
+    }
+
+    private fun fallbackUkrainianTemplateTokens(tokens: List<String>): List<String> {
+        return when (tokens.joinToString(" ")) {
+            "{time} {action}" -> listOf("{time}", "{action}")
+            "{action} {time}" -> listOf("{action}", "{time}")
+            "{action} {from} {to}" -> listOf("{action}", "{from}", "{to}")
+            "{from} {to} {action}" -> listOf("{from}", "{to}", "{action}")
+            "Когда {action}" -> listOf("Коли", "{action}")
+            "Во сколько часов {action}" -> listOf("О", "котрій", "годині", "{action}")
+            else -> fallbackUkrainianTokens(tokens)
+        }
+    }
+
+    private fun fallbackUkrainianTimePhrase(tokens: List<String>): List<String> {
+        return when (tokens.joinToString(" ")) {
+            "В понедельник" -> listOf("У", "понеділок")
+            "Во вторник" -> listOf("У", "вівторок")
+            "В среду" -> listOf("У", "середу")
+            "В четверг" -> listOf("У", "четвер")
+            "В пятницу" -> listOf("У", "п'ятницю")
+            "Утром" -> listOf("Вранці")
+            "Днём" -> listOf("Вдень")
+            "Вечером" -> listOf("Увечері")
+            "Ночью" -> listOf("Вночі")
+            "Сегодня" -> listOf("Сьогодні")
+            "Завтра" -> listOf("Завтра")
+            "После работы" -> listOf("Після", "роботи")
+            "Перед обедом" -> listOf("Перед", "обідом")
+            "В час дня" -> listOf("О", "першій", "годині", "дня")
+            "В два часа" -> listOf("О", "другій", "годині")
+            "В три часа" -> listOf("О", "третій", "годині")
+            "В пять часов" -> listOf("О", "п'ятій", "годині")
+            else -> fallbackUkrainianTokens(tokens)
+        }
+    }
+
+    private fun fallbackUkrainianActionPhrase(tokens: List<String>): List<String> {
+        return when (tokens.joinToString(" ")) {
+            "работаю" -> listOf("працюю")
+            "у меня урок" -> listOf("у", "мене", "урок")
+            "учусь" -> listOf("навчаюся")
+            "завтракаю" -> listOf("снідаю")
+            "пью кофе" -> listOf("п'ю", "каву")
+            "ужинаю" -> listOf("вечеряю")
+            "отдыхаю" -> listOf("відпочиваю")
+            "иду в магазин" -> listOf("йду", "до", "магазину")
+            "возвращаюсь домой" -> listOf("повертаюся", "додому")
+            "обедаю" -> listOf("обідаю")
+            "читаю дома" -> listOf("читаю", "вдома")
+            "иду домой" -> listOf("йду", "додому")
+            "читаю" -> listOf("читаю")
+            "сплю" -> listOf("сплю")
+            else -> fallbackUkrainianTokens(tokens)
+        }
+    }
+
+    private fun fallbackUkrainianQuestionAction(tokens: List<String>): List<String> {
+        return when (tokens.joinToString(" ")) {
+            "ты работаешь" -> listOf("ти", "працюєш")
+            "у тебя урок" -> listOf("у", "тебе", "урок")
+            "ты учишься" -> listOf("ти", "навчаєшся")
+            "ты завтракаешь" -> listOf("ти", "снідаєш")
+            "ты пьёшь кофе" -> listOf("ти", "п'єш", "каву")
+            "ты ужинаешь" -> listOf("ти", "вечеряєш")
+            "ты отдыхаешь" -> listOf("ти", "відпочиваєш")
+            "ты идёшь в магазин" -> listOf("ти", "йдеш", "до", "магазину")
+            "ты возвращаешься домой" -> listOf("ти", "повертаєшся", "додому")
+            "ты обедаешь" -> listOf("ти", "обідаєш")
+            "ты читаешь дома" -> listOf("ти", "читаєш", "вдома")
+            "ты идёшь домой" -> listOf("ти", "йдеш", "додому")
+            else -> fallbackUkrainianTokens(tokens)
+        }
+    }
+
+    private fun fallbackUkrainianIntervalTokens(tokens: List<String>): List<String> {
+        return when (tokens.joinToString(" ")) {
+            "с девяти" -> listOf("з", "дев'ятої")
+            "до пяти" -> listOf("до", "п'ятої")
+            "с двух" -> listOf("з", "другої")
+            "до трёх" -> listOf("до", "третьої")
+            "с часа" -> listOf("з", "першої")
+            "до двух" -> listOf("до", "другої")
+            else -> fallbackUkrainianTokens(tokens)
+        }
+    }
+
+    private fun fallbackUkrainianTokens(tokens: List<String>): List<String> {
+        return tokens.map { token ->
+            when (token) {
+                "В" -> "У"
+                "Во" -> "О"
+                "понедельник" -> "понеділок"
+                "вторник" -> "вівторок"
+                "среду" -> "середу"
+                "четверг" -> "четвер"
+                "пятницу" -> "п'ятницю"
+                "Утром" -> "Вранці"
+                "Днём" -> "Вдень"
+                "Вечером" -> "Увечері"
+                "Ночью" -> "Вночі"
+                "Сегодня" -> "Сьогодні"
+                "Завтра" -> "Завтра"
+                "После" -> "Після"
+                "работы" -> "роботи"
+                "Перед" -> "Перед"
+                "обедом" -> "обідом"
+                "час" -> "годину"
+                "дня" -> "дня"
+                "два" -> "два"
+                "три" -> "три"
+                "пять" -> "п'ять"
+                "часа" -> "години"
+                "часов" -> "годин"
+                "работаю" -> "працюю"
+                "у" -> "у"
+                "меня" -> "мене"
+                "урок" -> "урок"
+                "учусь" -> "навчаюся"
+                "завтракаю" -> "снідаю"
+                "пью" -> "п'ю"
+                "кофе" -> "каву"
+                "ужинаю" -> "вечеряю"
+                "отдыхаю" -> "відпочиваю"
+                "иду" -> "йду"
+                "в" -> "до"
+                "магазин" -> "магазину"
+                "возвращаюсь" -> "повертаюся"
+                "домой" -> "додому"
+                "обедаю" -> "обідаю"
+                "читаю" -> "читаю"
+                "дома" -> "вдома"
+                "с" -> "з"
+                "девяти" -> "дев'ятої"
+                "до" -> "до"
+                "пяти" -> "п'ятої"
+                "двух" -> "другої"
+                "трёх" -> "третьої"
+                "сплю" -> "сплю"
+                "ты" -> "ти"
+                "работаешь" -> "працюєш"
+                "тебя" -> "тебе"
+                "учишься" -> "навчаєшся"
+                "завтракаешь" -> "снідаєш"
+                "пьёшь" -> "п'єш"
+                "ужинаешь" -> "вечеряєш"
+                "отдыхаешь" -> "відпочиваєш"
+                "идёшь" -> "йдеш"
+                "Когда" -> "Коли"
+                "Когда?" -> "Коли?"
+                "Сколько" -> "Скільки"
+                "сколько" -> "скільки"
+                else -> token
+            }
         }
     }
 

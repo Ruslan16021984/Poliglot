@@ -303,4 +303,64 @@ class LessonExerciseLocalizationTest {
 
         assertEquals("У понеділок п'ю каву", exercise.sourceText)
     }
+
+    @Test
+    fun `lesson 10 fallback ukrainian time phrases sound natural`() {
+        val exercise = Lesson10RealGenerator.generateExercises(
+            timePhrases = listOf(
+                Lesson10PhraseAsset(
+                    ruTokens = listOf("В", "два", "часа"),
+                    bgTokens = listOf("В", "два", "часа"),
+                ),
+            ),
+            routineActions = listOf(
+                Lesson10PhraseAsset(
+                    ruTokens = listOf("работаю"),
+                    bgTokens = listOf("работя"),
+                ),
+            ),
+            intervals = listOf(
+                Lesson10IntervalAsset(
+                    ruFromTokens = listOf("с", "двух"),
+                    ruToTokens = listOf("до", "трёх"),
+                    bgFromTokens = listOf("от", "два"),
+                    bgToTokens = listOf("до", "три"),
+                ),
+            ),
+            intervalActions = listOf(
+                Lesson10PhraseAsset(
+                    ruTokens = listOf("читаю"),
+                    bgTokens = listOf("чета"),
+                ),
+            ),
+            questionActions = listOf(
+                Lesson10PhraseAsset(
+                    ruTokens = listOf("ты", "работаешь"),
+                    bgTokens = listOf("работиш"),
+                ),
+            ),
+            templates = listOf(
+                Lesson10TemplateAsset(
+                    ruTokens = listOf("{time}", "{action}"),
+                    bgTokens = listOf("{time}", "{action}"),
+                ),
+            ),
+            intervalTemplates = listOf(
+                Lesson10TemplateAsset(
+                    ruTokens = listOf("{action}", "{from}", "{to}"),
+                    bgTokens = listOf("{action}", "{from}", "{to}"),
+                ),
+            ),
+            questionTemplates = listOf(
+                Lesson10TemplateAsset(
+                    ruTokens = listOf("Когда", "{action}"),
+                    bgTokens = listOf("Кога", "{action}"),
+                    isQuestion = true,
+                ),
+            ),
+            exerciseLocale = LessonExerciseLocale.Ukrainian,
+        ).first()
+
+        assertEquals("О другій годині працюю", exercise.sourceText)
+    }
 }

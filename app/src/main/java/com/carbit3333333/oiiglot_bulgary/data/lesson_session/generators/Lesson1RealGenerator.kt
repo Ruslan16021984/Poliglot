@@ -77,7 +77,7 @@ internal object Lesson1RealGenerator {
             buildTranslationExercise(
                 id = id,
                 sourceText = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
-                    item.uk ?: item.ru
+                    item.uk ?: translateFixedSentenceRuToUk(item.ru)
                 } else {
                     item.ru
                 },
@@ -210,6 +210,113 @@ internal object Lesson1RealGenerator {
             addAll(verbs.flatMap { it.formsBg.values })
             addAll(verbs.flatMap { it.objects.map { obj -> obj.bg } })
         }.distinct()
+    }
+
+    private fun translateFixedSentenceRuToUk(sourceText: String): String {
+        val phraseReplacements = listOf(
+            "У меня есть " to "У мене є ",
+            "У тебя есть " to "У тебе є ",
+            "У него есть " to "У нього є ",
+            "У неё есть " to "У неї є ",
+            "У нас есть " to "У нас є ",
+            "У вас есть " to "У вас є ",
+            "У них есть " to "У них є ",
+            "У меня нет " to "У мене немає ",
+            "У тебя нет " to "У тебе немає ",
+            "У него нет " to "У нього немає ",
+            "У неё нет " to "У неї немає ",
+            "У нас нет " to "У нас немає ",
+            "У вас нет " to "У вас немає ",
+            "У них нет " to "У них немає ",
+        )
+        val wordReplacements = listOf(
+            "Я" to "Я",
+            "Ты" to "Ти",
+            "Он" to "Він",
+            "Она" to "Вона",
+            "Оно" to "Воно",
+            "Мы" to "Ми",
+            "Вы" to "Ви",
+            "Они" to "Вони",
+            "смотрю" to "дивлюся",
+            "смотришь" to "дивишся",
+            "смотрит" to "дивиться",
+            "смотрим" to "дивимося",
+            "смотрите" to "дивитеся",
+            "смотрят" to "дивляться",
+            "смотреть" to "дивитися",
+            "работаю" to "працюю",
+            "работаешь" to "працюєш",
+            "работает" to "працює",
+            "работаем" to "працюємо",
+            "работаете" to "працюєте",
+            "работают" to "працюють",
+            "работать" to "працювати",
+            "учусь" to "вчуся",
+            "учишься" to "вчишся",
+            "учится" to "вчиться",
+            "учимся" to "вчимося",
+            "учитесь" to "вчитеся",
+            "учатся" to "вчаться",
+            "учиться" to "вчитися",
+            "говорю" to "говорю",
+            "говоришь" to "говориш",
+            "говорит" to "говорить",
+            "говорим" to "говоримо",
+            "говорите" to "говорите",
+            "говорят" to "говорять",
+            "говорить" to "говорити",
+            "пью" to "п'ю",
+            "пьёшь" to "п'єш",
+            "пьёт" to "п'є",
+            "пьём" to "п'ємо",
+            "пьёте" to "п'єте",
+            "пьют" to "п'ють",
+            "пить" to "пити",
+            "люблю" to "люблю",
+            "любишь" to "любиш",
+            "любит" to "любить",
+            "любим" to "любимо",
+            "любите" to "любите",
+            "любят" to "люблять",
+            "любить" to "любити",
+            "буду" to "буду",
+            "будешь" to "будеш",
+            "будет" to "буде",
+            "будем" to "будемо",
+            "будете" to "будете",
+            "будут" to "будуть",
+            "фильм" to "фільм",
+            "сериал" to "серіал",
+            "телевизор" to "телевізор",
+            "здесь" to "тут",
+            "дома" to "вдома",
+            "в школе" to "у школі",
+            "в университете" to "в університеті",
+            "в городе" to "у місті",
+            "в офисе" to "в офісі",
+            "по-болгарски" to "болгарською",
+            "с другом" to "з другом",
+            "воду" to "воду",
+            "вода" to "вода",
+            "кофе" to "каву",
+            "чай" to "чай",
+            "книга" to "книга",
+            "работа" to "робота",
+            "работу" to "роботу",
+            "времени" to "часу",
+            "время" to "час",
+            "телефон" to "телефон",
+        )
+
+        var result = sourceText
+        phraseReplacements.forEach { (from, to) ->
+            result = result.replace(from, to)
+        }
+        wordReplacements.forEach { (from, to) ->
+            result = result.replace(from, to)
+        }
+        return result
     }
 
     private fun List<Lesson1SubjectAsset>.mapToSubjectEntries(): List<SubjectEntry> {

@@ -33,9 +33,9 @@ internal fun applyNumber(
     }
 
     val numberUk = when (noun.gender) {
-        "masculine" -> number.ukMasculine
-        "neuter" -> number.ukNeuter
-        else -> number.ukFeminine
+        "masculine" -> fallbackUkrainianNumber(number.ukMasculine, number.ruMasculine)
+        "neuter" -> fallbackUkrainianNumber(number.ukNeuter, number.ruNeuter)
+        else -> fallbackUkrainianNumber(number.ukFeminine, number.ruFeminine)
     }
 
     val objectBg = if (number.value == 1) {
@@ -51,9 +51,9 @@ internal fun applyNumber(
     }
 
     val objectUk = when {
-        number.value == 1 -> noun.ukSingular
-        number.value in 2..4 -> noun.ukPlural
-        else -> noun.ukMany
+        number.value == 1 -> fallbackUkrainianObject(noun.ukSingular, noun.ruSingular)
+        number.value in 2..4 -> fallbackUkrainianObject(noun.ukPlural, noun.ruPlural)
+        else -> fallbackUkrainianObject(noun.ukMany, noun.ruMany)
     }
 
     return NumberedNounPhrase(
@@ -64,6 +64,77 @@ internal fun applyNumber(
         numberUk = numberUk,
         objectUk = objectUk,
     )
+}
+
+private fun fallbackUkrainianNumber(uk: String, ru: String): String {
+    if (uk != ru) return uk
+    return when (ru) {
+        "один" -> "один"
+        "одну" -> "одну"
+        "одно" -> "одне"
+        "два" -> "два"
+        "две" -> "дві"
+        "три" -> "три"
+        "четыре" -> "чотири"
+        "пять" -> "п'ять"
+        "шесть" -> "шість"
+        "семь" -> "сім"
+        "восемь" -> "вісім"
+        "девять" -> "дев'ять"
+        "десять" -> "десять"
+        "одиннадцать" -> "одинадцять"
+        "двенадцать" -> "дванадцять"
+        "тринадцать" -> "тринадцять"
+        "четырнадцать" -> "чотирнадцять"
+        "пятнадцать" -> "п'ятнадцять"
+        "шестнадцать" -> "шістнадцять"
+        "семнадцать" -> "сімнадцять"
+        "восемнадцать" -> "вісімнадцять"
+        "девятнадцать" -> "дев'ятнадцять"
+        "двадцать" -> "двадцять"
+        else -> ru
+    }
+}
+
+private fun fallbackUkrainianObject(uk: String, ru: String): String {
+    if (uk != ru) return uk
+    return when (ru) {
+        "книгу" -> "книгу"
+        "книги" -> "книги"
+        "книг" -> "книг"
+        "телефон" -> "телефон"
+        "телефона" -> "телефони"
+        "телефонов" -> "телефонів"
+        "письмо" -> "лист"
+        "письма" -> "листи"
+        "писем" -> "листів"
+        "билет" -> "квиток"
+        "билета" -> "квитки"
+        "билетов" -> "квитків"
+        "чашку" -> "чашку"
+        "чашки" -> "чашки"
+        "чашек" -> "чашок"
+        else -> ru
+    }
+}
+
+private fun fallbackUkrainianTokens(tokens: List<String>, locale: LessonExerciseLocale): List<String> {
+    if (locale != LessonExerciseLocale.Ukrainian) return tokens
+    return tokens.map { token ->
+        when (token) {
+            "Я" -> "Я"
+            "Ты" -> "Ти"
+            "Мы" -> "Ми"
+            "меня" -> "мене"
+            "есть" -> "є"
+            "беру" -> "беру"
+            "вижу" -> "бачу"
+            "даю" -> "даю"
+            "тебе" -> "тобі"
+            "покупаю" -> "купую"
+            else -> token
+        }
+    }
 }
 
 internal object Lesson9RealGenerator {
@@ -101,7 +172,7 @@ internal object Lesson9RealGenerator {
         val phrase = applyNumber(number, noun)
 
         val sourceTokens = when (exerciseLocale) {
-            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Ukrainian -> fallbackUkrainianTokens(template.ukTokens, exerciseLocale)
             LessonExerciseLocale.Russian -> template.ruTokens
         }
 

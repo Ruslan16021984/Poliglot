@@ -21,16 +21,9 @@ internal fun generateLesson4Exercise(
     items: List<Lesson4Item>,
     exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
 ): LessonExercise {
-    val item = selectLesson4Item(
-        id = id,
-        items = items,
-    )
+    val item = selectLesson4Item(id = id, items = items)
     val correctWords = item.correctWords
-
-    val distractorPool = (
-        items.flatMap { it.correctWords } +
-            listOf("Ти", "Те", "не")
-        ).distinct()
+    val distractorPool = (items.flatMap { it.correctWords } + listOf("Ти", "Те", "не")).distinct()
 
     return buildTranslationExercise(
         id = id,
@@ -50,16 +43,16 @@ private fun buildLesson4Hint(
 ): String? {
     return when {
         "да" in correctWords && exerciseLocale == LessonExerciseLocale.Ukrainian ->
-            "💡 Після искам / обичам дія йде з \"да\"."
+            "Після искам / обичам дія йде з \"да\"."
 
         "да" in correctWords ->
-            "💡 После искам / обичам действие идёт с \"да\"."
+            "После искам / обичам действие идёт с \"да\"."
 
         hasDefiniteObject(correctWords) && exerciseLocale == LessonExerciseLocale.Ukrainian ->
-            "💡 Якщо йдеться про конкретний предмет, використовуй форму з артиклем."
+            "Якщо йдеться про конкретний предмет, використовуй форму з артиклем."
 
         hasDefiniteObject(correctWords) ->
-            "💡 Если речь о конкретном предмете, используй форму с артиклем."
+            "Если речь о конкретном предмете, используй форму с артиклем."
 
         else -> null
     }
@@ -70,6 +63,7 @@ private fun selectLesson4Item(
     items: List<Lesson4Item>,
 ): Lesson4Item {
     val combinedPhrases = orderCombinedLesson4Items(items.filter(::isCombinedLesson4Item))
+    check(combinedPhrases.isNotEmpty()) { "Lesson 4 has no combined phrases to generate exercises." }
     return combinedPhrases[(id - 1) % combinedPhrases.size]
 }
 

@@ -128,7 +128,7 @@ internal object LessonSessionFactory {
         return if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
             session.copy(
                 lessonTitle = UkrainianLessonStrings.lessonTitle(session.lessonId),
-                exercises = if (session.lessonId in setOf(2, 4, 5, 6, 7, 8, 9, 10)) {
+                exercises = if (session.lessonId in setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) {
                     localizeLessonExercisesUsingExistingSource(session.exercises, exerciseLocale)
                 } else {
                     localizeLessonExercises(session.exercises, exerciseLocale)

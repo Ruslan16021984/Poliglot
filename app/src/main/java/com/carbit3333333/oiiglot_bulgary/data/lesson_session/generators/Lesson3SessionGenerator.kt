@@ -44,12 +44,12 @@ internal fun generateLesson3Exercise(
 
     val bgVerb = verb.past.getValue(subject)
     val sourceSubject = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
-        subjectUkMap[subject] ?: subjectRuMap.getValue(subject)
+        subjectUkMap[subject] ?: defaultUkrainianSubject(subjectRuMap.getValue(subject))
     } else {
         subjectRuMap.getValue(subject)
     }
     val sourceVerb = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
-        verb.ukPast[subject] ?: verb.ruPast.getValue(subject)
+        verb.ukPast[subject] ?: defaultUkrainianPast(verb.ruPast.getValue(subject))
     } else {
         verb.ruPast.getValue(subject)
     }
@@ -77,6 +77,86 @@ internal fun generateLesson3Exercise(
         distractorPool = distractorPool,
         hint = buildLesson3Hint(type, subject, exerciseLocale),
     )
+}
+
+private fun defaultUkrainianSubject(subjectRu: String): String {
+    return when (subjectRu) {
+        "Я" -> "Я"
+        "Ты" -> "Ти"
+        "Он" -> "Він"
+        "Она" -> "Вона"
+        "Оно" -> "Воно"
+        "Мы" -> "Ми"
+        "Вы" -> "Ви"
+        "Они" -> "Вони"
+        else -> subjectRu
+    }
+}
+
+private fun defaultUkrainianPast(ruPast: String): String {
+    return when (ruPast) {
+        "делал(а)" -> "робив(ла)"
+        "делал" -> "робив"
+        "делала" -> "робила"
+        "делало" -> "робило"
+        "делали" -> "робили"
+        "смотрел(а)" -> "дивився(лася)"
+        "смотрел" -> "дивився"
+        "смотрела" -> "дивилася"
+        "смотрело" -> "дивилося"
+        "смотрели" -> "дивилися"
+        "ходил(а)" -> "ходив(ла)"
+        "ходил" -> "ходив"
+        "ходила" -> "ходила"
+        "ходило" -> "ходило"
+        "ходили" -> "ходили"
+        "ел(а)" -> "їв(ла)"
+        "ел" -> "їв"
+        "ела" -> "їла"
+        "ело" -> "їло"
+        "ели" -> "їли"
+        "пил(а)" -> "пив(ла)"
+        "пил" -> "пив"
+        "пила" -> "пила"
+        "пило" -> "пило"
+        "пили" -> "пили"
+        "работал(а)" -> "працював(ла)"
+        "работал" -> "працював"
+        "работала" -> "працювала"
+        "работало" -> "працювало"
+        "работали" -> "працювали"
+        "учился(ась)" -> "вчився(лася)"
+        "учился" -> "вчився"
+        "училась" -> "вчилася"
+        "училось" -> "вчилося"
+        "учились" -> "вчилися"
+        "говорил(а)" -> "говорив(ла)"
+        "говорил" -> "говорив"
+        "говорила" -> "говорила"
+        "говорило" -> "говорило"
+        "говорили" -> "говорили"
+        "видел(а)" -> "бачив(ла)"
+        "видел" -> "бачив"
+        "видела" -> "бачила"
+        "видело" -> "бачило"
+        "видели" -> "бачили"
+        "хотел(а)" -> "хотів(ла)"
+        "хотел" -> "хотів"
+        "хотела" -> "хотіла"
+        "хотело" -> "хотіло"
+        "хотели" -> "хотіли"
+        "был(а)" -> "був(ла)"
+        "был" -> "був"
+        "была" -> "була"
+        "было" -> "було"
+        "были" -> "були"
+        "имел(а)" -> "мав(ла)"
+        "имел" -> "мав"
+        "имела" -> "мала"
+        "имело" -> "мало"
+        "имели" -> "мали"
+        else -> ruPast
+    }
 }
 
 private fun buildLesson3Hint(
