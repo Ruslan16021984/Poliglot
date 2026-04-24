@@ -1,10 +1,10 @@
 package com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators
 
-
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonExerciseLocale
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.support.LessonRealSentenceGenerator
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
-object Lesson5RealGenerator {
+internal object Lesson5RealGenerator {
 
     private val subjectRu = mapOf(
         "Аз" to "Я",
@@ -14,13 +14,25 @@ object Lesson5RealGenerator {
         "То" to "Оно",
         "Ние" to "Мы",
         "Вие" to "Вы",
-        "Те" to "Они"
+        "Те" to "Они",
+    )
+
+    private val subjectUk = mapOf(
+        "Аз" to "Я",
+        "Ти" to "Ти",
+        "Той" to "Він",
+        "Тя" to "Вона",
+        "То" to "Воно",
+        "Ние" to "Ми",
+        "Вие" to "Ви",
+        "Те" to "Вони",
     )
 
     private data class Verb(
         val bg: Map<String, String>,
         val ru: String,
-        val objects: List<Pair<String, String>>
+        val uk: String,
+        val objects: List<Triple<String, String, String>>,
     )
 
     private val verbs = listOf(
@@ -33,14 +45,15 @@ object Lesson5RealGenerator {
                 "То" to "гледа",
                 "Ние" to "гледаме",
                 "Вие" to "гледате",
-                "Те" to "гледат"
+                "Те" to "гледат",
             ),
             ru = "смотреть",
+            uk = "дивитися",
             objects = listOf(
-                "филм" to "фильм",
-                "телевизия" to "телевизор",
-                "сериал" to "сериал"
-            )
+                Triple("филм", "фильм", "фільм"),
+                Triple("телевизия", "телевизор", "телевізор"),
+                Triple("сериал", "сериал", "серіал"),
+            ),
         ),
         Verb(
             bg = mapOf(
@@ -51,14 +64,15 @@ object Lesson5RealGenerator {
                 "То" to "пие",
                 "Ние" to "пием",
                 "Вие" to "пиете",
-                "Те" to "пият"
+                "Те" to "пият",
             ),
             ru = "пить",
+            uk = "пити",
             objects = listOf(
-                "кафе" to "кофе",
-                "вода" to "воду",
-                "чай" to "чай"
-            )
+                Triple("кафе", "кофе", "каву"),
+                Triple("вода", "воду", "воду"),
+                Triple("чай", "чай", "чай"),
+            ),
         ),
         Verb(
             bg = mapOf(
@@ -69,15 +83,16 @@ object Lesson5RealGenerator {
                 "То" to "работи",
                 "Ние" to "работим",
                 "Вие" to "работите",
-                "Те" to "работят"
+                "Те" to "работят",
             ),
             ru = "работать",
+            uk = "працювати",
             objects = listOf(
-                "тук" to "здесь",
-                "в града" to "в городе",
-                "в офиса" to "в офисе",
-                "вкъщи" to "дома"
-            )
+                Triple("тук", "здесь", "тут"),
+                Triple("в града", "в городе", "в місті"),
+                Triple("в офиса", "в офисе", "в офісі"),
+                Triple("вкъщи", "дома", "вдома"),
+            ),
         ),
         Verb(
             bg = mapOf(
@@ -88,14 +103,15 @@ object Lesson5RealGenerator {
                 "То" to "учи",
                 "Ние" to "учим",
                 "Вие" to "учите",
-                "Те" to "учат"
+                "Те" to "учат",
             ),
             ru = "учиться",
+            uk = "вчитися",
             objects = listOf(
-                "в училище" to "в школе",
-                "вкъщи" to "дома",
-                "в университета" to "в университете"
-            )
+                Triple("в училище", "в школе", "в школі"),
+                Triple("вкъщи", "дома", "вдома"),
+                Triple("в университета", "в университете", "в університеті"),
+            ),
         ),
         Verb(
             bg = mapOf(
@@ -106,13 +122,14 @@ object Lesson5RealGenerator {
                 "То" to "чете",
                 "Ние" to "четем",
                 "Вие" to "четете",
-                "Те" to "четат"
+                "Те" to "четат",
             ),
             ru = "читать",
+            uk = "читати",
             objects = listOf(
-                "книга" to "книгу",
-                "писмо" to "письмо"
-            )
+                Triple("книга", "книгу", "книгу"),
+                Triple("писмо", "письмо", "лист"),
+            ),
         ),
         Verb(
             bg = mapOf(
@@ -123,59 +140,88 @@ object Lesson5RealGenerator {
                 "То" to "отива",
                 "Ние" to "отиваме",
                 "Вие" to "отивате",
-                "Те" to "отиват"
+                "Те" to "отиват",
             ),
             ru = "идти",
+            uk = "йти",
             objects = listOf(
-                "в магазина" to "в магазин",
-                "вкъщи" to "домой"
-            )
-        )
+                Triple("в магазина", "в магазин", "в магазин"),
+                Triple("вкъщи", "домой", "додому"),
+            ),
+        ),
+    )
+
+    private data class ModalForms(
+        val bg: Map<String, String>,
+        val ru: Map<String, String>,
+        val uk: Map<String, String>,
     )
 
     private val modalForms = listOf(
-        // могу
-        mapOf(
-            "Аз" to "мога",
-            "Ти" to "можеш",
-            "Той" to "може",
-            "Тя" to "може",
-            "То" to "може",
-            "Ние" to "можем",
-            "Вие" to "можете",
-            "Те" to "могат"
-        ) to mapOf(
-            "Аз" to "могу",
-            "Ти" to "можешь",
-            "Той" to "может",
-            "Тя" to "может",
-            "То" to "может",
-            "Ние" to "можем",
-            "Вие" to "можете",
-            "Те" to "могут"
+        ModalForms(
+            bg = mapOf(
+                "Аз" to "мога",
+                "Ти" to "можеш",
+                "Той" to "може",
+                "Тя" to "може",
+                "То" to "може",
+                "Ние" to "можем",
+                "Вие" to "можете",
+                "Те" to "могат",
+            ),
+            ru = mapOf(
+                "Аз" to "могу",
+                "Ти" to "можешь",
+                "Той" to "может",
+                "Тя" to "может",
+                "То" to "может",
+                "Ние" to "можем",
+                "Вие" to "можете",
+                "Те" to "могут",
+            ),
+            uk = mapOf(
+                "Аз" to "можу",
+                "Ти" to "можеш",
+                "Той" to "може",
+                "Тя" to "може",
+                "То" to "може",
+                "Ние" to "можемо",
+                "Вие" to "можете",
+                "Те" to "можуть",
+            ),
         ),
-
-        // хочу
-        mapOf(
-            "Аз" to "искам",
-            "Ти" to "искаш",
-            "Той" to "иска",
-            "Тя" to "иска",
-            "То" to "иска",
-            "Ние" to "искаме",
-            "Вие" to "искате",
-            "Те" to "искат"
-        ) to mapOf(
-            "Аз" to "хочу",
-            "Ти" to "хочешь",
-            "Той" to "хочет",
-            "Тя" to "хочет",
-            "То" to "хочет",
-            "Ние" to "хотим",
-            "Вие" to "хотите",
-            "Те" to "хотят"
+        ModalForms(
+            bg = mapOf(
+                "Аз" to "искам",
+                "Ти" to "искаш",
+                "Той" to "иска",
+                "Тя" to "иска",
+                "То" to "иска",
+                "Ние" to "искаме",
+                "Вие" to "искате",
+                "Те" to "искат",
+            ),
+            ru = mapOf(
+                "Аз" to "хочу",
+                "Ти" to "хочешь",
+                "Той" to "хочет",
+                "Тя" to "хочет",
+                "То" to "хочет",
+                "Ние" to "хотим",
+                "Вие" to "хотите",
+                "Те" to "хотят",
+            ),
+            uk = mapOf(
+                "Аз" to "хочу",
+                "Ти" to "хочеш",
+                "Той" to "хоче",
+                "Тя" to "хоче",
+                "То" to "хоче",
+                "Ние" to "хочемо",
+                "Вие" to "хочете",
+                "Те" to "хочуть",
+            ),
         ),
-
     )
 
     private val mustRu = mapOf(
@@ -186,14 +232,30 @@ object Lesson5RealGenerator {
         "То" to "ему нужно",
         "Ние" to "нам нужно",
         "Вие" to "вам нужно",
-        "Те" to "им нужно"
+        "Те" to "им нужно",
     )
 
-    fun generateExercises(): List<LessonExercise> {
-        return (1..100).map { generateExercise(it) }
+    private val mustUk = mapOf(
+        "Аз" to "мені потрібно",
+        "Ти" to "тобі потрібно",
+        "Той" to "йому потрібно",
+        "Тя" to "їй потрібно",
+        "То" to "йому потрібно",
+        "Ние" to "нам потрібно",
+        "Вие" to "вам потрібно",
+        "Те" to "їм потрібно",
+    )
+
+    fun generateExercises(
+        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
+    ): List<LessonExercise> {
+        return (1..100).map { generateExercise(it, exerciseLocale) }
     }
 
-    private fun generateExercise(id: Int): LessonExercise {
+    private fun generateExercise(
+        id: Int,
+        exerciseLocale: LessonExerciseLocale,
+    ): LessonExercise {
         val subjects = subjectRu.keys.toList()
         val subject = subjects[(id - 1) % subjects.size]
         val verb = verbs[((id - 1) / subjects.size) % verbs.size]
@@ -203,36 +265,30 @@ object Lesson5RealGenerator {
         val useQuestion = id % 3 == 0
         val useNegative = id % 4 == 0
 
-        val (modalBgMap, modalRuMap) = modalForms[((id - 1) / (subjects.size * verbs.size * verb.objects.size).coerceAtLeast(1)) % modalForms.size]
+        val modalSet = modalForms[((id - 1) / (subjects.size * verbs.size * verb.objects.size).coerceAtLeast(1)) % modalForms.size]
+        val modalBg = if (useMust) "трябва" else modalSet.bg.getValue(subject)
 
-        val modalBg = if (useMust) "трябва" else modalBgMap.getValue(subject)
-        val modalRu = if (useMust) mustRu.getValue(subject) else modalRuMap.getValue(subject)
-
-        val verbBg = verb.bg.getValue(subject)
-
-        val correctWords = mutableListOf<String>()
-
-        correctWords.add(subject)
-
-        if (useNegative) correctWords.add("не")
-
-        correctWords.add(modalBg)
-
-        if (useQuestion) correctWords.add("ли")
-
-        correctWords.add("да")
-        correctWords.add(verbBg)
-        correctWords.add(obj.first)
-
-        val sourceText = buildRussianSourceText(
+        val sourceText = buildSourceText(
             subject = subject,
-            modalRu = modalRu,
+            modalRu = if (useMust) mustRu.getValue(subject) else modalSet.ru.getValue(subject),
+            modalUk = if (useMust) mustUk.getValue(subject) else modalSet.uk.getValue(subject),
             verbRu = verb.ru,
+            verbUk = verb.uk,
             objectRu = obj.second,
+            objectUk = obj.third,
             useMust = useMust,
             useNegative = useNegative,
             useQuestion = useQuestion,
+            exerciseLocale = exerciseLocale,
         )
+
+        val correctWords = mutableListOf(subject)
+        if (useNegative) correctWords.add("не")
+        correctWords.add(modalBg)
+        if (useQuestion) correctWords.add("ли")
+        correctWords.add("да")
+        correctWords.add(verb.bg.getValue(subject))
+        correctWords.add(obj.first)
 
         val hint = when {
             useMust -> "💡 трябва + да + глагол"
@@ -247,48 +303,63 @@ object Lesson5RealGenerator {
             id = id,
             template = LessonRealSentenceGenerator.SentenceTemplate(
                 ruPattern = sourceText,
-                bgPattern = correctWords.map { LessonRealSentenceGenerator.Token.Fixed(it) }
+                bgPattern = correctWords.map { LessonRealSentenceGenerator.Token.Fixed(it) },
             ),
             lexicon = LessonRealSentenceGenerator.Lexicon(
-                subject = LessonRealSentenceGenerator.SubjectForms(subject, subjectRu.getValue(subject))
+                subject = LessonRealSentenceGenerator.SubjectForms(
+                    bg = subject,
+                    ru = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+                        subjectUk.getValue(subject)
+                    } else {
+                        subjectRu.getValue(subject)
+                    },
+                ),
             ),
             distractorPool = buildDistractorPool(),
-            hint = hint
+            hint = hint,
         )
     }
 
-    private fun buildRussianSourceText(
+    private fun buildSourceText(
         subject: String,
         modalRu: String,
+        modalUk: String,
         verbRu: String,
+        verbUk: String,
         objectRu: String,
+        objectUk: String,
         useMust: Boolean,
         useNegative: Boolean,
         useQuestion: Boolean,
+        exerciseLocale: LessonExerciseLocale,
     ): String {
+        val subjectText = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+            subjectUk.getValue(subject)
+        } else {
+            subjectRu.getValue(subject)
+        }
+
+        val modalText = if (exerciseLocale == LessonExerciseLocale.Ukrainian) modalUk else modalRu
+        val verbText = if (exerciseLocale == LessonExerciseLocale.Ukrainian) verbUk else verbRu
+        val objectText = if (exerciseLocale == LessonExerciseLocale.Ukrainian) objectUk else objectRu
+
         val sentence = if (useMust) {
-            val normalizedModalRu = if (useNegative) {
-                modalRu.replace(" нужно", " не нужно")
+            val mustText = if (useNegative) {
+                modalText.replace(" потрібно", " не потрібно").replace(" нужно", " не нужно")
             } else {
-                modalRu
+                modalText
             }
-            buildString {
-                append(normalizedModalRu)
-                append(" ")
-                append(verbRu)
-                append(" ")
-                append(objectRu)
-            }
+            "$mustText $verbText $objectText"
         } else {
             buildString {
-                append(subjectRu.getValue(subject))
+                append(subjectText)
                 append(" ")
                 if (useNegative) append("не ")
-                append(modalRu)
+                append(modalText)
                 append(" ")
-                append(verbRu)
+                append(verbText)
                 append(" ")
-                append(objectRu)
+                append(objectText)
             }
         }
 
@@ -306,7 +377,7 @@ object Lesson5RealGenerator {
         return buildList {
             addAll(subjectRu.keys)
             addAll(listOf("не", "ли", "да", "трябва"))
-            addAll(modalForms.flatMap { (bgForms, _) -> bgForms.values })
+            addAll(modalForms.flatMap { it.bg.values })
             addAll(verbs.flatMap { it.bg.values })
             addAll(verbs.flatMap { verb -> verb.objects.map { it.first } })
         }.distinct()

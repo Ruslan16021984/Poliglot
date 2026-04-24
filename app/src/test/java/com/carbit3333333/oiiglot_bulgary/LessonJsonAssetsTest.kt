@@ -182,6 +182,33 @@ class LessonJsonAssetsTest {
         assertNotNull(assets.lesson10QuestionActions.find { it.ruTokens == listOf("ты", "идёшь", "домой") })
     }
 
+    @Test
+    fun `lesson 9 and 10 assets include ukrainian localization fields`() {
+        val assets = json.decodeFromString<LessonSessionAssets>(
+            readAssetText("lesson_session_content.json"),
+        )
+
+        assertTrue(assets.lesson9Numbers.all { it.ukMasculine.isNotBlank() && it.ukFeminine.isNotBlank() && it.ukNeuter.isNotBlank() })
+        assertTrue(assets.lesson9Objects.all { it.ukSingular.isNotBlank() && it.ukPlural.isNotBlank() && it.ukMany.isNotBlank() })
+        assertTrue(assets.lesson9Templates.all { it.ukTokens.isNotEmpty() })
+        assertTrue(assets.lesson10TimePhrases.all { it.ukTokens.isNotEmpty() })
+        assertTrue(assets.lesson10RoutineActions.all { it.ukTokens.isNotEmpty() })
+        assertTrue(assets.lesson10Intervals.all { it.ukFromTokens.isNotEmpty() && it.ukToTokens.isNotEmpty() })
+        assertTrue(assets.lesson10IntervalActions.all { it.ukTokens.isNotEmpty() })
+        assertTrue(assets.lesson10QuestionActions.all { it.ukTokens.isNotEmpty() })
+        assertTrue(assets.lesson10Templates.all { it.ukTokens.isNotEmpty() })
+        assertTrue(assets.lesson10IntervalTemplates.all { it.ukTokens.isNotEmpty() })
+        assertTrue(assets.lesson10QuestionTemplates.all { it.ukTokens.isNotEmpty() })
+
+        assertNotNull(assets.lesson9Numbers.find { it.value == 4 && it.ukMasculine == "чотири" })
+        assertNotNull(assets.lesson9Objects.find { it.singular == "билет" && it.ukSingular == "квиток" })
+        assertNotNull(assets.lesson9Templates.find { it.ukTokens == listOf("У", "мене", "є", "{num}", "{object}") })
+        assertNotNull(assets.lesson10TimePhrases.find { it.ukTokens == listOf("У", "понеділок") })
+        assertNotNull(assets.lesson10RoutineActions.find { it.ukTokens == listOf("п'ю", "каву") })
+        assertNotNull(assets.lesson10Intervals.find { it.ukFromTokens == listOf("з", "дев'ятої") && it.ukToTokens == listOf("до", "п'ятої") })
+        assertNotNull(assets.lesson10QuestionTemplates.find { it.ukTokens == listOf("Коли", "{action}") })
+    }
+
     private fun readAssetText(fileName: String): String {
         val path = resolveAssetPath(fileName)
         assertTrue("Asset file not found: $fileName", Files.exists(path))

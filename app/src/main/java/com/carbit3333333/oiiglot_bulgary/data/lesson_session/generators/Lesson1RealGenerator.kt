@@ -5,6 +5,7 @@ import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1ObjectAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1SubjectAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1TemplateAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson1VerbAsset
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonExerciseLocale
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.buildTranslationExercise
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.support.LessonRealSentenceGenerator
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
@@ -42,9 +43,10 @@ internal object Lesson1RealGenerator {
         subjects: List<Lesson1SubjectAsset> = emptyList(),
         templates: List<Lesson1TemplateAsset> = emptyList(),
         verbs: List<Lesson1VerbAsset> = emptyList(),
+        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
     ): List<LessonExercise> {
         if (fixedSentences.isNotEmpty()) {
-            return generateFixedExercises(fixedSentences)
+            return generateFixedExercises(fixedSentences, exerciseLocale)
         }
 
         val subjectEntries = subjects.mapToSubjectEntries().ifEmpty { defaultSubjects() }
@@ -63,6 +65,7 @@ internal object Lesson1RealGenerator {
 
     private fun generateFixedExercises(
         fixedSentences: List<LessonFixedSentenceAsset>,
+        exerciseLocale: LessonExerciseLocale,
     ): List<LessonExercise> {
         val distractorPool = buildList {
             addAll(fixedSentences.flatMap { it.correctWords })
@@ -73,7 +76,11 @@ internal object Lesson1RealGenerator {
             val item = fixedSentences[(id - 1) % fixedSentences.size]
             buildTranslationExercise(
                 id = id,
-                sourceText = item.ru,
+                sourceText = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+                    item.uk ?: item.ru
+                } else {
+                    item.ru
+                },
                 correctWords = item.correctWords,
                 distractorPool = distractorPool,
                 hint = item.hint,

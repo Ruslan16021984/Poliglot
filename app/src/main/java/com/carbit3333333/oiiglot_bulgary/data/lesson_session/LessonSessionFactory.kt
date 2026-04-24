@@ -25,13 +25,16 @@ internal object LessonSessionFactory {
                     subjects = assets.lesson1Subjects,
                     templates = assets.lesson1Templates,
                     verbs = assets.lesson1Verbs,
+                    exerciseLocale = exerciseLocale,
                 ),
             )
 
             2 -> LessonSession(
                 lessonId = 2,
                 lessonTitle = "Глагол \"съм\"",
-                exercises = Lesson2RealGenerator.generateExercises(),
+                exercises = Lesson2RealGenerator.generateExercises(
+                    exerciseLocale = exerciseLocale,
+                ),
             )
 
             3 -> LessonSession(
@@ -39,7 +42,9 @@ internal object LessonSessionFactory {
                 lessonTitle = "Прошедшее время",
                 exercises = generateLesson3Exercises(
                     subjectRuMap = assets.lesson3SubjectRu,
+                    subjectUkMap = assets.lesson3SubjectUk,
                     verbs = assets.lesson3Verbs,
+                    exerciseLocale = exerciseLocale,
                 ),
             )
 
@@ -55,13 +60,17 @@ internal object LessonSessionFactory {
             5 -> LessonSession(
                 lessonId = 5,
                 lessonTitle = "Могу, хочу, должен",
-                exercises = Lesson5RealGenerator.generateExercises(),
+                exercises = Lesson5RealGenerator.generateExercises(
+                    exerciseLocale = exerciseLocale,
+                ),
             )
 
             6 -> LessonSession(
                 lessonId = 6,
                 lessonTitle = "Предлоги и существительные",
-                exercises = Lesson6RealGenerator.generateExercises(),
+                exercises = Lesson6RealGenerator.generateExercises(
+                    exerciseLocale = exerciseLocale,
+                ),
             )
 
             7 -> LessonSession(
@@ -89,6 +98,7 @@ internal object LessonSessionFactory {
                     numbers = assets.lesson9Numbers,
                     objects = assets.lesson9Objects,
                     templates = assets.lesson9Templates,
+                    exerciseLocale = exerciseLocale,
                 ),
             )
 
@@ -104,6 +114,7 @@ internal object LessonSessionFactory {
                     templates = assets.lesson10Templates,
                     intervalTemplates = assets.lesson10IntervalTemplates,
                     questionTemplates = assets.lesson10QuestionTemplates,
+                    exerciseLocale = exerciseLocale,
                 ),
             )
 
@@ -117,7 +128,7 @@ internal object LessonSessionFactory {
         return if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
             session.copy(
                 lessonTitle = UkrainianLessonStrings.lessonTitle(session.lessonId),
-                exercises = if (session.lessonId in setOf(4, 7, 8)) {
+                exercises = if (session.lessonId in setOf(2, 4, 5, 6, 7, 8, 9, 10)) {
                     localizeLessonExercisesUsingExistingSource(session.exercises, exerciseLocale)
                 } else {
                     localizeLessonExercises(session.exercises, exerciseLocale)

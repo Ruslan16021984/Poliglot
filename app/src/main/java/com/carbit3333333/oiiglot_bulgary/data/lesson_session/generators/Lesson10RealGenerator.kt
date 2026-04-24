@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson10IntervalAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson10PhraseAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson10TemplateAsset
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonExerciseLocale
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.buildTranslationExercise
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
@@ -16,7 +17,8 @@ internal object Lesson10RealGenerator {
         questionActions: List<Lesson10PhraseAsset>,
         templates: List<Lesson10TemplateAsset>,
         intervalTemplates: List<Lesson10TemplateAsset>,
-        questionTemplates: List<Lesson10TemplateAsset>
+        questionTemplates: List<Lesson10TemplateAsset>,
+        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
     ): List<LessonExercise> {
         val distractorPool = buildDistractorPool(
             timePhrases = timePhrases,
@@ -39,7 +41,8 @@ internal object Lesson10RealGenerator {
                     sequenceIndex = questionIndex++,
                     actions = questionActions,
                     templates = questionTemplates,
-                    distractorPool = distractorPool
+                    distractorPool = distractorPool,
+                    exerciseLocale = exerciseLocale,
                 )
 
                 id % 3 == 0 -> generateIntervalExercise(
@@ -48,7 +51,8 @@ internal object Lesson10RealGenerator {
                     intervals = intervals,
                     actions = intervalActions,
                     templates = intervalTemplates,
-                    distractorPool = distractorPool
+                    distractorPool = distractorPool,
+                    exerciseLocale = exerciseLocale,
                 )
 
                 else -> generateRoutineExercise(
@@ -57,7 +61,8 @@ internal object Lesson10RealGenerator {
                     timePhrases = timePhrases,
                     actions = routineActions,
                     templates = templates,
-                    distractorPool = distractorPool
+                    distractorPool = distractorPool,
+                    exerciseLocale = exerciseLocale,
                 )
             }
 
@@ -73,18 +78,32 @@ internal object Lesson10RealGenerator {
         timePhrases: List<Lesson10PhraseAsset>,
         actions: List<Lesson10PhraseAsset>,
         templates: List<Lesson10TemplateAsset>,
-        distractorPool: List<String>
+        distractorPool: List<String>,
+        exerciseLocale: LessonExerciseLocale,
     ): LessonExercise {
         val timePhrase = timePhrases[sequenceIndex % timePhrases.size]
         val action = actions[(sequenceIndex * cycleStep(actions.size)) % actions.size]
         val template = templates[sequenceIndex % templates.size]
 
+        val sourceTemplateTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Russian -> template.ruTokens
+        }
+        val sourceTimeTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> timePhrase.ukTokens
+            LessonExerciseLocale.Russian -> timePhrase.ruTokens
+        }
+        val sourceActionTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> action.ukTokens
+            LessonExerciseLocale.Russian -> action.ruTokens
+        }
+
         val sourceText = capitalizeSentence(
             renderTokens(
-            template.ruTokens,
+            sourceTemplateTokens,
             mapOf(
-                "{time}" to timePhrase.ruTokens,
-                "{action}" to action.ruTokens
+                "{time}" to sourceTimeTokens,
+                "{action}" to sourceActionTokens
             )
             )
         )
@@ -114,19 +133,37 @@ internal object Lesson10RealGenerator {
         intervals: List<Lesson10IntervalAsset>,
         actions: List<Lesson10PhraseAsset>,
         templates: List<Lesson10TemplateAsset>,
-        distractorPool: List<String>
+        distractorPool: List<String>,
+        exerciseLocale: LessonExerciseLocale,
     ): LessonExercise {
         val interval = intervals[sequenceIndex % intervals.size]
         val action = actions[(sequenceIndex / intervals.size) % actions.size]
         val template = templates[sequenceIndex % templates.size]
 
+        val sourceTemplateTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Russian -> template.ruTokens
+        }
+        val sourceActionTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> action.ukTokens
+            LessonExerciseLocale.Russian -> action.ruTokens
+        }
+        val sourceFromTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> interval.ukFromTokens
+            LessonExerciseLocale.Russian -> interval.ruFromTokens
+        }
+        val sourceToTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> interval.ukToTokens
+            LessonExerciseLocale.Russian -> interval.ruToTokens
+        }
+
         val sourceText = capitalizeSentence(
             renderTokens(
-            template.ruTokens,
+            sourceTemplateTokens,
             mapOf(
-                "{action}" to action.ruTokens,
-                "{from}" to interval.ruFromTokens,
-                "{to}" to interval.ruToTokens
+                "{action}" to sourceActionTokens,
+                "{from}" to sourceFromTokens,
+                "{to}" to sourceToTokens
             )
             )
         )
@@ -156,16 +193,26 @@ internal object Lesson10RealGenerator {
         sequenceIndex: Int,
         actions: List<Lesson10PhraseAsset>,
         templates: List<Lesson10TemplateAsset>,
-        distractorPool: List<String>
+        distractorPool: List<String>,
+        exerciseLocale: LessonExerciseLocale,
     ): LessonExercise {
         val action = actions[sequenceIndex % actions.size]
         val template = templates[sequenceIndex % templates.size]
 
+        val sourceTemplateTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Russian -> template.ruTokens
+        }
+        val sourceActionTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> action.ukTokens
+            LessonExerciseLocale.Russian -> action.ruTokens
+        }
+
         val sourceText = finalizeSourceText(
             capitalizeSentence(
                 renderTokens(
-                    template.ruTokens,
-                    mapOf("{action}" to action.ruTokens)
+                    sourceTemplateTokens,
+                    mapOf("{action}" to sourceActionTokens)
                 )
             ),
             template

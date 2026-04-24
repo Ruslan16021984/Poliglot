@@ -1,9 +1,10 @@
 package com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators
 
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonExerciseLocale
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.support.LessonRealSentenceGenerator
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
-object Lesson2RealGenerator {
+internal object Lesson2RealGenerator {
 
     private enum class Lesson2TemplateCategory {
         PLACE,
@@ -185,16 +186,19 @@ object Lesson2RealGenerator {
         "болница" to "больница",
     )
 
-    fun generateExercises(): List<LessonExercise> {
+    fun generateExercises(
+        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
+    ): List<LessonExercise> {
         val distractorPool = buildDistractorPool()
         return (1..100).map { id ->
-            generateExercise(id, distractorPool)
+            generateExercise(id, distractorPool, exerciseLocale)
         }
     }
 
     private fun generateExercise(
         id: Int,
         distractorPool: List<String>,
+        exerciseLocale: LessonExerciseLocale,
     ): LessonExercise {
         val template = templates[(id - 1) % templates.size]
         val subjectTriple = subjectForms[((id - 1) / templates.size) % subjectForms.size]
@@ -234,10 +238,132 @@ object Lesson2RealGenerator {
             id = id,
             template = template.sentenceTemplate,
             lexicon = lexicon,
+            sourceTextOverride = buildSourceText(
+                template = template,
+                subjectRu = subjectRu,
+                placeRu = placePair.second,
+                roleRu = rolePair.second,
+                nounRu = nounPair.second,
+                exerciseLocale = exerciseLocale,
+            ),
             distractorPool = distractorPool,
             totalWords = 8,
             hint = template.hint,
         )
+    }
+
+    private fun buildSourceText(
+        template: Lesson2TemplateEntry,
+        subjectRu: String,
+        placeRu: String,
+        roleRu: String,
+        nounRu: String,
+        exerciseLocale: LessonExerciseLocale,
+    ): String {
+        val subject = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+            when (subjectRu) {
+                "Я" -> "Я"
+                "Ты" -> "Ти"
+                "Он" -> "Він"
+                "Она" -> "Вона"
+                "Оно" -> "Воно"
+                "Мы" -> "Ми"
+                "Вы" -> "Ви"
+                "Они" -> "Вони"
+                else -> subjectRu
+            }
+        } else {
+            subjectRu
+        }
+
+        val place = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+            when (placeRu) {
+                "дома" -> "вдома"
+                "здесь" -> "тут"
+                "в школе" -> "в школі"
+                "в городе" -> "в місті"
+                "на работе" -> "на роботі"
+                "в офисе" -> "в офісі"
+                "в университете" -> "в університеті"
+                "в магазине" -> "в магазині"
+                "в больнице" -> "в лікарні"
+                "в доме" -> "в будинку"
+                "с другом" -> "з другом"
+                else -> placeRu
+            }
+        } else {
+            placeRu
+        }
+
+        val role = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+            when (roleRu) {
+                "врач" -> "лікар"
+                "учитель" -> "учитель"
+                "студент" -> "студент"
+                "друг" -> "друг"
+                "ученик" -> "учень"
+                "коллега" -> "колега"
+                "водитель" -> "водій"
+                "продавец" -> "продавець"
+                else -> roleRu
+            }
+        } else {
+            roleRu
+        }
+
+        val noun = if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+            when (nounRu) {
+                "книга" -> "книга"
+                "кофе" -> "кава"
+                "вода" -> "вода"
+                "хлеб" -> "хліб"
+                "телефон" -> "телефон"
+                "чай" -> "чай"
+                "сок" -> "сік"
+                "фильм" -> "фільм"
+                "школа" -> "школа"
+                "магазин" -> "магазин"
+                "машина" -> "машина"
+                "больница" -> "лікарня"
+                else -> nounRu
+            }
+        } else {
+            nounRu
+        }
+
+        return when (template.category) {
+            Lesson2TemplateCategory.PLACE -> when {
+                template.sentenceTemplate.ruPattern.contains(" не ") -> "$subject не $place"
+                template.sentenceTemplate.ruPattern.endsWith("?") -> "$subject $place?"
+                else -> "$subject $place"
+            }
+
+            Lesson2TemplateCategory.ROLE -> when {
+                template.sentenceTemplate.ruPattern.contains(" не ") -> "$subject не $role"
+                template.sentenceTemplate.ruPattern.endsWith("?") -> "$subject $role?"
+                else -> "$subject $role"
+            }
+
+            Lesson2TemplateCategory.DEMO -> when {
+                template.sentenceTemplate.ruPattern.contains(" не ") -> if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+                    "Це не $noun"
+                } else {
+                    "Это не $noun"
+                }
+
+                template.sentenceTemplate.ruPattern.endsWith("?") -> if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+                    "Це $noun?"
+                } else {
+                    "Это $noun?"
+                }
+
+                else -> if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
+                    "Це $noun"
+                } else {
+                    "Это $noun"
+                }
+            }
+        }
     }
 
     private fun buildDistractorPool(): List<String> {

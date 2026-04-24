@@ -17,7 +17,8 @@ internal data class LessonTemplateAsset(
 internal data class LessonFixedSentenceAsset(
     val ru: String,
     val correctWords: List<String>,
-    val hint: String? = null
+    val hint: String? = null,
+    val uk: String? = null,
 )
 
 @Serializable
@@ -55,7 +56,8 @@ internal data class Lesson1TemplateAsset(
 @Serializable
 internal data class Lesson3VerbAsset(
     val past: Map<String, String>,
-    val ruPast: Map<String, String>
+    val ruPast: Map<String, String>,
+    val ukPast: Map<String, String> = ruPast,
 )
 
 @Serializable
@@ -66,7 +68,10 @@ internal data class Lesson9NumberAsset(
     val bgNeuter: String,
     val ruMasculine: String,
     val ruFeminine: String,
-    val ruNeuter: String
+    val ruNeuter: String,
+    val ukMasculine: String = ruMasculine,
+    val ukFeminine: String = ruFeminine,
+    val ukNeuter: String = ruNeuter,
 )
 
 @Serializable
@@ -77,20 +82,25 @@ internal data class Lesson9ObjectAsset(
     val countForm: String,
     val ruSingular: String,
     val ruPlural: String,
-    val ruMany: String = ruPlural
+    val ruMany: String = ruPlural,
+    val ukSingular: String = ruSingular,
+    val ukPlural: String = ruPlural,
+    val ukMany: String = ruMany,
 )
 
 @Serializable
 internal data class Lesson9TemplateAsset(
     val ruTokens: List<String>,
     val bgTokens: List<String>,
-    val hint: String? = null
+    val hint: String? = null,
+    val ukTokens: List<String> = ruTokens,
 )
 
 @Serializable
 internal data class Lesson10PhraseAsset(
     val ruTokens: List<String>,
-    val bgTokens: List<String>
+    val bgTokens: List<String>,
+    val ukTokens: List<String> = ruTokens,
 )
 
 @Serializable
@@ -98,7 +108,9 @@ internal data class Lesson10IntervalAsset(
     val ruFromTokens: List<String>,
     val ruToTokens: List<String>,
     val bgFromTokens: List<String>,
-    val bgToTokens: List<String>
+    val bgToTokens: List<String>,
+    val ukFromTokens: List<String> = ruFromTokens,
+    val ukToTokens: List<String> = ruToTokens,
 )
 
 @Serializable
@@ -106,7 +118,8 @@ internal data class Lesson10TemplateAsset(
     val ruTokens: List<String>,
     val bgTokens: List<String>,
     val hint: String? = null,
-    val isQuestion: Boolean = false
+    val isQuestion: Boolean = false,
+    val ukTokens: List<String> = ruTokens,
 )
 
 @Serializable
@@ -117,6 +130,7 @@ internal data class LessonSessionAssets(
     val lesson1Verbs: List<Lesson1VerbAsset> = emptyList(),
     val lesson4Items: List<Lesson4Item> = emptyList(),
     val lesson3SubjectRu: Map<String, String> = emptyMap(),
+    val lesson3SubjectUk: Map<String, String> = emptyMap(),
     val lesson3Verbs: List<Lesson3VerbAsset> = emptyList(),
     val lesson7Templates: List<LessonTemplateAsset> = emptyList(),
     val lesson8Templates: List<LessonTemplateAsset> = emptyList(),

@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson9NumberAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson9ObjectAsset
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.Lesson9TemplateAsset
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonExerciseLocale
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.buildTranslationExercise
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 
@@ -10,7 +11,9 @@ internal data class NumberedNounPhrase(
     val numberBg: String,
     val objectBg: String,
     val numberRu: String,
-    val objectRu: String
+    val objectRu: String,
+    val numberUk: String,
+    val objectUk: String,
 )
 
 internal fun applyNumber(
@@ -29,6 +32,12 @@ internal fun applyNumber(
         else -> number.ruFeminine
     }
 
+    val numberUk = when (noun.gender) {
+        "masculine" -> number.ukMasculine
+        "neuter" -> number.ukNeuter
+        else -> number.ukFeminine
+    }
+
     val objectBg = if (number.value == 1) {
         noun.singular
     } else {
@@ -41,11 +50,19 @@ internal fun applyNumber(
         else -> noun.ruMany
     }
 
+    val objectUk = when {
+        number.value == 1 -> noun.ukSingular
+        number.value in 2..4 -> noun.ukPlural
+        else -> noun.ukMany
+    }
+
     return NumberedNounPhrase(
         numberBg = numberBg,
         objectBg = objectBg,
         numberRu = numberRu,
-        objectRu = objectRu
+        objectRu = objectRu,
+        numberUk = numberUk,
+        objectUk = objectUk,
     )
 }
 
@@ -54,7 +71,8 @@ internal object Lesson9RealGenerator {
     fun generateExercises(
         numbers: List<Lesson9NumberAsset>,
         objects: List<Lesson9ObjectAsset>,
-        templates: List<Lesson9TemplateAsset>
+        templates: List<Lesson9TemplateAsset>,
+        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
     ): List<LessonExercise> {
         val distractorPool = buildDistractorPool(numbers, objects, templates)
         return (1..100).map { id ->
@@ -63,7 +81,8 @@ internal object Lesson9RealGenerator {
                 numbers = numbers,
                 objects = objects,
                 templates = templates,
-                distractorPool = distractorPool
+                distractorPool = distractorPool,
+                exerciseLocale = exerciseLocale,
             )
         }
     }
@@ -73,18 +92,30 @@ internal object Lesson9RealGenerator {
         numbers: List<Lesson9NumberAsset>,
         objects: List<Lesson9ObjectAsset>,
         templates: List<Lesson9TemplateAsset>,
-        distractorPool: List<String>
+        distractorPool: List<String>,
+        exerciseLocale: LessonExerciseLocale,
     ): LessonExercise {
         val template = templates[(id - 1) % templates.size]
         val noun = objects[((id - 1) * 2) % objects.size]
         val number = numbers[(id - 1) % numbers.size]
         val phrase = applyNumber(number, noun)
 
-        val sourceText = template.ruTokens
+        val sourceTokens = when (exerciseLocale) {
+            LessonExerciseLocale.Ukrainian -> template.ukTokens
+            LessonExerciseLocale.Russian -> template.ruTokens
+        }
+
+        val sourceText = sourceTokens
             .map { token ->
                 when (token) {
-                    "{num}" -> phrase.numberRu
-                    "{object}" -> phrase.objectRu
+                    "{num}" -> when (exerciseLocale) {
+                        LessonExerciseLocale.Ukrainian -> phrase.numberUk
+                        LessonExerciseLocale.Russian -> phrase.numberRu
+                    }
+                    "{object}" -> when (exerciseLocale) {
+                        LessonExerciseLocale.Ukrainian -> phrase.objectUk
+                        LessonExerciseLocale.Russian -> phrase.objectRu
+                    }
                     else -> token
                 }
             }
