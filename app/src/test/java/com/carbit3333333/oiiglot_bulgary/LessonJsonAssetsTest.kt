@@ -53,6 +53,8 @@ class LessonJsonAssetsTest {
         assertTrue(assets.lesson2Sentences.all { !it.uk.isNullOrBlank() })
         assertEquals(100, assets.lesson5Sentences.size)
         assertTrue(assets.lesson5Sentences.all { !it.uk.isNullOrBlank() })
+        assertEquals(100, assets.lesson6Sentences.size)
+        assertTrue(assets.lesson6Sentences.all { !it.uk.isNullOrBlank() })
         assertEquals(0, assets.lesson1Templates.size)
         assertEquals(7, assets.lesson1Verbs.size)
 
@@ -126,6 +128,20 @@ class LessonJsonAssetsTest {
                 it.ru == "мне не нужно идти в магазин" &&
                     it.uk == "мені не потрібно йти в магазин" &&
                     it.correctWords == listOf("Аз", "не", "трябва", "да", "отивам", "в магазина")
+            },
+        )
+        assertTrue(
+            assets.lesson6Sentences.any {
+                it.ru == "Я в городе" &&
+                    it.uk == "Я в місті" &&
+                    it.correctWords == listOf("Аз", "съм", "в града")
+            },
+        )
+        assertTrue(
+            assets.lesson6Sentences.any {
+                it.ru == "Она в офисе?" &&
+                    it.uk == "Вона в офісі?" &&
+                    it.correctWords == listOf("Тя", "в офиса", "ли", "е")
             },
         )
 

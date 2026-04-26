@@ -161,6 +161,7 @@ class LessonSessionRepositoryTest {
         val lesson2 = repository.getLessonSession(2)
         val lesson6 = repository.getLessonSession(6)
         val lesson2FirstWords = lesson2.exercises.mapNotNull { it.correctAnswerWords.firstOrNull() }.toSet()
+        val lesson6FirstWords = lesson6.exercises.mapNotNull { it.correctAnswerWords.firstOrNull() }.toSet()
         val lesson6Words = lesson6.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertTrue(lesson2FirstWords.contains("Тя"))
@@ -168,8 +169,8 @@ class LessonSessionRepositoryTest {
 
         assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Она ") })
         assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Оно ") })
-        assertTrue(lesson6.exercises.any { it.correctAnswerWords.firstOrNull() == "Тя" })
-        assertTrue(lesson6.exercises.any { it.correctAnswerWords.firstOrNull() == "То" })
+        assertTrue(lesson6FirstWords.contains("Тя"))
+        assertTrue(lesson6FirstWords.contains("То"))
         assertTrue(lesson6Words.contains("в магазина"))
         assertTrue(lesson6Words.contains("в офиса"))
         assertTrue(lesson6Words.contains("при учителя"))
