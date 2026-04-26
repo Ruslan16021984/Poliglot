@@ -51,10 +51,20 @@ class LessonJsonAssetsTest {
         assertTrue(assets.lesson1Sentences.all { it.ru.isNotBlank() })
         assertEquals(100, assets.lesson2Sentences.size)
         assertTrue(assets.lesson2Sentences.all { !it.uk.isNullOrBlank() })
+        assertEquals(100, assets.lesson3Sentences.size)
+        assertTrue(assets.lesson3Sentences.all { !it.uk.isNullOrBlank() })
         assertEquals(100, assets.lesson5Sentences.size)
         assertTrue(assets.lesson5Sentences.all { !it.uk.isNullOrBlank() })
         assertEquals(100, assets.lesson6Sentences.size)
         assertTrue(assets.lesson6Sentences.all { !it.uk.isNullOrBlank() })
+        assertEquals(20, assets.lesson7Sentences.size)
+        assertTrue(assets.lesson7Sentences.all { !it.uk.isNullOrBlank() })
+        assertEquals(25, assets.lesson8Sentences.size)
+        assertTrue(assets.lesson8Sentences.all { !it.uk.isNullOrBlank() })
+        assertEquals(100, assets.lesson9Sentences.size)
+        assertTrue(assets.lesson9Sentences.all { !it.uk.isNullOrBlank() })
+        assertEquals(100, assets.lesson10Sentences.size)
+        assertTrue(assets.lesson10Sentences.all { !it.uk.isNullOrBlank() })
         assertEquals(0, assets.lesson1Templates.size)
         assertEquals(7, assets.lesson1Verbs.size)
 
@@ -117,6 +127,24 @@ class LessonJsonAssetsTest {
             },
         )
         assertTrue(
+            assets.lesson3Sentences.any {
+                it.ru == "Я делал(а)" &&
+                    it.correctWords == listOf("Аз", "правих")
+            },
+        )
+        assertTrue(
+            assets.lesson3Sentences.any {
+                it.ru == "Она была" &&
+                    it.correctWords == listOf("Тя", "беше")
+            },
+        )
+        assertTrue(
+            assets.lesson3Sentences.any {
+                it.ru == "Оно не имело" &&
+                    it.correctWords == listOf("То", "не", "имаше")
+            },
+        )
+        assertTrue(
             assets.lesson5Sentences.any {
                 it.ru == "Я могу смотреть фильм" &&
                     it.uk == "Я можу дивитися фільм" &&
@@ -146,6 +174,34 @@ class LessonJsonAssetsTest {
         )
 
         assertNotNull(assets.lesson7Templates.find { it.ru == "У меня есть своя книга" && "своята" in it.bgWords })
+        assertNotNull(
+            assets.lesson7Sentences.find {
+                it.ru == "Я даю тебе свою книгу" &&
+                    it.uk == "Я даю тобі свою книгу" &&
+                    it.correctWords == listOf("Аз", "ти", "давам", "своята", "книга")
+            },
+        )
+        assertNotNull(
+            assets.lesson8Sentences.find {
+                it.ru == "Эта книга интереснее той книги" &&
+                    it.uk == "Ця книга цікавіша за ту книгу" &&
+                    it.correctWords == listOf("Тази", "книга", "е", "по-интересна", "от", "онази", "книга")
+            },
+        )
+        assertNotNull(
+            assets.lesson9Sentences.find {
+                it.ru == "У меня есть семь книг" &&
+                    it.uk == "У мене є сім книг" &&
+                    it.correctWords == listOf("Аз", "имам", "седем", "книги")
+            },
+        )
+        assertNotNull(
+            assets.lesson10Sentences.find {
+                it.ru == "В понедельник работаю" &&
+                    it.uk == "У понеділок працюю" &&
+                    it.correctWords == listOf("В", "понеделник", "работя")
+            },
+        )
         assertNotNull(assets.lesson8Templates.find { it.uk == "Ця книга цікавіша за ту книгу" })
 
         assertTrue(assets.lesson9Numbers.all { it.ukMasculine.isNotBlank() && it.ukFeminine.isNotBlank() && it.ukNeuter.isNotBlank() })

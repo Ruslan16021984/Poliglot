@@ -48,12 +48,19 @@ internal object LessonSessionFactory {
             3 -> LessonSession(
                 lessonId = 3,
                 lessonTitle = "Прошедшее время",
-                exercises = generateLesson3Exercises(
-                    subjectRuMap = assets.lesson3SubjectRu,
-                    subjectUkMap = assets.lesson3SubjectUk,
-                    verbs = assets.lesson3Verbs,
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (assets.lesson3Sentences.isNotEmpty()) {
+                    generateFixedSentenceExercises(
+                        fixedSentences = assets.lesson3Sentences,
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    generateLesson3Exercises(
+                        subjectRuMap = assets.lesson3SubjectRu,
+                        subjectUkMap = assets.lesson3SubjectUk,
+                        verbs = assets.lesson3Verbs,
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             4 -> LessonSession(
@@ -98,46 +105,74 @@ internal object LessonSessionFactory {
             7 -> LessonSession(
                 lessonId = 7,
                 lessonTitle = "Моя книга: местоимения и артикль",
-                exercises = Lesson7RealGenerator.generateExercises(
-                    templates = assets.lesson7Templates,
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (assets.lesson7Sentences.isNotEmpty()) {
+                    generateFixedSentenceExercises(
+                        fixedSentences = assets.lesson7Sentences,
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    Lesson7RealGenerator.generateExercises(
+                        templates = assets.lesson7Templates,
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             8 -> LessonSession(
                 lessonId = 8,
                 lessonTitle = "Сравнение",
-                exercises = Lesson8RealGenerator.generateExercises(
-                    templates = assets.lesson8Templates,
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (assets.lesson8Sentences.isNotEmpty()) {
+                    generateFixedSentenceExercises(
+                        fixedSentences = assets.lesson8Sentences,
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    Lesson8RealGenerator.generateExercises(
+                        templates = assets.lesson8Templates,
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             9 -> LessonSession(
                 lessonId = 9,
                 lessonTitle = "Числа",
-                exercises = Lesson9RealGenerator.generateExercises(
-                    numbers = assets.lesson9Numbers,
-                    objects = assets.lesson9Objects,
-                    templates = assets.lesson9Templates,
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (assets.lesson9Sentences.isNotEmpty()) {
+                    generateFixedSentenceExercises(
+                        fixedSentences = assets.lesson9Sentences,
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    Lesson9RealGenerator.generateExercises(
+                        numbers = assets.lesson9Numbers,
+                        objects = assets.lesson9Objects,
+                        templates = assets.lesson9Templates,
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             10 -> LessonSession(
                 lessonId = 10,
                 lessonTitle = "Время и распорядок дня",
-                exercises = Lesson10RealGenerator.generateExercises(
-                    timePhrases = assets.lesson10TimePhrases,
-                    routineActions = assets.lesson10RoutineActions,
-                    intervals = assets.lesson10Intervals,
-                    intervalActions = assets.lesson10IntervalActions,
-                    questionActions = assets.lesson10QuestionActions,
-                    templates = assets.lesson10Templates,
-                    intervalTemplates = assets.lesson10IntervalTemplates,
-                    questionTemplates = assets.lesson10QuestionTemplates,
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (assets.lesson10Sentences.isNotEmpty()) {
+                    generateFixedSentenceExercises(
+                        fixedSentences = assets.lesson10Sentences,
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    Lesson10RealGenerator.generateExercises(
+                        timePhrases = assets.lesson10TimePhrases,
+                        routineActions = assets.lesson10RoutineActions,
+                        intervals = assets.lesson10Intervals,
+                        intervalActions = assets.lesson10IntervalActions,
+                        questionActions = assets.lesson10QuestionActions,
+                        templates = assets.lesson10Templates,
+                        intervalTemplates = assets.lesson10IntervalTemplates,
+                        questionTemplates = assets.lesson10QuestionTemplates,
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             else -> LessonSession(

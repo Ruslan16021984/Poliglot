@@ -126,8 +126,13 @@ internal data class Lesson10TemplateAsset(
 internal data class LessonSessionAssets(
     val lesson1Sentences: List<LessonFixedSentenceAsset> = emptyList(),
     val lesson2Sentences: List<LessonFixedSentenceAsset> = emptyList(),
+    val lesson3Sentences: List<LessonFixedSentenceAsset> = emptyList(),
     val lesson5Sentences: List<LessonFixedSentenceAsset> = emptyList(),
     val lesson6Sentences: List<LessonFixedSentenceAsset> = emptyList(),
+    val lesson7Sentences: List<LessonFixedSentenceAsset> = emptyList(),
+    val lesson8Sentences: List<LessonFixedSentenceAsset> = emptyList(),
+    val lesson9Sentences: List<LessonFixedSentenceAsset> = emptyList(),
+    val lesson10Sentences: List<LessonFixedSentenceAsset> = emptyList(),
     val lesson1Subjects: List<Lesson1SubjectAsset> = emptyList(),
     val lesson1Templates: List<Lesson1TemplateAsset> = emptyList(),
     val lesson1Verbs: List<Lesson1VerbAsset> = emptyList(),
