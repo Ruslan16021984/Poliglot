@@ -68,9 +68,16 @@ internal object LessonSessionFactory {
             5 -> LessonSession(
                 lessonId = 5,
                 lessonTitle = "Могу, хочу, должен",
-                exercises = Lesson5RealGenerator.generateExercises(
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (assets.lesson5Sentences.isNotEmpty()) {
+                    generateFixedSentenceExercises(
+                        fixedSentences = assets.lesson5Sentences,
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    Lesson5RealGenerator.generateExercises(
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             6 -> LessonSession(
