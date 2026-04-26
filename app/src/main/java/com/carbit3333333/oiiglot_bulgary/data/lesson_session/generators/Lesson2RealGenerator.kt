@@ -158,6 +158,11 @@ internal object Lesson2RealGenerator {
         "в болницата" to "в больнице",
         "в къщата" to "в доме",
         "с приятел" to "с другом",
+        "с колега" to "с коллегой",
+        "при лекаря" to "у врача",
+        "в библиотеката" to "в библиотеке",
+        "в класата" to "в классе",
+        "на улицата" to "на улице",
     )
 
     private val roles = listOf(
@@ -169,6 +174,11 @@ internal object Lesson2RealGenerator {
         "колега" to "коллега",
         "шофьор" to "водитель",
         "продавач" to "продавец",
+        "директор" to "директор",
+        "инженер" to "инженер",
+        "баща" to "отец",
+        "майка" to "мать",
+        "дете" to "ребёнок",
     )
 
     private val nouns = listOf(
@@ -177,6 +187,7 @@ internal object Lesson2RealGenerator {
         "вода" to "вода",
         "хляб" to "хлеб",
         "телефон" to "телефон",
+        "стол" to "стол",
         "чай" to "чай",
         "сок" to "сок",
         "филм" to "фильм",
@@ -184,6 +195,16 @@ internal object Lesson2RealGenerator {
         "магазин" to "магазин",
         "кола" to "машина",
         "болница" to "больница",
+        "университет" to "университет",
+        "офис" to "офис",
+        "град" to "город",
+        "къща" to "дом",
+        "библиотека" to "библиотека",
+        "класа" to "класс",
+        "дете" to "ребёнок",
+        "море" to "море",
+        "село" to "село",
+        "ябълка" to "яблоко",
     )
 
     fun generateExercises(
@@ -206,10 +227,10 @@ internal object Lesson2RealGenerator {
         val subjectRu = subjectTriple.second
         val verbBg = subjectTriple.third
 
-        val cycleIndex = ((id - 1) / (templates.size * subjectForms.size))
-        val placePair = places[cycleIndex % places.size]
-        val rolePair = roles[cycleIndex % roles.size]
-        val nounPair = nouns[cycleIndex % nouns.size]
+        val baseIndex = id - 1
+        val placePair = places[(baseIndex * 3) % places.size]
+        val rolePair = roles[(baseIndex * 5) % roles.size]
+        val nounPair = nouns[(baseIndex * 7) % nouns.size]
 
         val lexicon = LessonRealSentenceGenerator.Lexicon(
             subject = LessonRealSentenceGenerator.SubjectForms(
@@ -289,6 +310,11 @@ internal object Lesson2RealGenerator {
                 "в больнице" -> "в лікарні"
                 "в доме" -> "в будинку"
                 "с другом" -> "з другом"
+                "с коллегой" -> "з колегою"
+                "у врача" -> "у лікаря"
+                "в библиотеке" -> "в бібліотеці"
+                "в классе" -> "в класі"
+                "на улице" -> "на вулиці"
                 else -> placeRu
             }
         } else {
@@ -305,6 +331,11 @@ internal object Lesson2RealGenerator {
                 "коллега" -> "колега"
                 "водитель" -> "водій"
                 "продавец" -> "продавець"
+                "директор" -> "директор"
+                "инженер" -> "інженер"
+                "отец" -> "батько"
+                "мать" -> "мати"
+                "ребёнок" -> "дитина"
                 else -> roleRu
             }
         } else {
@@ -325,6 +356,17 @@ internal object Lesson2RealGenerator {
                 "магазин" -> "магазин"
                 "машина" -> "машина"
                 "больница" -> "лікарня"
+                "университет" -> "університет"
+                "офис" -> "офіс"
+                "город" -> "місто"
+                "дом" -> "будинок"
+                "библиотека" -> "бібліотека"
+                "класс" -> "клас"
+                "ребёнок" -> "дитина"
+                "стол" -> "стіл"
+                "море" -> "море"
+                "село" -> "село"
+                "яблоко" -> "яблуко"
                 else -> nounRu
             }
         } else {

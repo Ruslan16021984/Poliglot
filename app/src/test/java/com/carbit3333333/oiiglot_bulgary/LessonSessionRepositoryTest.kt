@@ -43,15 +43,25 @@ class LessonSessionRepositoryTest {
         val session = repository.getLessonSession(2)
         val sourceTexts = session.exercises.map { it.sourceText }
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
+        val firstWords = session.exercises.mapNotNull { it.correctAnswerWords.firstOrNull() }.toSet()
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(sourceTexts.any { "дома" in it || "в школе" in it || "на работе" in it })
-        assertTrue(sourceTexts.any { "врач" in it || "учитель" in it || "студент" in it || "коллега" in it })
-        assertTrue(sourceTexts.any { it.startsWith("Это ") })
+        assertTrue(bgWords.contains("вкъщи") || bgWords.contains("училище") || bgWords.contains("работа"))
+        assertTrue(bgWords.contains("лекар") || bgWords.contains("учител") || bgWords.contains("студент") || bgWords.contains("колега"))
+        assertTrue(bgWords.contains("Това"))
+        assertTrue(firstWords.containsAll(setOf("Аз", "Ти", "Той", "Тя", "То", "Ние", "Вие", "Те", "Това")))
         assertTrue(bgWords.contains("вкъщи"))
         assertTrue(bgWords.contains("лекар"))
         assertTrue(bgWords.contains("Това"))
+        assertTrue(bgWords.contains("в библиотеката") || bgWords.contains("на улицата") || bgWords.contains("в болницата"))
+        assertTrue(bgWords.contains("директор") || bgWords.contains("инженер") || bgWords.contains("продавач"))
+        assertTrue(bgWords.contains("магазин") || bgWords.contains("библиотека") || bgWords.contains("дете"))
+        assertTrue(bgWords.contains("хляб") || bgWords.contains("стол") || bgWords.contains("град"))
+        assertTrue(bgWords.contains("книга") || bgWords.contains("вода") || bgWords.contains("кола"))
+        assertTrue(bgWords.contains("кафе") || bgWords.contains("море") || bgWords.contains("село"))
+        assertTrue(sourceTexts.any { it.startsWith("Это ") })
+        assertTrue(sourceTexts.any { it.startsWith("Я ") || it.startsWith("Ты ") || it.startsWith("Он ") })
     }
 
     @Test
@@ -94,6 +104,7 @@ class LessonSessionRepositoryTest {
         assertTrue(bgWords.contains("работата"))
         assertTrue(bgWords.contains("книгата"))
         assertTrue(bgWords.any { it.startsWith("обич") })
+        assertTrue(bgWords.any { it.startsWith("харес") })
         assertTrue(bgWords.any { it.startsWith("уч") })
     }
 
@@ -149,12 +160,11 @@ class LessonSessionRepositoryTest {
     fun `lesson 2 and 6 sessions cover feminine and neuter subjects`() {
         val lesson2 = repository.getLessonSession(2)
         val lesson6 = repository.getLessonSession(6)
+        val lesson2FirstWords = lesson2.exercises.mapNotNull { it.correctAnswerWords.firstOrNull() }.toSet()
         val lesson6Words = lesson6.exercises.flatMap { it.correctAnswerWords }.toSet()
 
-        assertTrue(lesson2.exercises.any { it.sourceText.startsWith("Она ") })
-        assertTrue(lesson2.exercises.any { it.sourceText.startsWith("Оно ") })
-        assertTrue(lesson2.exercises.any { it.correctAnswerWords.firstOrNull() == "Тя" })
-        assertTrue(lesson2.exercises.any { it.correctAnswerWords.firstOrNull() == "То" })
+        assertTrue(lesson2FirstWords.contains("Тя"))
+        assertTrue(lesson2FirstWords.contains("То"))
 
         assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Она ") })
         assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Оно ") })

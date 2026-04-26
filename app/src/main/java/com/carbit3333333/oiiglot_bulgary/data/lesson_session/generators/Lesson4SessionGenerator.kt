@@ -41,12 +41,20 @@ private fun buildLesson4Hint(
     correctWords: List<String>,
     exerciseLocale: LessonExerciseLocale,
 ): String? {
+    val mainVerb = correctWords.getOrNull(1).orEmpty()
+
     return when {
         "да" in correctWords && exerciseLocale == LessonExerciseLocale.Ukrainian ->
             "Після искам / обичам дія йде з \"да\"."
 
         "да" in correctWords ->
             "После искам / обичам действие идёт с \"да\"."
+
+        mainVerb.startsWith("харес") && exerciseLocale == LessonExerciseLocale.Ukrainian ->
+            "Після харесвам тут іде предмет, а не дія."
+
+        mainVerb.startsWith("харес") ->
+            "После харесвам здесь идёт предмет, а не действие."
 
         hasDefiniteObject(correctWords) && exerciseLocale == LessonExerciseLocale.Ukrainian ->
             "Якщо йдеться про конкретний предмет, використовуй форму з артиклем."
@@ -70,13 +78,13 @@ private fun selectLesson4Item(
 private fun isBasicNounItem(item: Lesson4Item): Boolean {
     return item.type == Lesson4Item.Type.NOUN &&
         item.correctWords.size == 1 &&
-        item.correctWords.none { it.endsWith("та") || it.endsWith("то") }
+        item.correctWords.none(::isDefiniteObjectWord)
 }
 
 private fun isDefiniteNounItem(item: Lesson4Item): Boolean {
     return item.type == Lesson4Item.Type.NOUN &&
         item.correctWords.size == 1 &&
-        item.correctWords.any { it.endsWith("та") || it.endsWith("то") }
+        item.correctWords.any(::isDefiniteObjectWord)
 }
 
 private fun isBareVerbItem(item: Lesson4Item): Boolean {
@@ -92,7 +100,11 @@ private fun isCombinedLesson4Item(item: Lesson4Item): Boolean {
 }
 
 private fun hasDefiniteObject(correctWords: List<String>): Boolean {
-    return correctWords.any { it.endsWith("та") || it.endsWith("то") }
+    return correctWords.any(::isDefiniteObjectWord)
+}
+
+private fun isDefiniteObjectWord(word: String): Boolean {
+    return word.endsWith("та") || word.endsWith("то")
 }
 
 private fun orderCombinedLesson4Items(items: List<Lesson4Item>): List<Lesson4Item> {
@@ -120,19 +132,22 @@ private fun lesson4Priority(item: Lesson4Item): Int {
     return when {
         "да" !in words && "книгата" in words && mainVerb.startsWith("иск") -> 0
         "да" !in words && "книгата" in words && mainVerb.startsWith("обич") -> 1
-        "да" in words && words.any { it.startsWith("чет") } -> 2
-        "да" in words && words.any { it.startsWith("уч") } -> 3
-        "да" !in words && "работата" in words && mainVerb.startsWith("иск") -> 4
-        "да" in words && words.any { it.startsWith("яд") || it == "ям" } -> 5
-        "да" !in words && "водата" in words -> 6
-        "да" in words && words.contains("кафе") -> 7
-        "да" !in words && "кафето" in words && mainVerb.startsWith("иск") -> 8
-        "да" !in words && "работата" in words && mainVerb.startsWith("обич") -> 9
-        "да" !in words && "кафето" in words && mainVerb.startsWith("обич") -> 10
-        "да" in words && words.any { it.startsWith("работ") } -> 11
-        "да" in words && words.any { it.startsWith("говор") } -> 12
-        "да" in words && words.contains("вода") -> 13
-        "вода" in words -> 14
-        else -> 15
+        "да" !in words && "книгата" in words && mainVerb.startsWith("харес") -> 2
+        "да" in words && words.any { it.startsWith("чет") } -> 3
+        "да" in words && words.any { it.startsWith("уч") } -> 4
+        "да" !in words && "работата" in words && mainVerb.startsWith("иск") -> 5
+        "да" !in words && "работата" in words && mainVerb.startsWith("обич") -> 6
+        "да" !in words && "работата" in words && mainVerb.startsWith("харес") -> 7
+        "да" in words && words.any { it.startsWith("яд") || it == "ям" } -> 8
+        "да" !in words && "водата" in words && mainVerb.startsWith("иск") -> 9
+        "да" !in words && "водата" in words && mainVerb.startsWith("харес") -> 10
+        "да" !in words && "водата" in words -> 11
+        "да" in words && words.contains("кафе") -> 12
+        "да" !in words && "кафето" in words && mainVerb.startsWith("иск") -> 13
+        "да" !in words && "кафето" in words && mainVerb.startsWith("обич") -> 14
+        "да" !in words && "кафето" in words && mainVerb.startsWith("харес") -> 15
+        "да" in words && words.any { it.startsWith("работ") } -> 16
+        "да" in words && words.any { it.startsWith("говор") } -> 17
+        else -> 18
     }
 }

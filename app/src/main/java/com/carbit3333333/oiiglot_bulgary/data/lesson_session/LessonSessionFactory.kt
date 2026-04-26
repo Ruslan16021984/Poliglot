@@ -8,6 +8,7 @@ import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson6R
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson7RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson8RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson9RealGenerator
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.generateFixedSentenceExercises
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 
 internal object LessonSessionFactory {
@@ -32,9 +33,16 @@ internal object LessonSessionFactory {
             2 -> LessonSession(
                 lessonId = 2,
                 lessonTitle = "Глагол \"съм\"",
-                exercises = Lesson2RealGenerator.generateExercises(
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (assets.lesson2Sentences.isNotEmpty()) {
+                    generateFixedSentenceExercises(
+                        fixedSentences = assets.lesson2Sentences,
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    Lesson2RealGenerator.generateExercises(
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             3 -> LessonSession(
