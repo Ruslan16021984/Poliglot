@@ -214,6 +214,21 @@ class LessonSessionRepositoryTest {
         assertTrue(bgWords.any { it in setOf("автобус", "трамвай", "влак", "метро", "такси", "билет", "гара", "спирка") })
     }
 
+    @Test
+    fun `lesson 11 session uses textbook daily routine content`() {
+        val session = repository.getLessonSession(11)
+        val sourceTexts = session.exercises.map { it.sourceText }
+        val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
+
+        assertEquals(100, session.exercises.size)
+        assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(sourceTexts.any { "Утром я встаю рано." in it || "Утром я пью кофе." in it })
+        assertTrue(sourceTexts.any { "После завтрака я работаю." in it || "Вечером я возвращаюсь домой." in it })
+        assertTrue(sourceTexts.any { "Когда ты завтракаешь?" in it || "Когда ты ложишься?" in it })
+        assertTrue(sourceTexts.any { it.trim().endsWith("?") })
+        assertTrue(bgWords.any { it in setOf("сутрин", "ставам", "закусвам", "работя", "вечерям", "вкъщи", "лягам") })
+    }
+
     private fun isValidExercise(exercise: LessonExercise): Boolean {
         assertTrue(exercise.sourceText.isNotBlank())
         assertTrue(exercise.instruction.isNotBlank())

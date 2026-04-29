@@ -24,8 +24,8 @@ class LessonJsonAssetsTest {
             readAssetText("lessons.json"),
         )
 
-        assertEquals(10, lessons.size)
-        assertEquals((1..10).toList(), lessons.map { it.id })
+        assertEquals(11, lessons.size)
+        assertEquals((1..11).toList(), lessons.map { it.id })
         assertTrue(lessons.all { it.title.isNotBlank() })
         assertTrue(lessons.all { it.subtitle.isNotBlank() })
         assertTrue(lessons.all { it.theory.isNotEmpty() })
@@ -38,6 +38,7 @@ class LessonJsonAssetsTest {
         )
         assertNotNull(lessons.find { it.id == 9 })
         assertNotNull(lessons.find { it.id == 10 })
+        assertNotNull(lessons.find { it.id == 11 })
     }
 
     @Test

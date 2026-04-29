@@ -1,4 +1,4 @@
-package com.carbit3333333.oiiglot_bulgary.data.lesson_session
+﻿package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson10RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson1RealGenerator
@@ -23,7 +23,7 @@ internal object LessonSessionFactory {
         val session = when (lessonId) {
             1 -> LessonSession(
                 lessonId = 1,
-                lessonTitle = "Урок 1",
+                lessonTitle = "РЈСЂРѕРє 1",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -42,7 +42,7 @@ internal object LessonSessionFactory {
 
             2 -> LessonSession(
                 lessonId = 2,
-                lessonTitle = "Глагол \"съм\"",
+                lessonTitle = "Р“Р»Р°РіРѕР» \"СЃСЉРј\"",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -62,7 +62,7 @@ internal object LessonSessionFactory {
 
             3 -> LessonSession(
                 lessonId = 3,
-                lessonTitle = "Прошедшее время",
+                lessonTitle = "РџСЂРѕС€РµРґС€РµРµ РІСЂРµРјСЏ",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -85,7 +85,7 @@ internal object LessonSessionFactory {
 
             4 -> LessonSession(
                 lessonId = 4,
-                lessonTitle = "Предмет или действие",
+                lessonTitle = "РџСЂРµРґРјРµС‚ РёР»Рё РґРµР№СЃС‚РІРёРµ",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -101,7 +101,7 @@ internal object LessonSessionFactory {
 
             5 -> LessonSession(
                 lessonId = 5,
-                lessonTitle = "Могу, хочу, должен",
+                lessonTitle = "РњРѕРіСѓ, С…РѕС‡Сѓ, РґРѕР»Р¶РµРЅ",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -121,7 +121,7 @@ internal object LessonSessionFactory {
 
             6 -> LessonSession(
                 lessonId = 6,
-                lessonTitle = "Предлоги и существительные",
+                lessonTitle = "РџСЂРµРґР»РѕРіРё Рё СЃСѓС‰РµСЃС‚РІРёС‚РµР»СЊРЅС‹Рµ",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -141,7 +141,7 @@ internal object LessonSessionFactory {
 
             7 -> LessonSession(
                 lessonId = 7,
-                lessonTitle = "Моя книга: местоимения и артикль",
+                lessonTitle = "РњРѕСЏ РєРЅРёРіР°: РјРµСЃС‚РѕРёРјРµРЅРёСЏ Рё Р°СЂС‚РёРєР»СЊ",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -162,7 +162,7 @@ internal object LessonSessionFactory {
 
             8 -> LessonSession(
                 lessonId = 8,
-                lessonTitle = "Сравнение",
+                lessonTitle = "РЎСЂР°РІРЅРµРЅРёРµ",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -183,7 +183,7 @@ internal object LessonSessionFactory {
 
             9 -> LessonSession(
                 lessonId = 9,
-                lessonTitle = "Числа",
+                lessonTitle = "Р§РёСЃР»Р°",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -206,7 +206,7 @@ internal object LessonSessionFactory {
 
             10 -> LessonSession(
                 lessonId = 10,
-                lessonTitle = "Время и распорядок дня",
+                lessonTitle = "Р’СЂРµРјСЏ Рё СЂР°СЃРїРѕСЂСЏРґРѕРє РґРЅСЏ",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -232,9 +232,22 @@ internal object LessonSessionFactory {
                 },
             )
 
+            11 -> LessonSession(
+                lessonId = 11,
+                lessonTitle = "Р Р°СЃРїРѕСЂСЏРґРѕРє РґРЅСЏ",
+                exercises = if (textbookSessionEligible) {
+                    generateTextbookLessonExercises(
+                        exerciseSet = checkNotNull(textbookExercises),
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    generateLesson1Exercises()
+                },
+            )
+
             else -> LessonSession(
                 lessonId = lessonId,
-                lessonTitle = "Урок $lessonId",
+                lessonTitle = "РЈСЂРѕРє ",
                 exercises = generateLesson1Exercises(),
             )
         }
@@ -244,7 +257,7 @@ internal object LessonSessionFactory {
                 lessonTitle = UkrainianLessonStrings.lessonTitle(session.lessonId),
                 exercises = if (textbookSessionEligible) {
                     session.exercises
-                } else if (session.lessonId in setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) {
+                } else if (session.lessonId in setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)) {
                     localizeLessonExercisesUsingExistingSource(session.exercises, exerciseLocale)
                 } else {
                     localizeLessonExercises(session.exercises, exerciseLocale)
@@ -255,3 +268,4 @@ internal object LessonSessionFactory {
         }
     }
 }
+

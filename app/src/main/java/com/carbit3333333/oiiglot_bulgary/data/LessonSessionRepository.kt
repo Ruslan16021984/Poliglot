@@ -79,7 +79,7 @@ class LessonSessionRepository private constructor(
     }
 
     private fun loadTextbookExercisesForLesson(lessonId: Int): TextbookLessonExerciseSetAsset? {
-        val alignedTextbookLessons = setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        val alignedTextbookLessons = setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
         if (lessonId !in alignedTextbookLessons) return null
         return textbookExercisesRepository.loadForLesson(lessonId)
     }
