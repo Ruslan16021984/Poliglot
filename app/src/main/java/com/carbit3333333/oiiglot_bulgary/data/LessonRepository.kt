@@ -2,11 +2,11 @@ package com.carbit3333333.oiiglot_bulgary.data
 
 import android.content.Context
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
-import kotlinx.serialization.json.Json
 import java.util.Locale
+import kotlinx.serialization.json.Json
 
 class LessonRepository(
-    context: Context
+    context: Context,
 ) {
 
     private val appContext = context.applicationContext
@@ -68,7 +68,12 @@ class LessonRepository(
                 4 to "Покупки в супермаркеті і на ринку",
                 5 to "Місто, адреса і покупки",
                 6 to "Сім'я",
+                7 to "Погода і час",
+                8 to "Одяг і кольори",
+                9 to "Дім і меблі",
+                10 to "Транспорт",
             )
+
             else -> mapOf(
                 1 to "Приветствие и знакомство",
                 2 to "Еда и завтрак",
@@ -76,6 +81,10 @@ class LessonRepository(
                 4 to "Покупки в супермаркете и на рынке",
                 5 to "Город, адрес и покупки",
                 6 to "Семья",
+                7 to "Погода и время",
+                8 to "Одежда и цвета",
+                9 to "Дом и мебель",
+                10 to "Транспорт",
             )
         }
 

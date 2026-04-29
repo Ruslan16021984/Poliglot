@@ -166,53 +166,52 @@ class LessonSessionRepositoryTest {
     }
 
     @Test
-    fun `lesson 7 and 8 sessions use migrated template content`() {
-        val assets = loadLessonSessionAssets()
-        val lesson7 = LessonSessionFactory.create(lessonId = 7, assets = assets)
-        val lesson8 = LessonSessionFactory.create(lessonId = 8, assets = assets)
+    fun `lesson 7 and 8 sessions use textbook weather and clothing content`() {
+        val lesson7 = repository.getLessonSession(7)
+        val lesson8 = repository.getLessonSession(8)
 
         assertEquals(100, lesson7.exercises.size)
         assertEquals(100, lesson8.exercises.size)
         assertTrue(lesson7.exercises.all(::isValidExercise))
         assertTrue(lesson8.exercises.all(::isValidExercise))
-        assertTrue(lesson7.exercises.any { "свою книгу" in it.sourceText })
-        assertTrue(lesson7.exercises.any { "даю тебе" in it.sourceText })
-        assertTrue(lesson7.exercises.any { it.correctAnswerWords.contains("своята") })
-        assertTrue(lesson8.exercises.any { "той книги" in it.sourceText || "того магазина" in it.sourceText })
-        assertTrue(lesson8.exercises.any { "твоей" in it.sourceText || "вашего дома" in it.sourceText })
-        assertTrue(lesson8.exercises.any { "самый большой магазин" in it.sourceText || "самая быстрая" in it.sourceText })
+        assertTrue(lesson7.exercises.any { "Сегодня тепло." in it.sourceText || "Сегодня холодно." in it.sourceText })
+        assertTrue(lesson7.exercises.any { "Который час?" in it.sourceText || "Сейчас пять часов." in it.sourceText })
+        assertTrue(lesson7.exercises.any { it.correctAnswerWords.contains("понеделник") || it.correctAnswerWords.contains("вторник") })
+        assertTrue(lesson8.exercises.any { "Это рубашка." in it.sourceText || "Это платье." in it.sourceText })
+        assertTrue(lesson8.exercises.any { "Рубашка синяя." in it.sourceText || "Юбка чёрная." in it.sourceText })
+        assertTrue(lesson8.exercises.any { it.correctAnswerWords.contains("обувки") || it.correctAnswerWords.contains("чорапи") })
     }
 
     @Test
-    fun `lesson 9 session builds number exercises`() {
+    fun `lesson 9 session uses textbook house and furniture content`() {
         val session = repository.getLessonSession(9)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(sourceTexts.any { "один" in it || "одну" in it || "одно" in it })
-        assertTrue(sourceTexts.any { "билета" in it || "билетов" in it || "чашки" in it || "чашек" in it })
-        assertTrue(sourceTexts.any { "покупаю" in it })
-        assertTrue(sourceTexts.any { "У меня есть" in it })
-        assertTrue(sourceTexts.any { "Мы видим" in it })
-        assertTrue(session.exercises.any { it.sourceText.trim().endsWith("?") })
-        assertTrue(session.exercises.any { "ли" in it.correctAnswerWords })
+        assertTrue(sourceTexts.any { "Это дом." in it || "Это квартира." in it })
+        assertTrue(sourceTexts.any { "Это кухня." in it || "Это ванная." in it })
+        assertTrue(sourceTexts.any { "Это стол." in it || "Это кровать." in it })
+        assertTrue(sourceTexts.any { "Дом большой." in it || "Комната маленькая." in it })
+        assertTrue(sourceTexts.any { it.trim().endsWith("?") })
+        assertTrue(bgWords.any { it in setOf("къща", "апартамент", "кухня", "баня", "маса", "легло", "диван", "шкаф") })
     }
 
     @Test
-    fun `lesson 10 session builds time routine exercises`() {
+    fun `lesson 10 session uses textbook transport content`() {
         val session = repository.getLessonSession(10)
         val sourceTexts = session.exercises.map { it.sourceText }
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(sourceTexts.any { "понедельник" in it || "вторник" in it || "среду" in it || "четверг" in it || "пятницу" in it })
-        assertTrue(sourceTexts.any { "до пяти" in it || "до трёх" in it || "до двух" in it })
-        assertTrue(sourceTexts.any { it.startsWith("Когда ") || it.startsWith("Во сколько ") })
-        assertTrue(bgWords.any { it in setOf("в", "във", "след", "преди", "от", "до", "сутрин", "вечер") })
-        assertTrue(bgWords.any { it in setOf("закусвам", "вечерям", "обядвам", "чета", "отивам", "прибирам", "работя") })
-        assertTrue(bgWords.contains("вкъщи"))
+        assertTrue(sourceTexts.any { "Это автобус." in it || "Это поезд." in it })
+        assertTrue(sourceTexts.any { "Где вокзал?" in it || "Где остановка?" in it })
+        assertTrue(sourceTexts.any { "У Вас есть билет?" in it || "Я хочу один билет до Софии." in it })
+        assertTrue(sourceTexts.any { "Я еду на автобусе." in it || "Я еду поездом." in it })
+        assertTrue(sourceTexts.any { it.trim().endsWith("?") })
+        assertTrue(bgWords.any { it in setOf("автобус", "трамвай", "влак", "метро", "такси", "билет", "гара", "спирка") })
     }
 
     private fun isValidExercise(exercise: LessonExercise): Boolean {
