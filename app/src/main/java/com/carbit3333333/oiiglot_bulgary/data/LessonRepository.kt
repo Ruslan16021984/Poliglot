@@ -48,11 +48,41 @@ class LessonRepository(
             }.getOrNull()
 
             if (!lessons.isNullOrEmpty()) {
-                return lessons
+                return applyTextbookDisplayOverrides(lessons)
             }
         }
 
         return emptyList()
+    }
+
+    private fun applyTextbookDisplayOverrides(lessons: List<Lesson>): List<Lesson> {
+        val language = appContext.resources.configuration.locales[0]
+            ?.language
+            ?.lowercase(Locale.ROOT)
+
+        val subtitleOverrides = when (language) {
+            "uk" -> mapOf(
+                1 to "Привітання і знайомство",
+                2 to "Їжа і сніданок",
+                3 to "Ресторан",
+                4 to "Покупки в супермаркеті і на ринку",
+                5 to "Місто, адреса і покупки",
+                6 to "Сім'я",
+            )
+            else -> mapOf(
+                1 to "Приветствие и знакомство",
+                2 to "Еда и завтрак",
+                3 to "Ресторан",
+                4 to "Покупки в супермаркете и на рынке",
+                5 to "Город, адрес и покупки",
+                6 to "Семья",
+            )
+        }
+
+        return lessons.map { lesson ->
+            val subtitle = subtitleOverrides[lesson.id] ?: return@map lesson
+            lesson.copy(subtitle = subtitle)
+        }
     }
 
     private fun localizedLessonsAssetFile(): String {

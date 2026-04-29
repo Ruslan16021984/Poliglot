@@ -45,40 +45,37 @@ class LessonSessionRepositoryTest {
     }
 
     @Test
-    fun `lesson 2 session separates places roles and demo phrases`() {
+    fun `lesson 2 session uses textbook breakfast and food source`() {
         val session = repository.getLessonSession(2)
         val sourceTexts = session.exercises.map { it.sourceText }
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
-        val firstWords = session.exercises.mapNotNull { it.correctAnswerWords.firstOrNull() }.toSet()
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
+        assertTrue(sourceTexts.contains("Что это?"))
+        assertTrue(sourceTexts.contains("Это баница."))
+        assertTrue(sourceTexts.contains("Я люблю кофе."))
+        assertTrue(sourceTexts.contains("Ты хочешь воду?"))
         assertTrue(bgWords.contains("Това"))
-        assertTrue(firstWords.containsAll(setOf("Аз", "Ти", "Той", "Тя", "То", "Ние", "Вие", "Те", "Това")))
-        assertTrue(bgWords.any { it in setOf("вкъщи", "училище", "работа", "в библиотеката", "на улицата", "в болницата") })
-        assertTrue(bgWords.any { it in setOf("лекар", "учител", "студент", "колега", "директор", "инженер", "продавач") })
-        assertTrue(bgWords.any { it in setOf("магазин", "библиотека", "дете", "хляб", "книга", "кафе") })
-        assertTrue(sourceTexts.any { it.startsWith("Это ") })
+        assertTrue(bgWords.contains("обичам"))
+        assertTrue(bgWords.contains("искам"))
+        assertTrue(bgWords.any { it in setOf("кафе", "вода", "баница", "хляб", "чай", "сок") })
     }
 
     @Test
-    fun `lesson 3 session uses migrated json data`() {
+    fun `lesson 3 session uses textbook restaurant source`() {
         val session = repository.getLessonSession(3)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(session.exercises.any { "не" in it.correctAnswerWords })
-        assertTrue(sourceTexts.any { it.startsWith("Я ") })
-        assertTrue(sourceTexts.any { it.startsWith("Ты ") })
-        assertTrue(sourceTexts.any { it.startsWith("Он ") })
-        assertTrue(sourceTexts.any { it.startsWith("Она ") })
-        assertTrue(sourceTexts.any { it.startsWith("Оно ") })
-        assertTrue(sourceTexts.any { it.startsWith("Мы ") })
-        assertTrue(sourceTexts.any { it.startsWith("Вы ") })
-        assertTrue(sourceTexts.any { it.startsWith("Они ") })
-        assertTrue(sourceTexts.any { "была" in it })
-        assertTrue(sourceTexts.any { "было" in it })
+        assertTrue(sourceTexts.contains("Свободно?"))
+        assertTrue(sourceTexts.contains("Да, пожалуйста, проходите."))
+        assertTrue(sourceTexts.contains("Один кофе, пожалуйста."))
+        assertTrue(sourceTexts.contains("Можно счёт?"))
+        assertTrue(bgWords.any { it in setOf("меню", "сметката", "кафе", "айрян", "супа", "мусака") })
+        assertTrue(session.exercises.any { "ли" in it.correctAnswerWords })
     }
 
     @Test
@@ -139,40 +136,33 @@ class LessonSessionRepositoryTest {
     }
 
     @Test
-    fun `lesson 5 session avoids incorrect russian collocations`() {
+    fun `lesson 5 session uses textbook city shopping source`() {
         val session = repository.getLessonSession(5)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertFalse(sourceTexts.any { "учиться болгарский" in it })
-        assertFalse(sourceTexts.any { "Я мне нужно" in it })
-        assertFalse(sourceTexts.any { "Ты тебе нужно" in it })
-        assertFalse(sourceTexts.any { "Он ему нужно" in it })
-        assertFalse(sourceTexts.any { "Она ей нужно" in it })
-        assertTrue(sourceTexts.any { "учиться дома" in it || "учиться в школе" in it })
-        assertTrue(sourceTexts.any { "читать книгу" in it || "читать письмо" in it })
-        assertTrue(sourceTexts.any { "идти в магазин" in it || "идти домой" in it })
+        assertTrue(sourceTexts.contains("Сколько стоит?"))
+        assertTrue(sourceTexts.contains("Сколько стоят?"))
+        assertTrue(sourceTexts.contains("Можно один килограмм картофеля?"))
+        assertTrue(sourceTexts.contains("Картой или наличными?"))
+        assertTrue(sourceTexts.contains("Это аптека."))
+        assertTrue(bgWords.any { it in setOf("карта", "торбичка", "пари", "аптека", "музей", "лимони") })
     }
 
     @Test
-    fun `lesson 2 and 6 sessions cover feminine and neuter subjects`() {
+    fun `lesson 2 and 6 sessions use textbook coverage`() {
         val lesson2 = repository.getLessonSession(2)
         val lesson6 = repository.getLessonSession(6)
-        val lesson2FirstWords = lesson2.exercises.mapNotNull { it.correctAnswerWords.firstOrNull() }.toSet()
-        val lesson6FirstWords = lesson6.exercises.mapNotNull { it.correctAnswerWords.firstOrNull() }.toSet()
+        val lesson2Words = lesson2.exercises.flatMap { it.correctAnswerWords }.toSet()
         val lesson6Words = lesson6.exercises.flatMap { it.correctAnswerWords }.toSet()
+        val lesson6Texts = lesson6.exercises.map { it.sourceText }
 
-        assertTrue(lesson2FirstWords.contains("Тя"))
-        assertTrue(lesson2FirstWords.contains("То"))
-        assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Она ") })
-        assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Оно ") })
-        assertTrue(lesson6FirstWords.contains("Тя"))
-        assertTrue(lesson6FirstWords.contains("То"))
-        assertTrue(lesson6Words.contains("в магазина"))
-        assertTrue(lesson6Words.contains("в офиса"))
-        assertTrue(lesson6Words.contains("при учителя"))
-        assertTrue(lesson6Words.contains("с колегата"))
+        assertTrue(lesson2Words.any { it in setOf("Тя", "То", "Ние", "Вие", "Те") })
+        assertTrue(lesson6Texts.any { "бабушка" in it || "брат" in it || "дети" in it })
+        assertTrue(lesson6Texts.any { "женат" in it || "семья" in it || "Вашего сына" in it })
+        assertTrue(lesson6Words.any { it in setOf("семейство", "деца", "брат", "сестра", "баба", "синът", "женен") })
     }
 
     @Test

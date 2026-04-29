@@ -43,7 +43,12 @@ internal object LessonSessionFactory {
             2 -> LessonSession(
                 lessonId = 2,
                 lessonTitle = "Глагол \"съм\"",
-                exercises = if (assets.lesson2Sentences.isNotEmpty()) {
+                exercises = if (textbookSessionEligible) {
+                    generateTextbookLessonExercises(
+                        exerciseSet = checkNotNull(textbookExercises),
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else if (assets.lesson2Sentences.isNotEmpty()) {
                     generateFixedSentenceExercises(
                         fixedSentences = assets.lesson2Sentences,
                         exerciseLocale = exerciseLocale,
@@ -58,7 +63,12 @@ internal object LessonSessionFactory {
             3 -> LessonSession(
                 lessonId = 3,
                 lessonTitle = "Прошедшее время",
-                exercises = if (assets.lesson3Sentences.isNotEmpty()) {
+                exercises = if (textbookSessionEligible) {
+                    generateTextbookLessonExercises(
+                        exerciseSet = checkNotNull(textbookExercises),
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else if (assets.lesson3Sentences.isNotEmpty()) {
                     generateFixedSentenceExercises(
                         fixedSentences = assets.lesson3Sentences,
                         exerciseLocale = exerciseLocale,
@@ -92,7 +102,12 @@ internal object LessonSessionFactory {
             5 -> LessonSession(
                 lessonId = 5,
                 lessonTitle = "Могу, хочу, должен",
-                exercises = if (assets.lesson5Sentences.isNotEmpty()) {
+                exercises = if (textbookSessionEligible) {
+                    generateTextbookLessonExercises(
+                        exerciseSet = checkNotNull(textbookExercises),
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else if (assets.lesson5Sentences.isNotEmpty()) {
                     generateFixedSentenceExercises(
                         fixedSentences = assets.lesson5Sentences,
                         exerciseLocale = exerciseLocale,
@@ -107,7 +122,12 @@ internal object LessonSessionFactory {
             6 -> LessonSession(
                 lessonId = 6,
                 lessonTitle = "Предлоги и существительные",
-                exercises = if (assets.lesson6Sentences.isNotEmpty()) {
+                exercises = if (textbookSessionEligible) {
+                    generateTextbookLessonExercises(
+                        exerciseSet = checkNotNull(textbookExercises),
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else if (assets.lesson6Sentences.isNotEmpty()) {
                     generateFixedSentenceExercises(
                         fixedSentences = assets.lesson6Sentences,
                         exerciseLocale = exerciseLocale,
