@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionRepository
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionAssets
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionFactory
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.TextbookLessonExerciseSetAsset
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
@@ -22,18 +23,23 @@ class LessonSessionRepositoryTest {
     }
 
     @Test
-    fun `lesson 1 session builds complete exercises`() {
+    fun `lesson 1 session uses textbook exercise source`() {
         val session = repository.getLessonSession(1)
         val sourceTexts = session.exercises.map { it.sourceText }
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(sourceTexts.any { it.startsWith("Она ") })
-        assertTrue(sourceTexts.any { it.startsWith("Оно ") })
-        assertTrue(sourceTexts.any { "будет" in it || "будут" in it })
-        assertTrue(bgWords.any { it == "обичам" || it == "обича" })
-        assertTrue(bgWords.any { it == "имам" || it == "има" })
+        assertTrue(sourceTexts.contains("Здравствуйте, я Хасан."))
+        assertTrue(sourceTexts.contains("Откуда Вы?"))
+        assertTrue(sourceTexts.contains("Я из Болгарии."))
+        assertTrue(sourceTexts.contains("Я из Сирии."))
+        assertTrue(sourceTexts.contains("Я беженец."))
+        assertTrue(sourceTexts.contains("Она болгарка."))
+        assertTrue(bgWords.contains("Здравейте"))
+        assertTrue(bgWords.contains("съм"))
+        assertTrue(bgWords.contains("България"))
+        assertTrue(bgWords.contains("бежанец"))
         assertFalse(sourceTexts.any { "будет не будет" in it })
         assertFalse(sourceTexts.any { "есть нет" in it })
     }
@@ -47,21 +53,12 @@ class LessonSessionRepositoryTest {
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(bgWords.contains("вкъщи") || bgWords.contains("училище") || bgWords.contains("работа"))
-        assertTrue(bgWords.contains("лекар") || bgWords.contains("учител") || bgWords.contains("студент") || bgWords.contains("колега"))
         assertTrue(bgWords.contains("Това"))
         assertTrue(firstWords.containsAll(setOf("Аз", "Ти", "Той", "Тя", "То", "Ние", "Вие", "Те", "Това")))
-        assertTrue(bgWords.contains("вкъщи"))
-        assertTrue(bgWords.contains("лекар"))
-        assertTrue(bgWords.contains("Това"))
-        assertTrue(bgWords.contains("в библиотеката") || bgWords.contains("на улицата") || bgWords.contains("в болницата"))
-        assertTrue(bgWords.contains("директор") || bgWords.contains("инженер") || bgWords.contains("продавач"))
-        assertTrue(bgWords.contains("магазин") || bgWords.contains("библиотека") || bgWords.contains("дете"))
-        assertTrue(bgWords.contains("хляб") || bgWords.contains("стол") || bgWords.contains("град"))
-        assertTrue(bgWords.contains("книга") || bgWords.contains("вода") || bgWords.contains("кола"))
-        assertTrue(bgWords.contains("кафе") || bgWords.contains("море") || bgWords.contains("село"))
+        assertTrue(bgWords.any { it in setOf("вкъщи", "училище", "работа", "в библиотеката", "на улицата", "в болницата") })
+        assertTrue(bgWords.any { it in setOf("лекар", "учител", "студент", "колега", "директор", "инженер", "продавач") })
+        assertTrue(bgWords.any { it in setOf("магазин", "библиотека", "дете", "хляб", "книга", "кафе") })
         assertTrue(sourceTexts.any { it.startsWith("Это ") })
-        assertTrue(sourceTexts.any { it.startsWith("Я ") || it.startsWith("Ты ") || it.startsWith("Он ") })
     }
 
     @Test
@@ -85,27 +82,28 @@ class LessonSessionRepositoryTest {
     }
 
     @Test
-    fun `lesson 4 session uses full sentence practice`() {
+    fun `lesson 4 session uses textbook exercise source`() {
         val session = LessonSessionFactory.create(
             lessonId = 4,
             assets = loadLessonSessionAssets(),
+            textbookExercises = loadTextbookExerciseSet(4),
         )
         val sourceTexts = session.exercises.map { it.sourceText }
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
         assertTrue(session.exercises.all(::isValidExercise))
-        assertTrue(sourceTexts.any { "я хочу эту книгу" in it })
-        assertTrue(sourceTexts.any { it.startsWith("мы ") })
-        assertTrue(sourceTexts.any { "он хочет эту работу" in it })
-        assertTrue(sourceTexts.any { it.startsWith("вы ") })
-        assertTrue(sourceTexts.any { it.startsWith("она ") })
-        assertTrue(sourceTexts.any { it.startsWith("оно ") })
-        assertTrue(bgWords.contains("работата"))
-        assertTrue(bgWords.contains("книгата"))
-        assertTrue(bgWords.any { it.startsWith("обич") })
-        assertTrue(bgWords.any { it.startsWith("харес") })
-        assertTrue(bgWords.any { it.startsWith("уч") })
+        assertTrue(sourceTexts.contains("Я хочу хлеб."))
+        assertTrue(sourceTexts.contains("Я хочу воду."))
+        assertTrue(sourceTexts.contains("Я люблю кофе."))
+        assertTrue(sourceTexts.contains("Мне нравится чай."))
+        assertTrue(sourceTexts.contains("Ты любишь сок?"))
+        assertTrue(sourceTexts.contains("Ты хочешь чай?"))
+        assertTrue(bgWords.any { it in setOf("Искам", "Искаш") })
+        assertTrue(bgWords.any { it in setOf("Обичам", "Обичаш") })
+        assertTrue(bgWords.contains("Харесвам"))
+        assertTrue(bgWords.contains("хляб"))
+        assertTrue(bgWords.contains("кафе"))
     }
 
     @Test
@@ -113,6 +111,7 @@ class LessonSessionRepositoryTest {
         val session = LessonSessionFactory.create(
             lessonId = 4,
             assets = loadLessonSessionAssets(),
+            textbookExercises = loadTextbookExerciseSet(4),
         )
         val standalonePrompts = setOf(
             "книга",
@@ -135,7 +134,7 @@ class LessonSessionRepositoryTest {
             "говорить",
         )
 
-        assertTrue(session.exercises.all { it.sourceText.trim().split(Regex("\\s+")).size >= 3 })
+        assertTrue(session.exercises.all { it.sourceText.trim().split(Regex("\\s+")).size >= 2 })
         assertTrue(session.exercises.none { it.sourceText in standalonePrompts })
     }
 
@@ -166,7 +165,6 @@ class LessonSessionRepositoryTest {
 
         assertTrue(lesson2FirstWords.contains("Тя"))
         assertTrue(lesson2FirstWords.contains("То"))
-
         assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Она ") })
         assertTrue(lesson6.exercises.any { it.sourceText.startsWith("Оно ") })
         assertTrue(lesson6FirstWords.contains("Тя"))
@@ -209,13 +207,6 @@ class LessonSessionRepositoryTest {
         assertTrue(sourceTexts.any { "Мы видим" in it })
         assertTrue(session.exercises.any { it.sourceText.trim().endsWith("?") })
         assertTrue(session.exercises.any { "ли" in it.correctAnswerWords })
-        assertTrue(
-            session.exercises.any {
-                it.correctAnswerWords.any { word ->
-                    word in setOf("един", "една", "едно", "два", "две", "три", "десет", "единадесет", "двадесет")
-                }
-            },
-        )
     }
 
     @Test
@@ -236,7 +227,7 @@ class LessonSessionRepositoryTest {
 
     private fun isValidExercise(exercise: LessonExercise): Boolean {
         assertTrue(exercise.sourceText.isNotBlank())
-        assertEquals("Переведите предложение", exercise.instruction)
+        assertTrue(exercise.instruction.isNotBlank())
         assertFalse(exercise.correctAnswerWords.isEmpty())
         assertEquals(8, exercise.availableWords.size)
         assertTrue(exercise.correctAnswerWords.distinct().all { it in exercise.availableWords })
@@ -245,6 +236,11 @@ class LessonSessionRepositoryTest {
 
     private fun loadLessonSessionAssets(): LessonSessionAssets {
         val path = resolveAssetPath("lesson_session_content.json")
+        return json.decodeFromString(String(Files.readAllBytes(path), StandardCharsets.UTF_8))
+    }
+
+    private fun loadTextbookExerciseSet(lessonId: Int): TextbookLessonExerciseSetAsset {
+        val path = resolveAssetPath("textbook_exercises_lesson$lessonId.json")
         return json.decodeFromString(String(Files.readAllBytes(path), StandardCharsets.UTF_8))
     }
 

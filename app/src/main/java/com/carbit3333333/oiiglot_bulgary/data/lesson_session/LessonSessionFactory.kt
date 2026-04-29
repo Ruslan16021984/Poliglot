@@ -9,6 +9,7 @@ import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson7R
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson8RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson9RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.generateFixedSentenceExercises
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.generateTextbookLessonExercises
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 
 internal object LessonSessionFactory {
@@ -16,18 +17,27 @@ internal object LessonSessionFactory {
         lessonId: Int,
         assets: LessonSessionAssets,
         exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
+        textbookExercises: TextbookLessonExerciseSetAsset? = null,
     ): LessonSession {
+        val textbookSessionEligible = textbookExercises?.items?.isNotEmpty() == true
         val session = when (lessonId) {
             1 -> LessonSession(
                 lessonId = 1,
                 lessonTitle = "Урок 1",
-                exercises = Lesson1RealGenerator.generateExercises(
-                    fixedSentences = assets.lesson1Sentences,
-                    subjects = assets.lesson1Subjects,
-                    templates = assets.lesson1Templates,
-                    verbs = assets.lesson1Verbs,
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (textbookSessionEligible) {
+                    generateTextbookLessonExercises(
+                        exerciseSet = checkNotNull(textbookExercises),
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    Lesson1RealGenerator.generateExercises(
+                        fixedSentences = assets.lesson1Sentences,
+                        subjects = assets.lesson1Subjects,
+                        templates = assets.lesson1Templates,
+                        verbs = assets.lesson1Verbs,
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             2 -> LessonSession(
@@ -66,10 +76,17 @@ internal object LessonSessionFactory {
             4 -> LessonSession(
                 lessonId = 4,
                 lessonTitle = "Предмет или действие",
-                exercises = generateLesson4Exercises(
-                    items = assets.lesson4Items,
-                    exerciseLocale = exerciseLocale,
-                ),
+                exercises = if (textbookSessionEligible) {
+                    generateTextbookLessonExercises(
+                        exerciseSet = checkNotNull(textbookExercises),
+                        exerciseLocale = exerciseLocale,
+                    )
+                } else {
+                    generateLesson4Exercises(
+                        items = assets.lesson4Items,
+                        exerciseLocale = exerciseLocale,
+                    )
+                },
             )
 
             5 -> LessonSession(
@@ -185,7 +202,9 @@ internal object LessonSessionFactory {
         return if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
             session.copy(
                 lessonTitle = UkrainianLessonStrings.lessonTitle(session.lessonId),
-                exercises = if (session.lessonId in setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) {
+                exercises = if (textbookSessionEligible) {
+                    session.exercises
+                } else if (session.lessonId in setOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) {
                     localizeLessonExercisesUsingExistingSource(session.exercises, exerciseLocale)
                 } else {
                     localizeLessonExercises(session.exercises, exerciseLocale)

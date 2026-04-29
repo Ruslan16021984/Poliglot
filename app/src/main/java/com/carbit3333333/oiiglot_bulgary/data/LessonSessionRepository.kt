@@ -5,6 +5,8 @@ import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonExerciseLocal
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionAssets
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionAssetsRepository
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionFactory
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.TextbookLessonExerciseSetAsset
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.TextbookLessonExercisesRepository
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.defaultLessonSessionAssets
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.resolveLessonExerciseLocale
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
@@ -17,16 +19,19 @@ import kotlinx.serialization.json.Json
 class LessonSessionRepository private constructor(
     private val sessionAssets: LessonSessionAssets,
     private val exerciseLocale: LessonExerciseLocale,
+    private val textbookExercisesRepository: TextbookLessonExercisesRepository,
 ) {
 
     constructor(context: Context) : this(
         sessionAssets = LessonSessionAssetsRepository(context).load(),
         exerciseLocale = resolveLessonExerciseLocale(context),
+        textbookExercisesRepository = TextbookLessonExercisesRepository(context),
     )
 
     constructor() : this(
         sessionAssets = loadLocalAssetsOrDefault(),
         exerciseLocale = LessonExerciseLocale.Russian,
+        textbookExercisesRepository = TextbookLessonExercisesRepository(),
     )
 
     fun getLessonSession(lessonId: Int): LessonSession {
@@ -34,6 +39,7 @@ class LessonSessionRepository private constructor(
             lessonId = lessonId,
             assets = sessionAssets,
             exerciseLocale = exerciseLocale,
+            textbookExercises = loadTextbookExercisesForLesson(lessonId),
         )
     }
 
@@ -70,5 +76,11 @@ class LessonSessionRepository private constructor(
 
             return null
         }
+    }
+
+    private fun loadTextbookExercisesForLesson(lessonId: Int): TextbookLessonExerciseSetAsset? {
+        val alignedTextbookLessons = setOf(1, 4)
+        if (lessonId !in alignedTextbookLessons) return null
+        return textbookExercisesRepository.loadForLesson(lessonId)
     }
 }
