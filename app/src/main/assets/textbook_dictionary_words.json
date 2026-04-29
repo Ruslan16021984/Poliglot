@@ -104,8 +104,12 @@
       "partOfSpeech": "interjection",
       "type": "word",
       "source": "textbook",
-      "tags": ["greeting"],
-      "appLessons": [1],
+      "tags": [
+        "greeting"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -117,8 +121,13 @@
       "partOfSpeech": "interjection",
       "type": "word",
       "source": "textbook",
-      "tags": ["greeting", "formal"],
-      "appLessons": [1],
+      "tags": [
+        "greeting",
+        "formal"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -130,8 +139,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["greeting", "time-of-day"],
-      "appLessons": [1],
+      "tags": [
+        "greeting",
+        "time-of-day"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -143,8 +157,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["greeting", "time-of-day"],
-      "appLessons": [1],
+      "tags": [
+        "greeting",
+        "time-of-day"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -156,8 +175,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["greeting", "time-of-day"],
-      "appLessons": [1],
+      "tags": [
+        "greeting",
+        "time-of-day"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -169,8 +193,12 @@
       "partOfSpeech": "interjection",
       "type": "word",
       "source": "textbook",
-      "tags": ["farewell"],
-      "appLessons": [1],
+      "tags": [
+        "farewell"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -182,8 +210,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["greeting", "introduction"],
-      "appLessons": [1],
+      "tags": [
+        "greeting",
+        "introduction"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -195,8 +228,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["question", "informal"],
-      "appLessons": [1],
+      "tags": [
+        "question",
+        "informal"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -208,8 +246,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["question", "formal"],
-      "appLessons": [1],
+      "tags": [
+        "question",
+        "formal"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -221,8 +264,13 @@
       "partOfSpeech": "adverb",
       "type": "word",
       "source": "textbook",
-      "tags": ["response"],
-      "appLessons": [1, 8],
+      "tags": [
+        "response"
+      ],
+      "appLessons": [
+        1,
+        8
+      ],
       "isHighFrequency": true
     },
     {
@@ -234,8 +282,12 @@
       "partOfSpeech": "adverb",
       "type": "word",
       "source": "textbook",
-      "tags": ["response"],
-      "appLessons": [1],
+      "tags": [
+        "response"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": false
     },
     {
@@ -247,8 +299,12 @@
       "partOfSpeech": "interjection",
       "type": "word",
       "source": "textbook",
-      "tags": ["politeness"],
-      "appLessons": [1],
+      "tags": [
+        "politeness"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -260,8 +316,13 @@
       "partOfSpeech": "adverb",
       "type": "word",
       "source": "textbook",
-      "tags": ["question"],
-      "appLessons": [1, 2],
+      "tags": [
+        "question"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -273,8 +334,13 @@
       "partOfSpeech": "preposition",
       "type": "word",
       "source": "textbook",
-      "tags": ["service-word"],
-      "appLessons": [1, 6],
+      "tags": [
+        "service-word"
+      ],
+      "appLessons": [
+        1,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -286,8 +352,13 @@
       "partOfSpeech": "verb",
       "type": "word",
       "source": "textbook",
-      "tags": ["core-verb"],
-      "appLessons": [1, 2],
+      "tags": [
+        "core-verb"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -299,8 +370,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["nationality"],
-      "appLessons": [1, 2],
+      "tags": [
+        "nationality"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -312,8 +388,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["nationality"],
-      "appLessons": [1, 2],
+      "tags": [
+        "nationality"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -325,8 +406,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["nationality"],
-      "appLessons": [1, 2],
+      "tags": [
+        "nationality"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -338,8 +424,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["nationality"],
-      "appLessons": [1, 2],
+      "tags": [
+        "nationality"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": false
     },
     {
@@ -351,8 +442,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["profession"],
-      "appLessons": [1, 2],
+      "tags": [
+        "profession"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -364,8 +460,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["profession"],
-      "appLessons": [1, 2],
+      "tags": [
+        "profession"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -377,8 +478,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["status"],
-      "appLessons": [1, 2],
+      "tags": [
+        "status"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -390,8 +496,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["status"],
-      "appLessons": [1, 2],
+      "tags": [
+        "status"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -403,8 +514,12 @@
       "partOfSpeech": "proper-noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["country"],
-      "appLessons": [1],
+      "tags": [
+        "country"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -416,8 +531,12 @@
       "partOfSpeech": "proper-noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["country"],
-      "appLessons": [1],
+      "tags": [
+        "country"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -429,8 +548,12 @@
       "partOfSpeech": "proper-noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["country"],
-      "appLessons": [1],
+      "tags": [
+        "country"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -442,8 +565,15 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "food"],
-      "appLessons": [4, 5, 9],
+      "tags": [
+        "drink",
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -455,8 +585,15 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "food"],
-      "appLessons": [4, 5, 9],
+      "tags": [
+        "drink",
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -468,8 +605,15 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "food"],
-      "appLessons": [4, 5, 9],
+      "tags": [
+        "drink",
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -481,8 +625,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "food"],
-      "appLessons": [4, 5],
+      "tags": [
+        "drink",
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -494,8 +644,15 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "food"],
-      "appLessons": [4, 5, 9],
+      "tags": [
+        "drink",
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -507,8 +664,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "dairy"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food",
+        "dairy"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -520,8 +683,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "dairy"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food",
+        "dairy"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -533,8 +702,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "dairy"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food",
+        "dairy"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -546,8 +721,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "dairy"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food",
+        "dairy"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -559,8 +740,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -572,8 +758,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4, 5, 9],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -585,8 +777,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -598,8 +794,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "bulgarian-culture"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "bulgarian-culture"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -611,8 +812,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4, 9],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -624,8 +830,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -637,8 +847,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -650,8 +864,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -663,8 +881,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -676,8 +898,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -689,8 +915,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -702,8 +932,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food"],
-      "appLessons": [4],
+      "tags": [
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -715,8 +949,14 @@
       "partOfSpeech": "verb",
       "type": "word",
       "source": "textbook",
-      "tags": ["core-verb", "food"],
-      "appLessons": [1, 4],
+      "tags": [
+        "core-verb",
+        "food"
+      ],
+      "appLessons": [
+        1,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -728,8 +968,14 @@
       "partOfSpeech": "verb",
       "type": "word",
       "source": "textbook",
-      "tags": ["core-verb", "food"],
-      "appLessons": [4, 5],
+      "tags": [
+        "core-verb",
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -741,8 +987,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["place", "food"],
-      "appLessons": [4, 5],
+      "tags": [
+        "place",
+        "food"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -754,8 +1006,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -767,8 +1023,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["restaurant", "payment"],
-      "appLessons": [4],
+      "tags": [
+        "restaurant",
+        "payment"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -780,8 +1041,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "drink",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -793,8 +1059,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "drink",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -806,8 +1077,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "drink",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -819,8 +1095,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "drink",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -832,8 +1113,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -845,8 +1131,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -858,8 +1149,13 @@
       "partOfSpeech": "adverb",
       "type": "word",
       "source": "textbook",
-      "tags": ["restaurant"],
-      "appLessons": [2, 3],
+      "tags": [
+        "restaurant"
+      ],
+      "appLessons": [
+        2,
+        3
+      ],
       "isHighFrequency": true
     },
     {
@@ -871,8 +1167,13 @@
       "partOfSpeech": "adjective",
       "type": "word",
       "source": "textbook",
-      "tags": ["restaurant"],
-      "appLessons": [2, 3],
+      "tags": [
+        "restaurant"
+      ],
+      "appLessons": [
+        2,
+        3
+      ],
       "isHighFrequency": true
     },
     {
@@ -884,8 +1185,14 @@
       "partOfSpeech": "interjection",
       "type": "word",
       "source": "textbook",
-      "tags": ["politeness", "restaurant"],
-      "appLessons": [1, 3],
+      "tags": [
+        "politeness",
+        "restaurant"
+      ],
+      "appLessons": [
+        1,
+        3
+      ],
       "isHighFrequency": true
     },
     {
@@ -897,8 +1204,14 @@
       "partOfSpeech": "interjection",
       "type": "word",
       "source": "textbook",
-      "tags": ["politeness", "restaurant"],
-      "appLessons": [1, 3],
+      "tags": [
+        "politeness",
+        "restaurant"
+      ],
+      "appLessons": [
+        1,
+        3
+      ],
       "isHighFrequency": true
     },
     {
@@ -910,8 +1223,15 @@
       "partOfSpeech": "interjection",
       "type": "word",
       "source": "textbook",
-      "tags": ["politeness", "restaurant"],
-      "appLessons": [1, 3, 4],
+      "tags": [
+        "politeness",
+        "restaurant"
+      ],
+      "appLessons": [
+        1,
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -923,8 +1243,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["drink", "restaurant", "bulgarian-culture"],
-      "appLessons": [4],
+      "tags": [
+        "drink",
+        "restaurant",
+        "bulgarian-culture"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -936,8 +1262,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -949,8 +1280,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "restaurant", "bulgarian-culture"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "restaurant",
+        "bulgarian-culture"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -962,8 +1299,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -975,8 +1317,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "restaurant"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "restaurant"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -988,8 +1335,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "restaurant", "dessert"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "restaurant",
+        "dessert"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1001,8 +1354,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "place"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "place"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1014,8 +1372,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "place"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "place"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1027,8 +1390,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "place"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "place"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1040,8 +1408,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "place"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "place"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1053,8 +1426,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4, 10],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4,
+        10
+      ],
       "isHighFrequency": true
     },
     {
@@ -1066,8 +1445,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1079,8 +1463,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1092,8 +1481,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1105,8 +1499,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1118,8 +1517,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1131,8 +1535,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1144,8 +1553,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1157,8 +1571,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1170,8 +1589,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1183,8 +1607,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1196,8 +1625,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1209,8 +1643,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1222,8 +1661,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1235,8 +1679,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1248,8 +1697,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1261,8 +1715,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["food", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1274,8 +1733,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1287,8 +1751,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1300,8 +1769,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1313,8 +1787,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1326,8 +1805,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1339,8 +1823,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1352,8 +1841,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1365,8 +1859,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1378,8 +1877,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1391,8 +1895,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1404,8 +1913,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1417,8 +1931,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1430,8 +1949,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1443,8 +1967,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["fruit", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "fruit",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1456,8 +1985,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1469,8 +2003,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1482,8 +2021,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1495,8 +2039,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1508,8 +2057,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1521,8 +2075,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1534,8 +2093,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1547,8 +2111,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1560,8 +2129,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1573,8 +2147,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -1586,8 +2165,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1599,8 +2183,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["vegetable", "shopping"],
-      "appLessons": [4],
+      "tags": [
+        "vegetable",
+        "shopping"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -1612,8 +2201,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1625,8 +2220,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1638,8 +2239,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1651,8 +2258,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1664,8 +2277,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1677,8 +2296,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1690,8 +2315,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1703,8 +2334,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "street"],
-      "appLessons": [5, 6],
+      "tags": [
+        "city",
+        "street"
+      ],
+      "appLessons": [
+        5,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1716,8 +2353,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1729,8 +2372,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1742,8 +2391,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1755,8 +2410,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "street"],
-      "appLessons": [5, 6],
+      "tags": [
+        "city",
+        "street"
+      ],
+      "appLessons": [
+        5,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1768,8 +2429,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1781,8 +2448,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1794,8 +2466,13 @@
       "partOfSpeech": "phrase",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -1807,8 +2484,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -1820,8 +2502,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [6, 7],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        6,
+        7
+      ],
       "isHighFrequency": true
     },
     {
@@ -1833,8 +2521,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [2, 6],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -1846,8 +2540,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -1859,8 +2558,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -1872,8 +2576,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -1885,8 +2594,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -1898,8 +2612,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -1911,8 +2630,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -1924,8 +2648,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -1937,8 +2666,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["city", "place"],
-      "appLessons": [5],
+      "tags": [
+        "city",
+        "place"
+      ],
+      "appLessons": [
+        5
+      ],
       "isHighFrequency": false
     },
     {
@@ -1950,8 +2684,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "measure"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "measure"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -1963,8 +2702,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "measure"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "measure"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -1976,8 +2720,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "measure"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "measure"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -1989,8 +2738,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "measure"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "measure"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -2002,8 +2756,12 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping"],
-      "appLessons": [9],
+      "tags": [
+        "shopping"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -2015,8 +2773,13 @@
       "partOfSpeech": "verb",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping", "core-verb"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "core-verb"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -2028,8 +2791,13 @@
       "partOfSpeech": "adverb",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping"],
-      "appLessons": [8, 9],
+      "tags": [
+        "shopping"
+      ],
+      "appLessons": [
+        8,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -2041,8 +2809,13 @@
       "partOfSpeech": "adverb",
       "type": "word",
       "source": "textbook",
-      "tags": ["shopping"],
-      "appLessons": [8, 9],
+      "tags": [
+        "shopping"
+      ],
+      "appLessons": [
+        8,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -2054,8 +2827,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "person"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "person"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2067,8 +2846,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "person"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "person"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2080,8 +2865,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "person"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "person"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2093,8 +2884,15 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "person", "child"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "person",
+        "child"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2106,8 +2904,15 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "person", "child"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "person",
+        "child"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2119,8 +2924,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2132,8 +2943,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2145,8 +2962,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2158,8 +2981,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2171,8 +3000,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2184,8 +3019,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2197,8 +3038,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2210,8 +3057,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2223,8 +3076,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2236,8 +3095,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2249,8 +3114,14 @@
       "partOfSpeech": "adjective",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "status"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "status"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2262,8 +3133,14 @@
       "partOfSpeech": "adjective",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "status"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "status"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2275,8 +3152,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "status", "relative"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "status",
+        "relative"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2288,8 +3171,14 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "status", "relative"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "status",
+        "relative"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2301,8 +3190,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "status"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "status"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2314,8 +3208,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2327,8 +3226,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2340,8 +3244,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2353,8 +3262,13 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -2366,8 +3280,1481 @@
       "partOfSpeech": "noun",
       "type": "word",
       "source": "textbook",
-      "tags": ["family", "relative"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relative"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "топло",
+      "ru": "тепло",
+      "uk": "тепло",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "студено",
+      "ru": "холодно",
+      "uk": "холодно",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "слънчево",
+      "ru": "солнечно",
+      "uk": "сонячно",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "дъжд",
+      "ru": "дождь",
+      "uk": "дощ",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "сняг",
+      "ru": "снег",
+      "uk": "сніг",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "вятър",
+      "ru": "ветер",
+      "uk": "вітер",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "понеделник",
+      "ru": "понедельник",
+      "uk": "понеділок",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weekday"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "вторник",
+      "ru": "вторник",
+      "uk": "вівторок",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weekday"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "сряда",
+      "ru": "среда",
+      "uk": "середа",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weekday"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "четвъртък",
+      "ru": "четверг",
+      "uk": "четвер",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weekday"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "петък",
+      "ru": "пятница",
+      "uk": "п'ятниця",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weekday"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "събота",
+      "ru": "суббота",
+      "uk": "субота",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weekday"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "неделя",
+      "ru": "воскресенье",
+      "uk": "неділя",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weekday"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "януари",
+      "ru": "январь",
+      "uk": "січень",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "month"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "април",
+      "ru": "апрель",
+      "uk": "квітень",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "month"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "август",
+      "ru": "август",
+      "uk": "серпень",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "month"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "ноември",
+      "ru": "ноябрь",
+      "uk": "листопад",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "month"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "час",
+      "ru": "час",
+      "uk": "година",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time"
+      ],
+      "appLessons": [
+        7,
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "сутрин",
+      "ru": "утром",
+      "uk": "вранці",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        7,
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "вечер",
+      "ru": "вечером",
+      "uk": "увечері",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        7,
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "следобед",
+      "ru": "после обеда",
+      "uk": "після обіду",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        7,
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "нощем",
+      "ru": "ночью",
+      "uk": "уночі",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        7,
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "риза",
+      "ru": "рубашка",
+      "uk": "сорочка",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "пола",
+      "ru": "юбка",
+      "uk": "спідниця",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "рокля",
+      "ru": "платье",
+      "uk": "сукня",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "шапка",
+      "ru": "шапка",
+      "uk": "шапка",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "яке",
+      "ru": "куртка",
+      "uk": "куртка",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "палто",
+      "ru": "пальто",
+      "uk": "пальто",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "панталон",
+      "ru": "брюки",
+      "uk": "штани",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "обувки",
+      "ru": "туфли",
+      "uk": "туфлі",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "шал",
+      "ru": "шарф",
+      "uk": "шарф",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "сако",
+      "ru": "пиджак",
+      "uk": "піджак",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "пуловер",
+      "ru": "свитер",
+      "uk": "светр",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "ботуши",
+      "ru": "сапоги",
+      "uk": "чоботи",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "бял",
+      "ru": "белый",
+      "uk": "білий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "color"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "черен",
+      "ru": "чёрный",
+      "uk": "чорний",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "color"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "червен",
+      "ru": "красный",
+      "uk": "червоний",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "color"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "син",
+      "ru": "синий",
+      "uk": "синій",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "color"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "зелен",
+      "ru": "зелёный",
+      "uk": "зелений",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "color"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "жълт",
+      "ru": "жёлтый",
+      "uk": "жовтий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "color"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "кафяв",
+      "ru": "коричневый",
+      "uk": "коричневий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "color"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "къща",
+      "ru": "дом",
+      "uk": "будинок",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "home"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "апартамент",
+      "ru": "квартира",
+      "uk": "квартира",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "home"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "кухня",
+      "ru": "кухня",
+      "uk": "кухня",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "room"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "баня",
+      "ru": "ванная",
+      "uk": "ванна",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "room"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "стая",
+      "ru": "комната",
+      "uk": "кімната",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "room"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "хол",
+      "ru": "гостиная",
+      "uk": "вітальня",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "room"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "спалня",
+      "ru": "спальня",
+      "uk": "спальня",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "room"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "коридор",
+      "ru": "коридор",
+      "uk": "коридор",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "room"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "маса",
+      "ru": "стол",
+      "uk": "стіл",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "стол",
+      "ru": "стул",
+      "uk": "стілець",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "легло",
+      "ru": "кровать",
+      "uk": "ліжко",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "диван",
+      "ru": "диван",
+      "uk": "диван",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "шкаф",
+      "ru": "шкаф",
+      "uk": "шафа",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "лампа",
+      "ru": "лампа",
+      "uk": "лампа",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "килим",
+      "ru": "ковёр",
+      "uk": "килим",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "полица",
+      "ru": "полка",
+      "uk": "полиця",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "огледало",
+      "ru": "зеркало",
+      "uk": "дзеркало",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "furniture"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "автобус",
+      "ru": "автобус",
+      "uk": "автобус",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "трамвай",
+      "ru": "трамвай",
+      "uk": "трамвай",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "влак",
+      "ru": "поезд",
+      "uk": "потяг",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "метро",
+      "ru": "метро",
+      "uk": "метро",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "такси",
+      "ru": "такси",
+      "uk": "таксі",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "спирка",
+      "ru": "остановка",
+      "uk": "зупинка",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport-place"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "гара",
+      "ru": "вокзал",
+      "uk": "вокзал",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport-place"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "летище",
+      "ru": "аэропорт",
+      "uk": "аеропорт",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport-place"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "билет",
+      "ru": "билет",
+      "uk": "квиток",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "ticket"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "карта",
+      "ru": "карта",
+      "uk": "карта",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "ticket"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "самолет",
+      "ru": "самолёт",
+      "uk": "літак",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "каса",
+      "ru": "касса",
+      "uk": "каса",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport-place"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "перон",
+      "ru": "перрон",
+      "uk": "перон",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport-place"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "куфар",
+      "ru": "чемодан",
+      "uk": "валіза",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "travel"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "пътувам",
+      "ru": "ехать",
+      "uk": "їхати",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "transport"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "ставам",
+      "ru": "вставать",
+      "uk": "вставати",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "лягам",
+      "ru": "ложиться",
+      "uk": "лягати",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "излизам",
+      "ru": "выходить",
+      "uk": "виходити",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "вечерям",
+      "ru": "ужинать",
+      "uk": "вечеряти",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "връщам се",
+      "ru": "возвращаться",
+      "uk": "повертатися",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "отивам",
+      "ru": "идти",
+      "uk": "йти",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "денем",
+      "ru": "днём",
+      "uk": "удень",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "сутрин",
+      "ru": "утром",
+      "uk": "вранці",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "следобед",
+      "ru": "после обеда",
+      "uk": "після обіду",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "вечер",
+      "ru": "вечером",
+      "uk": "увечері",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "нощем",
+      "ru": "ночью",
+      "uk": "уночі",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time-of-day"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "зъби",
+      "ru": "зубы",
+      "uk": "зуби",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": false
+    },
+    {
+      "bg": "магазин",
+      "ru": "магазин",
+      "uk": "магазин",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine-place"
+      ],
+      "appLessons": [
+        5,
+        11
+      ],
       "isHighFrequency": true
     }
   ],
@@ -2380,8 +4767,12 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["introduction"],
-      "appLessons": [1],
+      "tags": [
+        "introduction"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -2392,8 +4783,13 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["introduction", "politeness"],
-      "appLessons": [1],
+      "tags": [
+        "introduction",
+        "politeness"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -2404,8 +4800,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["question", "formal"],
-      "appLessons": [1, 2],
+      "tags": [
+        "question",
+        "formal"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2416,8 +4818,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["country", "introduction"],
-      "appLessons": [1, 2],
+      "tags": [
+        "country",
+        "introduction"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2428,8 +4836,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["country", "introduction"],
-      "appLessons": [1, 2],
+      "tags": [
+        "country",
+        "introduction"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2440,8 +4854,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["status", "country"],
-      "appLessons": [1, 2],
+      "tags": [
+        "status",
+        "country"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2452,8 +4872,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["status", "country"],
-      "appLessons": [1, 2],
+      "tags": [
+        "status",
+        "country"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2464,8 +4890,13 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["profession"],
-      "appLessons": [1, 2],
+      "tags": [
+        "profession"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2476,8 +4907,13 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["profession"],
-      "appLessons": [1, 2],
+      "tags": [
+        "profession"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2488,8 +4924,15 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["question", "formal", "nationality"],
-      "appLessons": [1, 2],
+      "tags": [
+        "question",
+        "formal",
+        "nationality"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2500,8 +4943,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["answer", "nationality"],
-      "appLessons": [1, 2],
+      "tags": [
+        "answer",
+        "nationality"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2512,8 +4961,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["negative", "profession"],
-      "appLessons": [1, 2],
+      "tags": [
+        "negative",
+        "profession"
+      ],
+      "appLessons": [
+        1,
+        2
+      ],
       "isHighFrequency": true
     },
     {
@@ -2524,8 +4979,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["greeting", "question", "informal"],
-      "appLessons": [1],
+      "tags": [
+        "greeting",
+        "question",
+        "informal"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -2536,8 +4997,14 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["greeting", "question", "formal"],
-      "appLessons": [1],
+      "tags": [
+        "greeting",
+        "question",
+        "formal"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -2548,8 +5015,13 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["response", "formal"],
-      "appLessons": [1],
+      "tags": [
+        "response",
+        "formal"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": true
     },
     {
@@ -2560,8 +5032,12 @@
       "theme": "Приветствие, знакомство, национальность",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["response"],
-      "appLessons": [1],
+      "tags": [
+        "response"
+      ],
+      "appLessons": [
+        1
+      ],
       "isHighFrequency": false
     },
     {
@@ -2572,8 +5048,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["question", "food"],
-      "appLessons": [2, 4],
+      "tags": [
+        "question",
+        "food"
+      ],
+      "appLessons": [
+        2,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2584,8 +5066,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "demo"],
-      "appLessons": [2, 4],
+      "tags": [
+        "food",
+        "demo"
+      ],
+      "appLessons": [
+        2,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2596,8 +5084,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2608,8 +5101,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2620,8 +5119,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2632,8 +5136,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2644,8 +5154,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2656,8 +5171,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -2668,8 +5189,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2680,8 +5206,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2692,8 +5224,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -2704,8 +5241,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -2716,8 +5259,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2728,8 +5276,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": false
     },
     {
@@ -2740,8 +5294,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2752,8 +5311,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2764,8 +5329,13 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2776,8 +5346,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "like"],
-      "appLessons": [4],
+      "tags": [
+        "food",
+        "negative",
+        "like"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2788,8 +5364,14 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "want"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food",
+        "want"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -2800,8 +5382,15 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "negative", "want"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food",
+        "negative",
+        "want"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -2812,8 +5401,15 @@
       "theme": "Еда и завтрак",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["food", "question", "want"],
-      "appLessons": [4, 5],
+      "tags": [
+        "food",
+        "question",
+        "want"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -2824,8 +5420,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question", "drink"],
-      "appLessons": [4],
+      "tags": [
+        "restaurant",
+        "question",
+        "drink"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2836,8 +5438,13 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "drink"],
-      "appLessons": [4],
+      "tags": [
+        "restaurant",
+        "drink"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2848,8 +5455,13 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "drink"],
-      "appLessons": [4],
+      "tags": [
+        "restaurant",
+        "drink"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2860,8 +5472,15 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question", "drink"],
-      "appLessons": [4, 5],
+      "tags": [
+        "restaurant",
+        "question",
+        "drink"
+      ],
+      "appLessons": [
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -2872,8 +5491,13 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question"],
-      "appLessons": [4],
+      "tags": [
+        "restaurant",
+        "question"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2884,8 +5508,13 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "answer"],
-      "appLessons": [4],
+      "tags": [
+        "restaurant",
+        "answer"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2896,8 +5525,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question"],
-      "appLessons": [2, 4],
+      "tags": [
+        "restaurant",
+        "question"
+      ],
+      "appLessons": [
+        2,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2908,8 +5543,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "answer"],
-      "appLessons": [2, 4],
+      "tags": [
+        "restaurant",
+        "answer"
+      ],
+      "appLessons": [
+        2,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2920,8 +5561,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "answer"],
-      "appLessons": [2, 4],
+      "tags": [
+        "restaurant",
+        "answer"
+      ],
+      "appLessons": [
+        2,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2932,8 +5579,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "service"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "service"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2944,8 +5597,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "order"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "order"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2956,8 +5615,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "question"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2968,8 +5633,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "order"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "order"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -2980,8 +5651,15 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question"],
-      "appLessons": [3, 4, 5],
+      "tags": [
+        "restaurant",
+        "question"
+      ],
+      "appLessons": [
+        3,
+        4,
+        5
+      ],
       "isHighFrequency": true
     },
     {
@@ -2992,8 +5670,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "order"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "order"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3004,8 +5688,13 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question"],
-      "appLessons": [3],
+      "tags": [
+        "restaurant",
+        "question"
+      ],
+      "appLessons": [
+        3
+      ],
       "isHighFrequency": true
     },
     {
@@ -3016,8 +5705,13 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "answer"],
-      "appLessons": [3],
+      "tags": [
+        "restaurant",
+        "answer"
+      ],
+      "appLessons": [
+        3
+      ],
       "isHighFrequency": true
     },
     {
@@ -3028,8 +5722,13 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "answer"],
-      "appLessons": [3],
+      "tags": [
+        "restaurant",
+        "answer"
+      ],
+      "appLessons": [
+        3
+      ],
       "isHighFrequency": true
     },
     {
@@ -3040,8 +5739,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "request"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "request"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3052,8 +5757,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "order"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "order"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3064,8 +5775,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "question"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3076,8 +5793,16 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "answer", "politeness"],
-      "appLessons": [1, 3, 4],
+      "tags": [
+        "restaurant",
+        "answer",
+        "politeness"
+      ],
+      "appLessons": [
+        1,
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3088,8 +5813,15 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "order", "drink"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "order",
+        "drink"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3100,8 +5832,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "question"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "question"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3112,8 +5850,15 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "order", "dessert"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "order",
+        "dessert"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3124,8 +5869,14 @@
       "theme": "Ресторан",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["restaurant", "payment"],
-      "appLessons": [3, 4],
+      "tags": [
+        "restaurant",
+        "payment"
+      ],
+      "appLessons": [
+        3,
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3136,8 +5887,14 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "fruit", "question"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "fruit",
+        "question"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3148,8 +5905,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "answer"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "answer"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3160,8 +5922,14 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "answer", "negative"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "answer",
+        "negative"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3172,8 +5940,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "question"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3184,8 +5957,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "answer"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "answer"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3196,8 +5974,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "question"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3208,8 +5991,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "food"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3220,8 +6008,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "question"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3232,8 +6025,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "food"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "food"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3244,8 +6042,14 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question", "fruit"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "question",
+        "fruit"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3256,8 +6060,13 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "fruit"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "fruit"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3268,8 +6077,14 @@
       "theme": "Покупки в супермаркете и на рынке",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question", "vegetable"],
-      "appLessons": [4],
+      "tags": [
+        "shopping",
+        "question",
+        "vegetable"
+      ],
+      "appLessons": [
+        4
+      ],
       "isHighFrequency": true
     },
     {
@@ -3280,8 +6095,14 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question", "price"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "question",
+        "price"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3292,8 +6113,15 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question", "price"],
-      "appLessons": [8, 9],
+      "tags": [
+        "shopping",
+        "question",
+        "price"
+      ],
+      "appLessons": [
+        8,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3304,8 +6132,15 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question", "price"],
-      "appLessons": [8, 9],
+      "tags": [
+        "shopping",
+        "question",
+        "price"
+      ],
+      "appLessons": [
+        8,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3316,8 +6151,15 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "answer", "price"],
-      "appLessons": [8, 9],
+      "tags": [
+        "shopping",
+        "answer",
+        "price"
+      ],
+      "appLessons": [
+        8,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3328,8 +6170,15 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "answer", "price"],
-      "appLessons": [8, 9],
+      "tags": [
+        "shopping",
+        "answer",
+        "price"
+      ],
+      "appLessons": [
+        8,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3340,8 +6189,13 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "request"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "request"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3352,8 +6206,14 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question", "price"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "question",
+        "price"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3364,8 +6224,13 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "price"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "price"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3376,8 +6241,13 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "payment"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "payment"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3388,8 +6258,14 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "request"],
-      "appLessons": [4, 9],
+      "tags": [
+        "shopping",
+        "request"
+      ],
+      "appLessons": [
+        4,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3400,8 +6276,14 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question", "price"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "question",
+        "price"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3412,8 +6294,13 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "payment"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "payment"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3424,8 +6311,13 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "payment"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "payment"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3436,8 +6328,13 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "question"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "question"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3448,8 +6345,14 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "answer"],
-      "appLessons": [2, 9],
+      "tags": [
+        "shopping",
+        "answer"
+      ],
+      "appLessons": [
+        2,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3460,8 +6363,14 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "payment"],
-      "appLessons": [2, 9],
+      "tags": [
+        "shopping",
+        "payment"
+      ],
+      "appLessons": [
+        2,
+        9
+      ],
       "isHighFrequency": false
     },
     {
@@ -3472,8 +6381,13 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "payment"],
-      "appLessons": [9],
+      "tags": [
+        "shopping",
+        "payment"
+      ],
+      "appLessons": [
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3484,8 +6398,14 @@
       "theme": "Город, адрес, направления",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["shopping", "answer"],
-      "appLessons": [1, 9],
+      "tags": [
+        "shopping",
+        "answer"
+      ],
+      "appLessons": [
+        1,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3496,8 +6416,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "question"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3508,8 +6433,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "answer"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "answer"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3520,8 +6450,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question", "status"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "question",
+        "status"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3532,8 +6468,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "answer", "status"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "answer",
+        "status"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3544,8 +6486,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "question"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3556,8 +6504,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "answer"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "answer"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3568,8 +6522,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "question"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3580,8 +6540,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "answer"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "answer"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3592,8 +6558,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "question"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3604,8 +6576,15 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "answer", "negative"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "answer",
+        "negative"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3616,8 +6595,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "counting"],
-      "appLessons": [6, 9],
+      "tags": [
+        "family",
+        "counting"
+      ],
+      "appLessons": [
+        6,
+        9
+      ],
       "isHighFrequency": false
     },
     {
@@ -3628,8 +6613,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "counting"],
-      "appLessons": [6, 9],
+      "tags": [
+        "family",
+        "counting"
+      ],
+      "appLessons": [
+        6,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3640,8 +6631,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "statement"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "statement"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3652,8 +6649,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "statement"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "statement"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3664,8 +6667,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question", "formal"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "question",
+        "formal"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3676,8 +6685,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "statement"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "statement"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3688,8 +6703,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question"],
-      "appLessons": [5, 6],
+      "tags": [
+        "family",
+        "question"
+      ],
+      "appLessons": [
+        5,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3700,8 +6721,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "statement"],
-      "appLessons": [5, 6],
+      "tags": [
+        "family",
+        "statement"
+      ],
+      "appLessons": [
+        5,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3712,8 +6739,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "statement"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "statement"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3724,8 +6757,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "statement"],
-      "appLessons": [5, 6],
+      "tags": [
+        "family",
+        "statement"
+      ],
+      "appLessons": [
+        5,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3736,8 +6775,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "statement"],
-      "appLessons": [5, 6],
+      "tags": [
+        "family",
+        "statement"
+      ],
+      "appLessons": [
+        5,
+        6
+      ],
       "isHighFrequency": true
     },
     {
@@ -3748,8 +6793,15 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "question", "age"],
-      "appLessons": [6, 9],
+      "tags": [
+        "family",
+        "question",
+        "age"
+      ],
+      "appLessons": [
+        6,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3760,8 +6812,14 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "age"],
-      "appLessons": [6, 9],
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6,
+        9
+      ],
       "isHighFrequency": true
     },
     {
@@ -3772,8 +6830,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -3784,8 +6847,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -3796,8 +6864,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -3808,8 +6881,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -3820,8 +6898,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -3832,8 +6915,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -3844,8 +6932,13 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        6
+      ],
       "isHighFrequency": false
     },
     {
@@ -3856,9 +6949,866 @@
       "theme": "Семья",
       "type": "phrase",
       "source": "textbook",
-      "tags": ["family", "relation"],
-      "appLessons": [2, 6],
+      "tags": [
+        "family",
+        "relation"
+      ],
+      "appLessons": [
+        2,
+        6
+      ],
       "isHighFrequency": false
+    },
+    {
+      "bg": "Днес е топло.",
+      "ru": "Сегодня тепло.",
+      "uk": "Сьогодні тепло.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "weather",
+        "statement"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Днес е студено.",
+      "ru": "Сегодня холодно.",
+      "uk": "Сьогодні холодно.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "weather",
+        "statement"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Топло ли е?",
+      "ru": "Тепло?",
+      "uk": "Тепло?",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "weather",
+        "question"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Утре ще има дъжд.",
+      "ru": "Завтра будет дождь.",
+      "uk": "Завтра буде дощ.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "weather",
+        "future"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Днес е понеделник.",
+      "ru": "Сегодня понедельник.",
+      "uk": "Сьогодні понеділок.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "weekday",
+        "statement"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Сега е януари.",
+      "ru": "Сейчас январь.",
+      "uk": "Зараз січень.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "month",
+        "statement"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Колко е часът?",
+      "ru": "Сколько сейчас времени?",
+      "uk": "Котра година?",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "time",
+        "question"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Сега е три часа.",
+      "ru": "Сейчас три часа.",
+      "uk": "Зараз третя година.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "time",
+        "statement"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Работя сутрин.",
+      "ru": "Я работаю утром.",
+      "uk": "Я працюю вранці.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "time-of-day",
+        "statement"
+      ],
+      "appLessons": [
+        7,
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Почивам в неделя.",
+      "ru": "Я отдыхаю в воскресенье.",
+      "uk": "Я відпочиваю в неділю.",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "weekday",
+        "statement"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е риза.",
+      "ru": "Это рубашка.",
+      "uk": "Це сорочка.",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "statement"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е рокля.",
+      "ru": "Это платье.",
+      "uk": "Це сукня.",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "statement"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това са обувки.",
+      "ru": "Это туфли.",
+      "uk": "Це туфлі.",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "statement"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Ризата е бяла.",
+      "ru": "Рубашка белая.",
+      "uk": "Сорочка біла.",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "color",
+        "statement"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Полата е черна.",
+      "ru": "Юбка черная.",
+      "uk": "Спідниця чорна.",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "color",
+        "statement"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Якето е ново.",
+      "ru": "Куртка новая.",
+      "uk": "Куртка нова.",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "statement"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Обувките са кафяви.",
+      "ru": "Туфли коричневые.",
+      "uk": "Туфлі коричневі.",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "color",
+        "statement"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това пола ли е?",
+      "ru": "Это юбка?",
+      "uk": "Це спідниця?",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "question"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Харесваш ли тази рокля?",
+      "ru": "Тебе нравится это платье?",
+      "uk": "Тобі подобається ця сукня?",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "choice",
+        "question"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Харесваш ли тази риза?",
+      "ru": "Тебе нравится эта рубашка?",
+      "uk": "Тобі подобається ця сорочка?",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "choice",
+        "question"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е къща.",
+      "ru": "Это дом.",
+      "uk": "Це будинок.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "home",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е апартамент.",
+      "ru": "Это квартира.",
+      "uk": "Це квартира.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "home",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е кухня.",
+      "ru": "Это кухня.",
+      "uk": "Це кухня.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "room",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е баня.",
+      "ru": "Это ванная.",
+      "uk": "Це ванна.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "room",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Столът е до масата.",
+      "ru": "Стул рядом со столом.",
+      "uk": "Стілець поруч зі столом.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "location",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Лампата е на масата.",
+      "ru": "Лампа на столе.",
+      "uk": "Лампа на столі.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "location",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Къде е диванът?",
+      "ru": "Где диван?",
+      "uk": "Де диван?",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "location",
+        "question"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Къщата е светла.",
+      "ru": "Дом светлый.",
+      "uk": "Будинок світлий.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "home",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "В къщата има две стаи.",
+      "ru": "В доме есть две комнаты.",
+      "uk": "У будинку є дві кімнати.",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "home",
+        "statement"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Колко стаи има?",
+      "ru": "Сколько комнат есть?",
+      "uk": "Скільки кімнат є?",
+      "lessonBook": 9,
+      "theme": "Дом, комнаты, мебель",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "home",
+        "question"
+      ],
+      "appLessons": [
+        9
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е автобус.",
+      "ru": "Это автобус.",
+      "uk": "Це автобус.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "transport",
+        "statement"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е трамвай.",
+      "ru": "Это трамвай.",
+      "uk": "Це трамвай.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "transport",
+        "statement"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е влак.",
+      "ru": "Это поезд.",
+      "uk": "Це потяг.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "transport",
+        "statement"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Това е спирка.",
+      "ru": "Это остановка.",
+      "uk": "Це зупинка.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "transport-place",
+        "statement"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Къде е спирката?",
+      "ru": "Где остановка?",
+      "uk": "Де зупинка?",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "transport-place",
+        "question"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Пътувам с автобус.",
+      "ru": "Я еду на автобусе.",
+      "uk": "Я їду автобусом.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "transport",
+        "statement"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Пътувам с метро.",
+      "ru": "Я еду на метро.",
+      "uk": "Я їду на метро.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "transport",
+        "statement"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Искам билет за влак.",
+      "ru": "Я хочу билет на поезд.",
+      "uk": "Я хочу квиток на потяг.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "ticket",
+        "statement"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Да, имам билет.",
+      "ru": "Да, у меня есть билет.",
+      "uk": "Так, у мене є квиток.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "ticket",
+        "answer"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Не, нямам билет.",
+      "ru": "Нет, у меня нет билета.",
+      "uk": "Ні, у мене немає квитка.",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "ticket",
+        "answer"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Сутрин ставам рано.",
+      "ru": "Утром я встаю рано.",
+      "uk": "Уранці я встаю рано.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "morning"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Сутрин пия кафе.",
+      "ru": "Утром я пью кофе.",
+      "uk": "Уранці я п'ю каву.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "morning"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Сутрин закусвам.",
+      "ru": "Утром я завтракаю.",
+      "uk": "Уранці я снідаю.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "morning"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Денем работя в офиса.",
+      "ru": "Днём я работаю в офисе.",
+      "uk": "Удень я працюю в офісі.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "day"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Вечер се прибирам вкъщи.",
+      "ru": "Вечером я возвращаюсь домой.",
+      "uk": "Увечері я повертаюся додому.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "evening"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Вечер гледам телевизия.",
+      "ru": "Вечером я смотрю телевизор.",
+      "uk": "Увечері я дивлюся телевізор.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "evening"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Нощем спя добре.",
+      "ru": "Ночью я сплю хорошо.",
+      "uk": "Уночі я сплю добре.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "night"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Кога ставаш?",
+      "ru": "Когда ты встаёшь?",
+      "uk": "Коли ти встаєш?",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "question"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Ставам в седем часа.",
+      "ru": "Я встаю в семь часов.",
+      "uk": "Я встаю о сьомій годині.",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "answer"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "Лягаш ли рано?",
+      "ru": "Ты ложишься рано?",
+      "uk": "Ти лягаєш рано?",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "type": "phrase",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "question"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
     }
   ]
 }
