@@ -1,4 +1,4 @@
-﻿package com.carbit3333333.oiiglot_bulgary.data.lesson_session
+package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson10RealGenerator
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.generators.Lesson1RealGenerator
@@ -23,7 +23,7 @@ internal object LessonSessionFactory {
         val session = when (lessonId) {
             1 -> LessonSession(
                 lessonId = 1,
-                lessonTitle = "РЈСЂРѕРє 1",
+                lessonTitle = "Приветствие и знакомство",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -42,7 +42,7 @@ internal object LessonSessionFactory {
 
             2 -> LessonSession(
                 lessonId = 2,
-                lessonTitle = "Р“Р»Р°РіРѕР» \"СЃСЉРј\"",
+                lessonTitle = "Еда и завтрак",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -62,7 +62,7 @@ internal object LessonSessionFactory {
 
             3 -> LessonSession(
                 lessonId = 3,
-                lessonTitle = "РџСЂРѕС€РµРґС€РµРµ РІСЂРµРјСЏ",
+                lessonTitle = "Ресторан",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -85,7 +85,7 @@ internal object LessonSessionFactory {
 
             4 -> LessonSession(
                 lessonId = 4,
-                lessonTitle = "РџСЂРµРґРјРµС‚ РёР»Рё РґРµР№СЃС‚РІРёРµ",
+                lessonTitle = "Покупки в супермаркете и на рынке",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -101,7 +101,7 @@ internal object LessonSessionFactory {
 
             5 -> LessonSession(
                 lessonId = 5,
-                lessonTitle = "РњРѕРіСѓ, С…РѕС‡Сѓ, РґРѕР»Р¶РµРЅ",
+                lessonTitle = "Город, адрес и покупки",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -121,7 +121,7 @@ internal object LessonSessionFactory {
 
             6 -> LessonSession(
                 lessonId = 6,
-                lessonTitle = "РџСЂРµРґР»РѕРіРё Рё СЃСѓС‰РµСЃС‚РІРёС‚РµР»СЊРЅС‹Рµ",
+                lessonTitle = "Семья",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -141,7 +141,7 @@ internal object LessonSessionFactory {
 
             7 -> LessonSession(
                 lessonId = 7,
-                lessonTitle = "РњРѕСЏ РєРЅРёРіР°: РјРµСЃС‚РѕРёРјРµРЅРёСЏ Рё Р°СЂС‚РёРєР»СЊ",
+                lessonTitle = "Погода и время",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -162,7 +162,7 @@ internal object LessonSessionFactory {
 
             8 -> LessonSession(
                 lessonId = 8,
-                lessonTitle = "РЎСЂР°РІРЅРµРЅРёРµ",
+                lessonTitle = "Одежда и цвета",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -183,7 +183,7 @@ internal object LessonSessionFactory {
 
             9 -> LessonSession(
                 lessonId = 9,
-                lessonTitle = "Р§РёСЃР»Р°",
+                lessonTitle = "Дом и мебель",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -206,7 +206,7 @@ internal object LessonSessionFactory {
 
             10 -> LessonSession(
                 lessonId = 10,
-                lessonTitle = "Р’СЂРµРјСЏ Рё СЂР°СЃРїРѕСЂСЏРґРѕРє РґРЅСЏ",
+                lessonTitle = "Транспорт",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -234,7 +234,7 @@ internal object LessonSessionFactory {
 
             11 -> LessonSession(
                 lessonId = 11,
-                lessonTitle = "Р Р°СЃРїРѕСЂСЏРґРѕРє РґРЅСЏ",
+                lessonTitle = "Распорядок дня",
                 exercises = if (textbookSessionEligible) {
                     generateTextbookLessonExercises(
                         exerciseSet = checkNotNull(textbookExercises),
@@ -247,7 +247,7 @@ internal object LessonSessionFactory {
 
             else -> LessonSession(
                 lessonId = lessonId,
-                lessonTitle = "РЈСЂРѕРє ",
+                lessonTitle = "Урок $lessonId",
                 exercises = generateLesson1Exercises(),
             )
         }
@@ -268,4 +268,3 @@ internal object LessonSessionFactory {
         }
     }
 }
-
