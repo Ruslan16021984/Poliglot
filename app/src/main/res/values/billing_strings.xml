@@ -1,0 +1,4 @@
+<resources>
+    <string name="settings_full_access_unavailable_title">Покупка сейчас недоступна</string>
+    <string name="settings_full_access_unavailable_message">Не удалось открыть Google Play Billing. Проверьте, что приложение установлено из Google Play и что в консоли уже создан товар для полного доступа.</string>
+</resources>

@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.pm.ApplicationInfo
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.carbit3333333.oiiglot_bulgary.data.billing.LocalBillingFacade
 import com.carbit3333333.oiiglot_bulgary.data.LessonProgressStore
 import com.carbit3333333.oiiglot_bulgary.data.LessonRepository
+import com.carbit3333333.oiiglot_bulgary.data.billing.PurchaseAccessStore
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppLanguage
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppSettingsStore
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppThemeMode
@@ -26,7 +26,7 @@ class LessonsViewModel(
 
     private val repository = LessonRepository(application)
     private val progressStore = LessonProgressStore(application)
-    private val billingFacade = LocalBillingFacade(application)
+    private val purchaseAccessStore = PurchaseAccessStore(application)
     private val settingsStore = AppSettingsStore(application)
 
     private val _uiState = MutableStateFlow(LessonsUiState(isLoading = true))
@@ -42,7 +42,7 @@ class LessonsViewModel(
 
             combine(
                 progressStore.openedLessonIdFlow,
-                billingFacade.hasFullCourseAccessFlow,
+                purchaseAccessStore.hasFullCourseAccessFlow,
                 progressStore.getLessonResultsFlow(lessonIds),
                 settingsStore.themeModeFlow,
                 settingsStore.languageFlow,
@@ -100,18 +100,6 @@ class LessonsViewModel(
             progressStore.resetLessonUnlocks(
                 maxLessonId = repository.getLessons().maxOfOrNull { it.id } ?: 1
             )
-        }
-    }
-
-    fun grantFullCourseAccess() {
-        viewModelScope.launch {
-            billingFacade.onFullCoursePurchaseConfirmed()
-        }
-    }
-
-    fun revokeFullCourseAccess() {
-        viewModelScope.launch {
-            billingFacade.revokeFullCourseAccess()
         }
     }
 }

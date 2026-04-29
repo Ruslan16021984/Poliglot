@@ -1,10 +1,12 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
+import android.app.Activity
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.data.billing.LocalBillingFacade
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppLanguage
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppSettingsStore
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppThemeMode
@@ -17,21 +19,27 @@ import kotlinx.coroutines.launch
 data class AppSettingsUiState(
     val themeMode: AppThemeMode = AppThemeMode.System,
     val language: AppLanguage = AppLanguage.System,
+    val hasFullCourseAccess: Boolean = false,
+    val isPurchaseFlowAvailable: Boolean = false,
 )
 
 class AppSettingsViewModel(
     application: Application,
 ) : AndroidViewModel(application) {
     private val settingsStore = AppSettingsStore(application)
+    private val billingFacade = LocalBillingFacade(application)
 
     val uiState: StateFlow<AppSettingsUiState> =
         combine(
             settingsStore.themeModeFlow,
             settingsStore.languageFlow,
-        ) { themeMode, language ->
+            billingFacade.hasFullCourseAccessFlow,
+        ) { themeMode, language, hasFullCourseAccess ->
             AppSettingsUiState(
                 themeMode = themeMode,
                 language = language,
+                hasFullCourseAccess = hasFullCourseAccess,
+                isPurchaseFlowAvailable = billingFacade.isPurchaseFlowAvailable,
             )
         }.stateIn(
             scope = viewModelScope,
@@ -48,6 +56,22 @@ class AppSettingsViewModel(
     fun updateLanguage(language: AppLanguage) {
         viewModelScope.launch {
             settingsStore.saveLanguage(language)
+        }
+    }
+
+    suspend fun launchFullCoursePurchase(activity: Activity): Boolean {
+        return billingFacade.launchFullCoursePurchase(activity)
+    }
+
+    fun restorePurchases() {
+        viewModelScope.launch {
+            billingFacade.restorePurchases()
+        }
+    }
+
+    fun revokeFullCourseAccess() {
+        viewModelScope.launch {
+            billingFacade.revokeFullCourseAccess()
         }
     }
 

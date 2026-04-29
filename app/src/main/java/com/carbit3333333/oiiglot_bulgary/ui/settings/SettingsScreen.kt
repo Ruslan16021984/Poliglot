@@ -1,5 +1,8 @@
 package com.carbit3333333.oiiglot_bulgary.ui.settings
 
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,16 +21,24 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -43,6 +54,7 @@ import com.carbit3333333.oiiglot_bulgary.data.settings.AppThemeMode
 import com.carbit3333333.oiiglot_bulgary.ui.dictionary.rememberDictionaryPalette
 import com.carbit3333333.oiiglot_bulgary.viewmodel.AppSettingsUiState
 import com.carbit3333333.oiiglot_bulgary.viewmodel.AppSettingsViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun SettingsScreen(
@@ -50,12 +62,23 @@ fun SettingsScreen(
     viewModel: AppSettingsViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     SettingsScreenContent(
         uiState = uiState,
         onBackClick = onBackClick,
         onThemeModeSelect = viewModel::updateThemeMode,
         onLanguageSelect = viewModel::updateLanguage,
+        onBuyFullCourseClick = {
+            val activity = context.findActivity()
+            if (activity == null) {
+                false
+            } else {
+                viewModel.launchFullCoursePurchase(activity)
+            }
+        },
+        onRestorePurchasesClick = viewModel::restorePurchases,
+        onRevokeFullCourseAccessClick = viewModel::revokeFullCourseAccess,
     )
 }
 
@@ -65,8 +88,13 @@ fun SettingsScreenContent(
     onBackClick: () -> Unit,
     onThemeModeSelect: (AppThemeMode) -> Unit,
     onLanguageSelect: (AppLanguage) -> Unit,
+    onBuyFullCourseClick: suspend () -> Boolean,
+    onRestorePurchasesClick: () -> Unit,
+    onRevokeFullCourseAccessClick: () -> Unit,
 ) {
     val palette = rememberDictionaryPalette()
+    var showPurchaseInfoDialog by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -179,8 +207,100 @@ fun SettingsScreenContent(
                     )
                 }
             }
+
+            item {
+                SettingsSectionCard(
+                    title = stringResource(R.string.settings_full_access_title),
+                    description = if (uiState.hasFullCourseAccess) {
+                        stringResource(R.string.settings_full_access_active_description)
+                    } else {
+                        stringResource(R.string.settings_full_access_inactive_description)
+                    },
+                    surfaceColor = palette.surface,
+                    borderColor = palette.border,
+                    titleColor = palette.title,
+                    bodyColor = palette.body,
+                ) {
+                    Text(
+                        text = if (uiState.hasFullCourseAccess) {
+                            stringResource(R.string.settings_full_access_status_active)
+                        } else {
+                            stringResource(R.string.settings_full_access_status_inactive)
+                        },
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = palette.title,
+                    )
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        OutlinedButton(
+                            onClick = {
+                                if (uiState.isPurchaseFlowAvailable) {
+                                    scope.launch {
+                                        val launched = onBuyFullCourseClick()
+                                        if (!launched) {
+                                            showPurchaseInfoDialog = true
+                                        }
+                                    }
+                                } else {
+                                    showPurchaseInfoDialog = true
+                                }
+                            },
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            Text(stringResource(R.string.settings_full_access_buy))
+                        }
+
+                        OutlinedButton(
+                            onClick = onRestorePurchasesClick,
+                            modifier = Modifier.weight(1f),
+                        ) {
+                            Text(stringResource(R.string.settings_full_access_restore))
+                        }
+                    }
+
+                    if (uiState.hasFullCourseAccess) {
+                        OutlinedButton(
+                            onClick = onRevokeFullCourseAccessClick,
+                            modifier = Modifier.fillMaxWidth(),
+                        ) {
+                            Text(stringResource(R.string.settings_full_access_revoke_debug))
+                        }
+                    }
+                }
+            }
+        }
+
+        if (showPurchaseInfoDialog) {
+            AlertDialog(
+                onDismissRequest = { showPurchaseInfoDialog = false },
+                confirmButton = {
+                    TextButton(onClick = { showPurchaseInfoDialog = false }) {
+                        Text(stringResource(R.string.common_ok))
+                    }
+                },
+                title = {
+                    Text(stringResource(R.string.settings_full_access_unavailable_title))
+                },
+                text = {
+                    Text(stringResource(R.string.settings_full_access_unavailable_message))
+                },
+            )
         }
     }
+}
+
+private fun Context.findActivity(): Activity? {
+    var currentContext = this
+    while (currentContext is ContextWrapper) {
+        if (currentContext is Activity) {
+            return currentContext
+        }
+        currentContext = currentContext.baseContext
+    }
+    return null
 }
 
 @Composable

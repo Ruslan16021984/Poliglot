@@ -168,4 +168,17 @@
     <string name="dictionary_course_word_badge">Из курса</string>
     <string name="dictionary_course_lesson_badge">Урок %1$d</string>
     <string name="dictionary_open_lesson_action">К уроку</string>
+    <string name="settings_full_access_title">Полный доступ</string>
+    <string name="settings_full_access_active_description">Все уроки открыты. Вы можете учиться без ожидания последовательного открытия.</string>
+    <string name="settings_full_access_inactive_description">Откройте весь курс без ожидания или восстановите покупку, если она уже есть.</string>
+    <string name="settings_full_access_status_active">Статус: полный доступ активен</string>
+    <string name="settings_full_access_status_inactive">Статус: полный доступ не активен</string>
+    <string name="settings_full_access_buy">Купить доступ</string>
+    <string name="settings_full_access_restore">Восстановить покупки</string>
+    <string name="settings_full_access_revoke_debug">Сбросить полный доступ</string>
+    <string name="settings_full_access_dialog_title">Покупка скоро появится</string>
+    <string name="settings_full_access_dialog_message">Место для полного доступа уже готово. Когда подключим Google Play Billing, купить курс можно будет здесь.</string>
+    <string name="lessons_locked_dialog_title">Урок пока закрыт</string>
+    <string name="lessons_locked_dialog_message">Пройдите предыдущий урок не ниже чем на 4.5 балла или откройте полный доступ в настройках.</string>
+    <string name="lessons_locked_dialog_open_settings">К настройкам</string>
 </resources>

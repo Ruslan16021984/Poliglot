@@ -34,10 +34,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -85,6 +90,7 @@ fun LessonsScreenContent(
 ) {
     val colorScheme = MaterialTheme.colorScheme
     val isDarkTheme = isSystemInDarkTheme()
+    var lockedLessonDialog by remember { mutableStateOf<Lesson?>(null) }
     val headerContainer = if (isDarkTheme) colorScheme.surfaceContainerHigh else colorScheme.surfaceContainerLow
     val headerAccentSurface = if (isDarkTheme) colorScheme.primary.copy(alpha = 0.20f) else colorScheme.primaryContainer
     val headerAccentText = if (isDarkTheme) colorScheme.primary else colorScheme.onPrimaryContainer
@@ -166,7 +172,9 @@ fun LessonsScreenContent(
                             progressActiveColor = colorScheme.primary,
                             progressDoneColor = colorScheme.tertiary,
                             onClick = {
-                                if (!lesson.isLocked) {
+                                if (lesson.isLocked) {
+                                    lockedLessonDialog = lesson
+                                } else {
                                     onLessonClick(lesson.id)
                                 }
                             }
@@ -174,6 +182,33 @@ fun LessonsScreenContent(
                     }
                 }
             }
+        }
+
+        lockedLessonDialog?.let {
+            AlertDialog(
+                onDismissRequest = { lockedLessonDialog = null },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            lockedLessonDialog = null
+                            onSettingsClick()
+                        }
+                    ) {
+                        Text(stringResource(R.string.lessons_locked_dialog_open_settings))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { lockedLessonDialog = null }) {
+                        Text(stringResource(R.string.common_cancel))
+                    }
+                },
+                title = {
+                    Text(stringResource(R.string.lessons_locked_dialog_title))
+                },
+                text = {
+                    Text(stringResource(R.string.lessons_locked_dialog_message))
+                },
+            )
         }
     }
 }
@@ -434,10 +469,7 @@ private fun LessonItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(
-                enabled = !lesson.isLocked,
-                onClick = onClick
-            ),
+            .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
         colors = CardDefaults.cardColors(containerColor = containerColor)
     ) {
