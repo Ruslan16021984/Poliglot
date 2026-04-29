@@ -65,14 +65,19 @@ class LessonSessionRepositoryTest {
     fun `lesson 3 session uses textbook restaurant source`() {
         val session = repository.getLessonSession(3)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val uniqueSourceTexts = sourceTexts.toSet()
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
+        assertTrue(uniqueSourceTexts.size >= 50)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(sourceTexts.contains("Свободно?"))
         assertTrue(sourceTexts.contains("Да, пожалуйста, проходите."))
         assertTrue(sourceTexts.contains("Один кофе, пожалуйста."))
         assertTrue(sourceTexts.contains("Можно счёт?"))
+        assertTrue(sourceTexts.contains("Один чай, пожалуйста."))
+        assertTrue(sourceTexts.contains("Чёрный чай, пожалуйста."))
+        assertTrue(sourceTexts.contains("Я хочу мороженое, пожалуйста."))
         assertTrue(bgWords.any { it in setOf("меню", "сметката", "кафе", "айрян", "супа", "мусака") })
         assertTrue(session.exercises.any { "ли" in it.correctAnswerWords })
     }
@@ -81,9 +86,11 @@ class LessonSessionRepositoryTest {
     fun `lesson 4 session uses textbook exercise source`() {
         val session = repository.getLessonSession(4)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val uniqueSourceTexts = sourceTexts.toSet()
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
+        assertTrue(uniqueSourceTexts.size >= 50)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(sourceTexts.contains("Я хочу хлеб."))
         assertTrue(sourceTexts.contains("Я хочу воду."))
@@ -91,6 +98,9 @@ class LessonSessionRepositoryTest {
         assertTrue(sourceTexts.contains("Мне нравится чай."))
         assertTrue(sourceTexts.contains("Ты любишь сок?"))
         assertTrue(sourceTexts.contains("Ты хочешь чай?"))
+        assertTrue(sourceTexts.contains("Я хочу яблоки."))
+        assertTrue(sourceTexts.contains("Какие овощи вы любите?"))
+        assertTrue(sourceTexts.contains("Пицца с помидорами и грибами."))
         assertTrue(bgWords.any { it in setOf("Искам", "Искаш") })
         assertTrue(bgWords.any { it in setOf("Обичам", "Обичаш") })
         assertTrue(bgWords.contains("Харесвам"))
@@ -130,15 +140,20 @@ class LessonSessionRepositoryTest {
     fun `lesson 5 session uses textbook city shopping source`() {
         val session = repository.getLessonSession(5)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val uniqueSourceTexts = sourceTexts.toSet()
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
+        assertTrue(uniqueSourceTexts.size >= 50)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(sourceTexts.contains("Сколько стоит?"))
         assertTrue(sourceTexts.contains("Сколько стоят?"))
         assertTrue(sourceTexts.contains("Можно один килограмм картофеля?"))
         assertTrue(sourceTexts.contains("Картой или наличными?"))
         assertTrue(sourceTexts.contains("Это аптека."))
+        assertTrue(sourceTexts.contains("Это библиотека."))
+        assertTrue(sourceTexts.contains("Я хочу один пакет риса."))
+        assertTrue(sourceTexts.contains("Это церковь."))
         assertTrue(bgWords.any { it in setOf("карта", "торбичка", "пари", "аптека", "музей", "лимони") })
     }
 
