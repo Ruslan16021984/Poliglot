@@ -15,11 +15,16 @@ class LessonSessionRepositoryTest {
     fun `lesson 1 session uses textbook exercise source`() {
         val session = repository.getLessonSession(1)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val uniqueSourceTexts = sourceTexts.toSet()
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }
 
         assertEquals(100, session.exercises.size)
+        assertTrue(uniqueSourceTexts.size >= 50)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(sourceTexts.contains("Здравствуйте, я Хасан."))
+        assertTrue(sourceTexts.contains("Доброе утро!"))
+        assertTrue(sourceTexts.contains("Ты учитель?"))
+        assertTrue(sourceTexts.contains("Да, я из Болгарии."))
         assertTrue(sourceTexts.contains("Откуда Вы?"))
         assertTrue(sourceTexts.contains("Я из Болгарии."))
         assertTrue(sourceTexts.contains("Я из Сирии."))
@@ -37,14 +42,19 @@ class LessonSessionRepositoryTest {
     fun `lesson 2 session uses textbook breakfast and food source`() {
         val session = repository.getLessonSession(2)
         val sourceTexts = session.exercises.map { it.sourceText }
+        val uniqueSourceTexts = sourceTexts.toSet()
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
         assertEquals(100, session.exercises.size)
+        assertTrue(uniqueSourceTexts.size >= 50)
         assertTrue(session.exercises.all(::isValidExercise))
         assertTrue(sourceTexts.contains("Что это?"))
         assertTrue(sourceTexts.contains("Это баница."))
         assertTrue(sourceTexts.contains("Я люблю кофе."))
         assertTrue(sourceTexts.contains("Ты хочешь воду?"))
+        assertTrue(sourceTexts.contains("Это чай."))
+        assertTrue(sourceTexts.contains("Ты любишь баницу?"))
+        assertTrue(sourceTexts.contains("Я не хочу сок."))
         assertTrue(bgWords.contains("Това"))
         assertTrue(bgWords.contains("обичам"))
         assertTrue(bgWords.contains("искам"))
