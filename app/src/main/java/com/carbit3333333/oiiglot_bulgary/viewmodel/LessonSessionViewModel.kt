@@ -171,7 +171,7 @@ class LessonSessionViewModel(
             val correctCount = state.correctCount
             val wrongCount = state.wrongCount
             val score = if (totalExercises > 0) {
-                (correctCount.toFloat() / totalExercises.toFloat()) * 10f
+                (correctCount.toFloat() / totalExercises.toFloat()) * 5f
             } else {
                 0f
             }

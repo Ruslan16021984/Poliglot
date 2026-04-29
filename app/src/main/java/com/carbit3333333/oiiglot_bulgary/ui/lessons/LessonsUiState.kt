@@ -10,4 +10,6 @@ data class LessonsUiState(
     val errorMessage: String? = null,
     val appThemeMode: AppThemeMode = AppThemeMode.System,
     val appLanguage: AppLanguage = AppLanguage.System,
+    val hasFullCourseAccess: Boolean = false,
+    val showDeveloperActions: Boolean = false,
 )

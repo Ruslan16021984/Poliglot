@@ -1,15 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary
 
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionRepository
-import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionAssets
-import com.carbit3333333.oiiglot_bulgary.data.lesson_session.LessonSessionFactory
-import com.carbit3333333.oiiglot_bulgary.data.lesson_session.TextbookLessonExerciseSetAsset
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
-import java.nio.charset.StandardCharsets
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.Paths
-import kotlinx.serialization.json.Json
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -18,9 +10,6 @@ import org.junit.Test
 class LessonSessionRepositoryTest {
 
     private val repository = LessonSessionRepository()
-    private val json = Json {
-        ignoreUnknownKeys = true
-    }
 
     @Test
     fun `lesson 1 session uses textbook exercise source`() {
@@ -80,11 +69,7 @@ class LessonSessionRepositoryTest {
 
     @Test
     fun `lesson 4 session uses textbook exercise source`() {
-        val session = LessonSessionFactory.create(
-            lessonId = 4,
-            assets = loadLessonSessionAssets(),
-            textbookExercises = loadTextbookExerciseSet(4),
-        )
+        val session = repository.getLessonSession(4)
         val sourceTexts = session.exercises.map { it.sourceText }
         val bgWords = session.exercises.flatMap { it.correctAnswerWords }.toSet()
 
@@ -105,11 +90,7 @@ class LessonSessionRepositoryTest {
 
     @Test
     fun `lesson 4 session avoids standalone prompt fragments`() {
-        val session = LessonSessionFactory.create(
-            lessonId = 4,
-            assets = loadLessonSessionAssets(),
-            textbookExercises = loadTextbookExerciseSet(4),
-        )
+        val session = repository.getLessonSession(4)
         val standalonePrompts = setOf(
             "книга",
             "эта книга",
@@ -236,29 +217,5 @@ class LessonSessionRepositoryTest {
         assertEquals(8, exercise.availableWords.size)
         assertTrue(exercise.correctAnswerWords.distinct().all { it in exercise.availableWords })
         return true
-    }
-
-    private fun loadLessonSessionAssets(): LessonSessionAssets {
-        val path = resolveAssetPath("lesson_session_content.json")
-        return json.decodeFromString(String(Files.readAllBytes(path), StandardCharsets.UTF_8))
-    }
-
-    private fun loadTextbookExerciseSet(lessonId: Int): TextbookLessonExerciseSetAsset {
-        val path = resolveAssetPath("textbook_exercises_lesson$lessonId.json")
-        return json.decodeFromString(String(Files.readAllBytes(path), StandardCharsets.UTF_8))
-    }
-
-    private fun resolveAssetPath(fileName: String): Path {
-        val directPath = Paths.get("src", "main", "assets", fileName)
-        if (Files.exists(directPath)) {
-            return directPath
-        }
-
-        val appPath = Paths.get("app", "src", "main", "assets", fileName)
-        if (Files.exists(appPath)) {
-            return appPath
-        }
-
-        return directPath
     }
 }

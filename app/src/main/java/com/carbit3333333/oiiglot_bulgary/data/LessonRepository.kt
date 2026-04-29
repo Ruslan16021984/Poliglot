@@ -35,24 +35,16 @@ class LessonRepository(
 
     private fun loadLessonsFromAssets(): List<Lesson> {
         val localizedFile = localizedLessonsAssetFile()
-        val fallbackFiles = listOf(localizedFile, LESSONS_RU_ASSET_FILE, LESSONS_LEGACY_ASSET_FILE).distinct()
+        val lessons = runCatching {
+            appContext.assets
+                .open(localizedFile)
+                .bufferedReader(Charsets.UTF_8)
+                .use { reader ->
+                    json.decodeFromString<List<Lesson>>(reader.readText())
+                }
+        }.getOrNull()
 
-        fallbackFiles.forEach { assetFile ->
-            val lessons = runCatching {
-                appContext.assets
-                    .open(assetFile)
-                    .bufferedReader(Charsets.UTF_8)
-                    .use { reader ->
-                        json.decodeFromString<List<Lesson>>(reader.readText())
-                    }
-            }.getOrNull()
-
-            if (!lessons.isNullOrEmpty()) {
-                return applyTextbookDisplayOverrides(lessons)
-            }
-        }
-
-        return emptyList()
+        return if (lessons.isNullOrEmpty()) emptyList() else applyTextbookDisplayOverrides(lessons)
     }
 
     private fun applyTextbookDisplayOverrides(lessons: List<Lesson>): List<Lesson> {
@@ -108,7 +100,6 @@ class LessonRepository(
     }
 
     private companion object {
-        const val LESSONS_LEGACY_ASSET_FILE = "lessons.json"
         const val LESSONS_RU_ASSET_FILE = "lessons_ru.json"
         const val LESSONS_UK_ASSET_FILE = "lessons_uk.json"
     }

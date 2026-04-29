@@ -914,7 +914,7 @@ private fun LessonSessionCorrectPreview() {
                         totalExercises = 3,
                         correctCount = 2,
                         wrongCount = 0,
-                        score = 6.7f,
+                        score = 4.7f,
                         isPassed = true
                     )
                 ),

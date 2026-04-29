@@ -126,6 +126,7 @@ fun LessonsScreenContent(
         Spacer(modifier = Modifier.height(16.dp))
 
         LessonActionsRow(
+            showDeveloperActions = uiState.showDeveloperActions,
             onDictionaryClick = onDictionaryClick,
             onUnlockAllClick = onUnlockAllClick,
             onResetLessonsClick = onResetLessonsClick,
@@ -318,6 +319,7 @@ private fun HeaderStat(
 
 @Composable
 private fun LessonActionsRow(
+    showDeveloperActions: Boolean,
     onDictionaryClick: () -> Unit,
     onUnlockAllClick: () -> Unit,
     onResetLessonsClick: () -> Unit,
@@ -373,38 +375,40 @@ private fun LessonActionsRow(
             }
         }
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            OutlinedButton(
-                onClick = onUnlockAllClick,
-                modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = actionTextColor,
-                ),
-                border = BorderStroke(1.dp, actionOutlineColor)
+        if (showDeveloperActions) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text(stringResource(R.string.lessons_unlock_all))
-            }
+                OutlinedButton(
+                    onClick = onUnlockAllClick,
+                    modifier = Modifier.weight(1f),
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = actionTextColor,
+                    ),
+                    border = BorderStroke(1.dp, actionOutlineColor)
+                ) {
+                    Text(stringResource(R.string.lessons_unlock_all))
+                }
 
-            OutlinedButton(
-                onClick = onResetLessonsClick,
-                modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = actionTextColor,
-                ),
-                border = BorderStroke(1.dp, actionOutlineColor)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Refresh,
-                    contentDescription = null,
-                    modifier = Modifier.size(18.dp)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(stringResource(R.string.lessons_reset))
+                OutlinedButton(
+                    onClick = onResetLessonsClick,
+                    modifier = Modifier.weight(1f),
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 14.dp),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = actionTextColor,
+                    ),
+                    border = BorderStroke(1.dp, actionOutlineColor)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Refresh,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(stringResource(R.string.lessons_reset))
+                }
             }
         }
     }

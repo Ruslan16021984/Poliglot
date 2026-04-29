@@ -1,7 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.data
 
 import android.content.Context
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
@@ -88,12 +87,13 @@ class LessonProgressStore(
         val isPassedKey = booleanPreferencesKey("lesson_${lessonId}_is_passed")
 
         context.lessonProgressDataStore.edit { preferences ->
-            val oldBestScore = preferences[bestScoreKey] ?: 0f
+            val oldBestScore = normalizeStoredScore(preferences[bestScoreKey] ?: 0f)
+            val normalizedScore = normalizeStoredScore(score)
 
-            if (score >= oldBestScore) {
+            if (normalizedScore >= oldBestScore) {
                 preferences[bestCorrectKey] = correctCount
                 preferences[bestWrongKey] = wrongCount
-                preferences[bestScoreKey] = score
+                preferences[bestScoreKey] = normalizedScore
             }
 
             if (isPassed) {
@@ -117,7 +117,7 @@ class LessonProgressStore(
                 val currentStepKey = intPreferencesKey("lesson_${lessonId}_current_step")
                 val totalStepsKey = intPreferencesKey("lesson_${lessonId}_total_steps")
 
-                val bestScore = preferences[bestScoreKey]
+                val bestScore = preferences[bestScoreKey]?.let(::normalizeStoredScore)
                 val currentStep = preferences[currentStepKey] ?: 0
                 val totalSteps = preferences[totalStepsKey] ?: 0
                 val isPassed = preferences[isPassedKey] ?: false
@@ -140,5 +140,9 @@ class LessonProgressStore(
                 )
             }.toMap()
         }
+    }
+
+    private fun normalizeStoredScore(score: Float): Float {
+        return if (score > 5f) score / 2f else score
     }
 }

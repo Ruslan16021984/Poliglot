@@ -230,7 +230,7 @@ private fun LessonResultPassedPreview() {
                     totalExercises = 100,
                     correctCount = 67,
                     wrongCount = 33,
-                    score = 6.7f,
+                    score = 4.7f,
                     isPassed = true
                 ),
                 hasNextLesson = true,
