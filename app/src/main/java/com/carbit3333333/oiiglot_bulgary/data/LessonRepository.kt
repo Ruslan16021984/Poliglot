@@ -2,7 +2,6 @@ package com.carbit3333333.oiiglot_bulgary.data
 
 import android.content.Context
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
-import java.util.Locale
 import kotlinx.serialization.json.Json
 
 class LessonRepository(
@@ -35,63 +34,20 @@ class LessonRepository(
 
     private fun loadLessonsFromAssets(): List<Lesson> {
         val localizedFile = localizedLessonsAssetFile()
-        val lessons = runCatching {
+        return runCatching {
             appContext.assets
                 .open(localizedFile)
                 .bufferedReader(Charsets.UTF_8)
                 .use { reader ->
                     json.decodeFromString<List<Lesson>>(reader.readText())
                 }
-        }.getOrNull()
-
-        return if (lessons.isNullOrEmpty()) emptyList() else applyTextbookDisplayOverrides(lessons)
-    }
-
-    private fun applyTextbookDisplayOverrides(lessons: List<Lesson>): List<Lesson> {
-        val language = appContext.resources.configuration.locales[0]
-            ?.language
-            ?.lowercase(Locale.ROOT)
-
-        val subtitleOverrides = when (language) {
-            "uk" -> mapOf(
-                1 to "Привітання і знайомство",
-                2 to "Їжа і сніданок",
-                3 to "Ресторан",
-                4 to "Покупки в супермаркеті і на ринку",
-                5 to "Місто, адреса і покупки",
-                6 to "Сім'я",
-                7 to "Погода і час",
-                8 to "Одяг і кольори",
-                9 to "Дім і меблі",
-                10 to "Транспорт",
-                11 to "Розпорядок дня",
-            )
-
-            else -> mapOf(
-                1 to "Приветствие и знакомство",
-                2 to "Еда и завтрак",
-                3 to "Ресторан",
-                4 to "Покупки в супермаркете и на рынке",
-                5 to "Город, адрес и покупки",
-                6 to "Семья",
-                7 to "Погода и время",
-                8 to "Одежда и цвета",
-                9 to "Дом и мебель",
-                10 to "Транспорт",
-                11 to "Распорядок дня",
-            )
-        }
-
-        return lessons.map { lesson ->
-            val subtitle = subtitleOverrides[lesson.id] ?: return@map lesson
-            lesson.copy(subtitle = subtitle)
-        }
+        }.getOrDefault(emptyList())
     }
 
     private fun localizedLessonsAssetFile(): String {
         val language = appContext.resources.configuration.locales[0]
             ?.language
-            ?.lowercase(Locale.ROOT)
+            ?.lowercase()
 
         return when (language) {
             "uk" -> LESSONS_UK_ASSET_FILE

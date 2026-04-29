@@ -1,6 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary.data.lesson_session
 
 import android.content.Context
+import java.util.Locale
 
 internal enum class LessonExerciseLocale {
     Russian,
@@ -10,7 +11,7 @@ internal enum class LessonExerciseLocale {
 internal fun resolveLessonExerciseLocale(context: Context): LessonExerciseLocale {
     val language = runCatching {
         context.resources.configuration.locales[0]?.language
-    }.getOrNull() ?: java.util.Locale.getDefault().language
+    }.getOrNull() ?: Locale.getDefault().language
 
     return if (language == "uk") {
         LessonExerciseLocale.Ukrainian
