@@ -26,7 +26,10 @@ class LessonSessionRepositoryTest {
     fun `expanded textbook lessons keep a broad phrase pool`() {
         (1..11).forEach { lessonId ->
             val session = repository.getLessonSession(lessonId)
-            assertTrue("lesson $lessonId unique prompts", session.exercises.map { it.sourceText }.toSet().size >= 50)
+            assertTrue(
+                "lesson $lessonId unique prompts",
+                session.exercises.map { it.sourceText }.toSet().size >= 50,
+            )
         }
     }
 
