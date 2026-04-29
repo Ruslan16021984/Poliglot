@@ -20,6 +20,7 @@ class LessonSessionStore(private val context: Context) {
 
     private object Keys {
         val LESSON_ID = intPreferencesKey("lesson_id")
+        val SESSION_VERSION = intPreferencesKey("session_version")
         val SESSION_JSON = stringPreferencesKey("session_json")
     }
 
@@ -50,6 +51,7 @@ class LessonSessionStore(private val context: Context) {
 
         context.sessionDataStore.edit { prefs ->
             prefs[Keys.LESSON_ID] = lessonId
+            prefs[Keys.SESSION_VERSION] = CURRENT_SESSION_VERSION
             prefs[Keys.SESSION_JSON] = json.encodeToString(saved)
         }
     }
@@ -58,13 +60,29 @@ class LessonSessionStore(private val context: Context) {
         val prefs = context.sessionDataStore.data.first()
         val savedLessonId = prefs[Keys.LESSON_ID] ?: return null
         if (savedLessonId != lessonId) return null
+        val savedSessionVersion = prefs[Keys.SESSION_VERSION] ?: return null
+        if (savedSessionVersion != CURRENT_SESSION_VERSION) return null
 
         val sessionJson = prefs[Keys.SESSION_JSON] ?: return null
-        val saved = json.decodeFromString<SavedLessonSession>(sessionJson)
+        val saved = runCatching {
+            json.decodeFromString<SavedLessonSession>(sessionJson)
+        }.getOrNull() ?: return null
 
+        return saved.toUiState().takeIf(::isRestorableLessonSessionState)
+    }
+
+    suspend fun clearSession() {
+        context.sessionDataStore.edit { prefs ->
+            prefs.remove(Keys.LESSON_ID)
+            prefs.remove(Keys.SESSION_VERSION)
+            prefs.remove(Keys.SESSION_JSON)
+        }
+    }
+
+    private fun SavedLessonSession.toUiState(): LessonSessionUiState {
         return LessonSessionUiState(
-            lessonTitle = saved.lessonTitle,
-            exercises = saved.exercises.map {
+            lessonTitle = lessonTitle,
+            exercises = exercises.map {
                 LessonExercise(
                     id = it.id,
                     sourceText = it.sourceText,
@@ -74,12 +92,12 @@ class LessonSessionStore(private val context: Context) {
                     hint = it.hint
                 )
             },
-            currentExerciseIndex = saved.currentExerciseIndex,
+            currentExerciseIndex = currentExerciseIndex,
             // Start resumed exercises from a clean choice grid so the user always sees all 8 options first.
             selectedWords = emptyList(),
-            results = saved.results.map { ExerciseResult.valueOf(it) },
-            correctCount = saved.correctCount,
-            wrongCount = saved.wrongCount,
+            results = results.map { ExerciseResult.valueOf(it) },
+            correctCount = correctCount,
+            wrongCount = wrongCount,
             currentResult = ExerciseResult.NONE,
             praiseText = null,
             isLessonFinished = false,
@@ -87,11 +105,23 @@ class LessonSessionStore(private val context: Context) {
         )
     }
 
-    suspend fun clearSession() {
-        context.sessionDataStore.edit { prefs ->
-            prefs.remove(Keys.LESSON_ID)
-            prefs.remove(Keys.SESSION_JSON)
-        }
+    private companion object {
+        const val CURRENT_SESSION_VERSION = 2
+    }
+}
+
+internal fun isRestorableLessonSessionState(state: LessonSessionUiState): Boolean {
+    if (state.lessonTitle.isBlank()) return false
+    if (state.exercises.isEmpty()) return false
+    if (state.currentExerciseIndex !in state.exercises.indices) return false
+    if (state.results.size != state.exercises.size) return false
+
+    return state.exercises.all { exercise ->
+        exercise.sourceText.isNotBlank() &&
+            exercise.instruction.isNotBlank() &&
+            exercise.correctAnswerWords.isNotEmpty() &&
+            exercise.availableWords.size == 8 &&
+            exercise.correctAnswerWords.all { it in exercise.availableWords }
     }
 }
 
