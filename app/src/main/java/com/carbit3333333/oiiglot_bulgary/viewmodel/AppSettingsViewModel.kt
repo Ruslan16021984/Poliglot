@@ -2,6 +2,7 @@ package com.carbit3333333.oiiglot_bulgary.viewmodel
 
 import android.app.Activity
 import android.app.Application
+import android.content.pm.ApplicationInfo
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -21,11 +22,15 @@ data class AppSettingsUiState(
     val language: AppLanguage = AppLanguage.System,
     val hasFullCourseAccess: Boolean = false,
     val isPurchaseFlowAvailable: Boolean = false,
+    val showDeveloperActions: Boolean = false,
 )
 
 class AppSettingsViewModel(
     application: Application,
 ) : AndroidViewModel(application) {
+    private val isDebugBuild =
+        (application.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
+
     private val settingsStore = AppSettingsStore(application)
     private val billingFacade = LocalBillingFacade(application)
 
@@ -40,6 +45,7 @@ class AppSettingsViewModel(
                 language = language,
                 hasFullCourseAccess = hasFullCourseAccess,
                 isPurchaseFlowAvailable = billingFacade.isPurchaseFlowAvailable,
+                showDeveloperActions = isDebugBuild,
             )
         }.stateIn(
             scope = viewModelScope,
@@ -70,6 +76,7 @@ class AppSettingsViewModel(
     }
 
     fun revokeFullCourseAccess() {
+        if (!isDebugBuild) return
         viewModelScope.launch {
             billingFacade.revokeFullCourseAccess()
         }

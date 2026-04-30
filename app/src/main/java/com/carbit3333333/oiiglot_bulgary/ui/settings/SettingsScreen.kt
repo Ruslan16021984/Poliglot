@@ -261,7 +261,7 @@ fun SettingsScreenContent(
                         }
                     }
 
-                    if (uiState.hasFullCourseAccess) {
+                    if (uiState.hasFullCourseAccess && uiState.showDeveloperActions) {
                         OutlinedButton(
                             onClick = onRevokeFullCourseAccessClick,
                             modifier = Modifier.fillMaxWidth(),
