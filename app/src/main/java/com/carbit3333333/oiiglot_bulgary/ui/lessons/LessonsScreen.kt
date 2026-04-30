@@ -530,13 +530,13 @@ private fun LessonItem(
                 val resultText = when {
                     lesson.isLocked -> stringResource(R.string.lessons_result_locked)
                     lesson.isCompleted -> stringResource(R.string.lessons_result_passed)
+                    lesson.currentScore != null && lesson.currentProgress in 1 until lesson.totalProgress -> stringResource(
+                        R.string.lessons_result_score,
+                        String.format(Locale.US, "%.1f", lesson.currentScore)
+                    )
                     lesson.bestScore != null -> stringResource(
                         R.string.lessons_result_score,
                         String.format(Locale.US, "%.1f", lesson.bestScore)
-                    )
-                    lesson.currentScore != null -> stringResource(
-                        R.string.lessons_result_score,
-                        String.format(Locale.US, "%.1f", lesson.currentScore)
                     )
                     else -> stringResource(R.string.lessons_result_not_started)
                 }
@@ -544,8 +544,8 @@ private fun LessonItem(
                 val resultColor = when {
                     lesson.isLocked -> lockedTextColor
                     lesson.isCompleted -> progressDoneColor
+                    lesson.currentScore != null && lesson.currentProgress in 1 until lesson.totalProgress -> progressActiveColor
                     lesson.bestScore != null -> progressDefaultColor
-                    lesson.currentScore != null -> progressActiveColor
                     else -> progressDefaultColor
                 }
 

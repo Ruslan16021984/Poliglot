@@ -222,6 +222,10 @@ fun LessonSessionScreenContent(
         ) {
             SessionTopBar(
                 lessonTitle = uiState.lessonTitle,
+                currentScore = formatSessionScore(
+                    correctCount = uiState.correctCount,
+                    totalExercises = uiState.exercises.size
+                ),
                 correctCount = uiState.correctCount,
                 wrongCount = uiState.wrongCount,
                 onBackClick = onBackClick,
@@ -424,6 +428,7 @@ fun LessonSessionScreenContent(
 @Composable
 private fun SessionTopBar(
     lessonTitle: String,
+    currentScore: String,
     correctCount: Int,
     wrongCount: Int,
     onBackClick: () -> Unit,
@@ -455,6 +460,14 @@ private fun SessionTopBar(
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.weight(1f)
         )
+
+        CounterItem(
+            label = currentScore,
+            circleColor = onPrimaryColor,
+            textColor = containerColor
+        )
+
+        Spacer(modifier = Modifier.width(10.dp))
 
         CounterItem(
             label = correctCount.toString(),
@@ -494,6 +507,12 @@ private fun CounterItem(
             )
         }
     }
+}
+
+private fun formatSessionScore(correctCount: Int, totalExercises: Int): String {
+    if (totalExercises <= 0) return "0.0"
+    val score = (correctCount.toFloat() / totalExercises.toFloat()) * 5f
+    return String.format(Locale.US, "%.1f", score)
 }
 
 @Composable
