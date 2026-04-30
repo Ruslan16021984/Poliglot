@@ -5,6 +5,7 @@ data class SavedLessonResult(
     val bestCorrectCount: Int,
     val bestWrongCount: Int,
     val bestScore: Float,
+    val currentScore: Float? = null,
     val isPassed: Boolean,
     val currentStep: Int = 0,
     val totalSteps: Int = 0

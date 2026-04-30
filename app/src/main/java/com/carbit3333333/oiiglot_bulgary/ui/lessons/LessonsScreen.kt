@@ -534,8 +534,10 @@ private fun LessonItem(
                         R.string.lessons_result_score,
                         String.format(Locale.US, "%.1f", lesson.bestScore)
                     )
-
-                    lesson.currentProgress > 0 -> stringResource(R.string.lessons_result_incomplete)
+                    lesson.currentScore != null -> stringResource(
+                        R.string.lessons_result_score,
+                        String.format(Locale.US, "%.1f", lesson.currentScore)
+                    )
                     else -> stringResource(R.string.lessons_result_not_started)
                 }
 
@@ -543,7 +545,7 @@ private fun LessonItem(
                     lesson.isLocked -> lockedTextColor
                     lesson.isCompleted -> progressDoneColor
                     lesson.bestScore != null -> progressDefaultColor
-                    lesson.currentProgress > 0 -> progressActiveColor
+                    lesson.currentScore != null -> progressActiveColor
                     else -> progressDefaultColor
                 }
 
@@ -580,6 +582,7 @@ private fun LessonsScreenContentPreview() {
                         isCompleted = false,
                         isLocked = false,
                         bestScore = null,
+                        currentScore = 0.2f,
                         currentProgress = 3,
                         totalProgress = 100
                     ),
@@ -590,7 +593,7 @@ private fun LessonsScreenContentPreview() {
                         theory = emptyList(),
                         isCompleted = true,
                         isLocked = false,
-                        bestScore = 8.4f,
+                        bestScore = 4.8f,
                         currentProgress = 100,
                         totalProgress = 100
                     ),

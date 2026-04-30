@@ -1,6 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
 import android.app.Application
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.carbit3333333.oiiglot_bulgary.R
@@ -10,11 +11,17 @@ import com.carbit3333333.oiiglot_bulgary.data.LessonSessionStore
 import com.carbit3333333.oiiglot_bulgary.model.ExerciseResult
 import com.carbit3333333.oiiglot_bulgary.model.LessonResult
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionUiState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.util.Locale
 
 class LessonSessionViewModel(
@@ -26,6 +33,7 @@ class LessonSessionViewModel(
     private val progressStore = LessonProgressStore(application)
     private val sessionStore = LessonSessionStore(application)
     private val resources = application.resources
+    private val persistenceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var resultSaved = false
 
@@ -51,7 +59,8 @@ class LessonSessionViewModel(
 
                 saveLessonProgress(
                     currentStep = savedState.currentExerciseIndex,
-                    totalSteps = savedState.exercises.size
+                    totalSteps = savedState.exercises.size,
+                    correctCount = savedState.correctCount
                 )
                 return@launch
             }
@@ -68,8 +77,29 @@ class LessonSessionViewModel(
             saveCurrentSession()
             saveLessonProgress(
                 currentStep = 0,
-                totalSteps = session.exercises.size
+                totalSteps = session.exercises.size,
+                correctCount = 0
             )
+        }
+    }
+
+    fun persistSessionSnapshot() {
+        if (currentLessonId == 0) return
+
+        val snapshot = _uiState.value
+        runBlocking {
+            withContext(Dispatchers.IO) {
+                sessionStore.saveSessionSnapshot(currentLessonId, snapshot)
+                progressStore.saveLessonProgressSnapshot(
+                    lessonId = currentLessonId,
+                    currentStep = snapshot.currentExerciseIndex,
+                    totalSteps = snapshot.exercises.size,
+                    currentScore = calculateCurrentScore(
+                        correctCount = snapshot.correctCount,
+                        totalSteps = snapshot.exercises.size
+                    )
+                )
+            }
         }
     }
 
@@ -205,7 +235,8 @@ class LessonSessionViewModel(
 
             saveLessonProgress(
                 currentStep = totalExercises,
-                totalSteps = totalExercises
+                totalSteps = totalExercises,
+                correctCount = correctCount
             )
 
             viewModelScope.launch {
@@ -221,7 +252,8 @@ class LessonSessionViewModel(
             saveCurrentSession()
             saveLessonProgress(
                 currentStep = nextIndex,
-                totalSteps = state.exercises.size
+                totalSteps = state.exercises.size,
+                correctCount = state.correctCount
             )
         }
     }
@@ -253,15 +285,20 @@ class LessonSessionViewModel(
 
     private fun saveLessonProgress(
         currentStep: Int,
-        totalSteps: Int
+        totalSteps: Int,
+        correctCount: Int
     ) {
         if (currentLessonId == 0) return
 
-        viewModelScope.launch {
+        persistenceScope.launch {
             progressStore.saveLessonProgress(
                 lessonId = currentLessonId,
                 currentStep = currentStep,
-                totalSteps = totalSteps
+                totalSteps = totalSteps,
+                currentScore = calculateCurrentScore(
+                    correctCount = correctCount,
+                    totalSteps = totalSteps
+                )
             )
         }
     }
@@ -269,8 +306,9 @@ class LessonSessionViewModel(
     private fun saveCurrentSession() {
         if (currentLessonId == 0) return
 
-        viewModelScope.launch {
-            sessionStore.saveSession(currentLessonId, _uiState.value)
+        val snapshot = _uiState.value
+        persistenceScope.launch {
+            sessionStore.saveSession(currentLessonId, snapshot)
         }
     }
 
@@ -286,5 +324,14 @@ class LessonSessionViewModel(
             .lowercase(Locale.ROOT)
             .replace("ѝ", "и")
             .replace(Regex("[^\\p{L}\\p{Nd}]"), "")
+    }
+    private fun calculateCurrentScore(correctCount: Int, totalSteps: Int): Float {
+        if (totalSteps <= 0) return 0f
+        return (correctCount.toFloat() / totalSteps.toFloat()) * 5f
+    }
+
+    override fun onCleared() {
+        persistenceScope.cancel()
+        super.onCleared()
     }
 }

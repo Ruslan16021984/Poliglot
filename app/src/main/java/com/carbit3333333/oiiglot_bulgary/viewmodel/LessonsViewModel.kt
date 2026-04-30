@@ -54,6 +54,7 @@ class LessonsViewModel(
                         isLocked = !hasFullCourseAccess && lesson.id > openedLessonId,
                         isCompleted = savedResult?.isPassed == true,
                         bestScore = savedResult?.bestScore,
+                        currentScore = savedResult?.currentScore,
                         currentProgress = savedResult?.currentStep ?: 0,
                         totalProgress = savedResult?.totalSteps ?: 0
                     )

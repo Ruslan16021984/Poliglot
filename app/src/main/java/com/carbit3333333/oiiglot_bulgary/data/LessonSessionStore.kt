@@ -29,15 +29,31 @@ class LessonSessionStore(private val context: Context) {
     }
 
     suspend fun saveSession(lessonId: Int, state: LessonSessionUiState) {
-        val saved = SavedLessonSession(
+        saveSavedSession(lessonId, state.toSavedLessonSession(lessonId))
+    }
+
+    suspend fun saveSessionSnapshot(lessonId: Int, state: LessonSessionUiState) {
+        saveSavedSession(lessonId, state.toSavedLessonSession(lessonId))
+    }
+
+    private suspend fun saveSavedSession(lessonId: Int, saved: SavedLessonSession) {
+        context.sessionDataStore.edit { prefs ->
+            prefs[Keys.LESSON_ID] = lessonId
+            prefs[Keys.SESSION_VERSION] = CURRENT_SESSION_VERSION
+            prefs[Keys.SESSION_JSON] = json.encodeToString(saved)
+        }
+    }
+
+    private fun LessonSessionUiState.toSavedLessonSession(lessonId: Int): SavedLessonSession {
+        return SavedLessonSession(
             lessonId = lessonId,
-            lessonTitle = state.lessonTitle,
-            currentExerciseIndex = state.currentExerciseIndex,
-            selectedWords = state.selectedWords,
-            results = state.results.map { it.name },
-            correctCount = state.correctCount,
-            wrongCount = state.wrongCount,
-            exercises = state.exercises.map {
+            lessonTitle = lessonTitle,
+            currentExerciseIndex = currentExerciseIndex,
+            selectedWords = selectedWords,
+            results = results.map { it.name },
+            correctCount = correctCount,
+            wrongCount = wrongCount,
+            exercises = exercises.map {
                 SavedLessonExercise(
                     id = it.id,
                     sourceText = it.sourceText,
@@ -48,12 +64,6 @@ class LessonSessionStore(private val context: Context) {
                 )
             }
         )
-
-        context.sessionDataStore.edit { prefs ->
-            prefs[Keys.LESSON_ID] = lessonId
-            prefs[Keys.SESSION_VERSION] = CURRENT_SESSION_VERSION
-            prefs[Keys.SESSION_JSON] = json.encodeToString(saved)
-        }
     }
 
     suspend fun loadSession(lessonId: Int): LessonSessionUiState? {

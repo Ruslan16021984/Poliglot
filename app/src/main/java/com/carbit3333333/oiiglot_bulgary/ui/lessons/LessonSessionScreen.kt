@@ -62,6 +62,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.ExerciseResult
@@ -82,6 +85,7 @@ fun LessonSessionScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
     val textToSpeech = remember { AppTextToSpeech(context) }
     val speechRecognizerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -130,6 +134,18 @@ fun LessonSessionScreen(
     DisposableEffect(Unit) {
         onDispose {
             textToSpeech.shutdown()
+        }
+    }
+
+    DisposableEffect(lifecycleOwner, lessonId) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_STOP) {
+                viewModel.persistSessionSnapshot()
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
         }
     }
 
@@ -436,7 +452,7 @@ private fun SessionTopBar(
         Text(
             text = lessonTitle,
             color = onPrimaryColor,
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.weight(1f)
         )
 

@@ -50,6 +50,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.4")
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
