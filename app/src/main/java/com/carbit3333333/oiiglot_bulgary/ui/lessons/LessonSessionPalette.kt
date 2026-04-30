@@ -51,7 +51,7 @@ fun rememberLessonSessionPalette(): LessonSessionPalette {
         disabledButton = Color(0xFFD9DCE4),
         disabledButtonText = Color(0xFF9A9EAA),
         progressIdle = Color(0xFFD7DBE6),
-        progressCorrect = Color(0xFF93F189),
+        progressCorrect = Color(0xFF4CAF50),
         progressWrong = Color(0xFFE98B8B),
     )
 }
