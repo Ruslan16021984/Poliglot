@@ -159,7 +159,7 @@ class LessonProgressStore(
                     lessonId = lessonId,
                     bestCorrectCount = preferences[bestCorrectKey] ?: 0,
                     bestWrongCount = preferences[bestWrongKey] ?: 0,
-                    bestScore = bestScore ?: 0f,
+                    bestScore = bestScore,
                     currentScore = currentScore,
                     isPassed = isPassed,
                     currentStep = currentStep,

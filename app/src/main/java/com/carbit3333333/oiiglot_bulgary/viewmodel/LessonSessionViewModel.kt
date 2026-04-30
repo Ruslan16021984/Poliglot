@@ -325,8 +325,8 @@ class LessonSessionViewModel(
             .replace("ѝ", "и")
             .replace(Regex("[^\\p{L}\\p{Nd}]"), "")
     }
-    private fun calculateCurrentScore(correctCount: Int, totalSteps: Int): Float {
-        if (totalSteps <= 0) return 0f
+    private fun calculateCurrentScore(correctCount: Int, totalSteps: Int): Float? {
+        if (totalSteps <= 0) return null
         return (correctCount.toFloat() / totalSteps.toFloat()) * 5f
     }
 
