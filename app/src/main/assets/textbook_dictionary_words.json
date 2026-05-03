@@ -4756,6 +4756,295 @@
         11
       ],
       "isHighFrequency": true
+    },
+    {
+      "bg": "вали",
+      "ru": "идет дождь",
+      "uk": "йде дощ",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "духа",
+      "ru": "дует",
+      "uk": "дує",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "облачно",
+      "ru": "облачно",
+      "uk": "хмарно",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "ясно",
+      "ru": "ясно",
+      "uk": "ясно",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "дъждовно",
+      "ru": "дождливо",
+      "uk": "дощово",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "weather"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "месец",
+      "ru": "месяц",
+      "uk": "місяць",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "часът",
+      "ru": "час",
+      "uk": "година",
+      "lessonBook": 7,
+      "theme": "Погода, дни недели, месяцы, время",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "time"
+      ],
+      "appLessons": [
+        7
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "чорапи",
+      "ru": "носки",
+      "uk": "шкарпетки",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "стар",
+      "ru": "старый",
+      "uk": "старий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "quality"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "близо",
+      "ru": "близко",
+      "uk": "близько",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "location"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "далеч",
+      "ru": "далеко",
+      "uk": "далеко",
+      "lessonBook": 10,
+      "theme": "Транспорт и дорога",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "location"
+      ],
+      "appLessons": [
+        10
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "закусвам",
+      "ru": "завтракаю",
+      "uk": "снідаю",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "обядвам",
+      "ru": "обедаю",
+      "uk": "обідаю",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "рано",
+      "ru": "рано",
+      "uk": "рано",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "късно",
+      "ru": "поздно",
+      "uk": "пізно",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "adverb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "книга",
+      "ru": "книга",
+      "uk": "книга",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "музика",
+      "ru": "музыка",
+      "uk": "музика",
+      "lessonBook": 11,
+      "theme": "Ежедневные дела и распорядок",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
     }
   ],
   "phrases": [
