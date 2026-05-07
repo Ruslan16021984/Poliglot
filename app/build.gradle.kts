@@ -13,7 +13,8 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.carbit3333333.oiiglot_bulgary"
+        // Keep namespace stable for the current codebase, but publish A1 as a dedicated app id.
+        applicationId = "com.carbit3333333.poliglotbulgaria.a1"
         minSdk = 26
         targetSdk = 36
         versionCode = 2
