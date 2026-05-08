@@ -123,6 +123,8 @@ class LessonSessionStore(private val context: Context) {
 internal fun isRestorableLessonSessionState(state: LessonSessionUiState): Boolean {
     if (state.lessonTitle.isBlank()) return false
     if (state.exercises.isEmpty()) return false
+    if (state.isLessonFinished) return false
+    if (state.lessonResult != null) return false
     if (state.currentExerciseIndex !in state.exercises.indices) return false
     if (state.results.size != state.exercises.size) return false
 

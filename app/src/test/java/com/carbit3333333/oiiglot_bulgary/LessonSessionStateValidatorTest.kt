@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary
 import com.carbit3333333.oiiglot_bulgary.data.isRestorableLessonSessionState
 import com.carbit3333333.oiiglot_bulgary.model.ExerciseResult
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
+import com.carbit3333333.oiiglot_bulgary.model.LessonResult
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionUiState
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -46,6 +47,34 @@ class LessonSessionStateValidatorTest {
         assertFalse(
             isRestorableLessonSessionState(
                 validState().copy(exercises = listOf(malformedExercise), results = listOf(ExerciseResult.NONE))
+            )
+        )
+    }
+
+    @Test
+    fun `validator rejects finished lesson session`() {
+        assertFalse(
+            isRestorableLessonSessionState(
+                validState().copy(isLessonFinished = true)
+            )
+        )
+    }
+
+    @Test
+    fun `validator rejects lesson session with result payload`() {
+        assertFalse(
+            isRestorableLessonSessionState(
+                validState().copy(
+                    lessonResult = LessonResult(
+                        lessonId = 1,
+                        lessonTitle = "Урок 1",
+                        totalExercises = 1,
+                        correctCount = 1,
+                        wrongCount = 0,
+                        score = 5f,
+                        isPassed = true
+                    )
+                )
             )
         )
     }

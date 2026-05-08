@@ -248,7 +248,11 @@ fun AppNavGraph() {
                     result = result,
                     hasNextLesson = uiState.hasNextLesson,
                     onRetryClick = {
-                        navController.navigate(Destinations.lessonSessionRoute(lessonId))
+                        navController.navigate(Destinations.lessonSessionRoute(lessonId)) {
+                            popUpTo(Destinations.lessonDetailsRoute(lessonId)) {
+                                inclusive = false
+                            }
+                        }
                     },
                     onNextLessonClick = {
                         val nextLessonId = uiState.nextLessonId ?: return@LessonResultScreen

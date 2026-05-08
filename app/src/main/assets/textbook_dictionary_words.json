@@ -5045,6 +5045,79 @@
         11
       ],
       "isHighFrequency": true
+    },
+    {
+      "bg": "ям",
+      "ru": "ем",
+      "uk": "їм",
+      "lessonBook": 4,
+      "theme": "Покупки в супермаркете и на рынке",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "food",
+        "core-verb"
+      ],
+      "appLessons": [
+        4
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "пия",
+      "ru": "пью",
+      "uk": "пʼю",
+      "lessonBook": 4,
+      "theme": "Покупки в супермаркете и на рынке",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "drink",
+        "core-verb"
+      ],
+      "appLessons": [
+        4,
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "плодове",
+      "ru": "фрукты",
+      "uk": "фрукти",
+      "lessonBook": 4,
+      "theme": "Покупки в супермаркете и на рынке",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "food",
+        "category"
+      ],
+      "appLessons": [
+        4
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "зеленчуци",
+      "ru": "овощи",
+      "uk": "овочі",
+      "lessonBook": 4,
+      "theme": "Покупки в супермаркете и на рынке",
+      "partOfSpeech": "noun",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "food",
+        "category"
+      ],
+      "appLessons": [
+        4
+      ],
+      "isHighFrequency": true
     }
   ],
   "phrases": [
