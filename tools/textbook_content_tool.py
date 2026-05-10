@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -10,7 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "app" / "src" / "main" / "assets"
 JSON_ASSETS = sorted(ASSETS.glob("*.json"))
-MOJIBAKE_PATTERNS = ("РЋ", "РЎ", "РЂ", "вЂ", "Ð", "Ñ", "\ufffd")
+MOJIBAKE_PATTERNS = ("Р Р‹", "Р РЋ", "Р Р‚", "РІР‚", "Гђ", "Г‘", "\ufffd")
+QUESTION_MARK_STRING_PATTERN = re.compile(r'"[^"\n]*\?{3,}[^"\n]*"')
 
 
 def _load_module(script_name: str):
@@ -35,15 +37,26 @@ def run_expand_dictionary() -> None:
 
 def check_assets() -> int:
     bad_files: list[str] = []
+    question_mark_files: list[str] = []
     for path in JSON_ASSETS:
         text = path.read_text(encoding="utf-8")
         if any(pattern in text for pattern in MOJIBAKE_PATTERNS):
             bad_files.append(path.name)
+        if QUESTION_MARK_STRING_PATTERN.search(text):
+            question_mark_files.append(path.name)
+
     if bad_files:
         print("Found suspicious mojibake patterns:")
         for file_name in bad_files:
             print(f"- {file_name}")
         return 1
+
+    if question_mark_files:
+        print("Found suspicious placeholder-like question mark strings:")
+        for file_name in question_mark_files:
+            print(f"- {file_name}")
+        return 1
+
     print("All JSON assets look clean.")
     return 0
 

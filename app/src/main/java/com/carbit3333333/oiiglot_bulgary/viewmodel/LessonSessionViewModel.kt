@@ -88,13 +88,25 @@ class LessonSessionViewModel(
         if (currentLessonId == 0) return
 
         val snapshot = _uiState.value
+        if (snapshot.isLessonFinished || snapshot.lessonResult != null) {
+            persistenceScope.launch {
+                sessionStore.clearSession()
+                progressStore.saveLessonProgressSnapshot(
+                    lessonId = currentLessonId,
+                    currentStep = snapshot.currentExerciseIndex,
+                    totalSteps = snapshot.exercises.size,
+                    currentScore = calculateCurrentScore(
+                        correctCount = snapshot.correctCount,
+                        totalSteps = snapshot.exercises.size
+                    )
+                )
+            }
+            return
+        }
+
         runBlocking {
             withContext(Dispatchers.IO) {
-                if (snapshot.isLessonFinished || snapshot.lessonResult != null) {
-                    sessionStore.clearSession()
-                } else {
-                    sessionStore.saveSessionSnapshot(currentLessonId, snapshot)
-                }
+                sessionStore.saveSessionSnapshot(currentLessonId, snapshot)
                 progressStore.saveLessonProgressSnapshot(
                     lessonId = currentLessonId,
                     currentStep = snapshot.currentExerciseIndex,

@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.BuildConfig
 import com.carbit3333333.oiiglot_bulgary.data.billing.LocalBillingFacade
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppLanguage
 import com.carbit3333333.oiiglot_bulgary.data.settings.AppSettingsStore
@@ -30,6 +31,7 @@ class AppSettingsViewModel(
 ) : AndroidViewModel(application) {
     private val isDebugBuild =
         (application.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
+    private val showTestingTools = isDebugBuild || BuildConfig.INTERNAL_TESTING_TOOLS_ENABLED
 
     private val settingsStore = AppSettingsStore(application)
     private val billingFacade = LocalBillingFacade(application)
@@ -45,7 +47,7 @@ class AppSettingsViewModel(
                 language = language,
                 hasFullCourseAccess = hasFullCourseAccess,
                 isPurchaseFlowAvailable = billingFacade.isPurchaseFlowAvailable,
-                showDeveloperActions = isDebugBuild,
+                showDeveloperActions = showTestingTools,
             )
         }.stateIn(
             scope = viewModelScope,
@@ -76,7 +78,7 @@ class AppSettingsViewModel(
     }
 
     fun revokeFullCourseAccess() {
-        if (!isDebugBuild) return
+        if (!showTestingTools) return
         viewModelScope.launch {
             billingFacade.revokeFullCourseAccess()
         }

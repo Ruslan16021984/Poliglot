@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.pm.ApplicationInfo
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.carbit3333333.oiiglot_bulgary.BuildConfig
 import com.carbit3333333.oiiglot_bulgary.data.LessonProgressStore
 import com.carbit3333333.oiiglot_bulgary.data.LessonRepository
 import com.carbit3333333.oiiglot_bulgary.data.billing.PurchaseAccessStore
@@ -23,6 +24,7 @@ class LessonsViewModel(
 
     private val isDebugBuild =
         (application.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
+    private val showTestingTools = isDebugBuild || BuildConfig.INTERNAL_TESTING_TOOLS_ENABLED
 
     private val repository = LessonRepository(application)
     private val progressStore = LessonProgressStore(application)
@@ -66,7 +68,7 @@ class LessonsViewModel(
                     appThemeMode = themeMode,
                     appLanguage = appLanguage,
                     hasFullCourseAccess = hasFullCourseAccess,
-                    showDeveloperActions = isDebugBuild,
+                    showDeveloperActions = showTestingTools,
                 )
             }.collect { state ->
                 _uiState.value = state
@@ -87,7 +89,7 @@ class LessonsViewModel(
     }
 
     fun unlockAllLessons() {
-        if (!isDebugBuild) return
+        if (!showTestingTools) return
         viewModelScope.launch {
             progressStore.unlockAllLessons(
                 maxLessonId = repository.getLessons().maxOfOrNull { it.id } ?: 1
@@ -96,7 +98,7 @@ class LessonsViewModel(
     }
 
     fun resetLessons() {
-        if (!isDebugBuild) return
+        if (!showTestingTools) return
         viewModelScope.launch {
             progressStore.resetLessonUnlocks(
                 maxLessonId = repository.getLessons().maxOfOrNull { it.id } ?: 1

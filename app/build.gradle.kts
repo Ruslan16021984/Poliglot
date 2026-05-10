@@ -19,6 +19,7 @@ android {
         targetSdk = 36
         versionCode = 3
         versionName = "1.2"
+        buildConfigField("boolean", "INTERNAL_TESTING_TOOLS_ENABLED", "true")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
