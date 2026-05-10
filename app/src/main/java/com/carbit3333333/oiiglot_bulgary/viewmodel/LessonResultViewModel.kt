@@ -32,13 +32,11 @@ class LessonResultViewModel(
         val session = sessionRepository.getLessonSession(lessonId)
         val totalExercises = session.exercises.size
 
-        val score = if (totalExercises > 0) {
-            (correctCount.toFloat() / totalExercises.toFloat()) * 5f
-        } else {
-            0f
-        }
-
-        val isPassed = score >= 4.5f
+        val score = calculateLessonScore(
+            correctCount = correctCount,
+            totalExercises = totalExercises
+        )
+        val isPassed = score >= PASSING_SCORE
 
         val result = LessonResult(
             lessonId = lessonId,

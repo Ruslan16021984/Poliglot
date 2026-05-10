@@ -1,7 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.carbit3333333.oiiglot_bulgary.R
@@ -23,6 +22,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.util.Locale
+
+internal const val PASSING_SCORE = 4.5f
 
 class LessonSessionViewModel(
     application: Application
@@ -197,20 +198,19 @@ class LessonSessionViewModel(
 
     private fun moveToNextExercise() {
         val state = _uiState.value
+        val totalExercises = state.exercises.size
         val nextIndex = state.currentExerciseIndex + 1
-        val isFinished = nextIndex >= state.exercises.size
+        val correctCount = state.correctCount
+        val wrongCount = state.wrongCount
+        val score = calculateLessonScore(
+            correctCount = correctCount,
+            totalExercises = totalExercises
+        )
+        val isPassed = score >= PASSING_SCORE
+        val isFinished = nextIndex >= totalExercises
+        val shouldFinishNow = isFinished || isPassed
 
-        if (isFinished) {
-            val totalExercises = state.exercises.size
-            val correctCount = state.correctCount
-            val wrongCount = state.wrongCount
-            val score = if (totalExercises > 0) {
-                (correctCount.toFloat() / totalExercises.toFloat()) * 5f
-            } else {
-                0f
-            }
-            val isPassed = score >= 4.5f
-
+        if (shouldFinishNow) {
             val lessonResult = LessonResult(
                 lessonId = currentLessonId,
                 lessonTitle = state.lessonTitle,
@@ -238,7 +238,7 @@ class LessonSessionViewModel(
             )
 
             saveLessonProgress(
-                currentStep = totalExercises,
+                currentStep = if (isFinished) totalExercises else nextIndex,
                 totalSteps = totalExercises,
                 correctCount = correctCount
             )
@@ -332,11 +332,19 @@ class LessonSessionViewModel(
     }
     private fun calculateCurrentScore(correctCount: Int, totalSteps: Int): Float? {
         if (totalSteps <= 0) return null
-        return (correctCount.toFloat() / totalSteps.toFloat()) * 5f
+        return calculateLessonScore(
+            correctCount = correctCount,
+            totalExercises = totalSteps
+        )
     }
 
     override fun onCleared() {
         persistenceScope.cancel()
         super.onCleared()
     }
+}
+
+internal fun calculateLessonScore(correctCount: Int, totalExercises: Int): Float {
+    if (totalExercises <= 0) return 0f
+    return (correctCount.toFloat() / totalExercises.toFloat()) * 5f
 }
