@@ -24,6 +24,8 @@ class FlashcardTrainingViewModel(
     private val flashcardLoader: suspend (Long?) -> List<FlashcardItem>,
     private val loadSavedDirection: suspend () -> FlashcardDirection,
     private val saveDirection: suspend (FlashcardDirection) -> Unit,
+    private val markCardKnown: suspend (FlashcardItem) -> Unit = {},
+    private val markCardUnknown: suspend (FlashcardItem) -> Unit = {},
     private val repeatDifficultTitle: String = application.getString(R.string.flashcard_repeat_difficult_title),
     private val repeatGroupTitleFormatter: (String) -> String = { groupName ->
         application.getString(R.string.flashcard_repeat_group_title, groupName)
@@ -160,6 +162,14 @@ class FlashcardTrainingViewModel(
         }
 
         val nextIndex = state.currentIndex + 1
+        viewModelScope.launch {
+            if (isKnown) {
+                markCardKnown(currentCard)
+            } else {
+                markCardUnknown(currentCard)
+            }
+        }
+
         _uiState.value = state.copy(
             currentIndex = if (nextIndex < state.totalCount) nextIndex else state.currentIndex,
             currentCardFace = FlashcardFace.Front,
@@ -195,6 +205,8 @@ class FlashcardTrainingViewModel(
                         },
                         loadSavedDirection = { preferencesStore.loadDirection() },
                         saveDirection = { direction -> preferencesStore.saveDirection(direction) },
+                        markCardKnown = { card -> repository.markFlashcardKnown(card) },
+                        markCardUnknown = { card -> repository.markFlashcardUnknown(card) },
                     ) as T
                 }
             }

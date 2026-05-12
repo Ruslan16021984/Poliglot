@@ -132,4 +132,36 @@ class FlashcardTrainingViewModelTest {
             viewModel.uiState.value.errorMessage,
         )
     }
+
+    @Test
+    fun `training reports known and unknown cards to progress callbacks`() = runTest {
+        val cards = listOf(
+            FlashcardItem(id = 1L, bgWord = "zdravei", ruTranslation = "privet"),
+            FlashcardItem(id = 2L, bgWord = "chai", ruTranslation = "tea"),
+        )
+        val knownCards = mutableListOf<FlashcardItem>()
+        val unknownCards = mutableListOf<FlashcardItem>()
+        val viewModel = FlashcardTrainingViewModel(
+            application = Application(),
+            selectedGroupId = null,
+            selectedGroupName = null,
+            flashcardLoader = { cards },
+            loadSavedDirection = { FlashcardDirection.BgToRu },
+            saveDirection = {},
+            markCardKnown = { knownCards += it },
+            markCardUnknown = { unknownCards += it },
+            repeatDifficultTitle = "Repeat difficult words",
+            repeatGroupTitleFormatter = { groupName -> "Repeat: $groupName" },
+            loadErrorMessage = "Cannot load cards",
+        )
+
+        advanceUntilIdle()
+
+        viewModel.markKnown()
+        viewModel.markUnknown()
+        advanceUntilIdle()
+
+        assertEquals(listOf(cards[0]), knownCards)
+        assertEquals(listOf(cards[1]), unknownCards)
+    }
 }

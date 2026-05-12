@@ -8,18 +8,23 @@ import com.carbit3333333.oiiglot_bulgary.model.dictionary.FlashcardItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordCard
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 class PersonalDictionaryRepository(
     context: Context,
 ) {
+    companion object {
+        const val DIFFICULT_GROUP_ID: Long = -2L
+    }
 
     private val appContext = context.applicationContext
     private val database = PersonalDictionaryDatabase.getInstance(appContext)
     private val wordCardDao = database.wordCardDao()
     private val wordGroupDao = database.wordGroupDao()
     private val courseWordsRepository = CourseDictionaryWordsRepository(appContext)
+    private val difficultWordsStore = DifficultWordsStore(appContext)
     private val builtInWords = courseWordsRepository.loadWords()
 
     fun observeAllWords(): Flow<List<DictionaryWordListItem>> {
@@ -30,6 +35,15 @@ class PersonalDictionaryRepository(
         query: String,
         groupId: Long? = null,
     ): Flow<List<DictionaryWordListItem>> {
+        if (groupId == DIFFICULT_GROUP_ID) {
+            return combine(
+                observeFilteredWords(query = query, groupId = null),
+                difficultWordsStore.difficultWordIdsFlow,
+            ) { words, difficultIds ->
+                words.filter { it.id in difficultIds }
+            }
+        }
+
         val effectiveGroupId = groupId.takeUnless { it == CourseDictionaryWordsRepository.COURSE_GROUP_ID }
         val normalizedQuery = query.trim()
         return wordCardDao.observeWords(query = normalizedQuery, groupId = effectiveGroupId)
@@ -53,16 +67,25 @@ class PersonalDictionaryRepository(
     }
 
     fun observeGroupsWithCounts(): Flow<List<WordGroup>> {
-        return wordGroupDao.observeAllGroupsWithCounts()
-            .map { groups ->
+        return combine(
+            wordGroupDao.observeAllGroupsWithCounts(),
+            difficultWordsStore.difficultWordIdsFlow,
+            observeFilteredWords(query = "", groupId = null),
+        ) { groups, difficultIds, allWords ->
+            val difficultWordCount = allWords.count { it.id in difficultIds }.toLong()
                 listOf(
+                    WordGroup(
+                        id = DIFFICULT_GROUP_ID,
+                        name = appContext.getString(R.string.dictionary_difficult_group_name),
+                        wordCount = difficultWordCount,
+                    ),
                     WordGroup(
                         id = CourseDictionaryWordsRepository.COURSE_GROUP_ID,
                         name = appContext.getString(R.string.dictionary_course_group_name),
                         wordCount = builtInWords.size.toLong(),
                     )
                 ) + groups.map { it.toDomain() }
-            }
+        }
     }
 
     suspend fun getWordById(wordId: Long): WordCard? {
@@ -149,10 +172,26 @@ class PersonalDictionaryRepository(
     }
 
     suspend fun loadFlashcardsForOneGroup(groupId: Long): List<FlashcardItem> {
+        if (groupId == DIFFICULT_GROUP_ID) {
+            return loadFlashcardsForDifficultWords()
+        }
         if (groupId == CourseDictionaryWordsRepository.COURSE_GROUP_ID) {
             return builtInWords.map { it.toFlashcardItem() }
         }
         return loadFlashcards(query = "", groupId = groupId)
+    }
+
+    suspend fun markFlashcardKnown(card: FlashcardItem) {
+        difficultWordsStore.markKnown(card.id)
+    }
+
+    suspend fun markFlashcardUnknown(card: FlashcardItem) {
+        difficultWordsStore.markUnknown(card.id)
+    }
+
+    private suspend fun loadFlashcardsForDifficultWords(): List<FlashcardItem> {
+        val difficultIds = difficultWordsStore.difficultWordIdsFlow.first()
+        return loadFlashcardsForAllWords().filter { it.id in difficultIds }
     }
 
     private suspend fun loadFlashcards(

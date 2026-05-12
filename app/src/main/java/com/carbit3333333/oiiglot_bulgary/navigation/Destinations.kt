@@ -16,6 +16,7 @@ object Destinations {
     private const val WORD_ID_ARGUMENT = "wordId"
     private const val GROUP_ID_ARGUMENT = "groupId"
     private const val GROUP_NAME_ARGUMENT = "groupName"
+    private const val NO_GROUP_ID = Long.MIN_VALUE
 
     fun lessonDetailsRoute(lessonId: Int): String {
         return "$LESSON_DETAILS/$lessonId"
@@ -42,7 +43,7 @@ object Destinations {
         groupId: Long? = null,
         groupName: String? = null
     ): String {
-        val routeGroupId = groupId?.takeIf { it > 0L } ?: -1L
+        val routeGroupId = groupId ?: NO_GROUP_ID
         val routeGroupName = Uri.encode(groupName.orEmpty())
         return "dictionary_training?$GROUP_ID_ARGUMENT=$routeGroupId&$GROUP_NAME_ARGUMENT=$routeGroupName"
     }

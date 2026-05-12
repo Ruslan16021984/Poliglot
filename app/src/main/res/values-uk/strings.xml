@@ -164,6 +164,7 @@
     <string name="settings_more_options">Відкрити налаштування</string>
     <string name="settings_theme_description">Оберіть, який вигляд застосунку вам зручніший.</string>
     <string name="settings_language_description">Оберіть мову інтерфейсу та теорії уроків.</string>
+    <string name="dictionary_difficult_group_name">Складні слова</string>
     <string name="dictionary_course_group_name">Слова уроків</string>
     <string name="dictionary_course_word_badge">З курсу</string>
     <string name="dictionary_course_lesson_badge">Урок %1$d</string>

@@ -126,7 +126,7 @@ fun AppNavGraph() {
             arguments = listOf(
                 navArgument("groupId") {
                     type = NavType.LongType
-                    defaultValue = -1L
+                    defaultValue = Long.MIN_VALUE
                 },
                 navArgument("groupName") {
                     type = NavType.StringType
@@ -138,7 +138,9 @@ fun AppNavGraph() {
             val application = context.applicationContext as android.app.Application
             val repository = remember(context) { PersonalDictionaryRepository(context) }
             val preferencesStore = remember(context) { FlashcardTrainingPreferencesStore(context) }
-            val groupId = backStackEntry.arguments?.getLong("groupId")?.takeIf { it > 0L }
+            val groupId = backStackEntry.arguments
+                ?.getLong("groupId")
+                ?.takeUnless { it == Long.MIN_VALUE }
             val groupName = backStackEntry.arguments?.getString("groupName")?.takeIf { it.isNotBlank() }
             val flashcardTrainingViewModel: FlashcardTrainingViewModel = viewModel(
                 factory = FlashcardTrainingViewModel.provideFactory(
