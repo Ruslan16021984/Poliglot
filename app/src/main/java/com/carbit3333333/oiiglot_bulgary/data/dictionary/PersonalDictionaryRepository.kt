@@ -10,6 +10,7 @@ import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
 class PersonalDictionaryRepository(
@@ -17,6 +18,16 @@ class PersonalDictionaryRepository(
 ) {
     companion object {
         const val DIFFICULT_GROUP_ID: Long = -2L
+        private const val COURSE_LESSON_GROUP_BASE: Long = -1_000L
+
+        fun courseLessonGroupId(lessonNumber: Int): Long {
+            return COURSE_LESSON_GROUP_BASE - lessonNumber
+        }
+
+        fun courseLessonNumberFromGroupId(groupId: Long): Int? {
+            val lessonNumber = (COURSE_LESSON_GROUP_BASE - groupId).toInt()
+            return lessonNumber.takeIf { it > 0 }
+        }
     }
 
     private val appContext = context.applicationContext
@@ -35,6 +46,8 @@ class PersonalDictionaryRepository(
         query: String,
         groupId: Long? = null,
     ): Flow<List<DictionaryWordListItem>> {
+        val normalizedQuery = query.trim()
+
         if (groupId == DIFFICULT_GROUP_ID) {
             return combine(
                 observeFilteredWords(query = query, groupId = null),
@@ -44,8 +57,16 @@ class PersonalDictionaryRepository(
             }
         }
 
+        groupId?.let(::courseLessonNumberFromGroupId)?.let { lessonNumber ->
+            return flowOf(
+                builtInWords
+                    .filter { it.sourceLessonNumber == lessonNumber }
+                    .filter { it.matchesQuery(normalizedQuery) }
+                    .sortedBy { it.bgWord.lowercase() }
+            )
+        }
+
         val effectiveGroupId = groupId.takeUnless { it == CourseDictionaryWordsRepository.COURSE_GROUP_ID }
-        val normalizedQuery = query.trim()
         return wordCardDao.observeWords(query = normalizedQuery, groupId = effectiveGroupId)
             .map { words ->
                 val userWords = if (groupId == CourseDictionaryWordsRepository.COURSE_GROUP_ID) {
@@ -73,18 +94,34 @@ class PersonalDictionaryRepository(
             observeFilteredWords(query = "", groupId = null),
         ) { groups, difficultIds, allWords ->
             val difficultWordCount = allWords.count { it.id in difficultIds }.toLong()
-                listOf(
+            val lessonGroups = builtInWords
+                .groupBy { it.sourceLessonNumber }
+                .entries
+                .filter { it.key != null }
+                .sortedBy { it.key ?: Int.MAX_VALUE }
+                .map { (lessonNumber, words) ->
                     WordGroup(
-                        id = DIFFICULT_GROUP_ID,
-                        name = appContext.getString(R.string.dictionary_difficult_group_name),
-                        wordCount = difficultWordCount,
-                    ),
-                    WordGroup(
-                        id = CourseDictionaryWordsRepository.COURSE_GROUP_ID,
-                        name = appContext.getString(R.string.dictionary_course_group_name),
-                        wordCount = builtInWords.size.toLong(),
+                        id = courseLessonGroupId(requireNotNull(lessonNumber)),
+                        name = appContext.getString(
+                            R.string.dictionary_course_lesson_badge,
+                            lessonNumber,
+                        ),
+                        wordCount = words.size.toLong(),
                     )
-                ) + groups.map { it.toDomain() }
+                }
+
+            listOf(
+                WordGroup(
+                    id = DIFFICULT_GROUP_ID,
+                    name = appContext.getString(R.string.dictionary_difficult_group_name),
+                    wordCount = difficultWordCount,
+                ),
+                WordGroup(
+                    id = CourseDictionaryWordsRepository.COURSE_GROUP_ID,
+                    name = appContext.getString(R.string.dictionary_course_group_name),
+                    wordCount = builtInWords.size.toLong(),
+                )
+            ) + lessonGroups + groups.map { it.toDomain() }
         }
     }
 
@@ -177,6 +214,11 @@ class PersonalDictionaryRepository(
         }
         if (groupId == CourseDictionaryWordsRepository.COURSE_GROUP_ID) {
             return builtInWords.map { it.toFlashcardItem() }
+        }
+        courseLessonNumberFromGroupId(groupId)?.let { lessonNumber ->
+            return builtInWords
+                .filter { it.sourceLessonNumber == lessonNumber }
+                .map { it.toFlashcardItem() }
         }
         return loadFlashcards(query = "", groupId = groupId)
     }

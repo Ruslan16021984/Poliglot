@@ -1,77 +1,2087 @@
 [
-  { "bgWord": "гледам", "ruTranslation": "смотреть", "lessonNumber": 1 },
-  { "bgWord": "работя", "ruTranslation": "работать", "lessonNumber": 1 },
-  { "bgWord": "уча", "ruTranslation": "учиться", "lessonNumber": 1 },
-  { "bgWord": "говоря", "ruTranslation": "говорить", "lessonNumber": 1 },
-  { "bgWord": "пия", "ruTranslation": "пить", "lessonNumber": 1 },
-  { "bgWord": "обичам", "ruTranslation": "любить", "lessonNumber": 1 },
-  { "bgWord": "имам", "ruTranslation": "иметь", "lessonNumber": 1 },
-  { "bgWord": "отивам", "ruTranslation": "идти", "lessonNumber": 5 },
-  { "bgWord": "виждам", "ruTranslation": "видеть", "lessonNumber": 5 },
-  { "bgWord": "давам", "ruTranslation": "давать", "lessonNumber": 7 },
-  { "bgWord": "взимам", "ruTranslation": "брать", "lessonNumber": 7 },
-  { "bgWord": "купувам", "ruTranslation": "покупать", "lessonNumber": 9 },
-  { "bgWord": "чета", "ruTranslation": "читать", "lessonNumber": 5 },
-  { "bgWord": "спя", "ruTranslation": "спать", "lessonNumber": 10 },
-  { "bgWord": "почивам", "ruTranslation": "отдыхать", "lessonNumber": 10 },
-  { "bgWord": "закусвам", "ruTranslation": "завтракать", "lessonNumber": 10 },
-  { "bgWord": "обядвам", "ruTranslation": "обедать", "lessonNumber": 10 },
-  { "bgWord": "вечерям", "ruTranslation": "ужинать", "lessonNumber": 10 },
-  { "bgWord": "прибирам", "ruTranslation": "возвращаться", "lessonNumber": 10 },
-  { "bgWord": "съм", "ruTranslation": "быть", "lessonNumber": 2 },
-
-  { "bgWord": "книга", "ruTranslation": "книга", "lessonNumber": 1 },
-  { "bgWord": "телефон", "ruTranslation": "телефон", "lessonNumber": 9 },
-  { "bgWord": "писмо", "ruTranslation": "письмо", "lessonNumber": 9 },
-  { "bgWord": "билет", "ruTranslation": "билет", "lessonNumber": 9 },
-  { "bgWord": "чаша", "ruTranslation": "чашка", "lessonNumber": 9 },
-  { "bgWord": "вода", "ruTranslation": "вода", "lessonNumber": 4 },
-  { "bgWord": "кафе", "ruTranslation": "кофе", "lessonNumber": 4 },
-  { "bgWord": "чай", "ruTranslation": "чай", "lessonNumber": 5 },
-  { "bgWord": "хляб", "ruTranslation": "хлеб", "lessonNumber": 1 },
-  { "bgWord": "сок", "ruTranslation": "сок", "lessonNumber": 1 },
-  { "bgWord": "филм", "ruTranslation": "фильм", "lessonNumber": 1 },
-  { "bgWord": "урок", "ruTranslation": "урок", "lessonNumber": 10 },
-  { "bgWord": "работа", "ruTranslation": "работа", "lessonNumber": 4 },
-  { "bgWord": "време", "ruTranslation": "время", "lessonNumber": 3 },
-  { "bgWord": "магазин", "ruTranslation": "магазин", "lessonNumber": 6 },
-  { "bgWord": "град", "ruTranslation": "город", "lessonNumber": 6 },
-  { "bgWord": "дом", "ruTranslation": "дом", "lessonNumber": 7 },
-  { "bgWord": "училище", "ruTranslation": "школа", "lessonNumber": 2 },
-  { "bgWord": "университет", "ruTranslation": "университет", "lessonNumber": 2 },
-  { "bgWord": "кола", "ruTranslation": "машина", "lessonNumber": 8 },
-  { "bgWord": "ден", "ruTranslation": "день", "lessonNumber": 8 },
-  { "bgWord": "брат", "ruTranslation": "брат", "lessonNumber": 8 },
-  { "bgWord": "приятел", "ruTranslation": "друг", "lessonNumber": 7 },
-  { "bgWord": "ученик", "ruTranslation": "ученик", "lessonNumber": 8 },
-  { "bgWord": "лекар", "ruTranslation": "врач", "lessonNumber": 2 },
-  { "bgWord": "учител", "ruTranslation": "учитель", "lessonNumber": 2 },
-  { "bgWord": "студент", "ruTranslation": "студент", "lessonNumber": 2 },
-  { "bgWord": "колега", "ruTranslation": "коллега", "lessonNumber": 2 },
-
-  { "bgWord": "добър", "ruTranslation": "хороший", "lessonNumber": 8 },
-  { "bgWord": "красив", "ruTranslation": "красивый", "lessonNumber": 8 },
-  { "bgWord": "интересен", "ruTranslation": "интересный", "lessonNumber": 8 },
-  { "bgWord": "голям", "ruTranslation": "большой", "lessonNumber": 8 },
-  { "bgWord": "бърз", "ruTranslation": "быстрый", "lessonNumber": 8 },
-  { "bgWord": "скъп", "ruTranslation": "дорогой", "lessonNumber": 8 },
-  { "bgWord": "стар", "ruTranslation": "старый", "lessonNumber": 8 },
-  { "bgWord": "млад", "ruTranslation": "молодой", "lessonNumber": 8 },
-  { "bgWord": "висок", "ruTranslation": "высокий", "lessonNumber": 8 },
-  { "bgWord": "труден", "ruTranslation": "трудный", "lessonNumber": 8 },
-  { "bgWord": "лек", "ruTranslation": "лёгкий", "lessonNumber": 8 },
-  { "bgWord": "топъл", "ruTranslation": "тёплый", "lessonNumber": 8 },
-  { "bgWord": "студен", "ruTranslation": "холодный", "lessonNumber": 8 },
-  { "bgWord": "горещ", "ruTranslation": "горячий", "lessonNumber": 8 },
-
-  { "bgWord": "понеделник", "ruTranslation": "понедельник", "lessonNumber": 10 },
-  { "bgWord": "вторник", "ruTranslation": "вторник", "lessonNumber": 10 },
-  { "bgWord": "сряда", "ruTranslation": "среда", "lessonNumber": 10 },
-  { "bgWord": "четвъртък", "ruTranslation": "четверг", "lessonNumber": 10 },
-  { "bgWord": "петък", "ruTranslation": "пятница", "lessonNumber": 10 },
-  { "bgWord": "сутрин", "ruTranslation": "утром", "lessonNumber": 10 },
-  { "bgWord": "вечер", "ruTranslation": "вечером", "lessonNumber": 10 },
-  { "bgWord": "нощем", "ruTranslation": "ночью", "lessonNumber": 10 },
-  { "bgWord": "днес", "ruTranslation": "сегодня", "lessonNumber": 10 },
-  { "bgWord": "утре", "ruTranslation": "завтра", "lessonNumber": 10 }
+  {
+    "bgWord": "бежанец",
+    "ruTranslation": "беженец",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "бежанка",
+    "ruTranslation": "беженка",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "благодаря",
+    "ruTranslation": "спасибо",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "българин",
+    "ruTranslation": "болгарин",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "България",
+    "ruTranslation": "Болгария",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "българка",
+    "ruTranslation": "болгарка",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "добре",
+    "ruTranslation": "хорошо",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "добро утро",
+    "ruTranslation": "доброе утро",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "добър вечер",
+    "ruTranslation": "добрый вечер",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "добър ден",
+    "ruTranslation": "добрый день",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "довиждане",
+    "ruTranslation": "до свидания",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "заповядайте",
+    "ruTranslation": "пожалуйста, проходите",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "здравей",
+    "ruTranslation": "привет",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "здравейте",
+    "ruTranslation": "здравствуйте",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "извинете",
+    "ruTranslation": "извините",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "иранец",
+    "ruTranslation": "иранец",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "как си",
+    "ruTranslation": "как ты",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "как сте",
+    "ruTranslation": "как вы",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "моля",
+    "ruTranslation": "пожалуйста",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "обичам",
+    "ruTranslation": "любить",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "от",
+    "ruTranslation": "из, от",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "откъде",
+    "ruTranslation": "откуда",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "приятно ми е",
+    "ruTranslation": "приятно познакомиться",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "сириец",
+    "ruTranslation": "сириец",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "Сирия",
+    "ruTranslation": "Сирия",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "съм",
+    "ruTranslation": "быть",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "Украйна",
+    "ruTranslation": "Украина",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "учител",
+    "ruTranslation": "учитель",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "учителка",
+    "ruTranslation": "учительница",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "чудесно",
+    "ruTranslation": "чудесно",
+    "lessonNumber": 1
+  },
+  {
+    "bgWord": "аптека",
+    "ruTranslation": "аптека",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "баба",
+    "ruTranslation": "бабушка",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "баница",
+    "ruTranslation": "баница",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "банка",
+    "ruTranslation": "банк",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "баща",
+    "ruTranslation": "отец",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "бежанец",
+    "ruTranslation": "беженец",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "бежанка",
+    "ruTranslation": "беженка",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "библиотека",
+    "ruTranslation": "библиотека",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "болница",
+    "ruTranslation": "больница",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "брат",
+    "ruTranslation": "брат",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "българин",
+    "ruTranslation": "болгарин",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "българка",
+    "ruTranslation": "болгарка",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "вода",
+    "ruTranslation": "вода",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "град",
+    "ruTranslation": "город",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "дете",
+    "ruTranslation": "ребёнок",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "деца",
+    "ruTranslation": "дети",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "дъщеря",
+    "ruTranslation": "дочь",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "дюнер",
+    "ruTranslation": "дюнер",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "дядо",
+    "ruTranslation": "дедушка",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "жена",
+    "ruTranslation": "женщина, жена",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "женен",
+    "ruTranslation": "женат",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "заето",
+    "ruTranslation": "занято",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "захар",
+    "ruTranslation": "сахар",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "иранец",
+    "ruTranslation": "иранец",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "искам",
+    "ruTranslation": "хотеть",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "капучино",
+    "ruTranslation": "капучино",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "кафе",
+    "ruTranslation": "кофе",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "кашкавал",
+    "ruTranslation": "кашкавал, сыр",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "кино",
+    "ruTranslation": "кинотеатр",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "кисело мляко",
+    "ruTranslation": "кислое молоко, йогурт",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "кроасан",
+    "ruTranslation": "круассан",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "магазин",
+    "ruTranslation": "магазин",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "майка",
+    "ruTranslation": "мать",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "масло",
+    "ruTranslation": "масло",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "мед",
+    "ruTranslation": "мёд",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "момиче",
+    "ruTranslation": "девочка",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "момче",
+    "ruTranslation": "мальчик",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "музей",
+    "ruTranslation": "музей",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "мъж",
+    "ruTranslation": "мужчина, муж",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "обичам",
+    "ruTranslation": "любить",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "омъжена",
+    "ruTranslation": "замужем",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "откъде",
+    "ruTranslation": "откуда",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "пица",
+    "ruTranslation": "пицца",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "прясно мляко",
+    "ruTranslation": "молоко",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "родители",
+    "ruTranslation": "родители",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "салам",
+    "ruTranslation": "салями, колбаса",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "сандвич",
+    "ruTranslation": "сэндвич",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "свободно",
+    "ruTranslation": "свободно",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "село",
+    "ruTranslation": "село",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "сестра",
+    "ruTranslation": "сестра",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "син",
+    "ruTranslation": "сын",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "сирене",
+    "ruTranslation": "брынза, сыр",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "сириец",
+    "ruTranslation": "сириец",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "сок",
+    "ruTranslation": "сок",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "съм",
+    "ruTranslation": "быть",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "театър",
+    "ruTranslation": "театр",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "учител",
+    "ruTranslation": "учитель",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "учителка",
+    "ruTranslation": "учительница",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "филия",
+    "ruTranslation": "ломтик хлеба",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "хляб",
+    "ruTranslation": "хлеб",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "хотел",
+    "ruTranslation": "отель",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "чай",
+    "ruTranslation": "чай",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "яйце",
+    "ruTranslation": "яйцо",
+    "lessonNumber": 2
+  },
+  {
+    "bgWord": "айрян",
+    "ruTranslation": "айран",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "билков чай",
+    "ruTranslation": "травяной чай",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "десерт",
+    "ruTranslation": "десерт",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "дълго кафе",
+    "ruTranslation": "большой кофе, американо",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "заето",
+    "ruTranslation": "занято",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "заповядайте",
+    "ruTranslation": "пожалуйста, проходите",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "извинете",
+    "ruTranslation": "извините",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "късо кафе",
+    "ruTranslation": "маленький кофе, эспрессо",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "меню",
+    "ruTranslation": "меню",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "моля",
+    "ruTranslation": "пожалуйста",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "мусака",
+    "ruTranslation": "мусака",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "ресторант",
+    "ruTranslation": "ресторан",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "салата",
+    "ruTranslation": "салат",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "свободно",
+    "ruTranslation": "свободно",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "сладолед",
+    "ruTranslation": "мороженое",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "сметана",
+    "ruTranslation": "сливки",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "сметка",
+    "ruTranslation": "счёт",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "супа",
+    "ruTranslation": "суп",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "черен чай",
+    "ruTranslation": "чёрный чай",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "шоколад",
+    "ruTranslation": "шоколад",
+    "lessonNumber": 3
+  },
+  {
+    "bgWord": "айрян",
+    "ruTranslation": "айран",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "банан",
+    "ruTranslation": "банан",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "баница",
+    "ruTranslation": "баница",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "билков чай",
+    "ruTranslation": "травяной чай",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "бисквити",
+    "ruTranslation": "печенье",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "боб",
+    "ruTranslation": "фасоль",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "бонбони",
+    "ruTranslation": "конфеты",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "вода",
+    "ruTranslation": "вода",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "грах",
+    "ruTranslation": "горох",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "грейпфрут",
+    "ruTranslation": "грейпфрут",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "грозде",
+    "ruTranslation": "виноград",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "гъба",
+    "ruTranslation": "гриб",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "десерт",
+    "ruTranslation": "десерт",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "домат",
+    "ruTranslation": "помидор",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "дълго кафе",
+    "ruTranslation": "большой кофе, американо",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "дюнер",
+    "ruTranslation": "дюнер",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "захар",
+    "ruTranslation": "сахар",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "зеле",
+    "ruTranslation": "капуста",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "зеленчуци",
+    "ruTranslation": "овощи",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "искам",
+    "ruTranslation": "хотеть",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "кайсия",
+    "ruTranslation": "абрикос",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "капучино",
+    "ruTranslation": "капучино",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "картоф",
+    "ruTranslation": "картофель",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "кафе",
+    "ruTranslation": "кофе",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "кашкавал",
+    "ruTranslation": "кашкавал, сыр",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "кисело мляко",
+    "ruTranslation": "кислое молоко, йогурт",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "краставица",
+    "ruTranslation": "огурец",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "кроасан",
+    "ruTranslation": "круассан",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "круша",
+    "ruTranslation": "груша",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "късо кафе",
+    "ruTranslation": "маленький кофе, эспрессо",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "леща",
+    "ruTranslation": "чечевица",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "лимон",
+    "ruTranslation": "лимон",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "лук",
+    "ruTranslation": "лук",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "маруля",
+    "ruTranslation": "салат-латук",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "маслини",
+    "ruTranslation": "оливки",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "масло",
+    "ruTranslation": "масло",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "мед",
+    "ruTranslation": "мёд",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "меню",
+    "ruTranslation": "меню",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "минимаркет",
+    "ruTranslation": "минимаркет",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "моля",
+    "ruTranslation": "пожалуйста",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "морков",
+    "ruTranslation": "морковь",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "мусака",
+    "ruTranslation": "мусака",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "обичам",
+    "ruTranslation": "любить",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "олио",
+    "ruTranslation": "растительное масло",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "ориз",
+    "ruTranslation": "рис",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "оцет",
+    "ruTranslation": "уксус",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "пазар",
+    "ruTranslation": "рынок",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "пиле",
+    "ruTranslation": "курица",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "пилешко месо",
+    "ruTranslation": "куриное мясо",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "пица",
+    "ruTranslation": "пицца",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "пия",
+    "ruTranslation": "пью",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "плодове",
+    "ruTranslation": "фрукты",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "портокал",
+    "ruTranslation": "апельсин",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "праскова",
+    "ruTranslation": "персик",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "прясно мляко",
+    "ruTranslation": "молоко",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "пъпеш",
+    "ruTranslation": "дыня",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "ресторант",
+    "ruTranslation": "ресторан",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "риба",
+    "ruTranslation": "рыба",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "салам",
+    "ruTranslation": "салями, колбаса",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "салата",
+    "ruTranslation": "салат",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "сандвич",
+    "ruTranslation": "сэндвич",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "свинско месо",
+    "ruTranslation": "свинина",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "сирене",
+    "ruTranslation": "брынза, сыр",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "сладолед",
+    "ruTranslation": "мороженое",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "слива",
+    "ruTranslation": "слива",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "сметана",
+    "ruTranslation": "сливки",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "сметка",
+    "ruTranslation": "счёт",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "смокиня",
+    "ruTranslation": "инжир",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "сок",
+    "ruTranslation": "сок",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "сол",
+    "ruTranslation": "соль",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "спанак",
+    "ruTranslation": "шпинат",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "супа",
+    "ruTranslation": "суп",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "супермаркет",
+    "ruTranslation": "супермаркет",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "телешко месо",
+    "ruTranslation": "телятина, говядина",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "тиквичка",
+    "ruTranslation": "кабачок",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "филия",
+    "ruTranslation": "ломтик хлеба",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "хипермаркет",
+    "ruTranslation": "гипермаркет",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "хляб",
+    "ruTranslation": "хлеб",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "чай",
+    "ruTranslation": "чай",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "черен чай",
+    "ruTranslation": "чёрный чай",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "череша",
+    "ruTranslation": "черешня",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "чесън",
+    "ruTranslation": "чеснок",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "чушка",
+    "ruTranslation": "перец",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "шоколад",
+    "ruTranslation": "шоколад",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "шунка",
+    "ruTranslation": "ветчина",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "ябълка",
+    "ruTranslation": "яблоко",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "ягода",
+    "ruTranslation": "клубника, ягода",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "ядки",
+    "ruTranslation": "орехи, орешки",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "яйце",
+    "ruTranslation": "яйцо",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "ям",
+    "ruTranslation": "ем",
+    "lessonNumber": 4
+  },
+  {
+    "bgWord": "аптека",
+    "ruTranslation": "аптека",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "банка",
+    "ruTranslation": "банк",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "библиотека",
+    "ruTranslation": "библиотека",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "блок",
+    "ruTranslation": "жилой блок, дом",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "болница",
+    "ruTranslation": "больница",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "булевард",
+    "ruTranslation": "бульвар",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "бутилка",
+    "ruTranslation": "бутылка",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "вода",
+    "ruTranslation": "вода",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "град",
+    "ruTranslation": "город",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "детска градина",
+    "ruTranslation": "детский сад",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "детска площадка",
+    "ruTranslation": "детская площадка",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "джамия",
+    "ruTranslation": "мечеть",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "евтино",
+    "ruTranslation": "дёшево",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "искам",
+    "ruTranslation": "хотеть",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "капучино",
+    "ruTranslation": "капучино",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "кафе",
+    "ruTranslation": "кофе",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "кашкавал",
+    "ruTranslation": "кашкавал, сыр",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "килограм",
+    "ruTranslation": "килограмм",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "кино",
+    "ruTranslation": "кинотеатр",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "кисело мляко",
+    "ruTranslation": "кислое молоко, йогурт",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "купувам",
+    "ruTranslation": "покупать",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "къща",
+    "ruTranslation": "дом",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "литър",
+    "ruTranslation": "литр",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "магазин",
+    "ruTranslation": "магазин",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "масло",
+    "ruTranslation": "масло",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "мост",
+    "ruTranslation": "мост",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "музей",
+    "ruTranslation": "музей",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "община",
+    "ruTranslation": "муниципалитет, община",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "пакет",
+    "ruTranslation": "пакет, упаковка",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "паметник",
+    "ruTranslation": "памятник",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "парк",
+    "ruTranslation": "парк",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "площад",
+    "ruTranslation": "площадь",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "поща",
+    "ruTranslation": "почта",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "прясно мляко",
+    "ruTranslation": "молоко",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "река",
+    "ruTranslation": "река",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "ресторант",
+    "ruTranslation": "ресторан",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "село",
+    "ruTranslation": "село",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "сирене",
+    "ruTranslation": "брынза, сыр",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "скъпо",
+    "ruTranslation": "дорого",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "сок",
+    "ruTranslation": "сок",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "театър",
+    "ruTranslation": "театр",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "торбичка",
+    "ruTranslation": "пакетик, пакет",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "улица",
+    "ruTranslation": "улица",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "хляб",
+    "ruTranslation": "хлеб",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "хотел",
+    "ruTranslation": "отель",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "църква",
+    "ruTranslation": "церковь",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "чай",
+    "ruTranslation": "чай",
+    "lessonNumber": 5
+  },
+  {
+    "bgWord": "аптека",
+    "ruTranslation": "аптека",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "баба",
+    "ruTranslation": "бабушка",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "банка",
+    "ruTranslation": "банк",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "баща",
+    "ruTranslation": "отец",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "библиотека",
+    "ruTranslation": "библиотека",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "блок",
+    "ruTranslation": "жилой блок, дом",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "болница",
+    "ruTranslation": "больница",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "брат",
+    "ruTranslation": "брат",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "булевард",
+    "ruTranslation": "бульвар",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "внук",
+    "ruTranslation": "внук",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "внуци",
+    "ruTranslation": "внуки",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "внучка",
+    "ruTranslation": "внучка",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "град",
+    "ruTranslation": "город",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "дете",
+    "ruTranslation": "ребёнок",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "детска градина",
+    "ruTranslation": "детский сад",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "детска площадка",
+    "ruTranslation": "детская площадка",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "деца",
+    "ruTranslation": "дети",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "дъщеря",
+    "ruTranslation": "дочь",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "дядо",
+    "ruTranslation": "дедушка",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "жена",
+    "ruTranslation": "женщина, жена",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "женен",
+    "ruTranslation": "женат",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "кино",
+    "ruTranslation": "кинотеатр",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "къща",
+    "ruTranslation": "дом",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "леля",
+    "ruTranslation": "тётя",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "магазин",
+    "ruTranslation": "магазин",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "майка",
+    "ruTranslation": "мать",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "момиче",
+    "ruTranslation": "девочка",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "момче",
+    "ruTranslation": "мальчик",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "музей",
+    "ruTranslation": "музей",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "мъж",
+    "ruTranslation": "мужчина, муж",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "омъжена",
+    "ruTranslation": "замужем",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "от",
+    "ruTranslation": "из, от",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "родители",
+    "ruTranslation": "родители",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "село",
+    "ruTranslation": "село",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "сестра",
+    "ruTranslation": "сестра",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "син",
+    "ruTranslation": "сын",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "съпруг",
+    "ruTranslation": "супруг, муж",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "съпруга",
+    "ruTranslation": "супруга, жена",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "съпрузи",
+    "ruTranslation": "супруги",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "театър",
+    "ruTranslation": "театр",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "улица",
+    "ruTranslation": "улица",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "хотел",
+    "ruTranslation": "отель",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "чичо",
+    "ruTranslation": "дядя",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "август",
+    "ruTranslation": "август",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "април",
+    "ruTranslation": "апрель",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "вали",
+    "ruTranslation": "идет дождь",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "вечер",
+    "ruTranslation": "вечером",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "вторник",
+    "ruTranslation": "вторник",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "вятър",
+    "ruTranslation": "ветер",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "духа",
+    "ruTranslation": "дует",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "дъжд",
+    "ruTranslation": "дождь",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "дъждовно",
+    "ruTranslation": "дождливо",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "къща",
+    "ruTranslation": "дом",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "месец",
+    "ruTranslation": "месяц",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "неделя",
+    "ruTranslation": "воскресенье",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "ноември",
+    "ruTranslation": "ноябрь",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "нощем",
+    "ruTranslation": "ночью",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "облачно",
+    "ruTranslation": "облачно",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "петък",
+    "ruTranslation": "пятница",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "понеделник",
+    "ruTranslation": "понедельник",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "следобед",
+    "ruTranslation": "после обеда",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "слънчево",
+    "ruTranslation": "солнечно",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "сняг",
+    "ruTranslation": "снег",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "сряда",
+    "ruTranslation": "среда",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "студено",
+    "ruTranslation": "холодно",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "сутрин",
+    "ruTranslation": "утром",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "събота",
+    "ruTranslation": "суббота",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "топло",
+    "ruTranslation": "тепло",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "час",
+    "ruTranslation": "час",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "часът",
+    "ruTranslation": "час",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "четвъртък",
+    "ruTranslation": "четверг",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "януари",
+    "ruTranslation": "январь",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "ясно",
+    "ruTranslation": "ясно",
+    "lessonNumber": 7
+  },
+  {
+    "bgWord": "ботуши",
+    "ruTranslation": "сапоги",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "бял",
+    "ruTranslation": "белый",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "добре",
+    "ruTranslation": "хорошо",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "евтино",
+    "ruTranslation": "дёшево",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "жълт",
+    "ruTranslation": "жёлтый",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "зелен",
+    "ruTranslation": "зелёный",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "кафяв",
+    "ruTranslation": "коричневый",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "обувки",
+    "ruTranslation": "туфли",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "палто",
+    "ruTranslation": "пальто",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "панталон",
+    "ruTranslation": "брюки",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "пола",
+    "ruTranslation": "юбка",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "пуловер",
+    "ruTranslation": "свитер",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "риза",
+    "ruTranslation": "рубашка",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "рокля",
+    "ruTranslation": "платье",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "сако",
+    "ruTranslation": "пиджак",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "син",
+    "ruTranslation": "синий",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "скъпо",
+    "ruTranslation": "дорого",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "стар",
+    "ruTranslation": "старый",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "червен",
+    "ruTranslation": "красный",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "черен",
+    "ruTranslation": "чёрный",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "чорапи",
+    "ruTranslation": "носки",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "шал",
+    "ruTranslation": "шарф",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "шапка",
+    "ruTranslation": "шапка",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "яке",
+    "ruTranslation": "куртка",
+    "lessonNumber": 8
+  },
+  {
+    "bgWord": "апартамент",
+    "ruTranslation": "квартира",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "баня",
+    "ruTranslation": "ванная",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "бутилка",
+    "ruTranslation": "бутылка",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "вода",
+    "ruTranslation": "вода",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "диван",
+    "ruTranslation": "диван",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "евтино",
+    "ruTranslation": "дёшево",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "кафе",
+    "ruTranslation": "кофе",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "килим",
+    "ruTranslation": "ковёр",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "килограм",
+    "ruTranslation": "килограмм",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "коридор",
+    "ruTranslation": "коридор",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "купувам",
+    "ruTranslation": "покупать",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "кухня",
+    "ruTranslation": "кухня",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "къща",
+    "ruTranslation": "дом",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "лампа",
+    "ruTranslation": "лампа",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "легло",
+    "ruTranslation": "кровать",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "литър",
+    "ruTranslation": "литр",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "маса",
+    "ruTranslation": "стол",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "огледало",
+    "ruTranslation": "зеркало",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "пакет",
+    "ruTranslation": "пакет, упаковка",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "полица",
+    "ruTranslation": "полка",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "скъпо",
+    "ruTranslation": "дорого",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "сок",
+    "ruTranslation": "сок",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "спалня",
+    "ruTranslation": "спальня",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "стая",
+    "ruTranslation": "комната",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "стол",
+    "ruTranslation": "стул",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "торбичка",
+    "ruTranslation": "пакетик, пакет",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "хляб",
+    "ruTranslation": "хлеб",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "хол",
+    "ruTranslation": "гостиная",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "чай",
+    "ruTranslation": "чай",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "шкаф",
+    "ruTranslation": "шкаф",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "яйце",
+    "ruTranslation": "яйцо",
+    "lessonNumber": 9
+  },
+  {
+    "bgWord": "автобус",
+    "ruTranslation": "автобус",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "билет",
+    "ruTranslation": "билет",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "близо",
+    "ruTranslation": "близко",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "влак",
+    "ruTranslation": "поезд",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "гара",
+    "ruTranslation": "вокзал",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "далеч",
+    "ruTranslation": "далеко",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "карта",
+    "ruTranslation": "карта",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "каса",
+    "ruTranslation": "касса",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "куфар",
+    "ruTranslation": "чемодан",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "летище",
+    "ruTranslation": "аэропорт",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "метро",
+    "ruTranslation": "метро",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "перон",
+    "ruTranslation": "перрон",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "пътувам",
+    "ruTranslation": "ехать",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "риба",
+    "ruTranslation": "рыба",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "самолет",
+    "ruTranslation": "самолёт",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "спирка",
+    "ruTranslation": "остановка",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "такси",
+    "ruTranslation": "такси",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "трамвай",
+    "ruTranslation": "трамвай",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "вечер",
+    "ruTranslation": "вечером",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "вечерям",
+    "ruTranslation": "ужинать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "връщам се",
+    "ruTranslation": "возвращаться",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "денем",
+    "ruTranslation": "днём",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "закусвам",
+    "ruTranslation": "завтракаю",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "зъби",
+    "ruTranslation": "зубы",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "излизам",
+    "ruTranslation": "выходить",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "книга",
+    "ruTranslation": "книга",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "късно",
+    "ruTranslation": "поздно",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "лягам",
+    "ruTranslation": "ложиться",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "магазин",
+    "ruTranslation": "магазин",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "музика",
+    "ruTranslation": "музыка",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "нощем",
+    "ruTranslation": "ночью",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "обядвам",
+    "ruTranslation": "обедаю",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "отивам",
+    "ruTranslation": "идти",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "пия",
+    "ruTranslation": "пью",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "рано",
+    "ruTranslation": "рано",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "следобед",
+    "ruTranslation": "после обеда",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "ставам",
+    "ruTranslation": "вставать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "сутрин",
+    "ruTranslation": "утром",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "час",
+    "ruTranslation": "час",
+    "lessonNumber": 11
+  }
 ]

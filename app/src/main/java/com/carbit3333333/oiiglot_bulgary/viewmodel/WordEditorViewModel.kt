@@ -55,7 +55,7 @@ class WordEditorViewModel(
         groupsState,
     ) { state, groups ->
         state.copy(
-            availableGroups = groups,
+            availableGroups = groups.filter { it.id > 0L },
             isSaveEnabled = !state.isLoading && !state.isSaving,
         )
     }.stateIn(

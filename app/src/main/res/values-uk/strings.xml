@@ -168,7 +168,6 @@
     <string name="dictionary_course_group_name">Слова уроків</string>
     <string name="dictionary_course_word_badge">З курсу</string>
     <string name="dictionary_course_lesson_badge">Урок %1$d</string>
-    <string name="dictionary_open_lesson_action">До уроку</string>
     <string name="settings_full_access_title">Повний доступ</string>
     <string name="settings_full_access_active_description">Усі уроки відкрито. Ви можете навчатися без очікування послідовного відкриття.</string>
     <string name="settings_full_access_inactive_description">Відкрийте весь курс без очікування або відновіть покупку, якщо вона вже є.</string>

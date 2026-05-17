@@ -18,10 +18,8 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
@@ -65,6 +63,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.carbit3333333.oiiglot_bulgary.R
+import com.carbit3333333.oiiglot_bulgary.data.dictionary.CourseDictionaryWordsRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.DictionaryWordListItem
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordGroup
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
@@ -78,7 +77,6 @@ fun DictionaryScreen(
     onTrainAllClick: () -> Unit,
     onTrainGroupClick: (WordGroup) -> Unit,
     onWordClick: (Long) -> Unit,
-    onOpenLessonClick: (Int) -> Unit,
     viewModel: DictionaryViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -92,7 +90,6 @@ fun DictionaryScreen(
         onTrainAllClick = onTrainAllClick,
         onTrainGroupClick = onTrainGroupClick,
         onWordClick = onWordClick,
-        onOpenLessonClick = onOpenLessonClick,
         onQueryChange = viewModel::updateQuery,
         onGroupSelect = viewModel::selectGroup,
         onLoadMoreClick = viewModel::loadMoreWords,
@@ -110,7 +107,6 @@ fun DictionaryScreenContent(
     onTrainAllClick: () -> Unit,
     onTrainGroupClick: (WordGroup) -> Unit,
     onWordClick: (Long) -> Unit,
-    onOpenLessonClick: (Int) -> Unit,
     onQueryChange: (String) -> Unit,
     onGroupSelect: (Long?) -> Unit,
     onLoadMoreClick: () -> Unit,
@@ -121,6 +117,8 @@ fun DictionaryScreenContent(
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
     val showScrollToTopButton = listState.firstVisibleItemIndex > 6
+    val shouldShowWordList = uiState.query.isNotBlank() || uiState.selectedGroupId != null
+    val trainingGroups = uiState.groups.filter { it.id != CourseDictionaryWordsRepository.COURSE_GROUP_ID }
     var pendingDeleteWordId by rememberSaveable { mutableStateOf<Long?>(null) }
     var pendingDeleteWordLabel by rememberSaveable { mutableStateOf("") }
 
@@ -325,7 +323,7 @@ fun DictionaryScreenContent(
                     )
                 }
 
-                if (uiState.groups.isNotEmpty()) {
+                if (trainingGroups.isNotEmpty()) {
                     item {
                         Text(
                             text = stringResource(R.string.dictionary_groups_title),
@@ -335,119 +333,128 @@ fun DictionaryScreenContent(
                         )
                     }
 
-                    item {
-                        LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                            items(uiState.groups, key = { it.id }) { group ->
-                                GroupTrainingCard(
-                                    group = group,
-                                    onTrainGroupClick = onTrainGroupClick,
-                                    accentColor = palette.accent,
-                                    surfaceColor = palette.elevatedSurface,
-                                    borderColor = palette.border,
-                                    titleColor = palette.title,
-                                    bodyColor = palette.body,
-                                )
+                    trainingGroups.chunked(2).forEach { groupRow ->
+                        item {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            ) {
+                                groupRow.forEach { group ->
+                                    GroupTrainingCard(
+                                        group = group,
+                                        onTrainGroupClick = onTrainGroupClick,
+                                        accentColor = palette.accent,
+                                        surfaceColor = palette.elevatedSurface,
+                                        borderColor = palette.border,
+                                        titleColor = palette.title,
+                                        bodyColor = palette.body,
+                                        modifier = Modifier.weight(1f),
+                                    )
+                                }
+                                if (groupRow.size == 1) {
+                                    Spacer(modifier = Modifier.weight(1f))
+                                }
                             }
                         }
                     }
                 }
 
-                item {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(
-                            text = stringResource(
-                                R.string.dictionary_words_count_title,
-                                uiState.totalWordsCount,
-                            ),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold,
-                            color = palette.title,
-                        )
-                        Text(
-                            text = stringResource(R.string.dictionary_sort_alphabetical),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = palette.body,
-                        )
+                if (shouldShowWordList) {
+                    item {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text = stringResource(
+                                    R.string.dictionary_words_count_title,
+                                    uiState.totalWordsCount,
+                                ),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = palette.title,
+                            )
+                            Text(
+                                text = stringResource(R.string.dictionary_sort_alphabetical),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = palette.body,
+                            )
+                        }
                     }
-                }
 
-                if (uiState.isLoading) {
+                    if (uiState.isLoading) {
+                        item {
+                            EmptyDictionaryBlock(
+                                title = stringResource(R.string.dictionary_loading_title),
+                                message = stringResource(R.string.dictionary_loading_message),
+                            )
+                        }
+                    } else if (uiState.visibleWords.isEmpty()) {
+                        item {
+                            EmptyDictionaryBlock(
+                                title = stringResource(R.string.dictionary_empty_title),
+                                message = stringResource(R.string.dictionary_empty_filtered_message),
+                            )
+                        }
+                    } else {
+                        items(uiState.visibleWords, key = { it.id }) { word ->
+                            DictionaryWordRow(
+                                word = word,
+                                onClick = {
+                                    if (!word.isBuiltIn) {
+                                        onWordClick(word.id)
+                                    }
+                                },
+                                onDeleteClick = {
+                                    if (!word.isBuiltIn) {
+                                        pendingDeleteWordId = word.id
+                                        pendingDeleteWordLabel = word.bgWord
+                                    }
+                                },
+                                surfaceColor = palette.elevatedSurface,
+                                builtInSurfaceColor = palette.accentSurface,
+                                builtInBadgeColor = palette.accent,
+                                builtInBadgeTextColor = palette.accentText,
+                                titleColor = palette.title,
+                                bodyColor = palette.body,
+                                borderColor = palette.border,
+                            )
+                        }
+                        if (uiState.canLoadMore) {
+                            item {
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                                ) {
+                                    Text(
+                                        text = stringResource(
+                                            R.string.dictionary_load_more_progress,
+                                            uiState.visibleWords.size,
+                                            uiState.totalWordsCount,
+                                        ),
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = palette.body,
+                                    )
+                                    Button(
+                                        onClick = onLoadMoreClick,
+                                        modifier = Modifier.fillMaxWidth(),
+                                        shape = RoundedCornerShape(16.dp),
+                                        contentPadding = PaddingValues(vertical = 14.dp),
+                                    ) {
+                                        Text(stringResource(R.string.common_show_more))
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else if (uiState.isLoading) {
                     item {
                         EmptyDictionaryBlock(
                             title = stringResource(R.string.dictionary_loading_title),
                             message = stringResource(R.string.dictionary_loading_message),
                         )
-                    }
-                } else if (uiState.visibleWords.isEmpty()) {
-                    item {
-                        EmptyDictionaryBlock(
-                            title = stringResource(R.string.dictionary_empty_title),
-                            message = if (uiState.query.isBlank() && uiState.selectedGroupId == null) {
-                                stringResource(R.string.dictionary_empty_message)
-                            } else {
-                                stringResource(R.string.dictionary_empty_filtered_message)
-                            },
-                        )
-                    }
-                } else {
-                    items(uiState.visibleWords, key = { it.id }) { word ->
-                        DictionaryWordRow(
-                            word = word,
-                            onClick = {
-                                if (word.isBuiltIn) {
-                                    word.sourceLessonNumber?.let(onOpenLessonClick)
-                                } else {
-                                    onWordClick(word.id)
-                                }
-                            },
-                            onOpenLessonClick = {
-                                word.sourceLessonNumber?.let(onOpenLessonClick)
-                            },
-                            onDeleteClick = {
-                                if (!word.isBuiltIn) {
-                                    pendingDeleteWordId = word.id
-                                    pendingDeleteWordLabel = word.bgWord
-                                }
-                            },
-                            surfaceColor = palette.elevatedSurface,
-                            builtInSurfaceColor = palette.accentSurface,
-                            builtInBadgeColor = palette.accent,
-                            builtInBadgeTextColor = palette.accentText,
-                            titleColor = palette.title,
-                            bodyColor = palette.body,
-                            borderColor = palette.border,
-                        )
-                    }
-                    if (uiState.canLoadMore) {
-                        item {
-                            Column(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.spacedBy(8.dp),
-                            ) {
-                                Text(
-                                    text = stringResource(
-                                        R.string.dictionary_load_more_progress,
-                                        uiState.visibleWords.size,
-                                        uiState.totalWordsCount,
-                                    ),
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = palette.body,
-                                )
-                                Button(
-                                    onClick = onLoadMoreClick,
-                                    modifier = Modifier.fillMaxWidth(),
-                                    shape = RoundedCornerShape(16.dp),
-                                    contentPadding = PaddingValues(vertical = 14.dp),
-                                ) {
-                                    Text(stringResource(R.string.common_show_more))
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -549,10 +556,11 @@ private fun GroupTrainingCard(
     borderColor: Color,
     titleColor: Color,
     bodyColor: Color,
+    modifier: Modifier = Modifier,
 ) {
     val iconTint = colorForGroup(group.name)
     Card(
-        modifier = Modifier.width(164.dp),
+        modifier = modifier,
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = surfaceColor),
         border = BorderStroke(1.dp, borderColor.copy(alpha = 0.8f)),
@@ -612,7 +620,6 @@ private fun GroupTrainingCard(
 private fun DictionaryWordRow(
     word: DictionaryWordListItem,
     onClick: () -> Unit,
-    onOpenLessonClick: () -> Unit,
     onDeleteClick: () -> Unit,
     surfaceColor: Color,
     builtInSurfaceColor: Color,
@@ -626,7 +633,7 @@ private fun DictionaryWordRow(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(
-                enabled = !word.isBuiltIn || word.sourceLessonNumber != null,
+                enabled = !word.isBuiltIn,
                 onClick = onClick,
             ),
         shape = RoundedCornerShape(16.dp),
@@ -690,21 +697,6 @@ private fun DictionaryWordRow(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
-                if (word.isBuiltIn && word.sourceLessonNumber != null) {
-                    Spacer(modifier = Modifier.height(10.dp))
-                    OutlinedButton(
-                        onClick = onOpenLessonClick,
-                        shape = RoundedCornerShape(999.dp),
-                        border = BorderStroke(1.dp, builtInBadgeColor.copy(alpha = 0.35f)),
-                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp),
-                    ) {
-                        Text(
-                            text = stringResource(R.string.dictionary_open_lesson_action),
-                            color = builtInBadgeColor,
-                            style = MaterialTheme.typography.labelLarge,
-                        )
-                    }
-                }
             }
 
             if (!word.isBuiltIn) {
@@ -719,12 +711,6 @@ private fun DictionaryWordRow(
                 Text(
                     text = ">",
                     color = bodyColor,
-                    style = MaterialTheme.typography.titleMedium,
-                )
-            } else if (word.sourceLessonNumber != null) {
-                Text(
-                    text = ">",
-                    color = builtInBadgeColor,
                     style = MaterialTheme.typography.titleMedium,
                 )
             }
@@ -839,7 +825,6 @@ private fun DictionaryScreenContentPreview() {
             onTrainAllClick = {},
             onTrainGroupClick = {},
             onWordClick = {},
-            onOpenLessonClick = {},
             onQueryChange = {},
             onGroupSelect = {},
             onLoadMoreClick = {},

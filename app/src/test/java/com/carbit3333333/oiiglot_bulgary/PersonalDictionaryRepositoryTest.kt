@@ -3,6 +3,7 @@ package com.carbit3333333.oiiglot_bulgary
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
+import com.carbit3333333.oiiglot_bulgary.data.dictionary.CourseDictionaryWordsRepository
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryDatabase
 import com.carbit3333333.oiiglot_bulgary.data.dictionary.PersonalDictionaryRepository
 import com.carbit3333333.oiiglot_bulgary.model.dictionary.WordCard
@@ -169,7 +170,7 @@ class PersonalDictionaryRepositoryTest {
     fun `repository exposes separate built in course group and protects built in words`() {
         runBlocking(Dispatchers.IO) {
             val groups = repository.observeGroupsWithCounts().first()
-            val courseGroup = groups.firstOrNull { it.id < 0L }
+            val courseGroup = groups.firstOrNull { it.id == CourseDictionaryWordsRepository.COURSE_GROUP_ID }
 
             assertNotNull(courseGroup)
             assertTrue(courseGroup!!.wordCount > 0L)
@@ -193,6 +194,24 @@ class PersonalDictionaryRepositoryTest {
 
             assertNotNull(builtInWord)
             assertEquals(1, builtInWord?.sourceLessonNumber)
+        }
+    }
+
+    @Test
+    fun `course lesson groups expose and train only words from selected lesson`() {
+        runBlocking(Dispatchers.IO) {
+            val lessonGroupId = PersonalDictionaryRepository.courseLessonGroupId(1)
+            val groups = repository.observeGroupsWithCounts().first()
+
+            val lessonGroup = groups.firstOrNull { it.id == lessonGroupId }
+            val lessonWords = repository.observeFilteredWords(query = "", groupId = lessonGroupId).first()
+            val flashcards = repository.loadFlashcardsForOneGroup(lessonGroupId)
+
+            assertNotNull(lessonGroup)
+            assertEquals(lessonWords.size.toLong(), lessonGroup?.wordCount)
+            assertTrue(lessonWords.isNotEmpty())
+            assertTrue(lessonWords.all { it.isBuiltIn && it.sourceLessonNumber == 1 })
+            assertEquals(lessonWords.map { it.bgWord }.toSet(), flashcards.map { it.bgWord }.toSet())
         }
     }
 
