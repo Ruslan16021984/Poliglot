@@ -136,16 +136,18 @@ fun LessonScreenContent(
                             TheoryBlockItem(theoryBlock = theoryBlock)
                         }
 
-                        item {
-                            Text(
-                                text = stringResource(R.string.lesson_verb_endings_title),
-                                style = MaterialTheme.typography.titleLarge,
-                                color = colorScheme.onBackground
-                            )
-                        }
+                        if (lesson.id == VERB_ENDINGS_LESSON_ID) {
+                            item {
+                                Text(
+                                    text = stringResource(R.string.lesson_verb_endings_title),
+                                    style = MaterialTheme.typography.titleLarge,
+                                    color = colorScheme.onBackground
+                                )
+                            }
 
-                        item {
-                            VerbEndingExamples()
+                            item {
+                                VerbEndingExamples()
+                            }
                         }
                     }
 
@@ -230,6 +232,8 @@ private fun TheoryBlockItem(
         }
     }
 }
+
+private const val VERB_ENDINGS_LESSON_ID = 2
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

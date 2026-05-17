@@ -4903,9 +4903,11 @@
       "type": "word",
       "source": "textbook",
       "tags": [
-        "quality"
+        "quality",
+        "family"
       ],
       "appLessons": [
+        6,
         8
       ],
       "isHighFrequency": true
@@ -5116,6 +5118,780 @@
       ],
       "appLessons": [
         4
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "млад",
+      "ru": "молодой",
+      "uk": "молодий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "млада",
+      "ru": "молодая",
+      "uk": "молода",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "стара",
+      "ru": "старая",
+      "uk": "стара",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "висок",
+      "ru": "высокий",
+      "uk": "високий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "висока",
+      "ru": "высокая",
+      "uk": "висока",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "нисък",
+      "ru": "низкий, невысокий",
+      "uk": "низький, невисокий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "ниска",
+      "ru": "низкая, невысокая",
+      "uk": "низька, невисока",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "малък",
+      "ru": "маленький",
+      "uk": "маленький",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "малка",
+      "ru": "маленькая",
+      "uk": "маленька",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "голям",
+      "ru": "большой, взрослый",
+      "uk": "великий, дорослий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "голяма",
+      "ru": "большая, взрослая",
+      "uk": "велика, доросла",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "age"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "по-млад",
+      "ru": "моложе",
+      "uk": "молодший",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "comparison"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "по-млада",
+      "ru": "моложе",
+      "uk": "молодша",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "comparison"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "по-стар",
+      "ru": "старше",
+      "uk": "старший",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "comparison"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "по-стара",
+      "ru": "старше",
+      "uk": "старша",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "family",
+        "comparison"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "добър",
+      "ru": "хороший",
+      "uk": "добрий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "добра",
+      "ru": "хорошая",
+      "uk": "добра",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "добро",
+      "ru": "хорошее",
+      "uk": "добре",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "добри",
+      "ru": "хорошие",
+      "uk": "добрі",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "лош",
+      "ru": "плохой",
+      "uk": "поганий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "лоша",
+      "ru": "плохая",
+      "uk": "погана",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "лошо",
+      "ru": "плохое",
+      "uk": "погане",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "лоши",
+      "ru": "плохие",
+      "uk": "погані",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "слаб",
+      "ru": "худой, слабый",
+      "uk": "худий, слабкий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "слаба",
+      "ru": "худая, слабая",
+      "uk": "худа, слабка",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "пълен",
+      "ru": "полный",
+      "uk": "повний",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "пълна",
+      "ru": "полная",
+      "uk": "повна",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "работлив",
+      "ru": "трудолюбивый",
+      "uk": "працьовитий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "работлива",
+      "ru": "трудолюбивая",
+      "uk": "працьовита",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "мързелив",
+      "ru": "ленивый",
+      "uk": "лінивий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "мързелива",
+      "ru": "ленивая",
+      "uk": "лінива",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "умен",
+      "ru": "умный",
+      "uk": "розумний",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "умна",
+      "ru": "умная",
+      "uk": "розумна",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "глупав",
+      "ru": "глупый",
+      "uk": "дурний",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "глупава",
+      "ru": "глупая",
+      "uk": "дурна",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "красив",
+      "ru": "красивый",
+      "uk": "красивий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "красива",
+      "ru": "красивая",
+      "uk": "красива",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "грозен",
+      "ru": "некрасивый",
+      "uk": "некрасивий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "грозна",
+      "ru": "некрасивая",
+      "uk": "некрасива",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "appearance"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "хубав",
+      "ru": "хороший, красивый",
+      "uk": "гарний, красивий",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "хубава",
+      "ru": "хорошая, красивая",
+      "uk": "гарна, красива",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "хубаво",
+      "ru": "хорошее, красивое",
+      "uk": "гарне, красиве",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "хубави",
+      "ru": "хорошие, красивые",
+      "uk": "гарні, красиві",
+      "lessonBook": 6,
+      "theme": "Семья",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "description",
+        "quality"
+      ],
+      "appLessons": [
+        6
       ],
       "isHighFrequency": true
     }

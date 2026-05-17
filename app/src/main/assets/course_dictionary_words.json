@@ -1295,6 +1295,16 @@
     "lessonNumber": 6
   },
   {
+    "bgWord": "висок",
+    "ruTranslation": "высокий",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "висока",
+    "ruTranslation": "высокая",
+    "lessonNumber": 6
+  },
+  {
     "bgWord": "внук",
     "ruTranslation": "внук",
     "lessonNumber": 6
@@ -1310,8 +1320,38 @@
     "lessonNumber": 6
   },
   {
+    "bgWord": "глупав",
+    "ruTranslation": "глупый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "глупава",
+    "ruTranslation": "глупая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "голям",
+    "ruTranslation": "большой, взрослый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "голяма",
+    "ruTranslation": "большая, взрослая",
+    "lessonNumber": 6
+  },
+  {
     "bgWord": "град",
     "ruTranslation": "город",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "грозен",
+    "ruTranslation": "некрасивый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "грозна",
+    "ruTranslation": "некрасивая",
     "lessonNumber": 6
   },
   {
@@ -1332,6 +1372,26 @@
   {
     "bgWord": "деца",
     "ruTranslation": "дети",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "добра",
+    "ruTranslation": "хорошая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "добри",
+    "ruTranslation": "хорошие",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "добро",
+    "ruTranslation": "хорошее",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "добър",
+    "ruTranslation": "хороший",
     "lessonNumber": 6
   },
   {
@@ -1360,6 +1420,16 @@
     "lessonNumber": 6
   },
   {
+    "bgWord": "красив",
+    "ruTranslation": "красивый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "красива",
+    "ruTranslation": "красивая",
+    "lessonNumber": 6
+  },
+  {
     "bgWord": "къща",
     "ruTranslation": "дом",
     "lessonNumber": 6
@@ -1370,6 +1440,26 @@
     "lessonNumber": 6
   },
   {
+    "bgWord": "лош",
+    "ruTranslation": "плохой",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "лоша",
+    "ruTranslation": "плохая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "лоши",
+    "ruTranslation": "плохие",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "лошо",
+    "ruTranslation": "плохое",
+    "lessonNumber": 6
+  },
+  {
     "bgWord": "магазин",
     "ruTranslation": "магазин",
     "lessonNumber": 6
@@ -1377,6 +1467,26 @@
   {
     "bgWord": "майка",
     "ruTranslation": "мать",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "малка",
+    "ruTranslation": "маленькая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "малък",
+    "ruTranslation": "маленький",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "млад",
+    "ruTranslation": "молодой",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "млада",
+    "ruTranslation": "молодая",
     "lessonNumber": 6
   },
   {
@@ -1400,6 +1510,26 @@
     "lessonNumber": 6
   },
   {
+    "bgWord": "мързелив",
+    "ruTranslation": "ленивый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "мързелива",
+    "ruTranslation": "ленивая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "ниска",
+    "ruTranslation": "низкая, невысокая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "нисък",
+    "ruTranslation": "низкий, невысокий",
+    "lessonNumber": 6
+  },
+  {
     "bgWord": "омъжена",
     "ruTranslation": "замужем",
     "lessonNumber": 6
@@ -1407,6 +1537,46 @@
   {
     "bgWord": "от",
     "ruTranslation": "из, от",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "по-млад",
+    "ruTranslation": "моложе",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "по-млада",
+    "ruTranslation": "моложе",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "по-стар",
+    "ruTranslation": "старше",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "по-стара",
+    "ruTranslation": "старше",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "пълен",
+    "ruTranslation": "полный",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "пълна",
+    "ruTranslation": "полная",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "работлив",
+    "ruTranslation": "трудолюбивый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "работлива",
+    "ruTranslation": "трудолюбивая",
     "lessonNumber": 6
   },
   {
@@ -1427,6 +1597,26 @@
   {
     "bgWord": "син",
     "ruTranslation": "сын",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "слаб",
+    "ruTranslation": "худой, слабый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "слаба",
+    "ruTranslation": "худая, слабая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "стар",
+    "ruTranslation": "старый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "стара",
+    "ruTranslation": "старая",
     "lessonNumber": 6
   },
   {
@@ -1455,8 +1645,38 @@
     "lessonNumber": 6
   },
   {
+    "bgWord": "умен",
+    "ruTranslation": "умный",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "умна",
+    "ruTranslation": "умная",
+    "lessonNumber": 6
+  },
+  {
     "bgWord": "хотел",
     "ruTranslation": "отель",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "хубав",
+    "ruTranslation": "хороший, красивый",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "хубава",
+    "ruTranslation": "хорошая, красивая",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "хубави",
+    "ruTranslation": "хорошие, красивые",
+    "lessonNumber": 6
+  },
+  {
+    "bgWord": "хубаво",
+    "ruTranslation": "хорошее, красивое",
     "lessonNumber": 6
   },
   {
