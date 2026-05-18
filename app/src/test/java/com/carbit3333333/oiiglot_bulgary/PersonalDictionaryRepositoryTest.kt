@@ -162,7 +162,7 @@ class PersonalDictionaryRepositoryTest {
             val flashcards = repository.loadFlashcardsForAllWords()
 
             assertTrue(flashcards.map { it.bgWord }.containsAll(listOf("custom_chai", "custom_kafe")))
-            assertTrue(flashcards.any { it.bgWord == "гледам" })
+            assertTrue(flashcards.any { it.bgWord == "здравей" })
         }
     }
 
@@ -190,7 +190,7 @@ class PersonalDictionaryRepositoryTest {
     fun `built in course words keep lesson source metadata`() {
         runBlocking(Dispatchers.IO) {
             val builtInWord = repository.observeAllWords().first()
-                .firstOrNull { it.isBuiltIn && it.bgWord == "гледам" }
+                .firstOrNull { it.isBuiltIn && it.bgWord == "здравей" }
 
             assertNotNull(builtInWord)
             assertEquals(1, builtInWord?.sourceLessonNumber)

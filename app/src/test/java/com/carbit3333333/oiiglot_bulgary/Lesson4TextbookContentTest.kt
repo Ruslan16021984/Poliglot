@@ -14,9 +14,8 @@ class Lesson4TextbookContentTest {
         val sourceTexts = session.exercises.map { it.sourceText }
 
         assertTrue(sourceTexts.any { it.contains("Я ем") })
-        assertTrue(sourceTexts.any { it.contains("Я пью") })
-        assertTrue(sourceTexts.any { it.contains("Мы едим фрукты") })
-        assertTrue(sourceTexts.any { it.contains("Вы пьёте кофе") })
+        assertTrue(sourceTexts.any { it.contains("Мы едим овощи") })
+        assertTrue(sourceTexts.any { it.contains("Вы пьёте чай") })
     }
 
     @Test

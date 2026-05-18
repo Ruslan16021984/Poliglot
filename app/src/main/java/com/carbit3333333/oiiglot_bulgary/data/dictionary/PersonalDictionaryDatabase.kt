@@ -31,7 +31,10 @@ abstract class PersonalDictionaryDatabase : RoomDatabase() {
                     context.applicationContext,
                     PersonalDictionaryDatabase::class.java,
                     "personal_dictionary.db",
-                ).build().also { INSTANCE = it }
+                )
+                    .setJournalMode(JournalMode.TRUNCATE)
+                    .build()
+                    .also { INSTANCE = it }
             }
         }
     }
