@@ -49,6 +49,24 @@ class LessonJsonAssetsTest {
         }
     }
 
+    @Test
+    fun `lesson 7 has broad preposition practice`() {
+        val exerciseSet = json.decodeFromString<TextbookLessonExerciseSetAsset>(
+            readAssetText("textbook_exercises_lesson7.json"),
+        )
+        val words = exerciseSet.items.flatMap { item ->
+            item.correctWords.map { it.lowercase() }
+        }
+
+        assertTrue("lesson 7 exercise pool", exerciseSet.items.size >= 100)
+        assertTrue("lesson 7 в or във", words.count { it == "в" || it == "във" } >= 10)
+        assertTrue("lesson 7 до", words.count { it == "до" } >= 8)
+        assertTrue("lesson 7 от", words.count { it == "от" } >= 5)
+        assertTrue("lesson 7 преди", words.count { it == "преди" } >= 5)
+        assertTrue("lesson 7 през", words.count { it == "през" } >= 10)
+        assertTrue("lesson 7 след", words.count { it == "след" } >= 5)
+    }
+
     private fun assertLessonsAreValid(lessons: List<Lesson>) {
         assertEquals(11, lessons.size)
         assertEquals((1..11).toList(), lessons.map { it.id })
