@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.carbit3333333.oiiglot_bulgary.model.ExerciseResult
 import com.carbit3333333.oiiglot_bulgary.model.LessonExercise
+import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionUiState
 import kotlinx.coroutines.flow.first
 import kotlinx.serialization.Serializable
@@ -135,6 +136,24 @@ internal fun isRestorableLessonSessionState(state: LessonSessionUiState): Boolea
             exercise.availableWords.size == 8 &&
             exercise.correctAnswerWords.all { it in exercise.availableWords }
     }
+}
+
+internal fun relocalizeRestoredLessonSessionState(
+    savedState: LessonSessionUiState,
+    localizedSession: LessonSession,
+): LessonSessionUiState {
+    val localizedExercisesById = localizedSession.exercises.associateBy { it.id }
+    return savedState.copy(
+        lessonTitle = localizedSession.lessonTitle,
+        exercises = savedState.exercises.map { savedExercise ->
+            val localizedExercise = localizedExercisesById[savedExercise.id] ?: return@map savedExercise
+            savedExercise.copy(
+                sourceText = localizedExercise.sourceText,
+                instruction = localizedExercise.instruction,
+                hint = localizedExercise.hint,
+            )
+        },
+    )
 }
 
 @Serializable

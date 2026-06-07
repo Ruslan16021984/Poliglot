@@ -14,26 +14,32 @@ class LessonRepository(
         ignoreUnknownKeys = true
     }
 
-    private val lessonsCache: List<Lesson> by lazy {
-        loadLessonsFromAssets()
+    private var cachedAssetFile: String? = null
+    private var lessonsCache: List<Lesson> = emptyList()
+
+    @Synchronized
+    fun getLessons(): List<Lesson> {
+        val localizedFile = localizedLessonsAssetFile()
+        if (localizedFile != cachedAssetFile) {
+            lessonsCache = loadLessonsFromAssets(localizedFile)
+            cachedAssetFile = localizedFile
+        }
+        return lessonsCache
     }
 
-    fun getLessons(): List<Lesson> = lessonsCache
-
     fun getLessonById(lessonId: Int): Lesson? {
-        return lessonsCache.find { it.id == lessonId }
+        return getLessons().find { it.id == lessonId }
     }
 
     fun hasNextLesson(currentLessonId: Int): Boolean {
-        return lessonsCache.any { it.id == currentLessonId + 1 }
+        return getLessons().any { it.id == currentLessonId + 1 }
     }
 
     fun getNextLessonId(currentLessonId: Int): Int? {
-        return lessonsCache.find { it.id == currentLessonId + 1 }?.id
+        return getLessons().find { it.id == currentLessonId + 1 }?.id
     }
 
-    private fun loadLessonsFromAssets(): List<Lesson> {
-        val localizedFile = localizedLessonsAssetFile()
+    private fun loadLessonsFromAssets(localizedFile: String): List<Lesson> {
         return runCatching {
             appContext.assets
                 .open(localizedFile)

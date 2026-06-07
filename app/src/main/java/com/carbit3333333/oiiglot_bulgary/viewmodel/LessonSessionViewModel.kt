@@ -7,6 +7,7 @@ import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.data.LessonProgressStore
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionRepository
 import com.carbit3333333.oiiglot_bulgary.data.LessonSessionStore
+import com.carbit3333333.oiiglot_bulgary.data.relocalizeRestoredLessonSessionState
 import com.carbit3333333.oiiglot_bulgary.model.ExerciseResult
 import com.carbit3333333.oiiglot_bulgary.model.LessonResult
 import com.carbit3333333.oiiglot_bulgary.ui.lessons.LessonSessionUiState
@@ -54,19 +55,23 @@ class LessonSessionViewModel(
             currentLessonId = lessonId
             resultSaved = false
 
+            val session = repository.getLessonSession(lessonId)
             val savedState = sessionStore.loadSession(lessonId)
             if (savedState != null) {
-                _uiState.value = savedState
+                val localizedState = relocalizeRestoredLessonSessionState(
+                    savedState = savedState,
+                    localizedSession = session,
+                )
+                _uiState.value = localizedState
+                saveCurrentSession()
 
                 saveLessonProgress(
-                    currentStep = savedState.currentExerciseIndex,
-                    totalSteps = savedState.exercises.size,
-                    correctCount = savedState.correctCount
+                    currentStep = localizedState.currentExerciseIndex,
+                    totalSteps = localizedState.exercises.size,
+                    correctCount = localizedState.correctCount
                 )
                 return@launch
             }
-
-            val session = repository.getLessonSession(lessonId)
 
             val newState = LessonSessionUiState(
                 lessonTitle = session.lessonTitle,

@@ -9,17 +9,17 @@ import com.carbit3333333.oiiglot_bulgary.data.lesson_session.resolveLessonExerci
 import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 
 class LessonSessionRepository private constructor(
-    private val exerciseLocale: LessonExerciseLocale,
+    private val exerciseLocaleProvider: () -> LessonExerciseLocale,
     private val textbookExercisesRepository: TextbookLessonExercisesRepository,
 ) {
 
     constructor(context: Context) : this(
-        exerciseLocale = resolveLessonExerciseLocale(context),
+        exerciseLocaleProvider = { resolveLessonExerciseLocale(context) },
         textbookExercisesRepository = TextbookLessonExercisesRepository(context),
     )
 
     constructor() : this(
-        exerciseLocale = LessonExerciseLocale.Russian,
+        exerciseLocaleProvider = { LessonExerciseLocale.Russian },
         textbookExercisesRepository = TextbookLessonExercisesRepository(),
     )
 
@@ -30,7 +30,7 @@ class LessonSessionRepository private constructor(
 
         return LessonSessionFactory.create(
             lessonId = lessonId,
-            exerciseLocale = exerciseLocale,
+            exerciseLocale = exerciseLocaleProvider(),
             textbookExercises = textbookExercises,
         )
     }
