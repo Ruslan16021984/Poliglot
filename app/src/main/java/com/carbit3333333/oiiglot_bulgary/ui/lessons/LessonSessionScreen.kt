@@ -29,7 +29,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.animation.animateContentSize
@@ -54,6 +54,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -698,10 +699,7 @@ private fun WordGrid(
     textColor: Color,
     modifier: Modifier = Modifier
 ) {
-    val hiddenWords = selectedWords.toMutableList()
-    val visibleWords = words.filter { word ->
-        hiddenWords.remove(word).not()
-    }
+    val selectedSlots = selectedWordSlots(words, selectedWords)
     val gridVerticalPadding = 6.dp
     val gridBottomPadding = 18.dp
     val gridHorizontalPadding = 4.dp
@@ -719,7 +717,7 @@ private fun WordGrid(
             .coerceAtMost(220.dp)
         val baseCardHeight = 88.dp
         val minRows = 2
-        val currentRows = ceil(visibleWords.size / columns.toFloat()).toInt().coerceAtLeast(minRows)
+        val currentRows = ceil(words.size / columns.toFloat()).toInt().coerceAtLeast(minRows)
         val minGridHeight = (baseCardHeight * currentRows) +
             (spacing * (currentRows - 1)) +
             (gridVerticalPadding * 2)
@@ -740,10 +738,12 @@ private fun WordGrid(
             verticalArrangement = Arrangement.spacedBy(spacing),
             userScrollEnabled = true
         ) {
-            items(visibleWords) { word ->
+            itemsIndexed(words) { index, word ->
+                val isSelected = selectedSlots[index]
                 WordButton(
                     text = word,
                     onClick = { onWordClick(word) },
+                    enabled = !isSelected,
                     containerColor = cardColor,
                     borderColor = cardBorderColor,
                     textColor = textColor,
@@ -758,6 +758,7 @@ private fun WordGrid(
 private fun WordButton(
     text: String,
     onClick: () -> Unit,
+    enabled: Boolean,
     containerColor: Color,
     borderColor: Color,
     textColor: Color,
@@ -776,8 +777,9 @@ private fun WordButton(
         modifier = Modifier
             .width(width)
             .heightIn(min = 80.dp)
-            .clickable(onClick = onClick),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+            .alpha(if (enabled) 1f else 0f)
+            .clickable(enabled = enabled, onClick = onClick),
+        elevation = CardDefaults.cardElevation(defaultElevation = if (enabled) 2.dp else 0.dp),
         colors = CardDefaults.cardColors(containerColor = containerColor),
         border = androidx.compose.foundation.BorderStroke(1.dp, borderColor),
     ) {
@@ -796,6 +798,16 @@ private fun WordButton(
                 maxLines = 2
             )
         }
+    }
+}
+
+internal fun selectedWordSlots(
+    words: List<String>,
+    selectedWords: List<String>,
+): List<Boolean> {
+    val remainingSelectedWords = selectedWords.toMutableList()
+    return words.map { word ->
+        remainingSelectedWords.remove(word)
     }
 }
 
