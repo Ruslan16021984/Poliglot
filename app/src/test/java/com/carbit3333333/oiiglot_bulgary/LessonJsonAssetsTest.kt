@@ -67,6 +67,36 @@ class LessonJsonAssetsTest {
         assertTrue("lesson 7 след", words.count { it == "след" } >= 5)
     }
 
+    @Test
+    fun `lesson 10 practices transport verbs and route prepositions`() {
+        val exerciseSet = json.decodeFromString<TextbookLessonExerciseSetAsset>(
+            readAssetText("textbook_exercises_lesson10.json"),
+        )
+        val words = exerciseSet.items.flatMap { item ->
+            item.correctWords.map { it.lowercase() }
+        }
+
+        assertEquals("lesson 10 exercise pool", 100, exerciseSet.items.size)
+        assertTrue("lesson 10 excludes basic Това prompts", exerciseSet.items.none { it.bg.startsWith("Това") })
+        assertTrue("lesson 10 тръгва", words.count { it == "тръгва" } >= 8)
+        assertTrue("lesson 10 заминава", words.count { it == "заминава" } >= 6)
+        assertTrue("lesson 10 спира", words.count { it == "спира" } >= 8)
+        assertTrue("lesson 10 пристига", words.count { it == "пристига" } >= 8)
+        assertTrue("lesson 10 от", words.count { it == "от" } >= 10)
+        assertTrue("lesson 10 за", words.count { it == "за" } >= 15)
+        assertTrue("lesson 10 в", words.count { it == "в" } >= 10)
+        assertTrue("lesson 10 на", words.count { it == "на" } >= 10)
+        assertTrue("lesson 10 с or със", words.count { it == "с" || it == "със" } >= 8)
+        assertTrue("lesson 10 first bus question", exerciseSet.items.any { "първият автобус" in it.bg })
+        assertTrue("lesson 10 last bus question", exerciseSet.items.any { "последният автобус" in it.bg })
+        assertTrue("lesson 10 next bus question", exerciseSet.items.any { "следващият автобус" in it.bg })
+        assertTrue("lesson 10 ticket count question", exerciseSet.items.any { "Колко билета" in it.bg })
+        assertTrue("lesson 10 delay question", exerciseSet.items.any { "Колко минути закъснява" in it.bg })
+        assertTrue("lesson 10 ticket price question", exerciseSet.items.any { "Колко струва билетът" in it.bg })
+        assertTrue("lesson 10 railway track question", exerciseSet.items.any { "коловоз" in it.bg })
+        assertTrue("lesson 10 bus sector question", exerciseSet.items.any { "сектор" in it.bg })
+    }
+
     private fun assertLessonsAreValid(lessons: List<Lesson>) {
         assertEquals(11, lessons.size)
         assertEquals((1..11).toList(), lessons.map { it.id })
