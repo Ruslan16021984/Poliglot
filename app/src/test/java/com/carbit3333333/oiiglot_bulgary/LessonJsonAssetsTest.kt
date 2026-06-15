@@ -97,6 +97,50 @@ class LessonJsonAssetsTest {
         assertTrue("lesson 10 bus sector question", exerciseSet.items.any { "сектор" in it.bg })
     }
 
+    @Test
+    fun `lesson 8 practices wearing clothes colors and definite endings`() {
+        val exerciseSet = json.decodeFromString<TextbookLessonExerciseSetAsset>(
+            readAssetText("textbook_exercises_lesson8.json"),
+        )
+        val prompts = exerciseSet.items.map { it.bg }
+        val grammarFocus = exerciseSet.items.flatMap { it.grammarFocus }
+
+        assertEquals("lesson 8 exercise pool", 100, exerciseSet.items.size)
+        assertTrue("lesson 8 excludes comparative по-", prompts.none { "по-" in it })
+        assertTrue("lesson 8 excludes superlative най-", prompts.none { "най-" in it })
+        assertEquals("lesson 8 unique prompts", 100, prompts.distinct().size)
+        val wearForms = listOf("нося", "носиш", "носи", "носим", "носите", "носят")
+        assertTrue("lesson 8 verb нося", prompts.count { prompt -> wearForms.any { it in prompt.split(" ", ".", "?", ",") } } >= 24)
+        assertTrue("lesson 8 dressed forms", prompts.count { "облеч" in it } >= 16)
+        assertTrue("lesson 8 masculine object ending -ия", grammarFocus.count { it == "ending_ia" } >= 8)
+        assertTrue("lesson 8 feminine definite ending -та", grammarFocus.count { it == "ending_ta" } >= 8)
+        assertTrue("lesson 8 neuter definite ending -то", grammarFocus.count { it == "ending_to" } >= 8)
+        assertTrue("lesson 8 plural definite ending -те", grammarFocus.count { it == "ending_te" } >= 8)
+        assertTrue("lesson 8 full masculine definite ending -ият", grammarFocus.count { it == "ending_iyat" } >= 8)
+    }
+
+    @Test
+    fun `lesson 9 practices home furniture and adjective comparison`() {
+        val exerciseSet = json.decodeFromString<TextbookLessonExerciseSetAsset>(
+            readAssetText("textbook_exercises_lesson9.json"),
+        )
+        val prompts = exerciseSet.items.map { it.bg }
+        val allText = prompts.joinToString(" ").lowercase()
+        val bookWords = listOf(
+            "къща", "апартамент", "кухня", "баня", "стая", "хол", "спалня", "коридор",
+            "маса", "стол", "легло", "диван", "шкаф", "лампа", "килим", "полица", "огледало",
+        )
+
+        assertEquals("lesson 9 exercise pool", 100, exerciseSet.items.size)
+        assertEquals("lesson 9 unique prompts", 100, prompts.distinct().size)
+        assertTrue("lesson 9 comparative по-", prompts.count { "по-" in it } >= 25)
+        assertTrue("lesson 9 superlative най-", prompts.count { "най-" in it } >= 20)
+        assertTrue("lesson 9 direct comparisons", prompts.count { "по-" in it && " от " in it } >= 15)
+        bookWords.forEach { word ->
+            assertTrue("lesson 9 uses book word $word", word in allText)
+        }
+    }
+
     private fun assertLessonsAreValid(lessons: List<Lesson>) {
         assertEquals(11, lessons.size)
         assertEquals((1..11).toList(), lessons.map { it.id })

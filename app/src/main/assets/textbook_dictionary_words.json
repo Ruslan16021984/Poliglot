@@ -5894,6 +5894,150 @@
         6
       ],
       "isHighFrequency": true
+    },
+    {
+      "bg": "нося",
+      "ru": "носить",
+      "uk": "носити",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "wear"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "облечен",
+      "ru": "одетый",
+      "uk": "одягнений",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "wear"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "къс",
+      "ru": "короткий",
+      "uk": "короткий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "quality"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "дълъг",
+      "ru": "длинный",
+      "uk": "довгий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "quality"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "широк",
+      "ru": "широкий",
+      "uk": "широкий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "quality"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "нов",
+      "ru": "новый",
+      "uk": "новий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "quality"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "скъп",
+      "ru": "дорогой",
+      "uk": "дорогий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "price"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "евтин",
+      "ru": "дешёвый",
+      "uk": "дешевий",
+      "lessonBook": 8,
+      "theme": "Одежда и цвета",
+      "partOfSpeech": "adjective",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "clothes",
+        "price"
+      ],
+      "appLessons": [
+        8
+      ],
+      "isHighFrequency": true
     }
   ],
   "phrases": [
