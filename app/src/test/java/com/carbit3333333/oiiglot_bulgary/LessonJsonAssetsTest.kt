@@ -98,6 +98,29 @@ class LessonJsonAssetsTest {
     }
 
     @Test
+    fun `lesson 11 practices daily routine verbs`() {
+        val exerciseSet = json.decodeFromString<TextbookLessonExerciseSetAsset>(
+            readAssetText("textbook_exercises_lesson11.json"),
+        )
+        val prompts = exerciseSet.items.map { it.bg }
+        val allText = prompts.joinToString(" ").lowercase()
+        val dailyVerbs = listOf(
+            "работ", "уч", "прибирам", "спя", "мия", "къп", "обличам", "гледам",
+            "чет", "слушам", "готвя", "чистя", "пазарувам", "почивам", "чакам",
+            "пиша", "говоря", "звъня", "срещам", "помагам", "каня", "мисля",
+            "влиз", "излиз", "прав", "став", "събужд", "връщ", "ляг", "дав",
+            "взем", "сяд", "вземете", "чакайте",
+        )
+
+        assertEquals("lesson 11 exercise pool", 100, exerciseSet.items.size)
+        assertEquals("lesson 11 unique prompts", 100, prompts.distinct().size)
+        assertTrue("lesson 11 fixes reflexive word order", prompts.none { it.startsWith("Се прибирам") })
+        dailyVerbs.forEach { verbPart ->
+            assertTrue("lesson 11 uses daily verb $verbPart", verbPart in allText)
+        }
+    }
+
+    @Test
     fun `lesson 8 practices wearing clothes colors and definite endings`() {
         val exerciseSet = json.decodeFromString<TextbookLessonExerciseSetAsset>(
             readAssetText("textbook_exercises_lesson8.json"),

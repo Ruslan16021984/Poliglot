@@ -6038,6 +6038,570 @@
         8
       ],
       "isHighFrequency": true
+    },
+    {
+      "bg": "работя",
+      "ru": "работать",
+      "uk": "працювати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "уча",
+      "ru": "учиться",
+      "uk": "вчитися",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "прибирам се",
+      "ru": "возвращаться домой",
+      "uk": "повертатися додому",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "спя",
+      "ru": "спать",
+      "uk": "спати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "мия",
+      "ru": "мыть",
+      "uk": "мити",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "обличам се",
+      "ru": "одеваться",
+      "uk": "одягатися",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "гледам",
+      "ru": "смотреть",
+      "uk": "дивитися",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "чета",
+      "ru": "читать",
+      "uk": "читати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "слушам",
+      "ru": "слушать",
+      "uk": "слухати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "готвя",
+      "ru": "готовить",
+      "uk": "готувати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "чистя",
+      "ru": "убирать",
+      "uk": "прибирати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "пазарувам",
+      "ru": "делать покупки",
+      "uk": "робити покупки",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "почивам",
+      "ru": "отдыхать",
+      "uk": "відпочивати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "чакам",
+      "ru": "ждать",
+      "uk": "чекати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "пиша",
+      "ru": "писать",
+      "uk": "писати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "говоря",
+      "ru": "говорить",
+      "uk": "говорити",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "звъня",
+      "ru": "звонить",
+      "uk": "дзвонити",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "срещам се",
+      "ru": "встречаться",
+      "uk": "зустрічатися",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "помагам",
+      "ru": "помогать",
+      "uk": "допомагати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "мия се",
+      "ru": "умываться",
+      "uk": "умиватися",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb",
+        "reflexive"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "къпя се",
+      "ru": "мыться",
+      "uk": "митися",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb",
+        "reflexive"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "каня",
+      "ru": "приглашать",
+      "uk": "запрошувати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "мисля",
+      "ru": "думать",
+      "uk": "думати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "влизам",
+      "ru": "заходить",
+      "uk": "заходити",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb",
+        "movement"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "правя",
+      "ru": "делать",
+      "uk": "робити",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "събуждам се",
+      "ru": "просыпаться",
+      "uk": "прокидатися",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb",
+        "reflexive"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "давам",
+      "ru": "давать",
+      "uk": "давати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "вземам",
+      "ru": "брать",
+      "uk": "брати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "сядам",
+      "ru": "садиться",
+      "uk": "сідати",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "вземете",
+      "ru": "возьмите",
+      "uk": "візьміть",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb",
+        "imperative"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
+    },
+    {
+      "bg": "чакайте",
+      "ru": "ждите",
+      "uk": "чекайте",
+      "lessonBook": 11,
+      "theme": "Распорядок дня",
+      "partOfSpeech": "verb",
+      "type": "word",
+      "source": "textbook",
+      "tags": [
+        "routine",
+        "daily-verb",
+        "imperative"
+      ],
+      "appLessons": [
+        11
+      ],
+      "isHighFrequency": true
     }
   ],
   "phrases": [

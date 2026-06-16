@@ -2250,8 +2250,43 @@
     "lessonNumber": 11
   },
   {
+    "bgWord": "вземам",
+    "ruTranslation": "брать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "вземете",
+    "ruTranslation": "возьмите",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "влизам",
+    "ruTranslation": "заходить",
+    "lessonNumber": 11
+  },
+  {
     "bgWord": "връщам се",
     "ruTranslation": "возвращаться",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "гледам",
+    "ruTranslation": "смотреть",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "говоря",
+    "ruTranslation": "говорить",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "готвя",
+    "ruTranslation": "готовить",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "давам",
+    "ruTranslation": "давать",
     "lessonNumber": 11
   },
   {
@@ -2265,6 +2300,11 @@
     "lessonNumber": 11
   },
   {
+    "bgWord": "звъня",
+    "ruTranslation": "звонить",
+    "lessonNumber": 11
+  },
+  {
     "bgWord": "зъби",
     "ruTranslation": "зубы",
     "lessonNumber": 11
@@ -2275,8 +2315,18 @@
     "lessonNumber": 11
   },
   {
+    "bgWord": "каня",
+    "ruTranslation": "приглашать",
+    "lessonNumber": 11
+  },
+  {
     "bgWord": "книга",
     "ruTranslation": "книга",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "къпя се",
+    "ruTranslation": "мыться",
     "lessonNumber": 11
   },
   {
@@ -2295,6 +2345,21 @@
     "lessonNumber": 11
   },
   {
+    "bgWord": "мисля",
+    "ruTranslation": "думать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "мия",
+    "ruTranslation": "мыть",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "мия се",
+    "ruTranslation": "умываться",
+    "lessonNumber": 11
+  },
+  {
     "bgWord": "музика",
     "ruTranslation": "музыка",
     "lessonNumber": 11
@@ -2302,6 +2367,11 @@
   {
     "bgWord": "нощем",
     "ruTranslation": "ночью",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "обличам се",
+    "ruTranslation": "одеваться",
     "lessonNumber": 11
   },
   {
@@ -2315,8 +2385,43 @@
     "lessonNumber": 11
   },
   {
+    "bgWord": "пазарувам",
+    "ruTranslation": "делать покупки",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "пиша",
+    "ruTranslation": "писать",
+    "lessonNumber": 11
+  },
+  {
     "bgWord": "пия",
     "ruTranslation": "пью",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "помагам",
+    "ruTranslation": "помогать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "почивам",
+    "ruTranslation": "отдыхать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "правя",
+    "ruTranslation": "делать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "прибирам се",
+    "ruTranslation": "возвращаться домой",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "работя",
+    "ruTranslation": "работать",
     "lessonNumber": 11
   },
   {
@@ -2330,6 +2435,21 @@
     "lessonNumber": 11
   },
   {
+    "bgWord": "слушам",
+    "ruTranslation": "слушать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "спя",
+    "ruTranslation": "спать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "срещам се",
+    "ruTranslation": "встречаться",
+    "lessonNumber": 11
+  },
+  {
     "bgWord": "ставам",
     "ruTranslation": "вставать",
     "lessonNumber": 11
@@ -2340,8 +2460,43 @@
     "lessonNumber": 11
   },
   {
+    "bgWord": "събуждам се",
+    "ruTranslation": "просыпаться",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "сядам",
+    "ruTranslation": "садиться",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "уча",
+    "ruTranslation": "учиться",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "чакайте",
+    "ruTranslation": "ждите",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "чакам",
+    "ruTranslation": "ждать",
+    "lessonNumber": 11
+  },
+  {
     "bgWord": "час",
     "ruTranslation": "час",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "чета",
+    "ruTranslation": "читать",
+    "lessonNumber": 11
+  },
+  {
+    "bgWord": "чистя",
+    "ruTranslation": "убирать",
     "lessonNumber": 11
   }
 ]
