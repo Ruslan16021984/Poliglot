@@ -29,7 +29,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.carbit3333333.oiiglot_bulgary.R
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
 import com.carbit3333333.oiiglot_bulgary.model.TheoryBlock
+import com.carbit3333333.oiiglot_bulgary.model.theory.toStructuredTheoryBlocks
 import com.carbit3333333.oiiglot_bulgary.ui.common.HighlightedEndingText
+import com.carbit3333333.oiiglot_bulgary.ui.common.StructuredTheorySectionCard
+import com.carbit3333333.oiiglot_bulgary.ui.common.groupStructuredTheorySections
 import com.carbit3333333.oiiglot_bulgary.ui.theme.OIiglot_BulgaryTheme
 import com.carbit3333333.oiiglot_bulgary.viewmodel.LessonViewModel
 
@@ -101,6 +104,7 @@ fun LessonScreenContent(
 
                 uiState.lesson != null -> {
                     val lesson = uiState.lesson
+                    val theorySections = groupStructuredTheorySections(lesson.structuredTheory)
 
                     LazyColumn(
                         modifier = Modifier
@@ -132,8 +136,8 @@ fun LessonScreenContent(
                             )
                         }
 
-                        items(lesson.theory) { theoryBlock ->
-                            TheoryBlockItem(theoryBlock = theoryBlock)
+                        items(theorySections) { theorySection ->
+                            StructuredTheorySectionCard(theoryBlocks = theorySection)
                         }
 
                         if (lesson.id == VERB_ENDINGS_LESSON_ID) {
@@ -198,41 +202,6 @@ private fun VerbEndingExamples() {
     }
 }
 
-@Composable
-private fun TheoryBlockItem(
-    theoryBlock: TheoryBlock
-) {
-    val colorScheme = MaterialTheme.colorScheme
-
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
-            theoryBlock.title?.let { title ->
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleMedium,
-                    color = colorScheme.onSurface
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-            }
-
-            theoryBlock.text?.let { text ->
-                Text(
-                    text = text,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = colorScheme.onSurface
-                )
-            }
-        }
-    }
-}
-
 private const val VERB_ENDINGS_LESSON_ID = 2
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -254,7 +223,17 @@ private fun LessonScreenContentPreview() {
                             title = "Отрицание",
                             text = "Отрицание образуется с помощью частицы \"не\".\n\nАз не правя\nТи не гледаш"
                         )
-                    )
+                    ),
+                    structuredTheory = listOf(
+                        TheoryBlock(
+                            title = "Настоящее время",
+                            text = "В болгарском языке, как и в русском, сначала идёт местоимение, затем глагол.\n\nАз правя\nТи правиш\nТой прави"
+                        ),
+                        TheoryBlock(
+                            title = "Отрицание",
+                            text = "Отрицание образуется с помощью частицы \"не\".\n\nАз не правя\nТи не гледаш"
+                        )
+                    ).toStructuredTheoryBlocks()
                 )
             ),
             onBackClick = {},

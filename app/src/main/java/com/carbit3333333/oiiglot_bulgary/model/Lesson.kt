@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.model
 
+import com.carbit3333333.oiiglot_bulgary.model.theory.StructuredTheoryBlock
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -8,6 +9,7 @@ data class Lesson(
     val title: String,
     val subtitle: String,
     val theory: List<TheoryBlock> = emptyList(),
+    val structuredTheory: List<StructuredTheoryBlock> = emptyList(),
     val isCompleted: Boolean = false,
     val isLocked: Boolean = false,
     val bestScore: Float? = null,
