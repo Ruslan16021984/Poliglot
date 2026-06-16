@@ -1,0 +1,5075 @@
+[
+  {
+    "lessonId": 1,
+    "blocks": [
+      {
+        "kind": "Note",
+        "title": "Приветствия",
+        "segments": [
+          {
+            "text": "В начале общения полезно знать несколько базовых формул.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Здравей.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Привет.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Здравейте.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Здравствуйте.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Добро утро.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Доброе утро.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Добър ден.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Добрый день.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Как начать разговор",
+        "segments": [
+          {
+            "text": "Для простого начала разговора удобно запомнить Здравей для неформального общения и Здравейте для вежливого обращения.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Знакомство",
+        "segments": [
+          {
+            "text": "В уроке 1 мы учимся представляться и спрашивать собеседника о нём.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Вопросы",
+        "segments": [
+          {
+            "text": "Обрати внимание на вопросительные слова Как и ",
+            "style": "Plain"
+          },
+          {
+            "text": "Откъде",
+            "style": "Keyword"
+          },
+          {
+            "text": ". Они помогают спросить имя и происхождение собеседника.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Как",
+            "style": "Keyword"
+          },
+          {
+            "text": " се казваш?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Как тебя зовут?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Аз съм",
+            "style": "Keyword"
+          },
+          {
+            "text": " Хасан.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я Хасан.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Откъде",
+            "style": "Keyword"
+          },
+          {
+            "text": " сте?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Откуда Вы?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Модель ответа",
+        "segments": [
+          {
+            "text": "Для ответа о себе удобно использовать модели ",
+            "style": "Plain"
+          },
+          {
+            "text": "Аз съм",
+            "style": "Keyword"
+          },
+          {
+            "text": " и ",
+            "style": "Plain"
+          },
+          {
+            "text": "Аз съм от",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Аз съм от",
+            "style": "Keyword"
+          },
+          {
+            "text": " Сирия.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я из Сирии.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Страны и национальности",
+        "segments": [
+          {
+            "text": "Полезно уметь назвать страну, национальность и профессию.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Аз съм от",
+            "style": "Keyword"
+          },
+          {
+            "text": " България.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я из Болгарии.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Тя е българка.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Она болгарка.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Той е бежанец.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Он беженец.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Тя е учителка.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Она учительница.",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 2,
+    "blocks": [
+      {
+        "kind": "Paragraph",
+        "title": "Еда и напитки",
+        "segments": [
+          {
+            "text": "В уроке 2 мы учим базовую лексику про еду и напитки.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "вода",
+            "style": "Keyword"
+          },
+          {
+            "text": " — вода",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "чай",
+            "style": "Keyword"
+          },
+          {
+            "text": " — чай",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "кафе",
+            "style": "Keyword"
+          },
+          {
+            "text": " — кофе",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "хляб",
+            "style": "Keyword"
+          },
+          {
+            "text": " — хлеб",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "баница",
+            "style": "Keyword"
+          },
+          {
+            "text": " — баница",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Что это",
+        "segments": [
+          {
+            "text": "Для называния предмета используется простая модель.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Какво",
+            "style": "Keyword"
+          },
+          {
+            "text": " е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "това",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Что это?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Това е баница",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Это баница.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Това е хляб",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Это хлеб.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Люблю и хочу",
+        "segments": [
+          {
+            "text": "С едой и напитками сразу полезно тренировать простые желания и предпочтения.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Аз ",
+            "style": "Phrase"
+          },
+          {
+            "text": "обичам кафе",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я люблю кофе.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Аз не ",
+            "style": "Phrase"
+          },
+          {
+            "text": "искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " сок.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я не хочу сок.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искаш ли ",
+            "style": "Phrase"
+          },
+          {
+            "text": "вода",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ты хочешь воду?",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 3,
+    "blocks": [
+      {
+        "kind": "Note",
+        "title": "В ресторане",
+        "segments": [
+          {
+            "text": "Этот урок учит коротким фразам для посадки и заказа.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Свободно ли е",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Свободно?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Да, заповядайте",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Да, проходите.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Не, съжалявам",
+            "style": "Keyword"
+          },
+          {
+            "text": ", заето е.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Нет, занято.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Заказ",
+        "segments": [
+          {
+            "text": "Главные фразы в ресторане — просьба меню и заказ напитков или еды.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Може ли",
+            "style": "Keyword"
+          },
+          {
+            "text": " едно меню?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Можно меню?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Едно кафе, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "моля",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Один кофе, пожалуйста.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Един айрян, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "моля",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Один айран, пожалуйста.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Счёт",
+        "segments": [
+          {
+            "text": "Полезно уметь вежливо закончить заказ.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Нещо за ядене?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Что-нибудь поесть?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Може ли",
+            "style": "Keyword"
+          },
+          {
+            "text": " една супа?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Можно один суп?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Може ли сметката",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Можно счёт?",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 4,
+    "blocks": [
+      {
+        "kind": "Rule",
+        "title": "Продукты",
+        "segments": [
+          {
+            "text": "В этом уроке расширяется словарь покупок.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "домат",
+            "style": "Keyword"
+          },
+          {
+            "text": " — помидор",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "краставица",
+            "style": "Keyword"
+          },
+          {
+            "text": " — огурец",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "ябълка",
+            "style": "Keyword"
+          },
+          {
+            "text": " — яблоко",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "лимон",
+            "style": "Keyword"
+          },
+          {
+            "text": " — лимон",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "пилешко месо",
+            "style": "Phrase"
+          },
+          {
+            "text": " — куриное мясо",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Предпочтения",
+        "segments": [
+          {
+            "text": "Покупки удобно связывать с уже знакомыми глаголами.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Какви",
+            "style": "Keyword"
+          },
+          {
+            "text": " плодове ",
+            "style": "Phrase"
+          },
+          {
+            "text": "обичате",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Какие фрукты Вы любите?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Ябълки и портокали.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Яблоки и апельсины.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Какво",
+            "style": "Keyword"
+          },
+          {
+            "text": " месо ",
+            "style": "Phrase"
+          },
+          {
+            "text": "обичате",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Какое мясо Вы любите?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Нужный продукт",
+        "segments": [
+          {
+            "text": "Ученик должен уметь назвать конкретный продукт и сказать, что он хочет купить.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " хляб.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я хочу хлеб.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " вода.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я хочу воду.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Обичам",
+            "style": "Keyword"
+          },
+          {
+            "text": " чай.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я люблю чай.",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 5,
+    "blocks": [
+      {
+        "kind": "Rule",
+        "title": "Места в городе",
+        "segments": [
+          {
+            "text": "Урок знакомит с главными местами в городе.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "аптека",
+            "style": "Phrase"
+          },
+          {
+            "text": " — аптека",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "банка",
+            "style": "Phrase"
+          },
+          {
+            "text": " — банк",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "библиотека",
+            "style": "Phrase"
+          },
+          {
+            "text": " — библиотека",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "болница",
+            "style": "Phrase"
+          },
+          {
+            "text": " — больница",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "музей",
+            "style": "Phrase"
+          },
+          {
+            "text": " — музей",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "поща",
+            "style": "Phrase"
+          },
+          {
+            "text": " — почта",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Где это находится",
+        "segments": [
+          {
+            "text": "Чтобы спросить дорогу или объяснить место, часто нужна определённая форма существительного. В болгарском языке она ставится в конец слова.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "аптека → аптеката",
+            "style": "Phrase"
+          },
+          {
+            "text": " — аптека / эта аптека",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "библиотека → библиотеката",
+            "style": "Phrase"
+          },
+          {
+            "text": " — библиотека / эта библиотека",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "парк → паркът",
+            "style": "Phrase"
+          },
+          {
+            "text": " — парк / этот парк",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "център → центъра",
+            "style": "Phrase"
+          },
+          {
+            "text": " — центр / этот центр",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Къде",
+            "style": "Keyword"
+          },
+          {
+            "text": " е аптеката?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Где аптека?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Библиотеката е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "в",
+            "style": "Keyword"
+          },
+          {
+            "text": " центъра.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Библиотека в центре.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Паркът е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " реката.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Парк у реки.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Окончания -та, -ът, -то, -те",
+        "segments": [
+          {
+            "text": "Окончание зависит от рода и числа слова.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Женский род обычно получает -та:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "аптека → аптеката",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "улица → улицата",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "река → реката",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Мужской род часто получает -ът / -ят, когда слово стоит ",
+            "style": "Phrase"
+          },
+          {
+            "text": "как",
+            "style": "Keyword"
+          },
+          {
+            "text": " главный предмет фразы:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "парк → паркът",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "хотел → хотелът",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "център → центърът",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "После предлогов ",
+            "style": "Phrase"
+          },
+          {
+            "text": "в",
+            "style": "Keyword"
+          },
+          {
+            "text": " простых фразах часто видим короткую форму -а / -я:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "в",
+            "style": "Keyword"
+          },
+          {
+            "text": " центъра",
+            "style": "Phrase"
+          },
+          {
+            "text": " — в центре",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " площада",
+            "style": "Phrase"
+          },
+          {
+            "text": " — рядом с площадью",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " хотела",
+            "style": "Phrase"
+          },
+          {
+            "text": " — рядом с отелем",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Средний род получает -то, а множественное число",
+            "style": "Phrase"
+          },
+          {
+            "text": " — -те:",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "кино → киното",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "място → мястото",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "магазини → магазините",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Адрес и ориентиры",
+        "segments": [
+          {
+            "text": "Также полезны слова для адреса и ориентиров.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Живея ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на тази",
+            "style": "Keyword"
+          },
+          {
+            "text": " улица.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я живу на этой улице.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Живея ",
+            "style": "Phrase"
+          },
+          {
+            "text": "в този",
+            "style": "Keyword"
+          },
+          {
+            "text": " блок.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я живу в этом доме.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Хотелът е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " площада.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Отель рядом с площадью.",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 6,
+    "blocks": [
+      {
+        "kind": "Note",
+        "title": "Члены семьи",
+        "segments": [
+          {
+            "text": "В этом уроке мы называем членов семьи и говорим о близких.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "майка",
+            "style": "Phrase"
+          },
+          {
+            "text": " — мама",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "баща",
+            "style": "Phrase"
+          },
+          {
+            "text": " — папа",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "брат",
+            "style": "Phrase"
+          },
+          {
+            "text": " — брат",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "сестра",
+            "style": "Phrase"
+          },
+          {
+            "text": " — сестра",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "деца",
+            "style": "Phrase"
+          },
+          {
+            "text": " — дети",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Есть ли семья",
+        "segments": [
+          {
+            "text": "Очень полезны короткие вопросы и ответы с ",
+            "style": "Plain"
+          },
+          {
+            "text": "имам",
+            "style": "Keyword"
+          },
+          {
+            "text": " / ",
+            "style": "Plain"
+          },
+          {
+            "text": "нямам",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Имаш ли брат?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — У тебя есть брат?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Да, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "имам",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Да, есть.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Не, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "нямам",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Нет, у меня нет.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Короткие притяжательные формы",
+        "segments": [
+          {
+            "text": "В болгарском языке слова мой, твой, его, её часто ставятся после существительного короткой формой.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "ми",
+            "style": "Keyword"
+          },
+          {
+            "text": " — мой / моя / мои",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "ти",
+            "style": "Keyword"
+          },
+          {
+            "text": " — твой / твоя / твои",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "му",
+            "style": "Keyword"
+          },
+          {
+            "text": " — его",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "ѝ",
+            "style": "Phrase"
+          },
+          {
+            "text": " — её",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "ни",
+            "style": "Keyword"
+          },
+          {
+            "text": " — наш / наша / наши",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "ви",
+            "style": "Keyword"
+          },
+          {
+            "text": " — ваш / ваша / ваши",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "им",
+            "style": "Keyword"
+          },
+          {
+            "text": " — их",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Това е",
+            "style": "Keyword"
+          },
+          {
+            "text": " баба ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ми",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Это моя бабушка.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Къде",
+            "style": "Keyword"
+          },
+          {
+            "text": " е семейството ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ти",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Где твоя семья?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Жена ",
+            "style": "Phrase"
+          },
+          {
+            "text": "му",
+            "style": "Keyword"
+          },
+          {
+            "text": " е учителка.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Его жена учительница.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Мъжът ѝ е лекар.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Её муж врач.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Децата ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ни",
+            "style": "Keyword"
+          },
+          {
+            "text": " са ",
+            "style": "Phrase"
+          },
+          {
+            "text": "в",
+            "style": "Keyword"
+          },
+          {
+            "text": " България.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Наши дети в Болгарии.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Как",
+            "style": "Keyword"
+          },
+          {
+            "text": " се казва синът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ви",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Как зовут Вашего сына?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Синът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "им",
+            "style": "Keyword"
+          },
+          {
+            "text": " живее ",
+            "style": "Phrase"
+          },
+          {
+            "text": "във",
+            "style": "Keyword"
+          },
+          {
+            "text": " Варна.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Их сын живёт в Варне.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Счёт людей: двама, трима, четирима",
+        "segments": [
+          {
+            "text": "Для мужчин и смешанной группы людей часто используются специальные формы счёта.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "двама",
+            "style": "Keyword"
+          },
+          {
+            "text": " — двое / два мужчины",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "трима",
+            "style": "Keyword"
+          },
+          {
+            "text": " — трое / три мужчины",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "четирима",
+            "style": "Keyword"
+          },
+          {
+            "text": " — четверо / четыре мужчины",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Имам двама",
+            "style": "Keyword"
+          },
+          {
+            "text": " братя.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — У меня два брата.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Имам трима",
+            "style": "Keyword"
+          },
+          {
+            "text": " синове.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — У меня три сына.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Имам четирима",
+            "style": "Keyword"
+          },
+          {
+            "text": " внуци.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — У меня четыре внука.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Для предметов или женского рода используются другие формы: две деца, две сестри, три книги. ",
+            "style": "Phrase"
+          },
+          {
+            "text": "В",
+            "style": "Keyword"
+          },
+          {
+            "text": " этом уроке главное запомнить: когда считаем мужчин или группу людей, часто появляется -ма.",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Предлог на",
+        "segments": [
+          {
+            "text": "Предлог на очень частый. В уроке 6 он встречается в двух важных моделях.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "1. Возраст: ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " + число + години",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Синът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ми",
+            "style": "Keyword"
+          },
+          {
+            "text": " е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " десет години.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Моему сыну десять лет.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Дъщеря ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ми",
+            "style": "Keyword"
+          },
+          {
+            "text": " е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " осем години.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Моей дочери восемь лет.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "На колко",
+            "style": "Keyword"
+          },
+          {
+            "text": " години си?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Сколько тебе лет?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "2. Родственная связь: кто кому кем приходится",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Саид е съпруг ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " Латифа.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Саид — супруг Латифы.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Латифа е съпруга ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " Саид.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Латифа — супруга Саида.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Джоана е внучка ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " Саид и Латифа.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Джоана — внучка Саида и Латифы.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Описание близких",
+        "segments": [
+          {
+            "text": "В этом уроке также описываем людей. Прилагательное меняется по роду и числу.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "хубав мъж",
+            "style": "Phrase"
+          },
+          {
+            "text": " — красивый мужчина",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "хубава жена",
+            "style": "Phrase"
+          },
+          {
+            "text": " — красивая женщина",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "хубаво дете",
+            "style": "Phrase"
+          },
+          {
+            "text": " — красивый ребёнок",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "хубави хора",
+            "style": "Phrase"
+          },
+          {
+            "text": " — красивые люди",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Брат ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ми",
+            "style": "Keyword"
+          },
+          {
+            "text": " е висок.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Мой брат высокий.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Майка ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ми",
+            "style": "Keyword"
+          },
+          {
+            "text": " е ниска.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Моя мать невысокая.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Дядо ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ми",
+            "style": "Keyword"
+          },
+          {
+            "text": " е стар.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Мой дедушка старый.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сестра ",
+            "style": "Phrase"
+          },
+          {
+            "text": "ти",
+            "style": "Keyword"
+          },
+          {
+            "text": " е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "млада.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Твоя сестра младше.",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 7,
+    "blocks": [
+      {
+        "kind": "Note",
+        "title": "Погода",
+        "segments": [
+          {
+            "text": "Урок 7 учит описывать погоду простыми готовыми фразами.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Днес е топло.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Сегодня тепло.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Днес е студено.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Сегодня холодно.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вали дъжд.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Идёт дождь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вали сняг.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Идёт снег.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Духа вятър.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ветрено.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Дни, месяцы и времена года",
+        "segments": [
+          {
+            "text": "Для дней недели обычно используется предлог в. Если следующее слово начинается на в, часто появляется форма във.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "В",
+            "style": "Keyword"
+          },
+          {
+            "text": " понеделник работя.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — В понедельник я работаю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "В",
+            "style": "Keyword"
+          },
+          {
+            "text": " сряда почивам.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — В среду я отдыхаю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Във",
+            "style": "Keyword"
+          },
+          {
+            "text": " вторник уча.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Во вторник я учусь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Для месяцев, времён года и периода внутри времени часто используется ",
+            "style": "Phrase"
+          },
+          {
+            "text": "през",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "През",
+            "style": "Keyword"
+          },
+          {
+            "text": " март времето е хубаво.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — В марте погода хорошая.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "През",
+            "style": "Keyword"
+          },
+          {
+            "text": " зимата е студено.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Зимой холодно.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "През",
+            "style": "Keyword"
+          },
+          {
+            "text": " деня работя.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Днём я работаю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "От ... до ...",
+        "segments": [
+          {
+            "text": "Модель от ... до ... показывает начало и конец времени: с какого момента и до какого момента.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "От",
+            "style": "Keyword"
+          },
+          {
+            "text": " понеделник ",
+            "style": "Phrase"
+          },
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " петък работя.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — С понедельника до пятницы я работаю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "От",
+            "style": "Keyword"
+          },
+          {
+            "text": " девет ",
+            "style": "Phrase"
+          },
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " пет работя.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — С девяти до пяти я работаю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "От сутрин до вечер",
+            "style": "Keyword"
+          },
+          {
+            "text": " уча.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — С утра до вечера я учусь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Температурата е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "от",
+            "style": "Keyword"
+          },
+          {
+            "text": " пет ",
+            "style": "Phrase"
+          },
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " десет градуса.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Температура от пяти до десяти градусов.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "До, преди и след",
+        "segments": [
+          {
+            "text": "До показывает предел: до какого времени что-то происходит.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "До",
+            "style": "Keyword"
+          },
+          {
+            "text": " утре.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — До завтра.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "До",
+            "style": "Keyword"
+          },
+          {
+            "text": " обяд работя.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — До обеда я работаю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "До",
+            "style": "Keyword"
+          },
+          {
+            "text": " вечерта вали дъжд.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — До вечера идёт дождь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Преди",
+            "style": "Keyword"
+          },
+          {
+            "text": " значит перед / ",
+            "style": "Phrase"
+          },
+          {
+            "text": "до",
+            "style": "Keyword"
+          },
+          {
+            "text": " события, а ",
+            "style": "Phrase"
+          },
+          {
+            "text": "след",
+            "style": "Keyword"
+          },
+          {
+            "text": " значит после события.",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Преди",
+            "style": "Keyword"
+          },
+          {
+            "text": " работа пия кафе.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Перед работой я пью кофе.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Преди",
+            "style": "Keyword"
+          },
+          {
+            "text": " дъжда има вятър.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Перед дождём есть ветер.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "След",
+            "style": "Keyword"
+          },
+          {
+            "text": " урока отивам вкъщи.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — После урока я иду домой.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "След",
+            "style": "Keyword"
+          },
+          {
+            "text": " дъжда има слънце.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — После дождя есть солнце.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Часы",
+        "segments": [
+          {
+            "text": "Для вопроса о точном времени используется готовая фраза ",
+            "style": "Plain"
+          },
+          {
+            "text": "Колко е часът",
+            "style": "Keyword"
+          },
+          {
+            "text": "? Также часто встречается ",
+            "style": "Plain"
+          },
+          {
+            "text": "В колко часа",
+            "style": "Keyword"
+          },
+          {
+            "text": " ...?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Колко е часът",
+            "style": "Keyword"
+          },
+          {
+            "text": "?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Который час?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сега е два часа.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Сейчас два часа.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "В колко часа",
+            "style": "Keyword"
+          },
+          {
+            "text": " започва урокът?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Во сколько начинается урок?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Урокът започва ",
+            "style": "Phrase"
+          },
+          {
+            "text": "в",
+            "style": "Keyword"
+          },
+          {
+            "text": " осем часа.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Урок начинается в восемь часов.",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 8,
+    "blocks": [
+      {
+        "kind": "Rule",
+        "title": "Этот предмет: този, тази, това, тези",
+        "segments": [
+          {
+            "text": "Указательное слово зависит от рода и числа.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "този",
+            "style": "Keyword"
+          },
+          {
+            "text": " панталон, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "този",
+            "style": "Keyword"
+          },
+          {
+            "text": " пуловер",
+            "style": "Phrase"
+          },
+          {
+            "text": " — мужской род",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "тази",
+            "style": "Keyword"
+          },
+          {
+            "text": " риза, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "тази",
+            "style": "Keyword"
+          },
+          {
+            "text": " рокля",
+            "style": "Phrase"
+          },
+          {
+            "text": " — женский род",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "това",
+            "style": "Keyword"
+          },
+          {
+            "text": " яке, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "това",
+            "style": "Keyword"
+          },
+          {
+            "text": " палто",
+            "style": "Phrase"
+          },
+          {
+            "text": " — средний род",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "тези",
+            "style": "Keyword"
+          },
+          {
+            "text": " обувки, ",
+            "style": "Phrase"
+          },
+          {
+            "text": "тези",
+            "style": "Keyword"
+          },
+          {
+            "text": " чорапи",
+            "style": "Phrase"
+          },
+          {
+            "text": " — множественное число",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Цвет согласуется с одеждой",
+        "segments": [
+          {
+            "text": "Окончание цвета меняется вместе с существительным.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "син панталон",
+            "style": "Phrase"
+          },
+          {
+            "text": " — синие брюки",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "синя риза",
+            "style": "Phrase"
+          },
+          {
+            "text": " — синяя рубашка",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "синьо яке",
+            "style": "Phrase"
+          },
+          {
+            "text": " — синяя куртка",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "сини обувки",
+            "style": "Phrase"
+          },
+          {
+            "text": " — синие туфли",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Так же изменяются бял, черен, червен, зелен, жълт и кафяв.",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Глагол нося — носить",
+        "segments": [
+          {
+            "text": "Аз ",
+            "style": "Plain"
+          },
+          {
+            "text": "нося",
+            "style": "Keyword"
+          },
+          {
+            "text": " бяла риза. — Я ношу белую рубашку. Ти носиш черен панталон. — Ты носишь чёрные брюки. Той / тя носи син пуловер. — Он / она носит синий свитер. Ние носим бели ризи. — Мы носим белые рубашки. Вие носите черни панталони. — Вы носите чёрные брюки. Те носят зелени пуловери. — Они носят зелёные свитеры.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Как сказать «одет»",
+        "segments": [
+          {
+            "text": "Форма ",
+            "style": "Plain"
+          },
+          {
+            "text": "облечен",
+            "style": "Keyword"
+          },
+          {
+            "text": " согласуется с человеком.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Той е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "облечен с",
+            "style": "Keyword"
+          },
+          {
+            "text": " черен панталон.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Он одет в чёрные брюки.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Тя е облечена ",
+            "style": "Phrase"
+          },
+          {
+            "text": "с",
+            "style": "Keyword"
+          },
+          {
+            "text": " червена рокля.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Она одета в красное платье.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Детето е облечено ",
+            "style": "Phrase"
+          },
+          {
+            "text": "с",
+            "style": "Keyword"
+          },
+          {
+            "text": " жълто яке.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ребёнок одет в жёлтую куртку.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Те са облечени ",
+            "style": "Phrase"
+          },
+          {
+            "text": "със",
+            "style": "Keyword"
+          },
+          {
+            "text": " сини якета.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Они одеты в синие куртки.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Конкретная одежда: -ия, -та, -то, -те",
+        "segments": [
+          {
+            "text": "Когда речь идёт о конкретной вещи, цвет получает определённое окончание.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " черния панталон.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я хочу конкретные чёрные брюки.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " синята риза.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я хочу конкретную синюю рубашку.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " черното яке.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я хочу конкретную чёрную куртку.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " белите обувки.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я хочу конкретные белые туфли.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Мужской род: -ият или -ия",
+        "segments": [
+          {
+            "text": "В мужском роде форма зависит от роли в предложении.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Черният панталон е нов.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Панталон является подлежащим, поэтому -ият.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " черния панталон.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Панталон является дополнением, поэтому -ия.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Та же модель: синият пуловер / ",
+            "style": "Phrase"
+          },
+          {
+            "text": "искам",
+            "style": "Keyword"
+          },
+          {
+            "text": " синия пуловер.",
+            "style": "Phrase"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 9,
+    "blocks": [
+      {
+        "kind": "Paragraph",
+        "title": "Дом, комнаты и мебель",
+        "segments": [
+          {
+            "text": "къща",
+            "style": "Keyword"
+          },
+          {
+            "text": " — дом; ",
+            "style": "Plain"
+          },
+          {
+            "text": "апартамент",
+            "style": "Keyword"
+          },
+          {
+            "text": " — квартира; ",
+            "style": "Plain"
+          },
+          {
+            "text": "кухня",
+            "style": "Keyword"
+          },
+          {
+            "text": " — ",
+            "style": "Plain"
+          },
+          {
+            "text": "кухня",
+            "style": "Keyword"
+          },
+          {
+            "text": "; ",
+            "style": "Plain"
+          },
+          {
+            "text": "баня",
+            "style": "Keyword"
+          },
+          {
+            "text": " — ванная; ",
+            "style": "Plain"
+          },
+          {
+            "text": "стая",
+            "style": "Keyword"
+          },
+          {
+            "text": " — комната; хол — гостиная; ",
+            "style": "Plain"
+          },
+          {
+            "text": "спалня",
+            "style": "Keyword"
+          },
+          {
+            "text": " — спальня; коридор — коридор",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "маса",
+            "style": "Phrase"
+          },
+          {
+            "text": " — стол; стол — стул; легло — кровать; диван — диван; шкаф — шкаф; лампа — лампа; килим — ковёр; полица — полка; огледало — зеркало",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Сравнение с по-",
+        "segments": [
+          {
+            "text": "По-",
+            "style": "Keyword"
+          },
+          {
+            "text": " означает «более» и пишется через дефис. Прилагательное согласуется с существительным по роду и числу.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Къщата е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "голяма.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Дом больше.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Коридорът е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "дълъг.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Коридор длиннее.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Леглото е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "удобно.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Кровать удобнее.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Стаите са ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "светли.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Комнаты светлее.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Сравнение двух предметов: по-... от ...",
+        "segments": [
+          {
+            "text": "Для прямого сравнения используется модель ",
+            "style": "Plain"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "... от ...",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Къщата е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "голяма ",
+            "style": "Phrase"
+          },
+          {
+            "text": "от",
+            "style": "Keyword"
+          },
+          {
+            "text": " апартамента.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Дом больше квартиры.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Кухнята е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "светла ",
+            "style": "Phrase"
+          },
+          {
+            "text": "от",
+            "style": "Keyword"
+          },
+          {
+            "text": " коридора.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Кухня светлее коридора.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Диванът е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "удобен ",
+            "style": "Phrase"
+          },
+          {
+            "text": "от",
+            "style": "Keyword"
+          },
+          {
+            "text": " стола.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Диван удобнее стула.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Выбор среди всех с най-",
+        "segments": [
+          {
+            "text": "Най-",
+            "style": "Keyword"
+          },
+          {
+            "text": " означает «самый / самая / самое / самые» и пишется через дефис.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Холът е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "най-",
+            "style": "Keyword"
+          },
+          {
+            "text": "голям.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Гостиная самая большая.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Спалнята е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "най-",
+            "style": "Keyword"
+          },
+          {
+            "text": "тиха.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Спальня самая тихая.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Леглото е ",
+            "style": "Phrase"
+          },
+          {
+            "text": "най-",
+            "style": "Keyword"
+          },
+          {
+            "text": "удобно.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Кровать самая удобная.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Как задавать вопросы",
+        "segments": [
+          {
+            "text": "Кой диван е ",
+            "style": "Plain"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "удобен? — Какой диван удобнее? Коя ",
+            "style": "Plain"
+          },
+          {
+            "text": "стая",
+            "style": "Keyword"
+          },
+          {
+            "text": " е ",
+            "style": "Plain"
+          },
+          {
+            "text": "най-",
+            "style": "Keyword"
+          },
+          {
+            "text": "светла? — Какая комната самая светлая? Кое легло е ",
+            "style": "Plain"
+          },
+          {
+            "text": "по-",
+            "style": "Keyword"
+          },
+          {
+            "text": "голямо? — Какая кровать больше? Кои стаи са ",
+            "style": "Plain"
+          },
+          {
+            "text": "най-",
+            "style": "Keyword"
+          },
+          {
+            "text": "тихи? — Какие комнаты самые тихие?",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 10,
+    "blocks": [
+      {
+        "kind": "Rule",
+        "title": "Главные глаголы движения",
+        "segments": [
+          {
+            "text": "В транспортных фразах важно различать действие.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "тръгва",
+            "style": "Keyword"
+          },
+          {
+            "text": " — отправляется, начинает путь",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "заминава",
+            "style": "Keyword"
+          },
+          {
+            "text": " — уезжает",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "спира",
+            "style": "Keyword"
+          },
+          {
+            "text": " — останавливается",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "пристига",
+            "style": "Keyword"
+          },
+          {
+            "text": " — прибывает",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "пътувам",
+            "style": "Keyword"
+          },
+          {
+            "text": " — еду, путешествую",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "връщам се",
+            "style": "Phrase"
+          },
+          {
+            "text": " — возвращаюсь",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Автобусът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "тръгва",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Автобус отправляется.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Влакът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "заминава",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Поезд уезжает.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Автобусът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "спира",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Автобус останавливается.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Влакът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "пристига",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Поезд прибывает.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Откуда и куда: от / за",
+        "segments": [
+          {
+            "text": "От показывает исходную точку: откуда транспорт отправляется или откуда человек возвращается.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Автобусът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "тръгва от",
+            "style": "Keyword"
+          },
+          {
+            "text": " автогарата.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Автобус отправляется с автовокзала.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Влакът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "заминава от",
+            "style": "Keyword"
+          },
+          {
+            "text": " Пловдив.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Поезд уезжает из Пловдива.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Връщам се ",
+            "style": "Phrase"
+          },
+          {
+            "text": "от",
+            "style": "Keyword"
+          },
+          {
+            "text": " София.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я возвращаюсь из Софии.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "За",
+            "style": "Keyword"
+          },
+          {
+            "text": " показывает направление маршрута: куда транспорт или человек направляется.",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Автобусът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "тръгва за",
+            "style": "Keyword"
+          },
+          {
+            "text": " Сливен.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Автобус отправляется в Сливен.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Влакът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "заминава за",
+            "style": "Keyword"
+          },
+          {
+            "text": " Варна.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Поезд уезжает в Варну.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Пътувам за",
+            "style": "Keyword"
+          },
+          {
+            "text": " Германия.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я еду в Германию.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Полезная общая модель:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Пътувам от",
+            "style": "Keyword"
+          },
+          {
+            "text": " София ",
+            "style": "Phrase"
+          },
+          {
+            "text": "за",
+            "style": "Keyword"
+          },
+          {
+            "text": " Варна.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я еду из Софии в Варну.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Где останавливается или прибывает: в / на",
+        "segments": [
+          {
+            "text": "В обычно используется с городом, страной или частью города.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Автобусът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "спира в",
+            "style": "Keyword"
+          },
+          {
+            "text": " центъра.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Автобус останавливается в центре.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Влакът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "пристига в",
+            "style": "Keyword"
+          },
+          {
+            "text": " София.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Поезд прибывает в Софию.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Самолетът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "пристига в",
+            "style": "Keyword"
+          },
+          {
+            "text": " България.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Самолёт прибывает в Болгарию.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "На",
+            "style": "Keyword"
+          },
+          {
+            "text": " обычно используется ",
+            "style": "Phrase"
+          },
+          {
+            "text": "с",
+            "style": "Keyword"
+          },
+          {
+            "text": " транспортными местами: вокзалом, автовокзалом, остановкой, аэропортом.",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Автобусът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "спира на",
+            "style": "Keyword"
+          },
+          {
+            "text": " автогарата.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Автобус останавливается на автовокзале.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Влакът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "пристига на",
+            "style": "Keyword"
+          },
+          {
+            "text": " гарата.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Поезд прибывает на вокзал.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Самолетът ",
+            "style": "Phrase"
+          },
+          {
+            "text": "пристига на",
+            "style": "Keyword"
+          },
+          {
+            "text": " летището.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Самолёт прибывает в аэропорт.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Каким транспортом: с / със",
+        "segments": [
+          {
+            "text": "С показывает, каким транспортом человек едет. Перед некоторыми словами для удобства произношения используется форма със.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Пътувам с",
+            "style": "Keyword"
+          },
+          {
+            "text": " автобус.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я еду на автобусе.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Пътувам с",
+            "style": "Keyword"
+          },
+          {
+            "text": " влак.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я еду поездом.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Пътувам със",
+            "style": "Keyword"
+          },
+          {
+            "text": " самолет.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я лечу самолётом.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "В",
+            "style": "Keyword"
+          },
+          {
+            "text": " одной фразе можно соединить транспорт и направление:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Пътувам с",
+            "style": "Keyword"
+          },
+          {
+            "text": " автобус ",
+            "style": "Phrase"
+          },
+          {
+            "text": "за",
+            "style": "Keyword"
+          },
+          {
+            "text": " Варна.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я еду на автобусе в Варну.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вопрос о транспорте:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "С какво",
+            "style": "Keyword"
+          },
+          {
+            "text": " пътуваш?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — На чём ты едешь?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Возвращение: връщам се",
+        "segments": [
+          {
+            "text": "Глагол връщам се используется с частицей се.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "От",
+            "style": "Keyword"
+          },
+          {
+            "text": " показывает, откуда человек возвращается:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Мустафа ",
+            "style": "Phrase"
+          },
+          {
+            "text": "се връща от",
+            "style": "Keyword"
+          },
+          {
+            "text": " Враца.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Мустафа возвращается из Врацы.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Тя ",
+            "style": "Phrase"
+          },
+          {
+            "text": "се връща от",
+            "style": "Keyword"
+          },
+          {
+            "text": " гарата.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Она возвращается с вокзала.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "В",
+            "style": "Keyword"
+          },
+          {
+            "text": " показывает, куда человек возвращается:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Мустафа ",
+            "style": "Phrase"
+          },
+          {
+            "text": "се връща в",
+            "style": "Keyword"
+          },
+          {
+            "text": " Сирия.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Мустафа возвращается в Сирию.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Връщам се ",
+            "style": "Phrase"
+          },
+          {
+            "text": "в",
+            "style": "Keyword"
+          },
+          {
+            "text": " България.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Я возвращаюсь в Болгарию.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Откъде",
+            "style": "Keyword"
+          },
+          {
+            "text": " се връщаш?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Откуда ты возвращаешься?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Къде",
+            "style": "Keyword"
+          },
+          {
+            "text": " се връщаш?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Куда ты возвращаешься?",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lessonId": 11,
+    "blocks": [
+      {
+        "kind": "Note",
+        "title": "Утро и базовый распорядок",
+        "segments": [
+          {
+            "text": "Урок 11 собирает повседневные действия и время дня.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин се събуждам",
+            "style": "Keyword"
+          },
+          {
+            "text": " рано.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я просыпаюсь рано.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин ставам",
+            "style": "Keyword"
+          },
+          {
+            "text": " рано.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я встаю рано.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин се мия",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я умываюсь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин се къпя",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я моюсь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин",
+            "style": "Keyword"
+          },
+          {
+            "text": " се ",
+            "style": "Phrase"
+          },
+          {
+            "text": "обличам",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я одеваюсь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Работа, учёба и дом",
+        "segments": [
+          {
+            "text": "Глаголы часто идут с уточнением времени: ",
+            "style": "Plain"
+          },
+          {
+            "text": "сутрин",
+            "style": "Keyword"
+          },
+          {
+            "text": ", ",
+            "style": "Plain"
+          },
+          {
+            "text": "денем",
+            "style": "Keyword"
+          },
+          {
+            "text": ", ",
+            "style": "Plain"
+          },
+          {
+            "text": "следобед",
+            "style": "Keyword"
+          },
+          {
+            "text": ", ",
+            "style": "Plain"
+          },
+          {
+            "text": "вечер",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин",
+            "style": "Keyword"
+          },
+          {
+            "text": " излизам ",
+            "style": "Phrase"
+          },
+          {
+            "text": "от",
+            "style": "Keyword"
+          },
+          {
+            "text": " вкъщи.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я выхожу из дома.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин",
+            "style": "Keyword"
+          },
+          {
+            "text": " влизам ",
+            "style": "Phrase"
+          },
+          {
+            "text": "в",
+            "style": "Keyword"
+          },
+          {
+            "text": " офиса.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я захожу в офис.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "След",
+            "style": "Keyword"
+          },
+          {
+            "text": " закуска ",
+            "style": "Phrase"
+          },
+          {
+            "text": "работя",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — После завтрака я работаю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "След",
+            "style": "Keyword"
+          },
+          {
+            "text": " работа ",
+            "style": "Phrase"
+          },
+          {
+            "text": "уча",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Phrase"
+          },
+          {
+            "text": " — После работы я учусь.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "След",
+            "style": "Keyword"
+          },
+          {
+            "text": " работа се връщам вкъщи.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — После работы я возвращаюсь домой.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Бытовые действия",
+        "segments": [
+          {
+            "text": "Для обычного дня нужны глаголы делать, брать, давать, садиться, готовить, убирать и отдыхать.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Сутрин",
+            "style": "Keyword"
+          },
+          {
+            "text": " правя закуска.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Утром я делаю завтрак.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "На",
+            "style": "Keyword"
+          },
+          {
+            "text": " обяд сядам ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " масата.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — В обед я сажусь за стол.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "На",
+            "style": "Keyword"
+          },
+          {
+            "text": " обяд вземам супа.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — В обед я беру суп.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "На",
+            "style": "Keyword"
+          },
+          {
+            "text": " обяд давам хляб.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — В обед я даю хлеб.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "На",
+            "style": "Keyword"
+          },
+          {
+            "text": " обяд готвя супа.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — В обед я готовлю суп.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "title": "Вечер и свободное время",
+        "segments": [
+          {
+            "text": "Вечером часто описываем простые действия дома и общение.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вечер",
+            "style": "Keyword"
+          },
+          {
+            "text": " каня приятели.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Вечером я приглашаю друзей.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вечер",
+            "style": "Keyword"
+          },
+          {
+            "text": " гледам филм.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Вечером я смотрю фильм.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вечер",
+            "style": "Keyword"
+          },
+          {
+            "text": " чета книга.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Вечером я читаю книгу.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вечер",
+            "style": "Keyword"
+          },
+          {
+            "text": " слушам музика.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Вечером я слушаю музыку.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вечер лягам",
+            "style": "Keyword"
+          },
+          {
+            "text": " рано.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Вечером я ложусь рано.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Нощем",
+            "style": "Keyword"
+          },
+          {
+            "text": " спя добре.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ночью я хорошо сплю.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Rule",
+        "title": "Общение и вопросы",
+        "segments": [
+          {
+            "text": "Вопросы строятся по уже знакомой модели с ли или ",
+            "style": "Plain"
+          },
+          {
+            "text": "кога",
+            "style": "Keyword"
+          },
+          {
+            "text": ".",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "За ",
+            "style": "Phrase"
+          },
+          {
+            "text": "какво",
+            "style": "Keyword"
+          },
+          {
+            "text": " мислиш?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — О чём ты думаешь?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Говориш ли български?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ты говоришь по-болгарски?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Звъниш ли ",
+            "style": "Phrase"
+          },
+          {
+            "text": "на",
+            "style": "Keyword"
+          },
+          {
+            "text": " майка си?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ты звонишь маме?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Срещаш ли се ",
+            "style": "Phrase"
+          },
+          {
+            "text": "с",
+            "style": "Keyword"
+          },
+          {
+            "text": " приятели?",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ты встречаешься с друзьями?",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вежливые команды:",
+            "style": "Phrase"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Вземете книгата.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Возьмите книгу.",
+            "style": "Plain"
+          }
+        ]
+      },
+      {
+        "kind": "Example",
+        "segments": [
+          {
+            "text": "Чакайте тук.",
+            "style": "Phrase"
+          },
+          {
+            "text": " — Ждите здесь.",
+            "style": "Plain"
+          }
+        ]
+      }
+    ]
+  }
+]
