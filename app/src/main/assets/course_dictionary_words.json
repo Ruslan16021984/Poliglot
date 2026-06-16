@@ -2155,6 +2155,11 @@
     "lessonNumber": 10
   },
   {
+    "bgWord": "автогара",
+    "ruTranslation": "автовокзал",
+    "lessonNumber": 10
+  },
+  {
     "bgWord": "билет",
     "ruTranslation": "билет",
     "lessonNumber": 10
@@ -2170,13 +2175,33 @@
     "lessonNumber": 10
   },
   {
+    "bgWord": "връщам се",
+    "ruTranslation": "возвращаться",
+    "lessonNumber": 10
+  },
+  {
     "bgWord": "гара",
     "ruTranslation": "вокзал",
     "lessonNumber": 10
   },
   {
+    "bgWord": "град",
+    "ruTranslation": "город",
+    "lessonNumber": 10
+  },
+  {
     "bgWord": "далеч",
     "ruTranslation": "далеко",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "закъснявам",
+    "ruTranslation": "опаздывать",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "заминавам",
+    "ruTranslation": "уезжать",
     "lessonNumber": 10
   },
   {
@@ -2190,8 +2215,18 @@
     "lessonNumber": 10
   },
   {
+    "bgWord": "коловоз",
+    "ruTranslation": "путь",
+    "lessonNumber": 10
+  },
+  {
     "bgWord": "куфар",
     "ruTranslation": "чемодан",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "лев",
+    "ruTranslation": "лев",
     "lessonNumber": 10
   },
   {
@@ -2205,8 +2240,28 @@
     "lessonNumber": 10
   },
   {
+    "bgWord": "минута",
+    "ruTranslation": "минута",
+    "lessonNumber": 10
+  },
+  {
     "bgWord": "перон",
     "ruTranslation": "перрон",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "последен",
+    "ruTranslation": "последний",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "пристигам",
+    "ruTranslation": "прибывать",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "първи",
+    "ruTranslation": "первый",
     "lessonNumber": 10
   },
   {
@@ -2225,8 +2280,28 @@
     "lessonNumber": 10
   },
   {
+    "bgWord": "сектор",
+    "ruTranslation": "сектор",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "следващ",
+    "ruTranslation": "следующий",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "спирам",
+    "ruTranslation": "останавливаться",
+    "lessonNumber": 10
+  },
+  {
     "bgWord": "спирка",
     "ruTranslation": "остановка",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "струвам",
+    "ruTranslation": "стоить",
     "lessonNumber": 10
   },
   {
@@ -2237,6 +2312,21 @@
   {
     "bgWord": "трамвай",
     "ruTranslation": "трамвай",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "тръгвам",
+    "ruTranslation": "отправляться",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "център",
+    "ruTranslation": "центр",
+    "lessonNumber": 10
+  },
+  {
+    "bgWord": "час",
+    "ruTranslation": "час",
     "lessonNumber": 10
   },
   {
