@@ -1,6 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
 import android.app.Activity
+import android.content.res.Configuration
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.speech.RecognizerIntent
@@ -899,6 +900,28 @@ private fun LessonSessionScreenPreview() {
     }
 }
 
+@Preview(
+    name = "Lesson Session Light",
+    showBackground = true,
+    showSystemUi = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Composable
+private fun LessonSessionScreenLightPreview() {
+    LessonSessionScreenPreview()
+}
+
+@Preview(
+    name = "Lesson Session Dark",
+    showBackground = true,
+    showSystemUi = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LessonSessionScreenDarkPreview() {
+    LessonSessionScreenPreview()
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun LessonSessionWrongPreview() {
@@ -938,6 +961,16 @@ private fun LessonSessionWrongPreview() {
             )
         }
     }
+}
+
+@Preview(
+    name = "Lesson Wrong Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LessonSessionWrongDarkPreview() {
+    LessonSessionWrongPreview()
 }
 
 @Preview(showBackground = true)
@@ -988,4 +1021,14 @@ private fun LessonSessionCorrectPreview() {
             )
         }
     }
+}
+
+@Preview(
+    name = "Lesson Correct Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LessonSessionCorrectDarkPreview() {
+    LessonSessionCorrectPreview()
 }

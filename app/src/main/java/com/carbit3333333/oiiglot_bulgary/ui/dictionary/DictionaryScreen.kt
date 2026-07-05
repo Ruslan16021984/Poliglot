@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.ui.dictionary
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -832,4 +833,14 @@ private fun DictionaryScreenContentPreview() {
             onDismissError = {},
         )
     }
+}
+
+@Preview(
+    name = "Dictionary Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun DictionaryScreenContentDarkPreview() {
+    DictionaryScreenContentPreview()
 }

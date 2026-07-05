@@ -1,6 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary.ui.dictionary
 
 import android.app.Activity
+import android.content.res.Configuration
 import android.content.Intent
 import android.speech.RecognizerIntent
 import androidx.activity.compose.BackHandler
@@ -641,4 +642,14 @@ private fun WordEditorScreenPreview() {
             onSpeechInputClick = {},
         )
     }
+}
+
+@Preview(
+    name = "Word Editor Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun WordEditorScreenDarkPreview() {
+    WordEditorScreenPreview()
 }

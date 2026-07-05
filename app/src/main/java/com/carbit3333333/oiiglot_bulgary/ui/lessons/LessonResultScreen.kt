@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -242,6 +243,16 @@ private fun LessonResultPassedPreview() {
     }
 }
 
+@Preview(
+    name = "Lesson Result Passed Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LessonResultPassedDarkPreview() {
+    LessonResultPassedPreview()
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun LessonResultFailedPreview() {
@@ -264,4 +275,14 @@ private fun LessonResultFailedPreview() {
             )
         }
     }
+}
+
+@Preview(
+    name = "Lesson Result Failed Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LessonResultFailedDarkPreview() {
+    LessonResultFailedPreview()
 }

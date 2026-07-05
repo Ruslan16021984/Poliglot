@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -614,4 +615,14 @@ private fun LessonsScreenContentPreview() {
             onResetLessonsClick = {}
         )
     }
+}
+
+@Preview(
+    name = "Lessons Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LessonsScreenContentDarkPreview() {
+    LessonsScreenContentPreview()
 }

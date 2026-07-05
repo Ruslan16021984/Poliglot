@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.ui.lessons
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -240,4 +241,15 @@ private fun LessonScreenContentPreview() {
             onStartExerciseClick = {}
         )
     }
+}
+
+@Preview(
+    name = "Lesson Screen Dark",
+    showBackground = true,
+    showSystemUi = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LessonScreenContentDarkPreview() {
+    LessonScreenContentPreview()
 }

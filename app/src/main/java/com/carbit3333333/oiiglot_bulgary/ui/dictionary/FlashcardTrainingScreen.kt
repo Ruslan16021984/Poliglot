@@ -1,5 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.ui.dictionary
 
+import android.content.res.Configuration
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -729,4 +730,14 @@ private fun FlashcardTrainingScreenPreview() {
             onSpeakRussian = {},
         )
     }
+}
+
+@Preview(
+    name = "Flashcard Dark",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun FlashcardTrainingScreenDarkPreview() {
+    FlashcardTrainingScreenPreview()
 }
