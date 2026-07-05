@@ -19,7 +19,7 @@ class LessonSessionRepository private constructor(
     )
 
     constructor() : this(
-        exerciseLocaleProvider = { LessonExerciseLocale.Russian },
+        exerciseLocaleProvider = { LessonExerciseLocale(languageCode = "ru") },
         textbookExercisesRepository = TextbookLessonExercisesRepository(),
     )
 

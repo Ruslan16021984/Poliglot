@@ -17,8 +17,13 @@ enum class AppThemeMode {
 
 enum class AppLanguage(val tag: String) {
     System(""),
+    English("en"),
     Russian("ru"),
     Ukrainian("uk"),
+    ;
+
+    val isSystem: Boolean
+        get() = this == System
 }
 
 class AppSettingsStore(

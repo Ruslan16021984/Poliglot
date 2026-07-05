@@ -192,6 +192,13 @@ fun SettingsScreenContent(
                         titleColor = palette.title,
                     )
                     SettingOptionRow(
+                        title = stringResource(R.string.settings_language_english),
+                        selected = uiState.language == AppLanguage.English,
+                        onClick = { onLanguageSelect(AppLanguage.English) },
+                        accent = palette.accent,
+                        titleColor = palette.title,
+                    )
+                    SettingOptionRow(
                         title = stringResource(R.string.settings_language_russian),
                         selected = uiState.language == AppLanguage.Russian,
                         onClick = { onLanguageSelect(AppLanguage.Russian) },

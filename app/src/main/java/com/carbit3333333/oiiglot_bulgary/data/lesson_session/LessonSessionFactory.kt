@@ -6,25 +6,20 @@ import com.carbit3333333.oiiglot_bulgary.model.LessonSession
 internal object LessonSessionFactory {
     fun create(
         lessonId: Int,
-        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale.Russian,
+        exerciseLocale: LessonExerciseLocale = LessonExerciseLocale(languageCode = "ru"),
         textbookExercises: TextbookLessonExerciseSetAsset,
     ): LessonSession {
-        val session = LessonSession(
+        return LessonSession(
             lessonId = lessonId,
-            lessonTitle = textbookExercises.title,
+            lessonTitle = textbookExercises.resolveTitle(
+                languageCode = exerciseLocale.languageCode,
+                fallbackLanguageCode = exerciseLocale.fallbackLanguageCode,
+                lessonId = lessonId,
+            ),
             exercises = generateTextbookLessonExercises(
                 exerciseSet = textbookExercises,
                 exerciseLocale = exerciseLocale,
             ),
         )
-
-        return if (exerciseLocale == LessonExerciseLocale.Ukrainian) {
-            session.copy(
-                lessonTitle = UkrainianLessonStrings.lessonTitle(session.lessonId),
-                exercises = session.exercises,
-            )
-        } else {
-            session
-        }
     }
 }

@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun applyLanguageIfNeeded(appLanguage: AppLanguage) {
-        val targetLocales = when (appLanguage) {
-            AppLanguage.System -> LocaleListCompat.getEmptyLocaleList()
-            AppLanguage.Russian -> LocaleListCompat.forLanguageTags(AppLanguage.Russian.tag)
-            AppLanguage.Ukrainian -> LocaleListCompat.forLanguageTags(AppLanguage.Ukrainian.tag)
+        val targetLocales = if (appLanguage.isSystem) {
+            LocaleListCompat.getEmptyLocaleList()
+        } else {
+            LocaleListCompat.forLanguageTags(appLanguage.tag)
         }
 
         if (AppCompatDelegate.getApplicationLocales() != targetLocales) {

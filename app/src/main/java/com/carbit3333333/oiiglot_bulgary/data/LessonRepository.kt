@@ -1,6 +1,9 @@
 package com.carbit3333333.oiiglot_bulgary.data
 
 import android.content.Context
+import com.carbit3333333.oiiglot_bulgary.data.localization.DEFAULT_CONTENT_LANGUAGE_CODE
+import com.carbit3333333.oiiglot_bulgary.data.localization.resolveCurrentLanguageCode
+import com.carbit3333333.oiiglot_bulgary.model.TheoryBlock
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
 import com.carbit3333333.oiiglot_bulgary.model.theory.StructuredTheoryLessonAsset
 import com.carbit3333333.oiiglot_bulgary.model.theory.toStructuredTheoryBlocks
@@ -49,7 +52,10 @@ class LessonRepository(
             lessons.map { lesson ->
                 val structuredTheory = structuredTheoryByLessonId[lesson.id]?.blocks
                     ?: lesson.theory.toStructuredTheoryBlocks()
-                lesson.copy(structuredTheory = structuredTheory)
+                localizeLessonMetadata(
+                    lesson = lesson.copy(structuredTheory = structuredTheory),
+                    languageCode = resolveCurrentLanguageCode(appContext.resources),
+                )
             }
         }.getOrDefault(emptyList())
     }
@@ -72,25 +78,43 @@ class LessonRepository(
     }
 
     private fun localizedLessonsAssetFile(): String {
-        val language = appContext.resources.configuration.locales[0]
-            ?.language
-            ?.lowercase()
-
-        return when (language) {
-            "uk" -> LESSONS_UK_ASSET_FILE
-            else -> LESSONS_RU_ASSET_FILE
-        }
+        return resolveLocalizedAssetFile(
+            mapOf(
+                "ru" to LESSONS_RU_ASSET_FILE,
+                "uk" to LESSONS_UK_ASSET_FILE,
+            )
+        )
     }
 
     private fun localizedTheoryAssetFile(): String {
-        val language = appContext.resources.configuration.locales[0]
-            ?.language
-            ?.lowercase()
+        return resolveLocalizedAssetFile(
+            mapOf(
+                "ru" to THEORY_RU_ASSET_FILE,
+                "uk" to THEORY_UK_ASSET_FILE,
+            )
+        )
+    }
 
-        return when (language) {
-            "uk" -> THEORY_UK_ASSET_FILE
-            else -> THEORY_RU_ASSET_FILE
-        }
+    private fun resolveLocalizedAssetFile(assetFilesByLanguage: Map<String, String>): String {
+        val requestedLanguageCode = resolveCurrentLanguageCode(appContext.resources)
+        return assetFilesByLanguage[requestedLanguageCode]
+            ?: assetFilesByLanguage[requestedLanguageCode.substringBefore('-')]
+            ?: assetFilesByLanguage[DEFAULT_CONTENT_LANGUAGE_CODE]
+            ?: assetFilesByLanguage.values.first()
+    }
+
+    private fun localizeLessonMetadata(
+        lesson: Lesson,
+        languageCode: String,
+    ): Lesson {
+        val localizedMetadata = ENGLISH_LESSON_METADATA[lesson.id]
+            ?.takeIf { languageCode == "en" || languageCode.startsWith("en-") }
+            ?: return lesson
+
+        return lesson.copy(
+            title = localizedMetadata.title,
+            subtitle = localizedMetadata.subtitle,
+        )
     }
 
     private companion object {
@@ -98,5 +122,24 @@ class LessonRepository(
         const val LESSONS_UK_ASSET_FILE = "lessons_uk.json"
         const val THEORY_RU_ASSET_FILE = "lesson_theory_ru.json"
         const val THEORY_UK_ASSET_FILE = "lesson_theory_uk.json"
+
+        val ENGLISH_LESSON_METADATA = mapOf(
+            1 to LessonMetadata(title = "Lesson 1", subtitle = "Greetings and Introductions"),
+            2 to LessonMetadata(title = "Lesson 2", subtitle = "Food and Breakfast"),
+            3 to LessonMetadata(title = "Lesson 3", subtitle = "Restaurant"),
+            4 to LessonMetadata(title = "Lesson 4", subtitle = "Shopping at the Supermarket and Market"),
+            5 to LessonMetadata(title = "Lesson 5", subtitle = "City, Address and Directions"),
+            6 to LessonMetadata(title = "Lesson 6", subtitle = "Family"),
+            7 to LessonMetadata(title = "Lesson 7", subtitle = "Weather and Time"),
+            8 to LessonMetadata(title = "Lesson 8", subtitle = "Clothes and Colors"),
+            9 to LessonMetadata(title = "Lesson 9", subtitle = "Home and Furniture"),
+            10 to LessonMetadata(title = "Lesson 10", subtitle = "Transport"),
+            11 to LessonMetadata(title = "Lesson 11", subtitle = "Daily Routine"),
+        )
     }
 }
+
+private data class LessonMetadata(
+    val title: String,
+    val subtitle: String,
+)
