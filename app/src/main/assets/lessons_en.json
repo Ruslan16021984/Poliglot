@@ -1,0 +1,271 @@
+[
+  {
+    "id": 1,
+    "title": "Lesson 1",
+    "subtitle": "Greetings and Introductions",
+    "theory": [
+      {
+        "title": "Greetings",
+        "text": "At the beginning of a conversation, it is useful to know a few basic phrases.\n\nЗдравей. — Hi.\nЗдравейте. — Hello.\nДобро утро. — Good morning.\nДобър ден. — Good afternoon."
+      },
+      {
+        "title": "Introductions",
+        "text": "In Lesson 1 we learn how to introduce ourselves and ask about the other person.\n\nКак се казваш? — What is your name?\nАз съм Хасан. — I am Hasan.\nОткъде сте? — Where are you from?\nАз съм от Сирия. — I am from Syria."
+      },
+      {
+        "title": "Countries and Nationalities",
+        "text": "It is useful to know how to name a country, a nationality, and a profession.\n\nАз съм от България. — I am from Bulgaria.\nТя е българка. — She is Bulgarian.\nТой е бежанец. — He is a refugee.\nТя е учителка. — She is a teacher."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Lesson 2",
+    "subtitle": "Food and Breakfast",
+    "theory": [
+      {
+        "title": "Food and Drinks",
+        "text": "Lesson 2 introduces basic vocabulary for food and drinks.\n\nвода — water\nчай — tea\nкафе — coffee\nхляб — bread\nбаница — banitsa"
+      },
+      {
+        "title": "What Is This",
+        "text": "A simple pattern is used to name an object.\n\nКакво е това? — What is this?\nТова е баница. — This is banitsa.\nТова е хляб. — This is bread."
+      },
+      {
+        "title": "I Like and I Want",
+        "text": "With food and drinks it is useful to practise simple wishes and preferences right away.\n\nАз обичам кафе. — I like coffee.\nАз не искам сок. — I do not want juice.\nИскаш ли вода? — Do you want water?"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Lesson 3",
+    "subtitle": "Restaurant",
+    "theory": [
+      {
+        "title": "At the Restaurant",
+        "text": "This lesson teaches short phrases for being seated and placing an order.\n\nСвободно ли е? — Is it free?\nДа, заповядайте. — Yes, come in.\nНе, съжалявам, заето е. — No, sorry, it is occupied."
+      },
+      {
+        "title": "Ordering",
+        "text": "The main phrases in a restaurant are asking for a menu and ordering drinks or food.\n\nМоже ли едно меню? — Can I have a menu?\nЕдно кафе, моля. — One coffee, please.\nЕдин айрян, моля. — One ayran, please."
+      },
+      {
+        "title": "The Bill",
+        "text": "It is useful to know how to finish an order politely.\n\nНещо за ядене? — Something to eat?\nМоже ли една супа? — Can I have a soup?\nМоже ли сметката? — Can I have the bill?"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Lesson 4",
+    "subtitle": "Shopping at the Supermarket and Market",
+    "theory": [
+      {
+        "title": "Products",
+        "text": "This lesson expands shopping vocabulary.\n\nдомат — tomato\nкраставица — cucumber\nябълка — apple\nлимон — lemon\nпилешко месо — chicken meat"
+      },
+      {
+        "title": "Preferences",
+        "text": "Shopping phrases are easy to connect with the verbs we already know.\n\nКакви плодове обичате? — What fruit do you like?\nЯбълки и портокали. — Apples and oranges.\nКакво месо обичате? — What meat do you like?"
+      },
+      {
+        "title": "The Product You Need",
+        "text": "The learner should be able to name a specific product and say what they want to buy.\n\nИскам хляб. — I want bread.\nИскам вода. — I want water.\nОбичам чай. — I like tea."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Lesson 5",
+    "subtitle": "City, Address and Directions",
+    "theory": [
+      {
+        "title": "Places in the City",
+        "text": "This lesson introduces the main places in a city.\n\nаптека — pharmacy\nбанка — bank\nбиблиотека — library\nболница — hospital\nмузей — museum\nпоща — post office"
+      },
+      {
+        "title": "Where Is It Located",
+        "text": "To ask for directions or explain a place, you often need the definite form of a noun. In Bulgarian it is added to the end of the word.\n\nаптека → аптеката — pharmacy / the pharmacy\nбиблиотека → библиотеката — library / the library\nпарк → паркът — park / the park\nцентър → центъра — centre / the centre\nКъде е аптеката? — Where is the pharmacy?\nБиблиотеката е в центъра. — The library is in the centre.\nПаркът е до реката. — The park is by the river."
+      },
+      {
+        "title": "Endings -ta, -ut, -to, -te",
+        "text": "The ending depends on the gender and number of the word.\n\nFeminine nouns usually take -ta: apteka -> aptekata, ulitsa -> ulitsata, reka -> rekata.\n\nMasculine nouns often take -ut / -yat when the word is the main subject of the sentence: park -> parkut, hotel -> hotelut, tsentur -> tsenturut.\n\nAfter prepositions in simple phrases, we often see the short form -a / -ya.\n\nNeuter nouns take -to, and the plural takes -te: kino -> kinoto, myasto -> myastoto, magazini -> magazinite.\n\nв центъра — in the centre\nдо площада — next to the square\nдо хотела — next to the hotel"
+      },
+      {
+        "title": "Address and Landmarks",
+        "text": "It is also useful to know words for addresses and landmarks.\n\nЖивея на тази улица. — I live on this street.\nЖивея в този блок. — I live in this building block.\nХотелът е до площада. — The hotel is next to the square."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Lesson 6",
+    "subtitle": "Family",
+    "theory": [
+      {
+        "title": "Family Members",
+        "text": "In this lesson we name family members and talk about relatives.\n\nмайка — mother\nбаща — father\nбрат — brother\nсестра — sister\nдеца — children"
+      },
+      {
+        "title": "Do You Have a Family",
+        "text": "Short questions and answers with imam / nyamam are very useful.\n\nИмаш ли брат? — Do you have a brother?\nДа, имам. — Yes, I do.\nНе, нямам. — No, I do not."
+      },
+      {
+        "title": "Short Possessive Forms",
+        "text": "In Bulgarian, words such as my, your, his, and her often come after the noun in a short form.\n\nми — my / my / my\nти — your / your / your\nму — his\nѝ — her\nни — our / our / our\nви — your / your / your\nим — their\nТова е баба ми. — This is my grandmother.\nКъде е семейството ти? — Where is your family?\nЖена му е учителка. — His wife is a teacher.\nМъжът ѝ е лекар. — Her husband is a doctor.\nДецата ни са в България. — Our children are in Bulgaria.\nКак се казва синът ви? — What is your son's name?\nСинът им живее във Варна. — Their son lives in Varna."
+      },
+      {
+        "title": "Counting People: dvama, trima, chetirima",
+        "text": "Special counting forms are often used for men and mixed groups of people.\n\nдвама — two people / two men\nтрима — three people / three men\nчетирима — four people / four men\nИмам двама братя. — I have two brothers.\nИмам трима синове. — I have three sons.\nИмам четирима внуци. — I have four grandsons."
+      },
+      {
+        "title": "The Preposition na",
+        "text": "The preposition na is very common. In Lesson 6 it appears in two important patterns.\n\n1. Age: na + number + years\n\n2. Family relationship: who is related to whom.\n\nСинът ми е на десет години. — My son is ten years old.\nДъщеря ми е на осем години. — My daughter is eight years old.\nНа колко години си? — How old are you?\nСаид е съпруг на Латифа. — Said is Latifa's husband.\nЛатифа е съпруга на Саид. — Latifa is Said's wife.\nДжоана е внучка на Саид и Латифа. — Joana is the granddaughter of Said and Latifa."
+      },
+      {
+        "title": "Describing Relatives",
+        "text": "In this lesson we also describe people. The adjective changes with gender and number.\n\nхубав мъж — a handsome man\nхубава жена — a beautiful woman\nхубаво дете — a beautiful child\nхубави хора — beautiful people\nБрат ми е висок. — My brother is tall.\nМайка ми е ниска. — My mother is short.\nДядо ми е стар. — My grandfather is old.\nСестра ти е по-млада. — Your sister is younger."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Lesson 7",
+    "subtitle": "Weather and Time",
+    "theory": [
+      {
+        "title": "Weather",
+        "text": "Lesson 7 teaches how to describe the weather with simple ready-made phrases.\n\nДнес е топло. — It is warm today.\nДнес е студено. — It is cold today.\nВали дъжд. — It is raining.\nВали сняг. — It is snowing.\nДуха вятър. — It is windy."
+      },
+      {
+        "title": "Days, Months and Seasons",
+        "text": "For days of the week, the preposition v is usually used. If the next word also begins with v, the form vuv often appears.\n\nFor months, seasons, and a period within time, prez is often used.\n\nВ понеделник работя. — I work on Monday.\nВ сряда почивам. — I rest on Wednesday.\nВъв вторник уча. — I study on Tuesday.\nПрез март времето е хубаво. — The weather is nice in March.\nПрез зимата е студено. — It is cold in winter.\nПрез деня работя. — I work during the day."
+      },
+      {
+        "title": "From ... to ...",
+        "text": "The pattern ot ... do ... shows the beginning and the end of a time span.\n\nОт понеделник до петък работя. — I work from Monday to Friday.\nОт девет до пет работя. — I work from nine to five.\nОт сутрин до вечер уча. — I study from morning to evening.\nТемпературата е от пет до десет градуса. — The temperature is from five to ten degrees."
+      },
+      {
+        "title": "Do, Predi and Sled",
+        "text": "Do shows a limit: until what time something happens.\n\nPredi means before, and sled means after.\n\nДо утре. — Until tomorrow.\nДо обяд работя. — I work until noon.\nДо вечерта вали дъжд. — It rains until evening.\nПреди работа пия кафе. — I drink coffee before work.\nПреди дъжда има вятър. — There is wind before the rain.\nСлед урока отивам вкъщи. — I go home after the lesson.\nСлед дъжда има слънце. — There is sun after the rain."
+      },
+      {
+        "title": "Clock Time",
+        "text": "To ask the exact time, the fixed phrase Kolko e chasut? is used. Another common question is V kolko chasa ...?\n\nКолко е часът? — What time is it?\nСега е два часа. — It is two o'clock now.\nВ колко часа започва урокът? — What time does the lesson start?\nУрокът започва в осем часа. — The lesson starts at eight o'clock."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Lesson 8",
+    "subtitle": "Clothes and Colors",
+    "theory": [
+      {
+        "title": "This Item: tozi, tazi, tova, tezi",
+        "text": "The demonstrative word depends on gender and number.\n\nтози панталон, този пуловер — masculine gender\nтази риза, тази рокля — feminine gender\nтова яке, това палто — neuter gender\nтези обувки, тези чорапи — plural"
+      },
+      {
+        "title": "The Color Agrees with the Clothing Item",
+        "text": "The ending of the color changes together with the noun.\n\nThe same pattern is used with byal, cheren, cherven, zelen, zhult, and kafyav.\n\nсин панталон — blue trousers\nсиня риза — a blue shirt\nсиньо яке — a blue jacket\nсини обувки — blue shoes"
+      },
+      {
+        "title": "The Verb Nosya - To Wear",
+        "text": "Аз нося бяла риза. — I wear a white shirt.\nТи носиш черен панталон. — You wear black trousers.\nТой / тя носи син пуловер. — He / she wears a blue sweater.\nНие носим бели ризи. — We wear white shirts.\nВие носите черни панталони. — You wear black trousers.\nТе носят зелени пуловери. — They wear green sweaters."
+      },
+      {
+        "title": "How to Say Dressed",
+        "text": "The form oblechen agrees with the person.\n\nТой е облечен с черен панталон. — He is dressed in black trousers.\nТя е облечена с червена рокля. — She is dressed in a red dress.\nДетето е облечено с жълто яке. — The child is dressed in a yellow jacket.\nТе са облечени със сини якета. — They are dressed in blue jackets."
+      },
+      {
+        "title": "Specific Clothing: -iya, -ta, -to, -te",
+        "text": "When we speak about a specific item, the color takes a definite ending.\n\nИскам черния панталон. — I want the black trousers.\nИскам синята риза. — I want the blue shirt.\nИскам черното яке. — I want the black jacket.\nИскам белите обувки. — I want the white shoes."
+      },
+      {
+        "title": "Masculine: -iyat or -iya",
+        "text": "In the masculine form, the ending depends on the role in the sentence.\n\nThe same model: siniyat pulover / iskam siniya pulover.\n\nЧерният панталон е нов. — The trousers are the subject, so we use -iyat.\nИскам черния панталон. — The trousers are the object, so we use -iya."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Lesson 9",
+    "subtitle": "Home and Furniture",
+    "theory": [
+      {
+        "title": "Home, Rooms and Furniture",
+        "text": "къща — house; apartment; kitchen; bathroom; room; living room; bedroom; corridor\nмаса — table; chair; bed; sofa; wardrobe; lamp; carpet; shelf; mirror"
+      },
+      {
+        "title": "Comparison with po-",
+        "text": "Po- means more and is written with a hyphen. The adjective agrees with the noun in gender and number.\n\nКъщата е по-голяма. — The house is bigger.\nКоридорът е по-дълъг. — The corridor is longer.\nЛеглото е по-удобно. — The bed is more comfortable.\nСтаите са по-светли. — The rooms are brighter."
+      },
+      {
+        "title": "Comparing Two Things: po-... ot ...",
+        "text": "For direct comparison, the model po-... ot ... is used.\n\nКъщата е по-голяма от апартамента. — The house is bigger than the apartment.\nКухнята е по-светла от коридора. — The kitchen is brighter than the corridor.\nДиванът е по-удобен от стола. — The sofa is more comfortable than the chair."
+      },
+      {
+        "title": "Choosing among All with nay-",
+        "text": "Nay- means the most and is written with a hyphen.\n\nХолът е най-голям. — The living room is the biggest.\nСпалнята е най-тиха. — The bedroom is the quietest.\nЛеглото е най-удобно. — The bed is the most comfortable."
+      },
+      {
+        "title": "How to Ask Questions",
+        "text": "Кой диван е по-удобен? — Which sofa is more comfortable?\nКоя стая е най-светла? — Which room is the brightest?\nКое легло е по-голямо? — Which bed is bigger?\nКои стаи са най-тихи? — Which rooms are the quietest?"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Lesson 10",
+    "subtitle": "Transport",
+    "theory": [
+      {
+        "title": "Main Verbs of Movement",
+        "text": "In transport phrases it is important to distinguish the action.\n\nтръгва — departs, starts the trip\nзаминава — leaves\nспира — stops\nпристига — arrives\nпътувам — travel, go\nвръщам се — return\nАвтобусът тръгва. — The bus departs.\nВлакът заминава. — The train leaves.\nАвтобусът спира. — The bus stops.\nВлакът пристига. — The train arrives."
+      },
+      {
+        "title": "Where from and Where to: ot / za",
+        "text": "Ot shows the starting point: where the transport leaves from or where a person returns from.\n\nZa shows the direction of the route: where the transport or person is headed.\n\nA useful general model:\n\nАвтобусът тръгва от автогарата. — The bus leaves from the bus station.\nВлакът заминава от Пловдив. — The train leaves from Plovdiv.\nВръщам се от София. — I am returning from Sofia.\nАвтобусът тръгва за Сливен. — The bus leaves for Sliven.\nВлакът заминава за Варна. — The train leaves for Varna.\nПътувам за Германия. — I am travelling to Germany.\nПътувам от София за Варна. — I travel from Sofia to Varna."
+      },
+      {
+        "title": "Where It Stops or Arrives: v / na",
+        "text": "V is usually used with a city, a country, or a part of a city.\n\nNa is usually used with transport-related places: station, bus station, stop, airport.\n\nАвтобусът спира в центъра. — The bus stops in the centre.\nВлакът пристига в София. — The train arrives in Sofia.\nСамолетът пристига в България. — The plane arrives in Bulgaria.\nАвтобусът спира на автогарата. — The bus stops at the bus station.\nВлакът пристига на гарата. — The train arrives at the station.\nСамолетът пристига на летището. — The plane arrives at the airport."
+      },
+      {
+        "title": "By What Means of Transport: s / sus",
+        "text": "S shows what means of transport a person is using. Before some words, the form sus is used for easier pronunciation.\n\nIn one sentence you can combine transport and direction.\n\nQuestion about transport:\n\nПътувам с автобус. — I travel by bus.\nПътувам с влак. — I travel by train.\nПътувам със самолет. — I travel by plane.\nПътувам с автобус за Варна. — I travel by bus to Varna.\nС какво пътуваш? — How are you travelling?"
+      },
+      {
+        "title": "Returning: vrushtam se",
+        "text": "The verb vrushtam se is used with the particle se.\n\nOt shows where a person returns from.\n\nV shows where a person returns to.\n\nМустафа се връща от Враца. — Mustafa returns from Vratsa.\nТя се връща от гарата. — She returns from the station.\nМустафа се връща в Сирия. — Mustafa returns to Syria.\nВръщам се в България. — I return to Bulgaria.\nОткъде се връщаш? — Where are you returning from?\nКъде се връщаш? — Where are you returning to?"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Lesson 11",
+    "subtitle": "Daily Routine",
+    "theory": [
+      {
+        "title": "Morning and Basic Routine",
+        "text": "Lesson 11 brings together everyday actions and times of day.\n\nСутрин се събуждам рано. — I wake up early in the morning.\nСутрин ставам рано. — I get up early in the morning.\nСутрин се мия. — I wash in the morning.\nСутрин се къпя. — I bathe in the morning.\nСутрин се обличам. — I get dressed in the morning."
+      },
+      {
+        "title": "Work, Study and Home",
+        "text": "Verbs often go together with a time phrase: sutrin, denem, sledobed, vecher.\n\nСутрин излизам от вкъщи. — I leave home in the morning.\nСутрин влизам в офиса. — I go into the office in the morning.\nСлед закуска работя. — I work after breakfast.\nСлед работа уча. — I study after work.\nСлед работа се връщам вкъщи. — I return home after work."
+      },
+      {
+        "title": "Everyday Actions",
+        "text": "For an ordinary day, you need verbs such as do, take, give, sit down, cook, clean, and rest.\n\nСутрин правя закуска. — I make breakfast in the morning.\nНа обяд сядам на масата. — At lunch I sit down at the table.\nНа обяд вземам супа. — At lunch I take soup.\nНа обяд давам хляб. — At lunch I give bread.\nНа обяд готвя супа. — At lunch I cook soup."
+      },
+      {
+        "title": "Evening and Free Time",
+        "text": "In the evening we often describe simple actions at home and communication.\n\nВечер каня приятели. — In the evening I invite friends.\nВечер гледам филм. — In the evening I watch a film.\nВечер чета книга. — In the evening I read a book.\nВечер слушам музика. — In the evening I listen to music.\nВечер лягам рано. — In the evening I go to bed early.\nНощем спя добре. — At night I sleep well."
+      },
+      {
+        "title": "Communication and Questions",
+        "text": "Questions follow the familiar pattern with li or koga.\n\nPolite commands:\n\nЗа какво мислиш? — What are you thinking about?\nГовориш ли български? — Do you speak Bulgarian?\nЗвъниш ли на майка си? — Do you call your mother?\nСрещаш ли се с приятели? — Do you meet friends?\nВземете книгата. — Take the book.\nЧакайте тук. — Wait here."
+      }
+    ]
+  }
+]

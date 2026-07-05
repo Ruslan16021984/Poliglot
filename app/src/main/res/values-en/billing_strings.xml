@@ -1,0 +1,4 @@
+<resources>
+    <string name="settings_full_access_unavailable_title">Purchase is currently unavailable</string>
+    <string name="settings_full_access_unavailable_message">Google Play Billing could not be opened. Make sure the app is installed from Google Play and that the full access product has already been created in the Play Console.</string>
+</resources>

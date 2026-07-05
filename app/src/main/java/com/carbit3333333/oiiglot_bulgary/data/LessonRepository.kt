@@ -47,15 +47,14 @@ class LessonRepository(
     private fun loadLessonsFromAssets(localizedFile: String): List<Lesson> {
         return runCatching {
             val lessons = decodeAsset<List<Lesson>>(localizedFile)
-            val structuredTheoryByLessonId = loadStructuredTheory(localizedTheoryAssetFile())
+            val structuredTheoryByLessonId = localizedTheoryAssetFileOrNull()
+                ?.let(::loadStructuredTheory)
+                .orEmpty()
 
             lessons.map { lesson ->
                 val structuredTheory = structuredTheoryByLessonId[lesson.id]?.blocks
                     ?: lesson.theory.toStructuredTheoryBlocks()
-                localizeLessonMetadata(
-                    lesson = lesson.copy(structuredTheory = structuredTheory),
-                    languageCode = resolveCurrentLanguageCode(appContext.resources),
-                )
+                lesson.copy(structuredTheory = structuredTheory)
             }
         }.getOrDefault(emptyList())
     }
@@ -80,19 +79,21 @@ class LessonRepository(
     private fun localizedLessonsAssetFile(): String {
         return resolveLocalizedAssetFile(
             mapOf(
+                "en" to LESSONS_EN_ASSET_FILE,
                 "ru" to LESSONS_RU_ASSET_FILE,
                 "uk" to LESSONS_UK_ASSET_FILE,
             )
         )
     }
 
-    private fun localizedTheoryAssetFile(): String {
-        return resolveLocalizedAssetFile(
-            mapOf(
-                "ru" to THEORY_RU_ASSET_FILE,
-                "uk" to THEORY_UK_ASSET_FILE,
-            )
-        )
+    private fun localizedTheoryAssetFileOrNull(): String? {
+        val requestedLanguageCode = resolveCurrentLanguageCode(appContext.resources)
+
+        return when {
+            requestedLanguageCode == "ru" || requestedLanguageCode.startsWith("ru-") -> THEORY_RU_ASSET_FILE
+            requestedLanguageCode == "uk" || requestedLanguageCode.startsWith("uk-") -> THEORY_UK_ASSET_FILE
+            else -> null
+        }
     }
 
     private fun resolveLocalizedAssetFile(assetFilesByLanguage: Map<String, String>): String {
@@ -103,43 +104,11 @@ class LessonRepository(
             ?: assetFilesByLanguage.values.first()
     }
 
-    private fun localizeLessonMetadata(
-        lesson: Lesson,
-        languageCode: String,
-    ): Lesson {
-        val localizedMetadata = ENGLISH_LESSON_METADATA[lesson.id]
-            ?.takeIf { languageCode == "en" || languageCode.startsWith("en-") }
-            ?: return lesson
-
-        return lesson.copy(
-            title = localizedMetadata.title,
-            subtitle = localizedMetadata.subtitle,
-        )
-    }
-
     private companion object {
+        const val LESSONS_EN_ASSET_FILE = "lessons_en.json"
         const val LESSONS_RU_ASSET_FILE = "lessons_ru.json"
         const val LESSONS_UK_ASSET_FILE = "lessons_uk.json"
         const val THEORY_RU_ASSET_FILE = "lesson_theory_ru.json"
         const val THEORY_UK_ASSET_FILE = "lesson_theory_uk.json"
-
-        val ENGLISH_LESSON_METADATA = mapOf(
-            1 to LessonMetadata(title = "Lesson 1", subtitle = "Greetings and Introductions"),
-            2 to LessonMetadata(title = "Lesson 2", subtitle = "Food and Breakfast"),
-            3 to LessonMetadata(title = "Lesson 3", subtitle = "Restaurant"),
-            4 to LessonMetadata(title = "Lesson 4", subtitle = "Shopping at the Supermarket and Market"),
-            5 to LessonMetadata(title = "Lesson 5", subtitle = "City, Address and Directions"),
-            6 to LessonMetadata(title = "Lesson 6", subtitle = "Family"),
-            7 to LessonMetadata(title = "Lesson 7", subtitle = "Weather and Time"),
-            8 to LessonMetadata(title = "Lesson 8", subtitle = "Clothes and Colors"),
-            9 to LessonMetadata(title = "Lesson 9", subtitle = "Home and Furniture"),
-            10 to LessonMetadata(title = "Lesson 10", subtitle = "Transport"),
-            11 to LessonMetadata(title = "Lesson 11", subtitle = "Daily Routine"),
-        )
     }
 }
-
-private data class LessonMetadata(
-    val title: String,
-    val subtitle: String,
-)

@@ -35,18 +35,36 @@ internal data class TextbookLessonExerciseItemAsset(
             fallbackLanguageCode = fallbackLanguageCode,
         )
 
-        return localizedText ?: ru ?: uk ?: bg
+        if (localizedText != null) {
+            return localizedText
+        }
+
+        if (languageCode == "en" || languageCode.startsWith("en-")) {
+            ru?.let(::translateRussianExerciseTextToEnglish)?.let { return it }
+        }
+
+        return ru ?: uk ?: bg
     }
 
     fun resolveHint(
         languageCode: String,
         fallbackLanguageCode: String,
     ): String? {
-        return resolveLocalizedValue(
+        val localizedHint = resolveLocalizedValue(
             valuesByLanguage = hint + legacyHintTranslations(),
             requestedLanguageCode = languageCode,
             fallbackLanguageCode = fallbackLanguageCode,
-        ) ?: hintRu ?: hintUk
+        )
+
+        if (localizedHint != null) {
+            return localizedHint
+        }
+
+        if (languageCode == "en" || languageCode.startsWith("en-")) {
+            return null
+        }
+
+        return hintRu ?: hintUk
     }
 
     private fun legacySourceTranslations(): Map<String, String> {
