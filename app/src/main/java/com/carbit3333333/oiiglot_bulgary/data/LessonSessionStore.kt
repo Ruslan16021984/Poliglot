@@ -54,6 +54,8 @@ class LessonSessionStore(private val context: Context) {
             results = results.map { it.name },
             correctCount = correctCount,
             wrongCount = wrongCount,
+            retryUsedForCurrentExercise = retryUsedForCurrentExercise,
+            pendingRetryAfterWrong = pendingRetryAfterWrong,
             exercises = exercises.map {
                 SavedLessonExercise(
                     id = it.id,
@@ -110,6 +112,8 @@ class LessonSessionStore(private val context: Context) {
             correctCount = correctCount,
             wrongCount = wrongCount,
             currentResult = ExerciseResult.NONE,
+            retryUsedForCurrentExercise = retryUsedForCurrentExercise,
+            pendingRetryAfterWrong = pendingRetryAfterWrong,
             praiseText = null,
             isLessonFinished = false,
             lessonResult = null
@@ -117,7 +121,7 @@ class LessonSessionStore(private val context: Context) {
     }
 
     private companion object {
-        const val CURRENT_SESSION_VERSION = 2
+        const val CURRENT_SESSION_VERSION = 3
     }
 }
 
@@ -165,6 +169,8 @@ data class SavedLessonSession(
     val results: List<String>,
     val correctCount: Int,
     val wrongCount: Int,
+    val retryUsedForCurrentExercise: Boolean = false,
+    val pendingRetryAfterWrong: Boolean = false,
     val exercises: List<SavedLessonExercise>
 )
 

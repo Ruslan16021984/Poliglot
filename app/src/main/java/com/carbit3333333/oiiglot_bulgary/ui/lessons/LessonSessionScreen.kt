@@ -125,7 +125,10 @@ fun LessonSessionScreen(
 
         if (
             uiState.currentResult == ExerciseResult.CORRECT ||
-            uiState.currentResult == ExerciseResult.WRONG
+            (
+                uiState.currentResult == ExerciseResult.WRONG &&
+                    !uiState.pendingRetryAfterWrong
+                )
         ) {
             val correctText = currentExercise.correctAnswerWords.joinToString(" ")
             textToSpeech.speak(correctText)
@@ -292,6 +295,7 @@ fun LessonSessionScreenContent(
                         WrongAnswerBlock(
                             selectedText = uiState.selectedWords.joinToString(" "),
                             correctText = currentExercise.correctAnswerWords.joinToString(" "),
+                            showCorrectAnswer = !uiState.pendingRetryAfterWrong,
                             onSpeakClick = onSpeakClick
                         )
                     }
@@ -342,7 +346,13 @@ fun LessonSessionScreenContent(
 
                             ExerciseResult.WRONG -> {
                                 Text(
-                                    text = stringResource(R.string.lesson_session_wrong_continue),
+                                    text = stringResource(
+                                        if (uiState.pendingRetryAfterWrong) {
+                                            R.string.lesson_session_wrong_retry
+                                        } else {
+                                            R.string.lesson_session_wrong_continue
+                                        }
+                                    ),
                                     style = MaterialTheme.typography.bodyLarge,
                                     color = palette.bodyText,
                                     modifier = Modifier.padding(horizontal = 24.dp)
@@ -539,6 +549,7 @@ private fun InstructionBlock(
 private fun WrongAnswerBlock(
     selectedText: String,
     correctText: String,
+    showCorrectAnswer: Boolean,
     onSpeakClick: (String) -> Unit
 ) {
     val colorScheme = MaterialTheme.colorScheme
@@ -557,28 +568,30 @@ private fun WrongAnswerBlock(
             )
         }
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(palette.instructionSurface)
-                .padding(horizontal = 16.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = correctText,
-                color = palette.instructionText,
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.weight(1f)
-            )
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            IconButton(onClick = { onSpeakClick(correctText) }) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.VolumeUp,
-                    contentDescription = stringResource(R.string.common_listen),
-                    tint = palette.instructionText,
+        if (showCorrectAnswer) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(palette.instructionSurface)
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = correctText,
+                    color = palette.instructionText,
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.weight(1f)
                 )
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                IconButton(onClick = { onSpeakClick(correctText) }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.VolumeUp,
+                        contentDescription = stringResource(R.string.common_listen),
+                        tint = palette.instructionText,
+                    )
+                }
             }
         }
     }

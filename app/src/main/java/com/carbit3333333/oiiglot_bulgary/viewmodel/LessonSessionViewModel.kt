@@ -181,12 +181,16 @@ class LessonSessionViewModel(
         val newResults = state.results.toMutableList()
 
         if (isCorrect) {
-            newResults[state.currentExerciseIndex] = ExerciseResult.CORRECT
+            val alreadyMissedThisExercise = state.retryUsedForCurrentExercise
+            if (!alreadyMissedThisExercise) {
+                newResults[state.currentExerciseIndex] = ExerciseResult.CORRECT
+            }
 
             _uiState.value = state.copy(
                 results = newResults,
                 currentResult = ExerciseResult.CORRECT,
-                correctCount = state.correctCount + 1,
+                correctCount = if (alreadyMissedThisExercise) state.correctCount else state.correctCount + 1,
+                pendingRetryAfterWrong = false,
                 praiseText = resources.getString(praises.random())
             )
             saveCurrentSession()
@@ -201,7 +205,9 @@ class LessonSessionViewModel(
             _uiState.value = state.copy(
                 results = newResults,
                 currentResult = ExerciseResult.WRONG,
-                wrongCount = state.wrongCount + 1
+                wrongCount = if (state.retryUsedForCurrentExercise) state.wrongCount else state.wrongCount + 1,
+                retryUsedForCurrentExercise = true,
+                pendingRetryAfterWrong = !state.retryUsedForCurrentExercise
             )
             saveCurrentSession()
         }
@@ -210,6 +216,18 @@ class LessonSessionViewModel(
     fun onWrongAnswerScreenTap() {
         val state = _uiState.value
         if (state.currentResult != ExerciseResult.WRONG) return
+
+        if (state.pendingRetryAfterWrong) {
+            _uiState.value = state.copy(
+                selectedWords = emptyList(),
+                currentResult = ExerciseResult.NONE,
+                pendingRetryAfterWrong = false,
+                praiseText = null
+            )
+            saveCurrentSession()
+            return
+        }
+
         moveToNextExercise()
     }
 
@@ -249,6 +267,8 @@ class LessonSessionViewModel(
             _uiState.value = state.copy(
                 selectedWords = emptyList(),
                 currentResult = ExerciseResult.NONE,
+                retryUsedForCurrentExercise = false,
+                pendingRetryAfterWrong = false,
                 praiseText = null,
                 isLessonFinished = true,
                 lessonResult = lessonResult
@@ -268,6 +288,8 @@ class LessonSessionViewModel(
                 currentExerciseIndex = nextIndex,
                 selectedWords = emptyList(),
                 currentResult = ExerciseResult.NONE,
+                retryUsedForCurrentExercise = false,
+                pendingRetryAfterWrong = false,
                 praiseText = null
             )
             saveCurrentSession()

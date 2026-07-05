@@ -13,6 +13,8 @@ data class LessonSessionUiState(
     val correctCount: Int = 0,
     val wrongCount: Int = 0,
     val currentResult: ExerciseResult = ExerciseResult.NONE,
+    val retryUsedForCurrentExercise: Boolean = false,
+    val pendingRetryAfterWrong: Boolean = false,
     val praiseText: String? = null,
     val isLessonFinished: Boolean = false,
     val lessonResult: LessonResult? = null

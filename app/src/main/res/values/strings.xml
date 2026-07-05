@@ -181,4 +181,5 @@
     <string name="lessons_locked_dialog_title">Урок пока закрыт</string>
     <string name="lessons_locked_dialog_message">Пройдите предыдущий урок не ниже чем на 4.5 балла или откройте полный доступ в настройках.</string>
     <string name="lessons_locked_dialog_open_settings">К настройкам</string>
+    <string name="lesson_session_wrong_retry">Неверно. Нажмите на экран и попробуйте ещё раз.</string>
 </resources>
