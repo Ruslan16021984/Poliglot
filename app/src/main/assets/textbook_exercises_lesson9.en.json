@@ -1,0 +1,507 @@
+{
+  "lessonApp": 9,
+  "languageCode": "en",
+  "title": "Home and Furniture",
+  "items": [
+    {
+      "id": "l9_t_001",
+      "sourceText": "This is a house.",
+      "hint": "A short phrase about housing."
+    },
+    {
+      "id": "l9_t_002",
+      "sourceText": "This is an apartment.",
+      "hint": "A short phrase about housing."
+    },
+    {
+      "id": "l9_t_003",
+      "sourceText": "This is a kitchen.",
+      "hint": "The name of a room."
+    },
+    {
+      "id": "l9_t_004",
+      "sourceText": "This is a bathroom.",
+      "hint": "The name of a room."
+    },
+    {
+      "id": "l9_t_005",
+      "sourceText": "This is a room.",
+      "hint": "The name of a room."
+    },
+    {
+      "id": "l9_t_006",
+      "sourceText": "This is a table.",
+      "hint": "A short phrase with furniture."
+    },
+    {
+      "id": "l9_t_007",
+      "sourceText": "This is a chair.",
+      "hint": "A short phrase with furniture."
+    },
+    {
+      "id": "l9_t_008",
+      "sourceText": "This is a bed.",
+      "hint": "A short phrase with furniture."
+    },
+    {
+      "id": "l9_t_009",
+      "sourceText": "This is a sofa.",
+      "hint": "A short phrase with furniture."
+    },
+    {
+      "id": "l9_t_010",
+      "sourceText": "This is a wardrobe.",
+      "hint": "A short phrase with furniture."
+    },
+    {
+      "id": "l9_t_011",
+      "sourceText": "The house is big.",
+      "hint": "A phrase with an adjective."
+    },
+    {
+      "id": "l9_t_012",
+      "sourceText": "The room is small.",
+      "hint": "A phrase with an adjective."
+    },
+    {
+      "id": "l9_t_013",
+      "sourceText": "Is this a kitchen?",
+      "hint": "A question with “Is this ...?”."
+    },
+    {
+      "id": "l9_t_014",
+      "sourceText": "Is this a table?",
+      "hint": "A question about furniture."
+    },
+    {
+      "id": "l9_t_015",
+      "sourceText": "Is the house big?",
+      "hint": "A question about size."
+    },
+    {
+      "id": "l9_t_016",
+      "sourceText": "The table is in the kitchen.",
+      "hint": "A phrase with location."
+    },
+    {
+      "id": "l9_t_017",
+      "sourceText": "The bed is in the room.",
+      "hint": "A phrase with location."
+    },
+    {
+      "id": "l9_t_018",
+      "sourceText": "The sofa is in the living room.",
+      "hint": "A phrase with location."
+    },
+    {
+      "id": "l9_t_019",
+      "sourceText": "These are rooms.",
+      "hint": "Plural form."
+    },
+    {
+      "id": "l9_t_020",
+      "sourceText": "These are chairs.",
+      "hint": "Plural form of furniture."
+    },
+    {
+      "id": "l9_t_021",
+      "sourceText": "This is a bedroom.",
+      "hint": "A short phrase about a room."
+    },
+    {
+      "id": "l9_t_022",
+      "sourceText": "This is a living room.",
+      "hint": "A short phrase about a room."
+    },
+    {
+      "id": "l9_t_023",
+      "sourceText": "This is a corridor.",
+      "hint": "A short phrase about a room."
+    },
+    {
+      "id": "l9_t_024",
+      "sourceText": "This is a lamp.",
+      "hint": "A short phrase about furniture."
+    },
+    {
+      "id": "l9_t_025",
+      "sourceText": "This is a carpet.",
+      "hint": "A short phrase about furniture."
+    },
+    {
+      "id": "l9_t_026",
+      "sourceText": "This is a shelf.",
+      "hint": "A short phrase about furniture."
+    },
+    {
+      "id": "l9_t_027",
+      "sourceText": "This is a mirror.",
+      "hint": "A short phrase about furniture."
+    },
+    {
+      "id": "l9_t_028",
+      "sourceText": "The bed is in the bedroom.",
+      "hint": "A phrase about the location of an object."
+    },
+    {
+      "id": "l9_t_029",
+      "sourceText": "The sofa is in the bedroom.",
+      "hint": "A phrase about the location of an object."
+    },
+    {
+      "id": "l9_t_030",
+      "sourceText": "The lamp is on the table.",
+      "hint": "A phrase about the location of an object."
+    },
+    {
+      "id": "l9_t_031",
+      "sourceText": "The chair is next to the table.",
+      "hint": "A phrase about the location of an object."
+    },
+    {
+      "id": "l9_t_032",
+      "sourceText": "The carpet is under the table.",
+      "hint": "A phrase about the location of an object."
+    },
+    {
+      "id": "l9_t_033",
+      "sourceText": "Is this a living room?",
+      "hint": "A question about a room."
+    },
+    {
+      "id": "l9_t_034",
+      "sourceText": "Is this a bedroom?",
+      "hint": "A question about a room."
+    },
+    {
+      "id": "l9_t_035",
+      "sourceText": "Is this a lamp?",
+      "hint": "A question about furniture."
+    },
+    {
+      "id": "l9_t_036",
+      "sourceText": "Is this a bed?",
+      "hint": "A question about furniture."
+    },
+    {
+      "id": "l9_t_037",
+      "sourceText": "Where is the sofa?",
+      "hint": "A question about the location of an object."
+    },
+    {
+      "id": "l9_t_038",
+      "sourceText": "Where is the lamp?",
+      "hint": "A question about the location of an object."
+    },
+    {
+      "id": "l9_t_039",
+      "sourceText": "Where is the table?",
+      "hint": "A question about the location of an object."
+    },
+    {
+      "id": "l9_t_040",
+      "sourceText": "The house is bright.",
+      "hint": "A phrase about a house."
+    },
+    {
+      "id": "l9_t_041",
+      "sourceText": "The apartment is small.",
+      "hint": "A phrase about a house."
+    },
+    {
+      "id": "l9_t_042",
+      "sourceText": "The room is bright.",
+      "hint": "A phrase about a room."
+    },
+    {
+      "id": "l9_t_043",
+      "sourceText": "The room is dark.",
+      "hint": "A phrase about a room."
+    },
+    {
+      "id": "l9_t_044",
+      "sourceText": "Is the house bright?",
+      "hint": "A question about a house."
+    },
+    {
+      "id": "l9_t_045",
+      "sourceText": "Is the apartment small?",
+      "hint": "A question about a house."
+    },
+    {
+      "id": "l9_t_046",
+      "sourceText": "There are two rooms in the house.",
+      "hint": "A phrase about the number of rooms."
+    },
+    {
+      "id": "l9_t_047",
+      "sourceText": "There is a kitchen and a bathroom in the apartment.",
+      "hint": "A phrase about rooms."
+    },
+    {
+      "id": "l9_t_048",
+      "sourceText": "How many rooms are there?",
+      "hint": "A question about quantity."
+    },
+    {
+      "id": "l9_t_049",
+      "sourceText": "There are three rooms.",
+      "hint": "An answer about quantity."
+    },
+    {
+      "id": "l9_t_050",
+      "sourceText": "The house is bigger than the apartment.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_051",
+      "sourceText": "The apartment is smaller than the house.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_052",
+      "sourceText": "The kitchen is brighter than the corridor.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_053",
+      "sourceText": "The bathroom is smaller than the kitchen.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_054",
+      "sourceText": "The living room is bigger than the bedroom.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_055",
+      "sourceText": "The bedroom is quieter than the living room.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_056",
+      "sourceText": "The corridor is longer than the room.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_057",
+      "sourceText": "The room is brighter than the corridor.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_058",
+      "sourceText": "The table is bigger than the chair.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_059",
+      "sourceText": "The chair is smaller than the table.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_060",
+      "sourceText": "The bed is bigger than the sofa.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_061",
+      "sourceText": "The sofa is more comfortable than the chair.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_062",
+      "sourceText": "The wardrobe is bigger than the shelf.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_063",
+      "sourceText": "The shelf is smaller than the wardrobe.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_064",
+      "sourceText": "The lamp is brighter than the corridor.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_065",
+      "sourceText": "The carpet is newer than the table.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_066",
+      "sourceText": "The mirror is newer than the wardrobe.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_067",
+      "sourceText": "The house is the biggest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_068",
+      "sourceText": "The apartment is the smallest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_069",
+      "sourceText": "The kitchen is the brightest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_070",
+      "sourceText": "The bathroom is the smallest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_071",
+      "sourceText": "The living room is the biggest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_072",
+      "sourceText": "The bedroom is the quietest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_073",
+      "sourceText": "The corridor is the longest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_074",
+      "sourceText": "The room is the brightest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_075",
+      "sourceText": "The table is the biggest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_076",
+      "sourceText": "The chair is the smallest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_077",
+      "sourceText": "The bed is the biggest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_078",
+      "sourceText": "The sofa is the most comfortable.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_079",
+      "sourceText": "The wardrobe is the biggest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_080",
+      "sourceText": "The lamp is the brightest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_081",
+      "sourceText": "The carpet is the newest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_082",
+      "sourceText": "The shelf is the smallest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_083",
+      "sourceText": "The mirror is the newest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_084",
+      "sourceText": "Which room is bigger?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_085",
+      "sourceText": "Which room is the brightest?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_086",
+      "sourceText": "Which apartment is bigger?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_087",
+      "sourceText": "Which house is the biggest?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_088",
+      "sourceText": "Which bed is more comfortable?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_089",
+      "sourceText": "Which sofa is the most comfortable?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_090",
+      "sourceText": "Which wardrobe is bigger?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_091",
+      "sourceText": "Which shelf is the smallest?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_092",
+      "sourceText": "Which mirror is newer?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_093",
+      "sourceText": "Which lamp is the brightest?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_094",
+      "sourceText": "Which carpet is newer?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_095",
+      "sourceText": "Which corridor is the longest?",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_096",
+      "sourceText": "The living room is brighter.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_097",
+      "sourceText": "The bedroom is quieter.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_098",
+      "sourceText": "This sofa is more comfortable.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_099",
+      "sourceText": "This mirror is the newest.",
+      "hint": "A comparison about home and furniture."
+    },
+    {
+      "id": "l9_t_100",
+      "sourceText": "Which room is the quietest?",
+      "hint": "A comparison about home and furniture."
+    }
+  ]
+}

@@ -39,10 +39,6 @@ internal data class TextbookLessonExerciseItemAsset(
             return localizedText
         }
 
-        if (languageCode == "en" || languageCode.startsWith("en-")) {
-            ru?.let(::translateRussianExerciseTextToEnglish)?.let { return it }
-        }
-
         return ru ?: uk ?: bg
     }
 
@@ -58,10 +54,6 @@ internal data class TextbookLessonExerciseItemAsset(
 
         if (localizedHint != null) {
             return localizedHint
-        }
-
-        if (languageCode == "en" || languageCode.startsWith("en-")) {
-            return null
         }
 
         return hintRu ?: hintUk
@@ -111,6 +103,21 @@ internal data class TextbookLessonExerciseSetAsset(
     }
 }
 
+@Serializable
+internal data class TextbookLessonExerciseTranslationEntryAsset(
+    val id: String,
+    val sourceText: String,
+    val hint: String? = null,
+)
+
+@Serializable
+internal data class TextbookLessonExerciseTranslationAsset(
+    val lessonApp: Int,
+    val languageCode: String,
+    val title: String? = null,
+    val items: List<TextbookLessonExerciseTranslationEntryAsset>,
+)
+
 internal class TextbookLessonExercisesRepository private constructor(
     private val assetReader: (String) -> String?,
 ) {
@@ -137,12 +144,60 @@ internal class TextbookLessonExercisesRepository private constructor(
         ignoreUnknownKeys = true
     }
 
-    fun loadForLesson(lessonId: Int): TextbookLessonExerciseSetAsset? {
+    fun loadForLesson(
+        lessonId: Int,
+        languageCode: String,
+    ): TextbookLessonExerciseSetAsset? {
+        val baseAsset = loadBaseLesson(lessonId) ?: return null
+        val normalizedLanguageCode = languageCode.lowercase()
+        val overlay = loadTranslationOverlay(
+            lessonId = lessonId,
+            languageCode = normalizedLanguageCode,
+        ) ?: return baseAsset
+
+        return baseAsset.mergeTranslationOverlay(overlay)
+    }
+
+    private fun loadBaseLesson(lessonId: Int): TextbookLessonExerciseSetAsset? {
         val fileName = "textbook_exercises_lesson$lessonId.json"
         val text = assetReader(fileName) ?: return null
         return runCatching {
             json.decodeFromString<TextbookLessonExerciseSetAsset>(text)
         }.getOrNull()
+    }
+
+    private fun loadTranslationOverlay(
+        lessonId: Int,
+        languageCode: String,
+    ): TextbookLessonExerciseTranslationAsset? {
+        val fileName = "textbook_exercises_lesson$lessonId.$languageCode.json"
+        val text = assetReader(fileName) ?: return null
+        val overlay = runCatching {
+            json.decodeFromString<TextbookLessonExerciseTranslationAsset>(text)
+        }.getOrNull() ?: return null
+
+        return overlay.takeIf { it.lessonApp == lessonId && it.languageCode.lowercase() == languageCode }
+    }
+
+    private fun TextbookLessonExerciseSetAsset.mergeTranslationOverlay(
+        overlay: TextbookLessonExerciseTranslationAsset,
+    ): TextbookLessonExerciseSetAsset {
+        val overlayById = overlay.items.associateBy { it.id }
+
+        return copy(
+            titleTranslations = overlay.title
+                ?.let { titleTranslations + (overlay.languageCode to it) }
+                ?: titleTranslations,
+            items = items.map { item ->
+                val translation = overlayById[item.id] ?: return@map item
+                item.copy(
+                    source = item.source + (overlay.languageCode to translation.sourceText),
+                    hint = translation.hint
+                        ?.let { item.hint + (overlay.languageCode to it) }
+                        ?: item.hint,
+                )
+            },
+        )
     }
 
     private companion object {

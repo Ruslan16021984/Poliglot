@@ -1,0 +1,257 @@
+{
+  "lessonApp": 1,
+  "languageCode": "en",
+  "title": "Greetings and Introductions",
+  "items": [
+    {
+      "id": "l1_t_001",
+      "sourceText": "Hello, I am Hasan.",
+      "hint": "A simple greeting and introduction."
+    },
+    {
+      "id": "l1_t_002",
+      "sourceText": "Nice to meet you.",
+      "hint": "A polite phrase for meeting someone."
+    },
+    {
+      "id": "l1_t_003",
+      "sourceText": "Where are you from?",
+      "hint": "A short question about origin."
+    },
+    {
+      "id": "l1_t_004",
+      "sourceText": "I am from Bulgaria.",
+      "hint": "I + be + from a country."
+    },
+    {
+      "id": "l1_t_005",
+      "sourceText": "I am from Syria.",
+      "hint": "An answer about a country."
+    },
+    {
+      "id": "l1_t_006",
+      "sourceText": "I am Bulgarian.",
+      "hint": "I + nationality."
+    },
+    {
+      "id": "l1_t_007",
+      "sourceText": "She is Bulgarian.",
+      "hint": "She + be + nationality."
+    },
+    {
+      "id": "l1_t_008",
+      "sourceText": "I am a refugee.",
+      "hint": "I + status."
+    },
+    {
+      "id": "l1_t_009",
+      "sourceText": "He is a teacher.",
+      "hint": "He + be + profession."
+    },
+    {
+      "id": "l1_t_010",
+      "sourceText": "She is a teacher.",
+      "hint": "She + be + profession."
+    },
+    {
+      "id": "l1_t_011",
+      "sourceText": "How are you?",
+      "hint": "A polite question."
+    },
+    {
+      "id": "l1_t_012",
+      "sourceText": "Fine, thank you.",
+      "hint": "A short answer to the question “How are you?”"
+    },
+    {
+      "id": "l1_t_013",
+      "sourceText": "Are you Bulgarian?",
+      "hint": "A question with li."
+    },
+    {
+      "id": "l1_t_014",
+      "sourceText": "No, I am Syrian.",
+      "hint": "A negative answer with nationality."
+    },
+    {
+      "id": "l1_t_015",
+      "sourceText": "We are from Ukraine.",
+      "hint": "We + be + from a country."
+    },
+    {
+      "id": "l1_t_016",
+      "sourceText": "You are refugees.",
+      "hint": "You + be + status in the plural."
+    },
+    {
+      "id": "l1_t_017",
+      "sourceText": "They are teachers.",
+      "hint": "They + be + profession in the plural."
+    },
+    {
+      "id": "l1_t_018",
+      "sourceText": "Where are you from?",
+      "hint": "A full polite question."
+    },
+    {
+      "id": "l1_t_019",
+      "sourceText": "I am a refugee from Syria.",
+      "hint": "Status + country of origin."
+    },
+    {
+      "id": "l1_t_020",
+      "sourceText": "Goodbye!",
+      "hint": "A farewell phrase."
+    },
+    {
+      "id": "l1_t_021",
+      "sourceText": "Hi!",
+      "hint": "An informal greeting."
+    },
+    {
+      "id": "l1_t_022",
+      "sourceText": "Good morning!",
+      "hint": "A morning greeting."
+    },
+    {
+      "id": "l1_t_023",
+      "sourceText": "Good afternoon!",
+      "hint": "An afternoon greeting."
+    },
+    {
+      "id": "l1_t_024",
+      "sourceText": "Good evening!",
+      "hint": "An evening greeting."
+    },
+    {
+      "id": "l1_t_025",
+      "sourceText": "How are you?",
+      "hint": "An informal question about how someone feels."
+    },
+    {
+      "id": "l1_t_026",
+      "sourceText": "Wonderful, thank you.",
+      "hint": "A positive answer about how someone feels."
+    },
+    {
+      "id": "l1_t_027",
+      "sourceText": "I am a teacher.",
+      "hint": "I + be + profession."
+    },
+    {
+      "id": "l1_t_028",
+      "sourceText": "I am a teacher.",
+      "hint": "I + be + profession."
+    },
+    {
+      "id": "l1_t_029",
+      "sourceText": "She is a refugee.",
+      "hint": "She + be + status."
+    },
+    {
+      "id": "l1_t_030",
+      "sourceText": "He is a refugee.",
+      "hint": "He + be + status."
+    },
+    {
+      "id": "l1_t_031",
+      "sourceText": "You are from Bulgaria.",
+      "hint": "You + be + from a country."
+    },
+    {
+      "id": "l1_t_032",
+      "sourceText": "You are from Syria.",
+      "hint": "You + be + from a country."
+    },
+    {
+      "id": "l1_t_033",
+      "sourceText": "They are from Bulgaria.",
+      "hint": "They + be + from a country."
+    },
+    {
+      "id": "l1_t_034",
+      "sourceText": "They are from Syria.",
+      "hint": "They + be + from a country."
+    },
+    {
+      "id": "l1_t_035",
+      "sourceText": "You are teachers.",
+      "hint": "You + be + profession in the plural."
+    },
+    {
+      "id": "l1_t_036",
+      "sourceText": "We are teachers.",
+      "hint": "We + be + profession in the plural."
+    },
+    {
+      "id": "l1_t_037",
+      "sourceText": "We are refugees.",
+      "hint": "We + be + status in the plural."
+    },
+    {
+      "id": "l1_t_038",
+      "sourceText": "They are refugees.",
+      "hint": "They + be + status in the plural."
+    },
+    {
+      "id": "l1_t_039",
+      "sourceText": "He is Syrian.",
+      "hint": "He + be + nationality."
+    },
+    {
+      "id": "l1_t_040",
+      "sourceText": "He is Iranian.",
+      "hint": "He + be + nationality."
+    },
+    {
+      "id": "l1_t_041",
+      "sourceText": "Are you a teacher?",
+      "hint": "A question about profession with li."
+    },
+    {
+      "id": "l1_t_042",
+      "sourceText": "Is she a teacher?",
+      "hint": "A question about profession with li."
+    },
+    {
+      "id": "l1_t_043",
+      "sourceText": "Is he Bulgarian?",
+      "hint": "A question about nationality with li."
+    },
+    {
+      "id": "l1_t_044",
+      "sourceText": "Is she Bulgarian?",
+      "hint": "A question about nationality with li."
+    },
+    {
+      "id": "l1_t_045",
+      "sourceText": "Are you from Bulgaria?",
+      "hint": "A question about country of origin with li."
+    },
+    {
+      "id": "l1_t_046",
+      "sourceText": "Are you from Syria?",
+      "hint": "A question about country of origin with li."
+    },
+    {
+      "id": "l1_t_047",
+      "sourceText": "Yes, I am from Bulgaria.",
+      "hint": "A short positive answer about a country."
+    },
+    {
+      "id": "l1_t_048",
+      "sourceText": "No, I am from Syria.",
+      "hint": "A short negative answer about a country."
+    },
+    {
+      "id": "l1_t_049",
+      "sourceText": "We are refugees from Syria.",
+      "hint": "Plural form: status + country."
+    },
+    {
+      "id": "l1_t_050",
+      "sourceText": "They are teachers from Bulgaria.",
+      "hint": "Plural form: profession + country."
+    }
+  ]
+}

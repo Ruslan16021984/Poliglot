@@ -1,0 +1,257 @@
+{
+  "lessonApp": 2,
+  "languageCode": "en",
+  "title": "Food and Breakfast",
+  "items": [
+    {
+      "id": "l2_t_001",
+      "sourceText": "What is this?",
+      "hint": "A short question about an object."
+    },
+    {
+      "id": "l2_t_002",
+      "sourceText": "This is banitsa.",
+      "hint": "This is + food."
+    },
+    {
+      "id": "l2_t_003",
+      "sourceText": "I like coffee.",
+      "hint": "I + like + a drink."
+    },
+    {
+      "id": "l2_t_004",
+      "sourceText": "I do not like tea.",
+      "hint": "Negation with food or a drink."
+    },
+    {
+      "id": "l2_t_005",
+      "sourceText": "You like water.",
+      "hint": "You + like + a drink."
+    },
+    {
+      "id": "l2_t_006",
+      "sourceText": "You do not like milk.",
+      "hint": "Negation with a dairy product."
+    },
+    {
+      "id": "l2_t_007",
+      "sourceText": "He likes juice.",
+      "hint": "He + likes + a drink."
+    },
+    {
+      "id": "l2_t_008",
+      "sourceText": "He does not like cappuccino.",
+      "hint": "Negation with a drink."
+    },
+    {
+      "id": "l2_t_009",
+      "sourceText": "She likes butter.",
+      "hint": "She + likes + a product."
+    },
+    {
+      "id": "l2_t_010",
+      "sourceText": "She does not like cheese.",
+      "hint": "Negation with a dairy product."
+    },
+    {
+      "id": "l2_t_011",
+      "sourceText": "It likes yogurt.",
+      "hint": "It + likes + a dairy product."
+    },
+    {
+      "id": "l2_t_012",
+      "sourceText": "It does not like salami.",
+      "hint": "Negation with food."
+    },
+    {
+      "id": "l2_t_013",
+      "sourceText": "We like banitsa.",
+      "hint": "We + like + food."
+    },
+    {
+      "id": "l2_t_014",
+      "sourceText": "We do not like kashkaval.",
+      "hint": ""
+    },
+    {
+      "id": "l2_t_015",
+      "sourceText": "You like bread.",
+      "hint": "You + like + food."
+    },
+    {
+      "id": "l2_t_016",
+      "sourceText": "You do not like pizza.",
+      "hint": "You + do not like + food."
+    },
+    {
+      "id": "l2_t_017",
+      "sourceText": "They like honey.",
+      "hint": "They + like + food."
+    },
+    {
+      "id": "l2_t_018",
+      "sourceText": "They do not like sugar.",
+      "hint": "They + do not like + food."
+    },
+    {
+      "id": "l2_t_019",
+      "sourceText": "I want water.",
+      "hint": "I + want + a drink."
+    },
+    {
+      "id": "l2_t_020",
+      "sourceText": "Do you want water?",
+      "hint": "A question about wanting something with li."
+    },
+    {
+      "id": "l2_t_021",
+      "sourceText": "This is bread.",
+      "hint": "This is + food."
+    },
+    {
+      "id": "l2_t_022",
+      "sourceText": "This is tea.",
+      "hint": "This is + a drink."
+    },
+    {
+      "id": "l2_t_023",
+      "sourceText": "This is juice.",
+      "hint": "This is + a drink."
+    },
+    {
+      "id": "l2_t_024",
+      "sourceText": "This is an egg.",
+      "hint": "This is + food."
+    },
+    {
+      "id": "l2_t_025",
+      "sourceText": "This is cheese.",
+      "hint": "This is + a dairy product."
+    },
+    {
+      "id": "l2_t_026",
+      "sourceText": "This is kashkaval.",
+      "hint": "This is + a dairy product."
+    },
+    {
+      "id": "l2_t_027",
+      "sourceText": "This is butter.",
+      "hint": "This is + food."
+    },
+    {
+      "id": "l2_t_028",
+      "sourceText": "This is honey.",
+      "hint": "This is + something sweet."
+    },
+    {
+      "id": "l2_t_029",
+      "sourceText": "This is sugar.",
+      "hint": "This is + something sweet."
+    },
+    {
+      "id": "l2_t_030",
+      "sourceText": "This is a sandwich.",
+      "hint": "This is + food."
+    },
+    {
+      "id": "l2_t_031",
+      "sourceText": "This is pizza.",
+      "hint": "This is + food."
+    },
+    {
+      "id": "l2_t_032",
+      "sourceText": "This is a doner.",
+      "hint": "This is + food."
+    },
+    {
+      "id": "l2_t_033",
+      "sourceText": "This is a croissant.",
+      "hint": "This is + pastry."
+    },
+    {
+      "id": "l2_t_034",
+      "sourceText": "I want tea.",
+      "hint": "I + want + a drink."
+    },
+    {
+      "id": "l2_t_035",
+      "sourceText": "I want coffee.",
+      "hint": "I + want + a drink."
+    },
+    {
+      "id": "l2_t_036",
+      "sourceText": "I want juice.",
+      "hint": "I + want + a drink."
+    },
+    {
+      "id": "l2_t_037",
+      "sourceText": "I want bread.",
+      "hint": "I + want + food."
+    },
+    {
+      "id": "l2_t_038",
+      "sourceText": "Do you want tea?",
+      "hint": "A question about wanting something with li."
+    },
+    {
+      "id": "l2_t_039",
+      "sourceText": "Do you want coffee?",
+      "hint": "A question about wanting something with li."
+    },
+    {
+      "id": "l2_t_040",
+      "sourceText": "Do you want juice?",
+      "hint": "A question about wanting something with li."
+    },
+    {
+      "id": "l2_t_041",
+      "sourceText": "Do you want bread?",
+      "hint": "A question about wanting something with li."
+    },
+    {
+      "id": "l2_t_042",
+      "sourceText": "Do you like coffee?",
+      "hint": "A question about preference with li."
+    },
+    {
+      "id": "l2_t_043",
+      "sourceText": "Do you like tea?",
+      "hint": "A question about preference with li."
+    },
+    {
+      "id": "l2_t_044",
+      "sourceText": "Do you like banitsa?",
+      "hint": "A question about food with li."
+    },
+    {
+      "id": "l2_t_045",
+      "sourceText": "Do you like bread?",
+      "hint": "A question about food with li."
+    },
+    {
+      "id": "l2_t_046",
+      "sourceText": "We like tea.",
+      "hint": "We + like + a drink."
+    },
+    {
+      "id": "l2_t_047",
+      "sourceText": "You like water.",
+      "hint": "You + like + a drink."
+    },
+    {
+      "id": "l2_t_048",
+      "sourceText": "They like a sandwich.",
+      "hint": ""
+    },
+    {
+      "id": "l2_t_049",
+      "sourceText": "I do not want juice.",
+      "hint": "Negation with wanting something."
+    },
+    {
+      "id": "l2_t_050",
+      "sourceText": "I do not want tea.",
+      "hint": "Negation with wanting something."
+    }
+  ]
+}

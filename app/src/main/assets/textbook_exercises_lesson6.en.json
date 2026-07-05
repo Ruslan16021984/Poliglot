@@ -1,0 +1,507 @@
+{
+  "lessonApp": 6,
+  "languageCode": "en",
+  "title": "Family",
+  "items": [
+    {
+      "id": "l6_t_004",
+      "sourceText": "This is my grandmother.",
+      "hint": "This is + a family member."
+    },
+    {
+      "id": "l6_t_005",
+      "sourceText": "Do you have children?",
+      "hint": "A question about family."
+    },
+    {
+      "id": "l6_t_006",
+      "sourceText": "Yes, I have four children.",
+      "hint": "An answer with a number."
+    },
+    {
+      "id": "l6_t_007",
+      "sourceText": "My family is in Bulgaria.",
+      "hint": "Family + a short possessive pronoun."
+    },
+    {
+      "id": "l6_t_008",
+      "sourceText": "How old are you?",
+      "hint": "A question about age."
+    },
+    {
+      "id": "l6_t_009",
+      "sourceText": "I am twenty-one years old.",
+      "hint": "An answer about age."
+    },
+    {
+      "id": "l6_t_010",
+      "sourceText": "His wife is a teacher.",
+      "hint": "A short possessive pronoun."
+    },
+    {
+      "id": "l6_t_011",
+      "sourceText": "Are you married?",
+      "hint": "A question about marital status."
+    },
+    {
+      "id": "l6_t_012",
+      "sourceText": "Yes, I am married.",
+      "hint": "An answer about marital status."
+    },
+    {
+      "id": "l6_t_014",
+      "sourceText": "What is your son's name?",
+      "hint": "A formal question about a family member."
+    },
+    {
+      "id": "l6_t_015",
+      "sourceText": "Where is your family?",
+      "hint": "A question about place."
+    },
+    {
+      "id": "l6_t_016",
+      "sourceText": "Her husband is in Ukraine.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_017",
+      "sourceText": "Her parents are in Burgas.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_018",
+      "sourceText": "Their son lives in Varna.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_019",
+      "sourceText": "Joana is Said and Latifa's granddaughter.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_020",
+      "sourceText": "Said and Latifa have many grandchildren.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_023",
+      "sourceText": "Are you married?",
+      "hint": "A question about marital status."
+    },
+    {
+      "id": "l6_t_024",
+      "sourceText": "Are you married?",
+      "hint": "A question about marital status."
+    },
+    {
+      "id": "l6_t_025",
+      "sourceText": "Yes, I am married and I have a son.",
+      "hint": "An answer about marital status."
+    },
+    {
+      "id": "l6_t_026",
+      "sourceText": "Yes, I am married.",
+      "hint": "An answer about marital status."
+    },
+    {
+      "id": "l6_t_027",
+      "sourceText": "No, I am not married.",
+      "hint": "A negative answer."
+    },
+    {
+      "id": "l6_t_028",
+      "sourceText": "No, I am not married.",
+      "hint": "A negative answer."
+    },
+    {
+      "id": "l6_t_029",
+      "sourceText": "I have a son.",
+      "hint": "A phrase about a child."
+    },
+    {
+      "id": "l6_t_030",
+      "sourceText": "I have a daughter.",
+      "hint": "A phrase about a child."
+    },
+    {
+      "id": "l6_t_031",
+      "sourceText": "This is my son.",
+      "hint": "A short phrase about family."
+    },
+    {
+      "id": "l6_t_032",
+      "sourceText": "This is my daughter.",
+      "hint": "A short phrase about family."
+    },
+    {
+      "id": "l6_t_033",
+      "sourceText": "This is my father.",
+      "hint": "A short phrase about family."
+    },
+    {
+      "id": "l6_t_034",
+      "sourceText": "This is my mother.",
+      "hint": "A short phrase about family."
+    },
+    {
+      "id": "l6_t_037",
+      "sourceText": "Do you have parents?",
+      "hint": "A question about family."
+    },
+    {
+      "id": "l6_t_038",
+      "sourceText": "Do you have children?",
+      "hint": "A question about children."
+    },
+    {
+      "id": "l6_t_039",
+      "sourceText": "Yes, I have two children.",
+      "hint": "An answer with quantity."
+    },
+    {
+      "id": "l6_t_040",
+      "sourceText": "No, I do not have children.",
+      "hint": "A negative answer."
+    },
+    {
+      "id": "l6_t_043",
+      "sourceText": "How old is your son?",
+      "hint": "A question about age."
+    },
+    {
+      "id": "l6_t_044",
+      "sourceText": "My son is ten years old.",
+      "hint": "An answer about age."
+    },
+    {
+      "id": "l6_t_045",
+      "sourceText": "My daughter is eight years old.",
+      "hint": "An answer about age."
+    },
+    {
+      "id": "l6_t_046",
+      "sourceText": "My wife is a teacher.",
+      "hint": "A phrase about a relative's profession."
+    },
+    {
+      "id": "l6_t_047",
+      "sourceText": "My husband is a doctor.",
+      "hint": "A phrase about a relative's profession."
+    },
+    {
+      "id": "l6_t_048",
+      "sourceText": "What is your daughter's name?",
+      "hint": "A question about a name."
+    },
+    {
+      "id": "l6_t_049",
+      "sourceText": "What is your son's name?",
+      "hint": "A question about a name."
+    },
+    {
+      "id": "l6_t_050",
+      "sourceText": "Do you have a big family?",
+      "hint": "A question about family."
+    },
+    {
+      "id": "l6_t_051",
+      "sourceText": "Our family is big.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_052",
+      "sourceText": "Our father is a doctor.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_053",
+      "sourceText": "Our mother is a teacher.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_054",
+      "sourceText": "Our children are in Bulgaria.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_055",
+      "sourceText": "His son is ten years old.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_056",
+      "sourceText": "His daughter is eight years old.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_057",
+      "sourceText": "His father lives in Sofia.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_058",
+      "sourceText": "Her mother is a teacher.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_059",
+      "sourceText": "Her brother lives in Varna.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_060",
+      "sourceText": "Her sister is in Burgas.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_061",
+      "sourceText": "Their children are in Bulgaria.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_062",
+      "sourceText": "Their parents are in Sofia.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_063",
+      "sourceText": "Their family is big.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_064",
+      "sourceText": "Your brother is in Sofia.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_065",
+      "sourceText": "Your sister is in Bulgaria.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_066",
+      "sourceText": "Your parents are in Burgas.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_067",
+      "sourceText": "Your father is a doctor.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_068",
+      "sourceText": "Your mother is a teacher.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_069",
+      "sourceText": "Your family is big.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_070",
+      "sourceText": "Your children are in Bulgaria.",
+      "hint": ""
+    },
+    {
+      "id": "l6_t_071",
+      "sourceText": "My brother is tall.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_072",
+      "sourceText": "My sister is tall.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_073",
+      "sourceText": "My son is small.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_074",
+      "sourceText": "My daughter is small.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_075",
+      "sourceText": "My father is tall.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_076",
+      "sourceText": "My mother is not tall.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_077",
+      "sourceText": "My grandfather is old.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_078",
+      "sourceText": "My grandmother is old.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_079",
+      "sourceText": "Your brother is younger.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_080",
+      "sourceText": "Your sister is younger.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_081",
+      "sourceText": "His brother is older.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_082",
+      "sourceText": "His sister is older.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_083",
+      "sourceText": "Her son is tall.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_084",
+      "sourceText": "Her daughter is small.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_085",
+      "sourceText": "Their children are small.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_086",
+      "sourceText": "Their parents are old.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_087",
+      "sourceText": "Our father is tall.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_088",
+      "sourceText": "Our mother is tall.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_089",
+      "sourceText": "Your son is young.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_090",
+      "sourceText": "Your daughter is young.",
+      "hint": "The adjective agrees with the noun in gender and number."
+    },
+    {
+      "id": "l6_t_091",
+      "sourceText": "This is a good man.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_092",
+      "sourceText": "This is a good woman.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_093",
+      "sourceText": "This is a good child.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_094",
+      "sourceText": "These are good people.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_095",
+      "sourceText": "My brother is thin.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_096",
+      "sourceText": "My sister is thin.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_097",
+      "sourceText": "The man is fat.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_098",
+      "sourceText": "The woman is fat.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_099",
+      "sourceText": "My father is hard-working.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_100",
+      "sourceText": "My mother is hard-working.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_101",
+      "sourceText": "His brother is lazy.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_102",
+      "sourceText": "Her sister is lazy.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_103",
+      "sourceText": "My son is smart.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_104",
+      "sourceText": "My daughter is smart.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_105",
+      "sourceText": "The man is stupid.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_106",
+      "sourceText": "The woman is stupid.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_107",
+      "sourceText": "Your brother is handsome.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_108",
+      "sourceText": "Your sister is beautiful.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_109",
+      "sourceText": "A handsome man.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    },
+    {
+      "id": "l6_t_110",
+      "sourceText": "Beautiful people.",
+      "hint": "The adjective form depends on the gender and number of the noun."
+    }
+  ]
+}

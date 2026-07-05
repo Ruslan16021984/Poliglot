@@ -1,6 +1,7 @@
 package com.carbit3333333.oiiglot_bulgary
 
 import com.carbit3333333.oiiglot_bulgary.data.lesson_session.TextbookLessonExerciseSetAsset
+import com.carbit3333333.oiiglot_bulgary.data.lesson_session.TextbookLessonExerciseTranslationAsset
 import com.carbit3333333.oiiglot_bulgary.model.Lesson
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
@@ -21,9 +22,11 @@ class LessonJsonAssetsTest {
     fun `localized theory json decodes expected lesson structure`() {
         val lessonsRu = json.decodeFromString<List<Lesson>>(readAssetText("lessons_ru.json"))
         val lessonsUk = json.decodeFromString<List<Lesson>>(readAssetText("lessons_uk.json"))
+        val lessonsEn = json.decodeFromString<List<Lesson>>(readAssetText("lessons_en.json"))
 
         assertLessonsAreValid(lessonsRu)
         assertLessonsAreValid(lessonsUk)
+        assertLessonsAreValid(lessonsEn)
     }
 
     @Test
@@ -40,12 +43,30 @@ class LessonJsonAssetsTest {
             assertTrue(exerciseSet.title.isNotBlank())
             assertTrue(exerciseSet.items.size >= 20)
             assertTrue(exerciseSet.items.all { it.bg.isNotBlank() })
-            assertTrue(exerciseSet.items.all { it.ru.isNotBlank() })
-            assertTrue(exerciseSet.items.all { it.uk.isNotBlank() })
+            assertTrue(exerciseSet.items.all { !it.ru.isNullOrBlank() })
+            assertTrue(exerciseSet.items.all { !it.uk.isNullOrBlank() })
             assertTrue(exerciseSet.items.all { it.correctWords.isNotEmpty() })
             assertTrue(exerciseSet.items.all { it.distractors.isNotEmpty() })
             assertTrue(exerciseSet.items.all { !it.hintRu.isNullOrBlank() })
             assertTrue(exerciseSet.items.all { !it.hintUk.isNullOrBlank() })
+        }
+    }
+
+    @Test
+    fun `english exercise overlays stay aligned for lessons 1 to 11`() {
+        (1..11).forEach { lessonId ->
+            val base = json.decodeFromString<TextbookLessonExerciseSetAsset>(
+                readAssetText("textbook_exercises_lesson$lessonId.json"),
+            )
+            val overlay = json.decodeFromString<TextbookLessonExerciseTranslationAsset>(
+                readAssetText("textbook_exercises_lesson$lessonId.en.json"),
+            )
+
+            assertEquals(lessonId, overlay.lessonApp)
+            assertEquals("en", overlay.languageCode)
+            assertTrue(overlay.title?.isNotBlank() == true)
+            assertEquals(base.items.map { it.id }.sorted(), overlay.items.map { it.id }.sorted())
+            assertTrue(overlay.items.all { it.sourceText.isNotBlank() })
         }
     }
 

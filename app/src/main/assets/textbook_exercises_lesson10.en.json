@@ -1,0 +1,507 @@
+{
+  "lessonApp": 10,
+  "languageCode": "en",
+  "title": "Transport",
+  "items": [
+    {
+      "id": "l10_t_001",
+      "sourceText": "When does the bus to Sofia leave?",
+      "hint": "A question about departure time and direction."
+    },
+    {
+      "id": "l10_t_002",
+      "sourceText": "The bus to Sofia leaves now.",
+      "hint": "This shows the direction of the bus."
+    },
+    {
+      "id": "l10_t_003",
+      "sourceText": "The train from Varna arrives today.",
+      "hint": "This shows the starting point."
+    },
+    {
+      "id": "l10_t_004",
+      "sourceText": "The metro stops in the centre.",
+      "hint": "“In” is used with the centre."
+    },
+    {
+      "id": "l10_t_005",
+      "sourceText": "The taxi arrives at the station.",
+      "hint": "“At” is used with the station."
+    },
+    {
+      "id": "l10_t_006",
+      "sourceText": "A ticket to Burgas.",
+      "hint": "On a ticket, this shows the destination."
+    },
+    {
+      "id": "l10_t_007",
+      "sourceText": "The bus station is in the centre.",
+      "hint": "“In” is used with the centre."
+    },
+    {
+      "id": "l10_t_008",
+      "sourceText": "The stop is in front of the station.",
+      "hint": "This shows a position in front of a place."
+    },
+    {
+      "id": "l10_t_009",
+      "sourceText": "Where is the tram stop?",
+      "hint": "A question about a specific stop."
+    },
+    {
+      "id": "l10_t_010",
+      "sourceText": "Where does the bus leave from?",
+      "hint": "This asks where something leaves from."
+    },
+    {
+      "id": "l10_t_011",
+      "sourceText": "Where does the bus leave from?",
+      "hint": "This asks about the starting point."
+    },
+    {
+      "id": "l10_t_012",
+      "sourceText": "When is the first bus to Plovdiv?",
+      "hint": "A question about the first service."
+    },
+    {
+      "id": "l10_t_013",
+      "sourceText": "When is the last bus to Plovdiv?",
+      "hint": "A question about the last service."
+    },
+    {
+      "id": "l10_t_014",
+      "sourceText": "When is the next bus to Plovdiv?",
+      "hint": "A question about the next service."
+    },
+    {
+      "id": "l10_t_015",
+      "sourceText": "The first bus is at seven o'clock.",
+      "hint": "An answer about the first service."
+    },
+    {
+      "id": "l10_t_016",
+      "sourceText": "I am travelling by bus.",
+      "hint": "A phrase about the means of transport."
+    },
+    {
+      "id": "l10_t_017",
+      "sourceText": "I am travelling by train.",
+      "hint": "A phrase about the means of transport."
+    },
+    {
+      "id": "l10_t_018",
+      "sourceText": "Does this bus go to the centre?",
+      "hint": "A question about the direction of transport."
+    },
+    {
+      "id": "l10_t_019",
+      "sourceText": "Does this train go to Sofia?",
+      "hint": "A question about the route of the train."
+    },
+    {
+      "id": "l10_t_020",
+      "sourceText": "I want one ticket to Sofia.",
+      "hint": "A request to buy a ticket."
+    },
+    {
+      "id": "l10_t_021",
+      "sourceText": "The plane leaves for Germany.",
+      "hint": "This shows direction."
+    },
+    {
+      "id": "l10_t_022",
+      "sourceText": "The ticket office is at the station.",
+      "hint": "“At” is used with the station."
+    },
+    {
+      "id": "l10_t_023",
+      "sourceText": "The train stops at the first platform.",
+      "hint": "“At” is used with the platform."
+    },
+    {
+      "id": "l10_t_024",
+      "sourceText": "I am going to the airport.",
+      "hint": "“At” is used with the airport."
+    },
+    {
+      "id": "l10_t_025",
+      "sourceText": "The suitcase is on the bus.",
+      "hint": "This shows being inside the bus."
+    },
+    {
+      "id": "l10_t_026",
+      "sourceText": "I am buying a metro card.",
+      "hint": "This shows the purpose of the card."
+    },
+    {
+      "id": "l10_t_027",
+      "sourceText": "Does this bus stop in the centre?",
+      "hint": "A question about the stop location."
+    },
+    {
+      "id": "l10_t_028",
+      "sourceText": "Does this train arrive in Sofia?",
+      "hint": "A question about the arrival city."
+    },
+    {
+      "id": "l10_t_029",
+      "sourceText": "Does the metro stop at this stop?",
+      "hint": "A question about a stop."
+    },
+    {
+      "id": "l10_t_030",
+      "sourceText": "I am flying by plane.",
+      "hint": "A phrase about travelling."
+    },
+    {
+      "id": "l10_t_031",
+      "sourceText": "I am travelling by train.",
+      "hint": "A phrase about travelling."
+    },
+    {
+      "id": "l10_t_032",
+      "sourceText": "I am travelling by tram.",
+      "hint": "A phrase about travelling."
+    },
+    {
+      "id": "l10_t_033",
+      "sourceText": "I am travelling by taxi.",
+      "hint": "A phrase about travelling."
+    },
+    {
+      "id": "l10_t_034",
+      "sourceText": "I am travelling by metro.",
+      "hint": "A phrase about travelling."
+    },
+    {
+      "id": "l10_t_035",
+      "sourceText": "How many tickets do you want?",
+      "hint": "A question about the number of tickets."
+    },
+    {
+      "id": "l10_t_036",
+      "sourceText": "I want two tickets to Sofia.",
+      "hint": "An answer about quantity and direction."
+    },
+    {
+      "id": "l10_t_037",
+      "sourceText": "How many minutes late is the train?",
+      "hint": "A question about the train delay."
+    },
+    {
+      "id": "l10_t_038",
+      "sourceText": "The train is ten minutes late.",
+      "hint": "This shows the amount of delay."
+    },
+    {
+      "id": "l10_t_039",
+      "sourceText": "How much does the ticket cost?",
+      "hint": "A question about the price of one ticket."
+    },
+    {
+      "id": "l10_t_040",
+      "sourceText": "How many leva does the ticket cost?",
+      "hint": "A question about the price in leva."
+    },
+    {
+      "id": "l10_t_041",
+      "sourceText": "The ticket costs ten leva.",
+      "hint": "An answer about the ticket price."
+    },
+    {
+      "id": "l10_t_042",
+      "sourceText": "How do you get to the Central Station?",
+      "hint": "This asks about the way of travelling."
+    },
+    {
+      "id": "l10_t_043",
+      "sourceText": "I go by bus to the Central Station.",
+      "hint": "“By” marks transport, “to” marks the end point."
+    },
+    {
+      "id": "l10_t_044",
+      "sourceText": "Which track does the train arrive at?",
+      "hint": "A question about the arrival track."
+    },
+    {
+      "id": "l10_t_045",
+      "sourceText": "Which sector does the bus arrive at?",
+      "hint": "A question about the arrival sector."
+    },
+    {
+      "id": "l10_t_046",
+      "sourceText": "Which track does the train leave from?",
+      "hint": "This asks about the departure track."
+    },
+    {
+      "id": "l10_t_047",
+      "sourceText": "Which sector does the bus leave from?",
+      "hint": "This asks about the departure sector."
+    },
+    {
+      "id": "l10_t_048",
+      "sourceText": "Do you have a ticket?",
+      "hint": "A question about a ticket."
+    },
+    {
+      "id": "l10_t_049",
+      "sourceText": "Yes, I have a card.",
+      "hint": "An answer about a ticket."
+    },
+    {
+      "id": "l10_t_050",
+      "sourceText": "No, I do not have a card.",
+      "hint": "A negative answer."
+    },
+    {
+      "id": "l10_t_051",
+      "sourceText": "The bus leaves from the bus station.",
+      "hint": "This shows the place of departure."
+    },
+    {
+      "id": "l10_t_052",
+      "sourceText": "The bus leaves for Sliven.",
+      "hint": "This shows direction."
+    },
+    {
+      "id": "l10_t_053",
+      "sourceText": "The train leaves from the station.",
+      "hint": "This shows the place of departure."
+    },
+    {
+      "id": "l10_t_054",
+      "sourceText": "The train leaves for Varna.",
+      "hint": "This shows direction."
+    },
+    {
+      "id": "l10_t_055",
+      "sourceText": "The bus leaves at eight o'clock.",
+      "hint": "“At” is used with exact time."
+    },
+    {
+      "id": "l10_t_056",
+      "sourceText": "When does the bus leave?",
+      "hint": "A question about departure time."
+    },
+    {
+      "id": "l10_t_057",
+      "sourceText": "Which bus station does the bus leave from?",
+      "hint": "This asks where from."
+    },
+    {
+      "id": "l10_t_058",
+      "sourceText": "Which city does the bus leave for?",
+      "hint": "This asks about the destination city."
+    },
+    {
+      "id": "l10_t_059",
+      "sourceText": "The bus leaves from Sofia.",
+      "hint": "Leaves from: from where."
+    },
+    {
+      "id": "l10_t_060",
+      "sourceText": "The bus leaves for Burgas.",
+      "hint": "Leaves for: to where."
+    },
+    {
+      "id": "l10_t_061",
+      "sourceText": "The train leaves from Plovdiv.",
+      "hint": "This marks the starting point."
+    },
+    {
+      "id": "l10_t_062",
+      "sourceText": "The train leaves for Varna.",
+      "hint": "This marks direction."
+    },
+    {
+      "id": "l10_t_063",
+      "sourceText": "When does the train leave?",
+      "hint": "A question about departure time."
+    },
+    {
+      "id": "l10_t_064",
+      "sourceText": "Which city does the train leave from?",
+      "hint": ""
+    },
+    {
+      "id": "l10_t_065",
+      "sourceText": "Which city does the bus leave for?",
+      "hint": "This asks which city something goes to."
+    },
+    {
+      "id": "l10_t_066",
+      "sourceText": "The bus stops in the centre.",
+      "hint": "“In” is used with the centre or a city."
+    },
+    {
+      "id": "l10_t_067",
+      "sourceText": "The bus stops at the bus station.",
+      "hint": "“At” is used with the bus station."
+    },
+    {
+      "id": "l10_t_068",
+      "sourceText": "The train stops at the station.",
+      "hint": "“At” is used with the station."
+    },
+    {
+      "id": "l10_t_069",
+      "sourceText": "The tram stops in the centre.",
+      "hint": "“In” is used with the centre."
+    },
+    {
+      "id": "l10_t_070",
+      "sourceText": "The metro stops at this stop.",
+      "hint": "“At” is used with the stop."
+    },
+    {
+      "id": "l10_t_071",
+      "sourceText": "Where does the bus stop?",
+      "hint": "A question about the stop location."
+    },
+    {
+      "id": "l10_t_072",
+      "sourceText": "The bus does not stop here.",
+      "hint": "Negation with the verb “stop”."
+    },
+    {
+      "id": "l10_t_073",
+      "sourceText": "The bus arrives in Plovdiv.",
+      "hint": "“In” is used with a city."
+    },
+    {
+      "id": "l10_t_074",
+      "sourceText": "The bus arrives at the bus station.",
+      "hint": "“At” is used with the bus station."
+    },
+    {
+      "id": "l10_t_075",
+      "sourceText": "The train arrives in Sofia.",
+      "hint": "“In” is used with a city."
+    },
+    {
+      "id": "l10_t_076",
+      "sourceText": "The train arrives at the station.",
+      "hint": "“At” is used with the station."
+    },
+    {
+      "id": "l10_t_077",
+      "sourceText": "The plane arrives in Bulgaria.",
+      "hint": "“In” is used with a country."
+    },
+    {
+      "id": "l10_t_078",
+      "sourceText": "The plane arrives at the airport.",
+      "hint": "“At” is used with the airport."
+    },
+    {
+      "id": "l10_t_079",
+      "sourceText": "When does the train arrive?",
+      "hint": "A question about arrival time."
+    },
+    {
+      "id": "l10_t_080",
+      "sourceText": "Where does the bus arrive?",
+      "hint": "A question about the place of arrival."
+    },
+    {
+      "id": "l10_t_081",
+      "sourceText": "I am going to Germany.",
+      "hint": "This shows the direction of travel."
+    },
+    {
+      "id": "l10_t_082",
+      "sourceText": "I am going to Sofia.",
+      "hint": "This shows the direction of travel."
+    },
+    {
+      "id": "l10_t_083",
+      "sourceText": "I am going to Varna by bus.",
+      "hint": "“By” marks transport, “to” marks direction."
+    },
+    {
+      "id": "l10_t_084",
+      "sourceText": "I am going to Burgas by train.",
+      "hint": "“By” marks transport, “to” marks direction."
+    },
+    {
+      "id": "l10_t_085",
+      "sourceText": "I am flying to Germany by plane.",
+      "hint": "“By” marks transport, “to” marks direction."
+    },
+    {
+      "id": "l10_t_086",
+      "sourceText": "How are you travelling?",
+      "hint": "This asks about the means of transport."
+    },
+    {
+      "id": "l10_t_087",
+      "sourceText": "Where are you going?",
+      "hint": "This asks about direction."
+    },
+    {
+      "id": "l10_t_088",
+      "sourceText": "I am going from Sofia to Varna.",
+      "hint": "“From” marks the starting point, “to” marks direction."
+    },
+    {
+      "id": "l10_t_089",
+      "sourceText": "I am going from Plovdiv to Burgas.",
+      "hint": "“From” marks the starting point, “to” marks direction."
+    },
+    {
+      "id": "l10_t_090",
+      "sourceText": "Mustafa returns from Vratsa.",
+      "hint": "Returns from: from where."
+    },
+    {
+      "id": "l10_t_091",
+      "sourceText": "Mustafa returns to Syria.",
+      "hint": "Returns to: to where."
+    },
+    {
+      "id": "l10_t_092",
+      "sourceText": "I return from Sofia.",
+      "hint": "This shows where someone returns from."
+    },
+    {
+      "id": "l10_t_093",
+      "sourceText": "I return to Bulgaria.",
+      "hint": "This shows where someone returns to."
+    },
+    {
+      "id": "l10_t_094",
+      "sourceText": "She returns from the station.",
+      "hint": "This shows the starting point."
+    },
+    {
+      "id": "l10_t_095",
+      "sourceText": "She returns to the centre.",
+      "hint": ""
+    },
+    {
+      "id": "l10_t_096",
+      "sourceText": "Where are you returning from?",
+      "hint": "This asks about the starting point."
+    },
+    {
+      "id": "l10_t_097",
+      "sourceText": "Where are you returning to?",
+      "hint": "This asks about the destination place."
+    },
+    {
+      "id": "l10_t_098",
+      "sourceText": "The bus comes from Varna.",
+      "hint": "This shows where something comes from."
+    },
+    {
+      "id": "l10_t_099",
+      "sourceText": "Does the bus come from Sofia?",
+      "hint": "A question about the starting point."
+    },
+    {
+      "id": "l10_t_100",
+      "sourceText": "Does this bus go to Sofia?",
+      "hint": "A question about the route direction."
+    }
+  ]
+}

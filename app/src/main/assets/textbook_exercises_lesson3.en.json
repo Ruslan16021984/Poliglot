@@ -1,0 +1,257 @@
+{
+  "lessonApp": 3,
+  "languageCode": "en",
+  "title": "Restaurant",
+  "items": [
+    {
+      "id": "l3_t_001",
+      "sourceText": "Is it free?",
+      "hint": "A short restaurant question."
+    },
+    {
+      "id": "l3_t_002",
+      "sourceText": "Yes, please, come in.",
+      "hint": "A polite positive answer."
+    },
+    {
+      "id": "l3_t_003",
+      "sourceText": "No, sorry, it is occupied.",
+      "hint": "A negative answer in a restaurant."
+    },
+    {
+      "id": "l3_t_004",
+      "sourceText": "Can I have a menu?",
+      "hint": "A polite request."
+    },
+    {
+      "id": "l3_t_005",
+      "sourceText": "One coffee, please.",
+      "hint": "A simple drink order."
+    },
+    {
+      "id": "l3_t_006",
+      "sourceText": "Small or large?",
+      "hint": "A clarification about coffee."
+    },
+    {
+      "id": "l3_t_007",
+      "sourceText": "A large coffee, with sugar and cream.",
+      "hint": "An answer to a clarifying question about a drink."
+    },
+    {
+      "id": "l3_t_008",
+      "sourceText": "Something to eat?",
+      "hint": "A question about food."
+    },
+    {
+      "id": "l3_t_009",
+      "sourceText": "Yes, one croissant.",
+      "hint": "A short food order."
+    },
+    {
+      "id": "l3_t_010",
+      "sourceText": "Can I have soup and moussaka?",
+      "hint": "An order of two dishes."
+    },
+    {
+      "id": "l3_t_011",
+      "sourceText": "Would you like bread?",
+      "hint": "A question offering food."
+    },
+    {
+      "id": "l3_t_012",
+      "sourceText": "No, thank you.",
+      "hint": "A polite refusal."
+    },
+    {
+      "id": "l3_t_013",
+      "sourceText": "One ayran, please.",
+      "hint": "A drink order."
+    },
+    {
+      "id": "l3_t_014",
+      "sourceText": "And dessert?",
+      "hint": "A short question about dessert."
+    },
+    {
+      "id": "l3_t_015",
+      "sourceText": "Oh, yes, one ice cream.",
+      "hint": "A dessert order."
+    },
+    {
+      "id": "l3_t_016",
+      "sourceText": "Can I have the bill?",
+      "hint": "A request for the bill."
+    },
+    {
+      "id": "l3_t_017",
+      "sourceText": "Do you want coffee?",
+      "hint": "A question about a drink."
+    },
+    {
+      "id": "l3_t_018",
+      "sourceText": "With milk?",
+      "hint": "A clarification for a drink order."
+    },
+    {
+      "id": "l3_t_019",
+      "sourceText": "No, without milk.",
+      "hint": "An answer to a clarification."
+    },
+    {
+      "id": "l3_t_020",
+      "sourceText": "Do you have juice and tea?",
+      "hint": "A question about available drinks."
+    },
+    {
+      "id": "l3_t_021",
+      "sourceText": "I would like coffee, please.",
+      "hint": "A polite order in a restaurant."
+    },
+    {
+      "id": "l3_t_022",
+      "sourceText": "Would you like sugar?",
+      "hint": "A short waiter question."
+    },
+    {
+      "id": "l3_t_023",
+      "sourceText": "Yes, with two packets of sugar.",
+      "hint": "A short answer to an order."
+    },
+    {
+      "id": "l3_t_024",
+      "sourceText": "No, without sugar.",
+      "hint": "A short refusal."
+    },
+    {
+      "id": "l3_t_025",
+      "sourceText": "I would like black tea.",
+      "hint": "A drink order."
+    },
+    {
+      "id": "l3_t_026",
+      "sourceText": "I would like herbal tea.",
+      "hint": "A drink order."
+    },
+    {
+      "id": "l3_t_027",
+      "sourceText": "One ayran for me, please.",
+      "hint": "A short order."
+    },
+    {
+      "id": "l3_t_028",
+      "sourceText": "I would like a salad.",
+      "hint": "A food order."
+    },
+    {
+      "id": "l3_t_029",
+      "sourceText": "I would like soup.",
+      "hint": "A food order."
+    },
+    {
+      "id": "l3_t_030",
+      "sourceText": "I would like moussaka.",
+      "hint": "A main dish order."
+    },
+    {
+      "id": "l3_t_031",
+      "sourceText": "I would like dessert.",
+      "hint": "A short phrase about dessert."
+    },
+    {
+      "id": "l3_t_032",
+      "sourceText": "I would like ice cream.",
+      "hint": "A dessert order."
+    },
+    {
+      "id": "l3_t_033",
+      "sourceText": "Short or long coffee?",
+      "hint": "A clarifying question."
+    },
+    {
+      "id": "l3_t_034",
+      "sourceText": "Long coffee, please.",
+      "hint": "An answer to a clarification."
+    },
+    {
+      "id": "l3_t_035",
+      "sourceText": "Short coffee, please.",
+      "hint": "An answer to a clarification."
+    },
+    {
+      "id": "l3_t_036",
+      "sourceText": "With milk or without milk?",
+      "hint": ""
+    },
+    {
+      "id": "l3_t_037",
+      "sourceText": "With milk, please.",
+      "hint": "A short answer about a drink."
+    },
+    {
+      "id": "l3_t_038",
+      "sourceText": "Without milk, please.",
+      "hint": "A short answer about a drink."
+    },
+    {
+      "id": "l3_t_039",
+      "sourceText": "This table is free.",
+      "hint": "A phrase about a table."
+    },
+    {
+      "id": "l3_t_040",
+      "sourceText": "This table is occupied.",
+      "hint": "A phrase about a table."
+    },
+    {
+      "id": "l3_t_041",
+      "sourceText": "Can I have a second menu?",
+      "hint": "A short request."
+    },
+    {
+      "id": "l3_t_042",
+      "sourceText": "Can I have the bill?",
+      "hint": "A request for the bill."
+    },
+    {
+      "id": "l3_t_043",
+      "sourceText": "Something to drink?",
+      "hint": "A question about drinks."
+    },
+    {
+      "id": "l3_t_044",
+      "sourceText": "Something with the soup?",
+      "hint": "A question about food."
+    },
+    {
+      "id": "l3_t_045",
+      "sourceText": "Excuse me, please.",
+      "hint": "A polite form of address."
+    },
+    {
+      "id": "l3_t_046",
+      "sourceText": "Thank you, it is very tasty.",
+      "hint": "A polite evaluation of the food."
+    },
+    {
+      "id": "l3_t_047",
+      "sourceText": "One juice, please.",
+      "hint": "A drink order."
+    },
+    {
+      "id": "l3_t_048",
+      "sourceText": "One water, please.",
+      "hint": "A drink order."
+    },
+    {
+      "id": "l3_t_049",
+      "sourceText": "The restaurant is nearby.",
+      "hint": "A short phrase about a place."
+    },
+    {
+      "id": "l3_t_050",
+      "sourceText": "Is the restaurant far?",
+      "hint": "A question about distance."
+    }
+  ]
+}

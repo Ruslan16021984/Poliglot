@@ -1,0 +1,507 @@
+{
+  "lessonApp": 7,
+  "languageCode": "en",
+  "title": "Weather and Time",
+  "items": [
+    {
+      "id": "l7_t_001",
+      "sourceText": "It is warm today.",
+      "hint": "A simple phrase about the weather."
+    },
+    {
+      "id": "l7_t_002",
+      "sourceText": "It is cold today.",
+      "hint": "A simple phrase about cold weather."
+    },
+    {
+      "id": "l7_t_003",
+      "sourceText": "Is it warm?",
+      "hint": "A short question with li."
+    },
+    {
+      "id": "l7_t_004",
+      "sourceText": "Is it cold?",
+      "hint": "A short question about the weather."
+    },
+    {
+      "id": "l7_t_005",
+      "sourceText": "It is raining.",
+      "hint": "A phrase about rain."
+    },
+    {
+      "id": "l7_t_006",
+      "sourceText": "It is snowing.",
+      "hint": "A phrase about snow."
+    },
+    {
+      "id": "l7_t_007",
+      "sourceText": "It is windy.",
+      "hint": "A phrase about wind."
+    },
+    {
+      "id": "l7_t_008",
+      "sourceText": "Today is Monday.",
+      "hint": "A phrase with a day of the week."
+    },
+    {
+      "id": "l7_t_009",
+      "sourceText": "Tomorrow is Tuesday.",
+      "hint": "A phrase about tomorrow."
+    },
+    {
+      "id": "l7_t_010",
+      "sourceText": "Is today Wednesday?",
+      "hint": "A question about the day of the week."
+    },
+    {
+      "id": "l7_t_011",
+      "sourceText": "It is March now.",
+      "hint": "A phrase with a month."
+    },
+    {
+      "id": "l7_t_012",
+      "sourceText": "It is April now.",
+      "hint": "A phrase with a month."
+    },
+    {
+      "id": "l7_t_013",
+      "sourceText": "What time is it?",
+      "hint": "A basic question about time."
+    },
+    {
+      "id": "l7_t_014",
+      "sourceText": "It is two o'clock now.",
+      "hint": "A phrase with the hour."
+    },
+    {
+      "id": "l7_t_015",
+      "sourceText": "It is five o'clock now.",
+      "hint": "A phrase with the hour."
+    },
+    {
+      "id": "l7_t_016",
+      "sourceText": "It is winter now.",
+      "hint": "A phrase about a season."
+    },
+    {
+      "id": "l7_t_017",
+      "sourceText": "It is summer now.",
+      "hint": "A phrase about a season."
+    },
+    {
+      "id": "l7_t_018",
+      "sourceText": "It is sunny today.",
+      "hint": "A phrase about sunny weather."
+    },
+    {
+      "id": "l7_t_019",
+      "sourceText": "It is cloudy today.",
+      "hint": "A phrase about cloudy weather."
+    },
+    {
+      "id": "l7_t_020",
+      "sourceText": "Is it five o'clock now?",
+      "hint": "A question about time."
+    },
+    {
+      "id": "l7_t_021",
+      "sourceText": "It is clear today.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_022",
+      "sourceText": "It is rainy today.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_023",
+      "sourceText": "It is very windy today.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_024",
+      "sourceText": "Is it sunny?",
+      "hint": "A short question."
+    },
+    {
+      "id": "l7_t_025",
+      "sourceText": "Is it rainy?",
+      "hint": "A short question."
+    },
+    {
+      "id": "l7_t_026",
+      "sourceText": "It will be warm tomorrow.",
+      "hint": "A phrase about tomorrow's weather."
+    },
+    {
+      "id": "l7_t_027",
+      "sourceText": "It will be cold tomorrow.",
+      "hint": "A phrase about tomorrow's weather."
+    },
+    {
+      "id": "l7_t_028",
+      "sourceText": "It will rain tomorrow.",
+      "hint": "A phrase about tomorrow's weather."
+    },
+    {
+      "id": "l7_t_029",
+      "sourceText": "Today is Thursday.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_030",
+      "sourceText": "Today is Tuesday.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_031",
+      "sourceText": "Is today Friday?",
+      "hint": "A question about the day of the week."
+    },
+    {
+      "id": "l7_t_032",
+      "sourceText": "Is tomorrow Friday?",
+      "hint": "A question about the day of the week."
+    },
+    {
+      "id": "l7_t_033",
+      "sourceText": "It is January now.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_034",
+      "sourceText": "It is November now.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_035",
+      "sourceText": "It is August now.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_036",
+      "sourceText": "What time is it now?",
+      "hint": "A question about time."
+    },
+    {
+      "id": "l7_t_037",
+      "sourceText": "It is three o'clock now.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_038",
+      "sourceText": "It is six o'clock now.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_039",
+      "sourceText": "What time do you arrive?",
+      "hint": "A question about the time of an action."
+    },
+    {
+      "id": "l7_t_040",
+      "sourceText": "What time do you work?",
+      "hint": "A question about the time of an action."
+    },
+    {
+      "id": "l7_t_041",
+      "sourceText": "I work in the morning.",
+      "hint": "A short phrase about time."
+    },
+    {
+      "id": "l7_t_042",
+      "sourceText": "I study in the evening.",
+      "hint": "A short phrase about time."
+    },
+    {
+      "id": "l7_t_043",
+      "sourceText": "I rest on Sunday.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_044",
+      "sourceText": "I work on Monday.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_045",
+      "sourceText": "There is wind today.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_046",
+      "sourceText": "There is sun today.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_047",
+      "sourceText": "Is there wind?",
+      "hint": "A short question about the weather."
+    },
+    {
+      "id": "l7_t_048",
+      "sourceText": "Is there rain?",
+      "hint": "A short question about the weather."
+    },
+    {
+      "id": "l7_t_049",
+      "sourceText": "What month is it now?",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_050",
+      "sourceText": "What day is it today?",
+      "hint": "A question about the day of the week."
+    },
+    {
+      "id": "l7_t_051",
+      "sourceText": "On Monday I work.",
+      "hint": "The preposition “on” with a day of the week."
+    },
+    {
+      "id": "l7_t_052",
+      "sourceText": "On Tuesday I study.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_053",
+      "sourceText": "On Wednesday I rest.",
+      "hint": "The preposition “on” with a day of the week."
+    },
+    {
+      "id": "l7_t_054",
+      "sourceText": "On Thursday I have a lesson.",
+      "hint": "A phrase with a day of the week."
+    },
+    {
+      "id": "l7_t_055",
+      "sourceText": "On Friday I have work.",
+      "hint": "A phrase with a day of the week."
+    },
+    {
+      "id": "l7_t_056",
+      "sourceText": "On Saturday I am at home.",
+      "hint": "A phrase with a day of the week."
+    },
+    {
+      "id": "l7_t_057",
+      "sourceText": "There is no work on Sunday.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_058",
+      "sourceText": "It is cold in January.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_059",
+      "sourceText": "It snows in February.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_060",
+      "sourceText": "It is warm in spring.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_061",
+      "sourceText": "It rains in autumn.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_062",
+      "sourceText": "I work during the day.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_063",
+      "sourceText": "The weather is good during the day.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_064",
+      "sourceText": "It is hot in summer.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_065",
+      "sourceText": "It is cold in winter.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_066",
+      "sourceText": "There is wind in autumn.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_067",
+      "sourceText": "There is sun in spring.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_068",
+      "sourceText": "I work from Monday to Friday.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_069",
+      "sourceText": "I work from nine to five.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_070",
+      "sourceText": "I study from morning to evening.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_071",
+      "sourceText": "I rest from today until tomorrow.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_072",
+      "sourceText": "Until tomorrow.",
+      "hint": "A short phrase with “until”."
+    },
+    {
+      "id": "l7_t_073",
+      "sourceText": "I am free until Monday.",
+      "hint": "“Until” as a time limit."
+    },
+    {
+      "id": "l7_t_074",
+      "sourceText": "I work until lunch.",
+      "hint": "“Until” as a time limit."
+    },
+    {
+      "id": "l7_t_075",
+      "sourceText": "I am at home until the evening.",
+      "hint": "“Until” as a time limit."
+    },
+    {
+      "id": "l7_t_076",
+      "sourceText": "I work before lunch.",
+      "hint": "“Before” means before an event."
+    },
+    {
+      "id": "l7_t_077",
+      "sourceText": "I study before dinner.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_078",
+      "sourceText": "I drink coffee before work.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_079",
+      "sourceText": "I read before the lesson.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_080",
+      "sourceText": "There is wind before the rain.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_081",
+      "sourceText": "I rest after lunch.",
+      "hint": "“After” means after."
+    },
+    {
+      "id": "l7_t_082",
+      "sourceText": "I am tired after work.",
+      "hint": "“After” means after."
+    },
+    {
+      "id": "l7_t_083",
+      "sourceText": "I go home after the lesson.",
+      "hint": "“After” means after."
+    },
+    {
+      "id": "l7_t_084",
+      "sourceText": "I watch TV after dinner.",
+      "hint": "“After” means after."
+    },
+    {
+      "id": "l7_t_085",
+      "sourceText": "There is sun after the rain.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_086",
+      "sourceText": "What time does the lesson start?",
+      "hint": "A question about time."
+    },
+    {
+      "id": "l7_t_087",
+      "sourceText": "The lesson starts at eight o'clock.",
+      "hint": "“At” with an exact time."
+    },
+    {
+      "id": "l7_t_088",
+      "sourceText": "The meeting is before lunch.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_089",
+      "sourceText": "The meeting is after lunch.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_090",
+      "sourceText": "I drink coffee in the morning.",
+      "hint": "This means “in the morning”."
+    },
+    {
+      "id": "l7_t_091",
+      "sourceText": "It is cold at night.",
+      "hint": "This means “at night”."
+    },
+    {
+      "id": "l7_t_092",
+      "sourceText": "I study in the evening.",
+      "hint": "This means “in the evening”."
+    },
+    {
+      "id": "l7_t_093",
+      "sourceText": "The temperature is from five to ten degrees.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_094",
+      "sourceText": "It has been raining since morning.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_095",
+      "sourceText": "It will rain until evening.",
+      "hint": "“Until” as a time limit."
+    },
+    {
+      "id": "l7_t_096",
+      "sourceText": "I study until lunch.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_097",
+      "sourceText": "I rest after lunch.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_098",
+      "sourceText": "The weather is calm in the evening.",
+      "hint": ""
+    },
+    {
+      "id": "l7_t_099",
+      "sourceText": "I work at the beginning of the week.",
+      "hint": "“At” with a period of time."
+    },
+    {
+      "id": "l7_t_100",
+      "sourceText": "I rest at the end of the week.",
+      "hint": "“At” with a period of time."
+    }
+  ]
+}

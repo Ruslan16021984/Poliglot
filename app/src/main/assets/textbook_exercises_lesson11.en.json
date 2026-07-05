@@ -1,0 +1,507 @@
+{
+  "lessonApp": 11,
+  "languageCode": "en",
+  "title": "Daily Routine",
+  "items": [
+    {
+      "id": "l11_t_001",
+      "sourceText": "In the morning I get up early.",
+      "hint": "A phrase about a morning action."
+    },
+    {
+      "id": "l11_t_002",
+      "sourceText": "In the morning I drink coffee.",
+      "hint": "A phrase about a morning habit."
+    },
+    {
+      "id": "l11_t_003",
+      "sourceText": "In the morning I have breakfast.",
+      "hint": "A verb about breakfast."
+    },
+    {
+      "id": "l11_t_004",
+      "sourceText": "After breakfast I work.",
+      "hint": "An action after eating."
+    },
+    {
+      "id": "l11_t_005",
+      "sourceText": "After work I study.",
+      "hint": "A phrase about an action after work."
+    },
+    {
+      "id": "l11_t_006",
+      "sourceText": "During the day I have lunch at home.",
+      "hint": "A phrase about lunch."
+    },
+    {
+      "id": "l11_t_007",
+      "sourceText": "In the evening I return home.",
+      "hint": "A reflexive form about returning home."
+    },
+    {
+      "id": "l11_t_008",
+      "sourceText": "In the evening I have dinner.",
+      "hint": "A verb about dinner."
+    },
+    {
+      "id": "l11_t_009",
+      "sourceText": "At night I sleep.",
+      "hint": "A simple phrase about sleep."
+    },
+    {
+      "id": "l11_t_010",
+      "sourceText": "I go to bed late.",
+      "hint": "A phrase about bedtime."
+    },
+    {
+      "id": "l11_t_011",
+      "sourceText": "Do you get up early in the morning?",
+      "hint": "A question with li about a habit."
+    },
+    {
+      "id": "l11_t_012",
+      "sourceText": "Do you drink coffee in the morning?",
+      "hint": "A question about a morning drink."
+    },
+    {
+      "id": "l11_t_013",
+      "sourceText": "Do you work after breakfast?",
+      "hint": "A question about an action after breakfast."
+    },
+    {
+      "id": "l11_t_014",
+      "sourceText": "Do you return home in the evening?",
+      "hint": "A question about returning home."
+    },
+    {
+      "id": "l11_t_015",
+      "sourceText": "Do you go to bed late?",
+      "hint": "A question about the habit of sleeping."
+    },
+    {
+      "id": "l11_t_016",
+      "sourceText": "In the morning we have breakfast.",
+      "hint": "A phrase with “we”."
+    },
+    {
+      "id": "l11_t_017",
+      "sourceText": "In the evening you have dinner.",
+      "hint": "A phrase with “you”."
+    },
+    {
+      "id": "l11_t_018",
+      "sourceText": "At night they sleep.",
+      "hint": "A phrase with “they”."
+    },
+    {
+      "id": "l11_t_019",
+      "sourceText": "When do you have breakfast?",
+      "hint": "A question with the word “when”."
+    },
+    {
+      "id": "l11_t_020",
+      "sourceText": "When do you go to bed?",
+      "hint": "A question about the daily routine."
+    },
+    {
+      "id": "l11_t_021",
+      "sourceText": "In the morning I brush my teeth.",
+      "hint": "A phrase about a morning action."
+    },
+    {
+      "id": "l11_t_022",
+      "sourceText": "In the morning I get dressed.",
+      "hint": "A phrase about a morning action."
+    },
+    {
+      "id": "l11_t_023",
+      "sourceText": "In the morning I leave home.",
+      "hint": "A phrase about a morning action."
+    },
+    {
+      "id": "l11_t_024",
+      "sourceText": "During the day I work in the office.",
+      "hint": "A phrase about a daytime action."
+    },
+    {
+      "id": "l11_t_025",
+      "sourceText": "During the day I study at the university.",
+      "hint": "A phrase about a daytime action."
+    },
+    {
+      "id": "l11_t_026",
+      "sourceText": "During the day I drink tea.",
+      "hint": "A phrase about the day."
+    },
+    {
+      "id": "l11_t_027",
+      "sourceText": "During the day I eat a sandwich.",
+      "hint": "A phrase about the day."
+    },
+    {
+      "id": "l11_t_028",
+      "sourceText": "In the evening I go to the shop.",
+      "hint": "A phrase about the evening."
+    },
+    {
+      "id": "l11_t_029",
+      "sourceText": "In the evening I have dinner at home.",
+      "hint": "A phrase about the evening."
+    },
+    {
+      "id": "l11_t_030",
+      "sourceText": "In the evening I watch TV.",
+      "hint": "A phrase about the evening."
+    },
+    {
+      "id": "l11_t_031",
+      "sourceText": "In the evening I read a book.",
+      "hint": "A phrase about the evening."
+    },
+    {
+      "id": "l11_t_032",
+      "sourceText": "In the evening I listen to music.",
+      "hint": "A phrase about the evening."
+    },
+    {
+      "id": "l11_t_033",
+      "sourceText": "At night I go to bed late.",
+      "hint": "A phrase about the night."
+    },
+    {
+      "id": "l11_t_034",
+      "sourceText": "At night I sleep well.",
+      "hint": "A phrase about the night."
+    },
+    {
+      "id": "l11_t_035",
+      "sourceText": "When do you get up?",
+      "hint": "A question about the time of an action."
+    },
+    {
+      "id": "l11_t_036",
+      "sourceText": "When do you have lunch?",
+      "hint": "A question about the time of an action."
+    },
+    {
+      "id": "l11_t_037",
+      "sourceText": "When do you work?",
+      "hint": "A question about the time of an action."
+    },
+    {
+      "id": "l11_t_038",
+      "sourceText": "When do you return home?",
+      "hint": "A question about the time of an action."
+    },
+    {
+      "id": "l11_t_039",
+      "sourceText": "I get up at seven o'clock.",
+      "hint": "An answer about time."
+    },
+    {
+      "id": "l11_t_040",
+      "sourceText": "I have breakfast at eight o'clock.",
+      "hint": "An answer about time."
+    },
+    {
+      "id": "l11_t_041",
+      "sourceText": "I work until five o'clock.",
+      "hint": "An answer about time."
+    },
+    {
+      "id": "l11_t_042",
+      "sourceText": "I return home at six o'clock.",
+      "hint": "An answer about time."
+    },
+    {
+      "id": "l11_t_043",
+      "sourceText": "In the morning I drink water.",
+      "hint": "A simple phrase about the daily routine."
+    },
+    {
+      "id": "l11_t_044",
+      "sourceText": "After lunch I drink juice.",
+      "hint": "A simple phrase about the daily routine."
+    },
+    {
+      "id": "l11_t_045",
+      "sourceText": "In the evening I eat soup.",
+      "hint": "A simple phrase about the daily routine."
+    },
+    {
+      "id": "l11_t_046",
+      "sourceText": "In the evening I drink tea.",
+      "hint": "A simple phrase about the daily routine."
+    },
+    {
+      "id": "l11_t_047",
+      "sourceText": "We work during the day.",
+      "hint": "A phrase in the plural."
+    },
+    {
+      "id": "l11_t_048",
+      "sourceText": "You have dinner in the evening.",
+      "hint": "A phrase in the plural."
+    },
+    {
+      "id": "l11_t_049",
+      "sourceText": "They go to bed late.",
+      "hint": "A phrase in the plural."
+    },
+    {
+      "id": "l11_t_050",
+      "sourceText": "Do you go to bed early?",
+      "hint": "A question about a habit."
+    },
+    {
+      "id": "l11_t_051",
+      "sourceText": "In the morning I wake up early.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_052",
+      "sourceText": "In the morning I get up at seven o'clock.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_053",
+      "sourceText": "In the morning I wash my face.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_054",
+      "sourceText": "In the morning I wash myself.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_055",
+      "sourceText": "In the morning I make breakfast.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_056",
+      "sourceText": "In the morning I leave home early.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_057",
+      "sourceText": "In the morning I go into the office.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_058",
+      "sourceText": "During the day I work with colleagues.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_059",
+      "sourceText": "At work I think about the lesson.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_060",
+      "sourceText": "At work I speak Bulgarian.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_061",
+      "sourceText": "At lunch I sit down at the table.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_062",
+      "sourceText": "At lunch I take soup.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_063",
+      "sourceText": "At lunch I give bread to my brother.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_064",
+      "sourceText": "After lunch I wait for the bus.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_065",
+      "sourceText": "After lunch I call a friend.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_066",
+      "sourceText": "After work I return home.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_067",
+      "sourceText": "In the evening I return home early.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_068",
+      "sourceText": "In the evening I invite friends.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_069",
+      "sourceText": "In the evening I meet friends.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_070",
+      "sourceText": "In the evening I watch a film.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_071",
+      "sourceText": "In the evening I read a newspaper.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_072",
+      "sourceText": "In the evening I listen to the radio.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_073",
+      "sourceText": "In the evening I write my homework.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_074",
+      "sourceText": "After dinner I help at home.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_075",
+      "sourceText": "In the evening I go to bed early.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_076",
+      "sourceText": "At night I sleep peacefully.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_077",
+      "sourceText": "When do you wake up?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_078",
+      "sourceText": "When do you get up in the morning?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_079",
+      "sourceText": "Do you wash your face in the morning?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_080",
+      "sourceText": "Do you wash yourself in the morning?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_081",
+      "sourceText": "What do you do in the morning?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_082",
+      "sourceText": "When do you leave home?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_083",
+      "sourceText": "When do you go into the office?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_084",
+      "sourceText": "What are you thinking about?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_085",
+      "sourceText": "When do you sit down at the table?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_086",
+      "sourceText": "What do you take for lunch?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_087",
+      "sourceText": "Who do you give bread to?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_088",
+      "sourceText": "Who do you invite in the evening?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_089",
+      "sourceText": "When do you return home?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_090",
+      "sourceText": "When do you go to bed in the evening?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_091",
+      "sourceText": "When do you sleep?",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_092",
+      "sourceText": "Take the book.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_093",
+      "sourceText": "Take the ticket.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_094",
+      "sourceText": "Wait here.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_095",
+      "sourceText": "Wait for the bus.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_096",
+      "sourceText": "At lunch I cook soup.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_097",
+      "sourceText": "In the morning I clean the room.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_098",
+      "sourceText": "After work I do the shopping.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_099",
+      "sourceText": "After lunch I rest at home.",
+      "hint": "An everyday verb in the context of the daily routine."
+    },
+    {
+      "id": "l11_t_100",
+      "sourceText": "In the evening I help at home.",
+      "hint": "An everyday verb in the context of the daily routine."
+    }
+  ]
+}

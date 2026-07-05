@@ -1,0 +1,257 @@
+{
+  "lessonApp": 4,
+  "languageCode": "en",
+  "title": "Shopping at the Supermarket and Market",
+  "items": [
+    {
+      "id": "l4_t_001",
+      "sourceText": "I want bread.",
+      "hint": "Verb + object."
+    },
+    {
+      "id": "l4_t_002",
+      "sourceText": "I want water.",
+      "hint": "A short phrase with an object."
+    },
+    {
+      "id": "l4_t_003",
+      "sourceText": "I like coffee.",
+      "hint": "The verb “like” + a drink."
+    },
+    {
+      "id": "l4_t_004",
+      "sourceText": "I like apples.",
+      "hint": "To like + fruit."
+    },
+    {
+      "id": "l4_t_005",
+      "sourceText": "I like tea.",
+      "hint": "To like + an object."
+    },
+    {
+      "id": "l4_t_006",
+      "sourceText": "I like pizza.",
+      "hint": "To like + a dish."
+    },
+    {
+      "id": "l4_t_007",
+      "sourceText": "Do you like juice?",
+      "hint": "A question with li."
+    },
+    {
+      "id": "l4_t_008",
+      "sourceText": "Do you want tea?",
+      "hint": "A question about wanting something."
+    },
+    {
+      "id": "l4_t_009",
+      "sourceText": "I do not want juice.",
+      "hint": "Negation with ne."
+    },
+    {
+      "id": "l4_t_010",
+      "sourceText": "I do not like olives.",
+      "hint": "Negation with a product."
+    },
+    {
+      "id": "l4_t_011",
+      "sourceText": "We like oranges.",
+      "hint": "We + like + fruit."
+    },
+    {
+      "id": "l4_t_012",
+      "sourceText": "You want lemons.",
+      "hint": "You + want + a product."
+    },
+    {
+      "id": "l4_t_013",
+      "sourceText": "They like strawberries.",
+      "hint": "They like a fruit or a berry."
+    },
+    {
+      "id": "l4_t_014",
+      "sourceText": "What kind of tea do you like?",
+      "hint": "A question about the type of product."
+    },
+    {
+      "id": "l4_t_015",
+      "sourceText": "Black tea.",
+      "hint": "A short answer about preference."
+    },
+    {
+      "id": "l4_t_016",
+      "sourceText": "What fruit do you like?",
+      "hint": "A question in the plural."
+    },
+    {
+      "id": "l4_t_017",
+      "sourceText": "Apples and oranges.",
+      "hint": "A short answer with a list of fruits."
+    },
+    {
+      "id": "l4_t_018",
+      "sourceText": "I want two kilograms of lemons.",
+      "hint": "A purchase with quantity."
+    },
+    {
+      "id": "l4_t_019",
+      "sourceText": "What kind of meat do you like?",
+      "hint": "A question about the type of meat."
+    },
+    {
+      "id": "l4_t_020",
+      "sourceText": "Chicken and veal.",
+      "hint": "An answer with two types of meat."
+    },
+    {
+      "id": "l4_t_021",
+      "sourceText": "You eat bananas.",
+      "hint": "Pronoun + verb + food."
+    },
+    {
+      "id": "l4_t_022",
+      "sourceText": "He drinks juice.",
+      "hint": "He + a drink."
+    },
+    {
+      "id": "l4_t_023",
+      "sourceText": "She eats salad.",
+      "hint": "She + food."
+    },
+    {
+      "id": "l4_t_024",
+      "sourceText": "We eat vegetables.",
+      "hint": "We + verb + vegetables."
+    },
+    {
+      "id": "l4_t_025",
+      "sourceText": "You drink tea.",
+      "hint": "You + a drink."
+    },
+    {
+      "id": "l4_t_026",
+      "sourceText": "They eat fish.",
+      "hint": "They + food."
+    },
+    {
+      "id": "l4_t_027",
+      "sourceText": "I eat rice.",
+      "hint": "A short phrase with food."
+    },
+    {
+      "id": "l4_t_028",
+      "sourceText": "I eat lentils.",
+      "hint": "Verb + product."
+    },
+    {
+      "id": "l4_t_029",
+      "sourceText": "I eat beans.",
+      "hint": "A short phrase about food."
+    },
+    {
+      "id": "l4_t_030",
+      "sourceText": "I eat pork.",
+      "hint": "Verb + type of meat."
+    },
+    {
+      "id": "l4_t_031",
+      "sourceText": "Which vegetables do you like?",
+      "hint": "A question about vegetables."
+    },
+    {
+      "id": "l4_t_032",
+      "sourceText": "I want one kilogram of tomatoes.",
+      "hint": "A purchase by weight."
+    },
+    {
+      "id": "l4_t_033",
+      "sourceText": "I want two kilograms of potatoes.",
+      "hint": "A purchase with quantity."
+    },
+    {
+      "id": "l4_t_034",
+      "sourceText": "How much are the tomatoes?",
+      "hint": "A question about the price of an item."
+    },
+    {
+      "id": "l4_t_035",
+      "sourceText": "How much is one lemon?",
+      "hint": "The price of one item."
+    },
+    {
+      "id": "l4_t_036",
+      "sourceText": "Do you have fresh fish?",
+      "hint": "A question to the seller."
+    },
+    {
+      "id": "l4_t_037",
+      "sourceText": "I like olives.",
+      "hint": ""
+    },
+    {
+      "id": "l4_t_038",
+      "sourceText": "I eat nuts.",
+      "hint": "A short phrase about food."
+    },
+    {
+      "id": "l4_t_039",
+      "sourceText": "How much is it?",
+      "hint": "A short question about price."
+    },
+    {
+      "id": "l4_t_040",
+      "sourceText": "How much are they?",
+      "hint": "A question about price in the plural."
+    },
+    {
+      "id": "l4_t_041",
+      "sourceText": "How much is one kilogram of apples?",
+      "hint": "A question about price and quantity."
+    },
+    {
+      "id": "l4_t_042",
+      "sourceText": "Can I have one kilogram of potatoes?",
+      "hint": "A polite request in a shop."
+    },
+    {
+      "id": "l4_t_043",
+      "sourceText": "Is it cheap?",
+      "hint": "A short question about price."
+    },
+    {
+      "id": "l4_t_044",
+      "sourceText": "Is it expensive?",
+      "hint": "A short question about price."
+    },
+    {
+      "id": "l4_t_045",
+      "sourceText": "By card or cash?",
+      "hint": "A question about payment."
+    },
+    {
+      "id": "l4_t_046",
+      "sourceText": "By card, please.",
+      "hint": "A short answer during payment."
+    },
+    {
+      "id": "l4_t_047",
+      "sourceText": "Do you need a bag?",
+      "hint": "A cashier's question."
+    },
+    {
+      "id": "l4_t_048",
+      "sourceText": "Here is your change.",
+      "hint": "A seller's phrase after payment."
+    },
+    {
+      "id": "l4_t_049",
+      "sourceText": "What is this?",
+      "hint": "A short question about an object."
+    },
+    {
+      "id": "l4_t_050",
+      "sourceText": "This is a sandwich.",
+      "hint": "A short answer about an object."
+    }
+  ]
+}

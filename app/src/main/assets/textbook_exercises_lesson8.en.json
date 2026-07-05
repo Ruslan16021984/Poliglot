@@ -1,0 +1,507 @@
+{
+  "lessonApp": 8,
+  "languageCode": "en",
+  "title": "Clothes and Colors",
+  "items": [
+    {
+      "id": "l8_t_001",
+      "sourceText": "This shirt is blue.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_002",
+      "sourceText": "This skirt is black.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_003",
+      "sourceText": "This dress is green.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_004",
+      "sourceText": "This hat is red.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_005",
+      "sourceText": "These trousers are brown.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_006",
+      "sourceText": "This scarf is blue.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_007",
+      "sourceText": "This sweater is green.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_008",
+      "sourceText": "This jacket is yellow.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_009",
+      "sourceText": "This coat is blue.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_010",
+      "sourceText": "This jacket is black.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_011",
+      "sourceText": "These shoes are white.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_012",
+      "sourceText": "These boots are black.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_013",
+      "sourceText": "These socks are green.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_014",
+      "sourceText": "What color is this shirt?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_015",
+      "sourceText": "What color are these trousers?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_016",
+      "sourceText": "What color is this coat?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_017",
+      "sourceText": "What color are these shoes?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_018",
+      "sourceText": "Which shirt do you like?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_019",
+      "sourceText": "Which sweater do you like?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_020",
+      "sourceText": "Which shoes do you like?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_021",
+      "sourceText": "I wear a white shirt.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_022",
+      "sourceText": "I wear black trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_023",
+      "sourceText": "I wear a blue sweater.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_024",
+      "sourceText": "I wear a brown coat.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_025",
+      "sourceText": "You wear a green dress.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_026",
+      "sourceText": "You wear a red hat.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_027",
+      "sourceText": "You wear a yellow scarf.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_028",
+      "sourceText": "You wear white shoes.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_029",
+      "sourceText": "He wears black trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_030",
+      "sourceText": "He wears a blue jacket.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_031",
+      "sourceText": "He wears a green sweater.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_032",
+      "sourceText": "He wears brown boots.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_033",
+      "sourceText": "She wears a blue skirt.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_034",
+      "sourceText": "She wears a red dress.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_035",
+      "sourceText": "She wears a white hat.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_036",
+      "sourceText": "She wears black shoes.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_037",
+      "sourceText": "We wear green sweaters.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_038",
+      "sourceText": "We wear blue scarves.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_039",
+      "sourceText": "You wear white shirts.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_040",
+      "sourceText": "You wear black trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_041",
+      "sourceText": "They wear yellow jackets.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_042",
+      "sourceText": "They wear brown coats.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_043",
+      "sourceText": "They wear red hats.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_044",
+      "sourceText": "They wear white socks.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_045",
+      "sourceText": "I am dressed in a white shirt.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_046",
+      "sourceText": "I am dressed in a black skirt.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_047",
+      "sourceText": "You are dressed in a blue sweater.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_048",
+      "sourceText": "You are dressed in a green dress.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_049",
+      "sourceText": "He is dressed in black trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_050",
+      "sourceText": "He is dressed in a blue jacket.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_051",
+      "sourceText": "She is dressed in a red dress.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_052",
+      "sourceText": "She is dressed in a white shirt.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_053",
+      "sourceText": "The child is dressed in a yellow jacket.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_054",
+      "sourceText": "The child is dressed in a green coat.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_055",
+      "sourceText": "We are dressed in white shirts.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_056",
+      "sourceText": "You are dressed in black trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_057",
+      "sourceText": "They are dressed in blue jackets.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_058",
+      "sourceText": "They are dressed in green sweaters.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_059",
+      "sourceText": "How is he dressed?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_060",
+      "sourceText": "How is she dressed?",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_061",
+      "sourceText": "I want black trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_062",
+      "sourceText": "I want a blue sweater.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_063",
+      "sourceText": "I want a white scarf.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_064",
+      "sourceText": "I want green trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_065",
+      "sourceText": "I am buying brown trousers.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_066",
+      "sourceText": "I am buying a red scarf.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_067",
+      "sourceText": "I am taking a yellow sweater.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_068",
+      "sourceText": "I like the blue scarf.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_069",
+      "sourceText": "I want a blue shirt.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_070",
+      "sourceText": "I want a red dress.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_071",
+      "sourceText": "I am buying a black skirt.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_072",
+      "sourceText": "I am taking a white hat.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_073",
+      "sourceText": "I like the green dress.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_074",
+      "sourceText": "The blue shirt is new.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_075",
+      "sourceText": "The red dress is beautiful.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_076",
+      "sourceText": "The black skirt is short.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_077",
+      "sourceText": "I want a black jacket.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_078",
+      "sourceText": "I want a white coat.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_079",
+      "sourceText": "I am buying a blue jacket.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_080",
+      "sourceText": "I am taking a green jacket.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_081",
+      "sourceText": "I like the brown coat.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_082",
+      "sourceText": "The black jacket is new.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_083",
+      "sourceText": "The white coat is beautiful.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_084",
+      "sourceText": "The yellow jacket is beautiful.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_085",
+      "sourceText": "I want white shoes.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_086",
+      "sourceText": "I want black boots.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_087",
+      "sourceText": "I am buying blue socks.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_088",
+      "sourceText": "I am taking brown shoes.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_089",
+      "sourceText": "I like the green boots.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_090",
+      "sourceText": "The white shoes are new.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_091",
+      "sourceText": "The black boots are beautiful.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_092",
+      "sourceText": "The red socks are small.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_093",
+      "sourceText": "The black trousers are new.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_094",
+      "sourceText": "The blue sweater is beautiful.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_095",
+      "sourceText": "The white scarf is long.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_096",
+      "sourceText": "The green trousers are wide.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_097",
+      "sourceText": "The brown sweater is old.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_098",
+      "sourceText": "The yellow scarf is beautiful.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_099",
+      "sourceText": "The red trousers are short.",
+      "hint": "Clothes, colors and definite forms."
+    },
+    {
+      "id": "l8_t_100",
+      "sourceText": "The blue scarf is for me.",
+      "hint": "Clothes, colors and definite forms."
+    }
+  ]
+}

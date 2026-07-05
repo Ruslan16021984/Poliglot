@@ -1,0 +1,257 @@
+{
+  "lessonApp": 5,
+  "languageCode": "en",
+  "title": "City, Address and Directions",
+  "items": [
+    {
+      "id": "l5_t_001",
+      "sourceText": "The pharmacy is in the city.",
+      "hint": "Place + the preposition “in”."
+    },
+    {
+      "id": "l5_t_002",
+      "sourceText": "The bank is on the boulevard.",
+      "hint": "Place + the preposition “on”."
+    },
+    {
+      "id": "l5_t_003",
+      "sourceText": "The museum is near the theatre.",
+      "hint": "Place + the preposition “by”."
+    },
+    {
+      "id": "l5_t_004",
+      "sourceText": "The park is in front of the hotel.",
+      "hint": "The preposition “in front of”."
+    },
+    {
+      "id": "l5_t_005",
+      "sourceText": "The library is behind the bank.",
+      "hint": "The preposition “behind”."
+    },
+    {
+      "id": "l5_t_006",
+      "sourceText": "The post office is between the museum and the theatre.",
+      "hint": "The preposition “between”."
+    },
+    {
+      "id": "l5_t_007",
+      "sourceText": "The hospital is opposite the park.",
+      "hint": "The preposition “opposite”."
+    },
+    {
+      "id": "l5_t_008",
+      "sourceText": "The cinema is near the hotel.",
+      "hint": "A phrase with “near”."
+    },
+    {
+      "id": "l5_t_009",
+      "sourceText": "The hotel is far from the centre.",
+      "hint": "A phrase with “far from”."
+    },
+    {
+      "id": "l5_t_010",
+      "sourceText": "Go straight.",
+      "hint": "A simple direction command."
+    },
+    {
+      "id": "l5_t_011",
+      "sourceText": "Turn left.",
+      "hint": "A direction command with a turn."
+    },
+    {
+      "id": "l5_t_012",
+      "sourceText": "Turn right.",
+      "hint": "A direction command with a turn."
+    },
+    {
+      "id": "l5_t_013",
+      "sourceText": "This is a square.",
+      "hint": "A phrase about a place in the city."
+    },
+    {
+      "id": "l5_t_014",
+      "sourceText": "This is a bridge.",
+      "hint": "A short phrase about a landmark."
+    },
+    {
+      "id": "l5_t_015",
+      "sourceText": "This is a river.",
+      "hint": "A phrase about a landmark in the city."
+    },
+    {
+      "id": "l5_t_016",
+      "sourceText": "Where is the pharmacy?",
+      "hint": "A question about a place in the city."
+    },
+    {
+      "id": "l5_t_017",
+      "sourceText": "Where is the bank?",
+      "hint": "A question about a city place."
+    },
+    {
+      "id": "l5_t_018",
+      "sourceText": "Where is the library?",
+      "hint": "A question about a place in the city."
+    },
+    {
+      "id": "l5_t_019",
+      "sourceText": "Where is the museum?",
+      "hint": "A question about a place in the city."
+    },
+    {
+      "id": "l5_t_020",
+      "sourceText": "Where is the park?",
+      "hint": "A question about a place in the city."
+    },
+    {
+      "id": "l5_t_021",
+      "sourceText": "The pharmacy is nearby.",
+      "hint": "A short answer about location."
+    },
+    {
+      "id": "l5_t_022",
+      "sourceText": "The bank is far away.",
+      "hint": "A phrase about the location of a place."
+    },
+    {
+      "id": "l5_t_023",
+      "sourceText": "The library is in the centre.",
+      "hint": "A phrase with a city landmark."
+    },
+    {
+      "id": "l5_t_024",
+      "sourceText": "The hospital is on the boulevard.",
+      "hint": "A phrase about a place on a street."
+    },
+    {
+      "id": "l5_t_025",
+      "sourceText": "The park is by the river.",
+      "hint": "A phrase with the preposition “by”."
+    },
+    {
+      "id": "l5_t_026",
+      "sourceText": "The post office is on the square.",
+      "hint": "A phrase about a place on a square."
+    },
+    {
+      "id": "l5_t_027",
+      "sourceText": "The bridge is by the river.",
+      "hint": "A phrase about a landmark in the city."
+    },
+    {
+      "id": "l5_t_028",
+      "sourceText": "The municipality is in the centre.",
+      "hint": "A phrase about a place in the city centre."
+    },
+    {
+      "id": "l5_t_029",
+      "sourceText": "The monument is on the square.",
+      "hint": "A phrase about a landmark on a square."
+    },
+    {
+      "id": "l5_t_030",
+      "sourceText": "I live on this street.",
+      "hint": "A phrase about an address."
+    },
+    {
+      "id": "l5_t_031",
+      "sourceText": "I live on this boulevard.",
+      "hint": "A phrase about an address in the city."
+    },
+    {
+      "id": "l5_t_032",
+      "sourceText": "I live in this private house.",
+      "hint": "A phrase about a house address."
+    },
+    {
+      "id": "l5_t_033",
+      "sourceText": "I live in this house.",
+      "hint": "A phrase about a house and its address."
+    },
+    {
+      "id": "l5_t_034",
+      "sourceText": "The pharmacy is in front of the hospital.",
+      "hint": "A landmark with “in front of”."
+    },
+    {
+      "id": "l5_t_035",
+      "sourceText": "The bank is behind the museum.",
+      "hint": "A landmark with “behind”."
+    },
+    {
+      "id": "l5_t_036",
+      "sourceText": "The library is between the park and the hotel.",
+      "hint": "A phrase with “between”."
+    },
+    {
+      "id": "l5_t_037",
+      "sourceText": "The hospital is opposite the bank.",
+      "hint": "A phrase with “opposite”."
+    },
+    {
+      "id": "l5_t_038",
+      "sourceText": "The park is near the river.",
+      "hint": "A phrase with “near”."
+    },
+    {
+      "id": "l5_t_039",
+      "sourceText": "The post office is far from the bridge.",
+      "hint": "A phrase with “far from”."
+    },
+    {
+      "id": "l5_t_040",
+      "sourceText": "Where is the theatre?",
+      "hint": "A question about place."
+    },
+    {
+      "id": "l5_t_041",
+      "sourceText": "Where is the cinema?",
+      "hint": "A short question about place."
+    },
+    {
+      "id": "l5_t_042",
+      "sourceText": "Go to the park.",
+      "hint": "A direction command with a place."
+    },
+    {
+      "id": "l5_t_043",
+      "sourceText": "Turn onto the boulevard.",
+      "hint": "A turn toward a place."
+    },
+    {
+      "id": "l5_t_044",
+      "sourceText": "I live near the square.",
+      "hint": "A phrase with “near”."
+    },
+    {
+      "id": "l5_t_045",
+      "sourceText": "I live far from the centre.",
+      "hint": "A phrase with “far from”."
+    },
+    {
+      "id": "l5_t_046",
+      "sourceText": "I live in this small house.",
+      "hint": "A phrase about an address."
+    },
+    {
+      "id": "l5_t_047",
+      "sourceText": "The museum is in the centre.",
+      "hint": "A phrase about a place."
+    },
+    {
+      "id": "l5_t_048",
+      "sourceText": "The theatre is near the hotel.",
+      "hint": "A phrase about a place."
+    },
+    {
+      "id": "l5_t_049",
+      "sourceText": "The cinema is near the park.",
+      "hint": "A phrase about a place."
+    },
+    {
+      "id": "l5_t_050",
+      "sourceText": "The hotel is near the square.",
+      "hint": "A phrase about a place."
+    }
+  ]
+}
