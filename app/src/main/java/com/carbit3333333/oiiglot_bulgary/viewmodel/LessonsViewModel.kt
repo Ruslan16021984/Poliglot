@@ -1,7 +1,6 @@
 package com.carbit3333333.oiiglot_bulgary.viewmodel
 
 import android.app.Application
-import android.content.pm.ApplicationInfo
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.carbit3333333.oiiglot_bulgary.BuildConfig
@@ -22,9 +21,7 @@ class LessonsViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
-    private val isDebugBuild =
-        (application.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
-    private val showTestingTools = isDebugBuild || BuildConfig.INTERNAL_TESTING_TOOLS_ENABLED
+    private val showTestingTools = BuildConfig.INTERNAL_TESTING_TOOLS_ENABLED
 
     private val repository = LessonRepository(application)
     private val progressStore = LessonProgressStore(application)

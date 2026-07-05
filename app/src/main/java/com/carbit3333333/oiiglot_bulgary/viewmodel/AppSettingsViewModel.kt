@@ -2,7 +2,6 @@ package com.carbit3333333.oiiglot_bulgary.viewmodel
 
 import android.app.Activity
 import android.app.Application
-import android.content.pm.ApplicationInfo
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -29,9 +28,7 @@ data class AppSettingsUiState(
 class AppSettingsViewModel(
     application: Application,
 ) : AndroidViewModel(application) {
-    private val isDebugBuild =
-        (application.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
-    private val showTestingTools = isDebugBuild || BuildConfig.INTERNAL_TESTING_TOOLS_ENABLED
+    private val showTestingTools = BuildConfig.INTERNAL_TESTING_TOOLS_ENABLED
 
     private val settingsStore = AppSettingsStore(application)
     private val billingFacade = LocalBillingFacade(application)

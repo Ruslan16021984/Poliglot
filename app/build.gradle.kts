@@ -17,9 +17,9 @@ android {
         applicationId = "com.carbit3333333.poliglotbulgaria.a1"
         minSdk = 26
         targetSdk = 36
-        versionCode = 13
-        versionName = "2.2"
-        buildConfigField("boolean", "INTERNAL_TESTING_TOOLS_ENABLED", "true")
+        versionCode = 14
+        versionName = "2.3"
+        buildConfigField("boolean", "INTERNAL_TESTING_TOOLS_ENABLED", "false")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
